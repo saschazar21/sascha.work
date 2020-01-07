@@ -1,9 +1,9 @@
-<p align="center">
+<div align="center">
   <h1><a href="https://sascha.work" hreflang="en" target="_blank">https://sascha.work</a></h1>
-  <span>The git respository of my personal website. 🌐</span>
+  <strong>The git repository of my personal website. 🌐</strong>
   <br />
   <br />
-</p>
+</div>
 
 ## Technology
 
