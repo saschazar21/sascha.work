@@ -1,15 +1,37 @@
 {
   "name": "sascha.work",
-  "version": "0.1.0",
+  "version": "0.0.0-semantic-release",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint:css": "stylelint './(pages|components)/**/*.(tsx|ts|jsx|js)'",
+    "lint:ts": "eslint --ext .tsx,.ts pages/**/* components/**/*",
+    "lint": "yarn lint:css && yarn lint:ts"
   },
   "dependencies": {
     "next": "9.1.7",
     "react": "16.12.0",
-    "react-dom": "16.12.0"
+    "react-dom": "16.12.0",
+    "styled-components": "^5.0.0-rc.3"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.4",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^4.4.2",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.17.0",
+    "jest-styled-components": "^6.3.4",
+    "stylelint": "^12.0.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.9.0",
+    "typescript": "^3.7.4"
   }
 }

@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    "macros",
+    [
+      "module-resolver",
+      {
+        "root": ["."],
+        "alias": {
+          "components": "./components",
+          "layouts": "./layouts"
+        }
+      }
+    ]
+  ],
+  "presets": ["next/babel"]
+}
