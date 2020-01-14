@@ -13,7 +13,7 @@ const rotate = keyframes`
 
 const Header = styled.h1`
   animation: ${rotate} 1s ease-in;
-  color: purple;
+  color: rgb(var(--color-green));
   text-align: center;
 `;
 
