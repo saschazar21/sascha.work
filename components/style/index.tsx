@@ -44,11 +44,13 @@ export const GlobalStyleSheet = createGlobalStyle`
     font-size: 1.25rem;
   }
 
-  h1,h2,h3,h4,h5,h6,code {
+  h1, h2, h3, h4, h5 {
     font-family: var(--font-family-mono, monospace);
     font-weight: var(--font-weight-normal, 500);
     line-height: 1.15;
   }
+
+  code { font-family: var(--font-family-mono, monospace); }
 
   h1 {
     margin-top: 0;
@@ -64,6 +66,23 @@ export const GlobalStyleSheet = createGlobalStyle`
   h5 {font-size: 1.125em;}
 
   small, .text_small {font-size: 0.889em;}
+
+  @media screen and (min-width: 768px) {
+    h1 {
+      margin-top: 0;
+      font-size: 3.052em;
+    }
+
+    h2 {font-size: 2.441em;}
+
+    h3 {font-size: 1.953em;}
+
+    h4 {font-size: 1.563em;}
+
+    h5 {font-size: 1.25em;}
+
+    small, .text_small {font-size: 0.8em;}
+  }
 `;
 
 export default function GlobalStyles(): JSX.Element {
