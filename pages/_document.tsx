@@ -42,10 +42,11 @@ export default class WebsiteDocument extends Document {
   public render(): JSX.Element {
     return (
       <Html lang="en">
-        <Head>
+        <Head />
+        <body>
           <Main />
           <NextScript />
-        </Head>
+        </body>
       </Html>
     );
   }
