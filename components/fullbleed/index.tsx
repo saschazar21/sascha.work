@@ -3,13 +3,14 @@ import styled from 'styled-components/macro';
 
 const FullBleedElement = styled.div`
   position: relative;
-  min-height: 100vh;
   width: 100vw;
   padding: 2rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
   overflow: hidden;
   background: ${({ 'data-color': color }: FullBleedProps): string =>
     color
-      ? `linear-gradient(to bottom, HSLA(var(--color-bg-secondary), 0.75), HSLA(var(--color-bg-secondary), 0.95)) HSL(var(--color-${color}))`
+      ? `linear-gradient(to bottom, HSLA(var(--color-bg-primary), 0.45), HSLA(var(--color-bg-primary), 0.6)) HSL(var(--color-${color}))`
       : 'inherit'};
 
   @media screen and (min-width: 768px) {

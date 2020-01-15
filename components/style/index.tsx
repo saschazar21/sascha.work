@@ -41,7 +41,7 @@ export const GlobalStyleSheet = createGlobalStyle`
   }
 
   body {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   h1,h2,h3,h4,h5,h6,code {
@@ -71,7 +71,7 @@ export default function GlobalStyles(): JSX.Element {
     <>
       <Head>
         <link
-          href="https://fonts.googleapis.com/css?family=Fira+Mono:500|Source+Sans+Pro&display=swap"
+          href="https://fonts.googleapis.com/css?family=Fira+Mono:500|Source+Sans+Pro:400&display=swap"
           rel="stylesheet"
         />
       </Head>
