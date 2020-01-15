@@ -7,8 +7,8 @@ export const config = { amp: true };
 
 const Index = (): JSX.Element => {
   return (
-    <FullBleed>
-      <Title>Hello world</Title>
+    <FullBleed data-color="grey">
+      <Title>hello, world!</Title>
       This is a demo site
     </FullBleed>
   );

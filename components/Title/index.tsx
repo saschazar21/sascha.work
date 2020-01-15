@@ -1,20 +1,14 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components/macro';
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`;
+import styled from 'styled-components/macro';
 
 const Header = styled.h1`
-  animation: ${rotate} 1s ease-in;
-  color: rgb(var(--color-green));
+  color: inherit;
   text-align: center;
+  margin-top: 2rem;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 4rem;
+  }
 `;
 
 export interface TitleProps {

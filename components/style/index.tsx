@@ -4,6 +4,13 @@ import { createGlobalStyle } from 'styled-components/macro';
 
 export const GlobalStyleSheet = createGlobalStyle`
   :root {
+    --color-primary: 140, 18%, 16%; /* #223127 */
+    --color-secondary: 182, 68%, 17%; /* #0e4749 */
+    --color-accent: 13, 97%, 46%; /* #E73504 */
+    --color-grey: 37, 10%, 61%; /* #A59E92 */
+    --color-bg-primary: 38, 24%, 93%; /* #F2EFEA */
+    --color-bg-secondary: 78, 70%, 46%; /* #96C723 */
+
     --font-family-normal: 'Source Sans Pro', sans-serif;
     --font-family-mono: 'Fira Mono', monospace;
     --font-weight-normal: 300;
@@ -12,13 +19,16 @@ export const GlobalStyleSheet = createGlobalStyle`
 
   @media (prefers-color-scheme: dark) {
     :root:not(.light) {
-      /* TODO: define dark mode */
+      --color-primary: 38, 24%, 93%; /* #F2EFEA */
+      --color-secondary: 78, 70%, 46%; /* #96C723 */
+      --color-bg-primary: 140, 18%, 16%; /* #223127 */
+      --color-bg-secondary: 182, 68%, 17%; /* #0e4749 */
     }
   }
 
   html {
-    background-color: var(--color-white, white);
-    color: var(--color-black, black);
+    background-color: HSL(var(--color-bg-primary));
+    color: HSL(var(--color-primary));
     font-family: var(--font-family-normal, sans-serif);
     font-weight: var(--font-weight-normal, 300);
     font-size: 16px;
