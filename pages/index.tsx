@@ -3,6 +3,7 @@ import React from 'react';
 import Title from 'components/title';
 import FullBleed from 'components/fullbleed';
 import Container from 'components/container';
+import ProfileImage from 'components/profile/image';
 
 export const config = { amp: true };
 
@@ -11,6 +12,7 @@ const Index = (): JSX.Element => {
     <main>
       <FullBleed data-color="grey">
         <Container>
+          <ProfileImage />
           <Title>hello, world!</Title>
           <p>
             I&apos;m <strong>Sascha</strong> – a web developer from Austria, and
