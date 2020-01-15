@@ -5,7 +5,7 @@ import { createGlobalStyle } from 'styled-components/macro';
 export const GlobalStyleSheet = createGlobalStyle`
   :root {
     --color-primary: 140, 18%, 16%; /* #223127 */
-    --color-secondary: 182, 68%, 17%; /* #0e4749 */
+    --color-secondary: 182, 68%, 27%; /* #0e4749 */
     --color-accent: 13, 97%, 46%; /* #E73504 */
     --color-grey: 37, 10%, 61%; /* #A59E92 */
     --color-bg-primary: 38, 24%, 93%; /* #F2EFEA */
@@ -19,9 +19,9 @@ export const GlobalStyleSheet = createGlobalStyle`
 
   @media (prefers-color-scheme: dark) {
     :root:not(.light) {
-      --color-primary: 38, 24%, 93%; /* #F2EFEA */
+      --color-primary: 38, 24%, 95%; /* #F2EFEA */
       --color-secondary: 78, 70%, 46%; /* #96C723 */
-      --color-bg-primary: 140, 18%, 16%; /* #223127 */
+      --color-bg-primary: 140, 5%, 10%; /* #223127 */
       --color-bg-secondary: 182, 68%, 17%; /* #0e4749 */
     }
   }

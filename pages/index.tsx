@@ -27,7 +27,7 @@ const Index = (): JSX.Element => {
       </FullBleed>
       <FullBleed>
         <Container>
-          <h2>Projects</h2>
+          <h2 style={{ color: 'HSL(var(--color-secondary))' }}>Projects</h2>
         </Container>
       </FullBleed>
     </main>

@@ -10,7 +10,7 @@ const FullBleedElement = styled.div`
   overflow: hidden;
   background: ${({ 'data-color': color }: FullBleedProps): string =>
     color
-      ? `linear-gradient(to bottom, HSLA(var(--color-bg-primary), 0.45), HSLA(var(--color-bg-primary), 0.6)) HSL(var(--color-${color}))`
+      ? `linear-gradient(to bottom, HSLA(var(--color-bg-primary), 0.55), HSLA(var(--color-bg-primary), 0.72)) HSL(var(--color-${color}))`
       : 'inherit'};
 
   @media screen and (min-width: 768px) {
