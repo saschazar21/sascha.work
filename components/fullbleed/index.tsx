@@ -13,6 +13,7 @@ const FullBleedElement = styled.div`
       : 'inherit'};
 
   @media screen and (min-width: 768px) {
+    min-height: initial;
     padding: 4rem;
   }
 `;

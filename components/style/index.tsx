@@ -13,7 +13,7 @@ export const GlobalStyleSheet = createGlobalStyle`
 
     --font-family-normal: 'Source Sans Pro', sans-serif;
     --font-family-mono: 'Fira Mono', monospace;
-    --font-weight-normal: 300;
+    --font-weight-normal: 400;
     --font-weight-mono: 500;
   }
 
@@ -71,7 +71,7 @@ export default function GlobalStyles(): JSX.Element {
     <>
       <Head>
         <link
-          href="https://fonts.googleapis.com/css?family=Fira+Mono:500|Source+Sans+Pro:300&display=swap"
+          href="https://fonts.googleapis.com/css?family=Fira+Mono:500|Source+Sans+Pro&display=swap"
           rel="stylesheet"
         />
       </Head>
