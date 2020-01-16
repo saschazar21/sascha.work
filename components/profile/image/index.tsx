@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components/macro';
+import { PortraitIcon } from '@saschazar/unicat-icons';
 
 export enum PROFILEIMAGE_SIZE {
   SMALL = 64,
   MEDIUM = 150,
-  LARGE = 240,
+  LARGE = 240
 }
 
 export interface ProfileImageProps {
@@ -14,8 +15,17 @@ export interface ProfileImageProps {
   'data-size'?: PROFILEIMAGE_SIZE;
 }
 
+const ProfileImageFallback = styled(
+  PortraitIcon as (props: { placeholder: string }) => JSX.Element
+)`
+  max-height: 100%;
+  max-width: 100%;
+  background: #b3aa67; /* green background color of image */
+  fill: #2e2110; /* brownish hair color tone */
+`;
+
 const ProfileImageElement = ({
-  'data-size': size,
+  'data-size': size
 }: ProfileImageProps): JSX.Element => (
   <amp-img
     alt="Portrait of Sascha Zarhuber"
@@ -24,7 +34,9 @@ const ProfileImageElement = ({
     height={size || PROFILEIMAGE_SIZE.MEDIUM}
     src={`https://avatars0.githubusercontent.com/u/9016897?s=${size ||
       PROFILEIMAGE_SIZE.MEDIUM}`}
-  />
+  >
+    <ProfileImageFallback placeholder="" />
+  </amp-img>
 );
 
 const ProfileImageFigure = styled.figure`
@@ -41,7 +53,7 @@ const ProfileImageFigure = styled.figure`
 `;
 
 const ProfileImage = (props: ProfileImageProps): JSX.Element => (
-  <ProfileImageFigure {...props}>
+  <ProfileImageFigure aria-label="Portrait of Sascha Zarhuber" {...props}>
     <ProfileImageElement {...props} />
   </ProfileImageFigure>
 );

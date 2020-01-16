@@ -17,7 +17,7 @@ export const GlobalStyleSheet = createGlobalStyle`
     --font-weight-mono: 500;
   }
 
-  @media (prefers-color-scheme: dark) {
+  @media screen and (prefers-color-scheme: dark) {
     :root:not(.light) {
       --color-primary: 38, 24%, 95%; /* #F2EFEA */
       --color-secondary: 78, 70%, 46%; /* #96C723 */

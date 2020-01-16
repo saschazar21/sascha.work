@@ -11,10 +11,11 @@
     "lint": "yarn lint:css && yarn lint:ts"
   },
   "dependencies": {
-    "next": "9.1.7",
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
-    "styled-components": "^5.0.0-rc.3"
+    "@saschazar/unicat-icons": "^0.1.0",
+    "next": "^9.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.0.0"
   },
   "devDependencies": {
     "@saschazar/next-mdx-extended": "^1.1.0",

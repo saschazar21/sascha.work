@@ -1,5 +1,6 @@
 import React from 'react';
 import App from 'next/app';
+import Head from 'next/head';
 import { ThemeProvider } from 'styled-components/macro';
 
 import GlobalStyle from 'components/style';
@@ -13,10 +14,15 @@ export default class WebsiteApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <>
+        <Head>
+          <title>Sascha Zarhuber — Web Developer</title>
+        </Head>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </>
     );
   }
 }
