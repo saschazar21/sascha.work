@@ -17,7 +17,7 @@ const drop = keyframes`
     transform: translateY(12%);
   }
   85% {
-    transform: translateY(-6%)
+    transform: translateY(-6%);
   }
   96% {
     transform: translateY(3%);
