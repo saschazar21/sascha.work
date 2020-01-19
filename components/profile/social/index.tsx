@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 
 import SocialItem from 'components/profile/social/item';
 
+import CodepenIcon from 'components/profile/social/icons/codepen.svg';
+import ExternalLinkIcon from 'components/profile/social/icons/external-link.svg';
+import GithubIcon from 'components/profile/social/icons/github.svg';
+import LinkedinIcon from 'components/profile/social/icons/linkedin.svg';
+import TwitterIcon from 'components/profile/social/icons/twitter.svg';
 import SocialAccounts from 'public/social.json';
+
+const icons: { [key: string]: ReactChild } = {
+  codepen: CodepenIcon,
+  github: GithubIcon,
+  linkedin: LinkedinIcon,
+  twitter: TwitterIcon,
+};
 
 export interface SocialProps {
   /* limit to just show given providers */
@@ -10,6 +22,7 @@ export interface SocialProps {
 }
 
 export interface SocialAccount {
+  icon?: ReactChild;
   provider: string;
   username: string;
   profile: string;
@@ -28,7 +41,10 @@ const Social = (props: SocialProps): JSX.Element => {
     <ul>
       {data.map((account: SocialAccount, index: number) => (
         <li key={`social-${index}`}>
-          <SocialItem {...account} />
+          <SocialItem
+            icon={icons[account.provider] || ExternalLinkIcon}
+            {...account}
+          />
         </li>
       ))}
     </ul>

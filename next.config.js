@@ -10,11 +10,19 @@ const withMDXExtended = require('@saschazar/next-mdx-extended')({
       'Personal website of Sascha Zarhuber, contains a blog, a resume and information about ongoing projects',
     author: {
       name: 'Sascha Zarhuber',
-      url: 'https://sascha.work'
-    }
-  }
+      url: 'https://sascha.work',
+    },
+  },
 });
 
 module.exports = withMDXExtended({
-  pageExtensions: ['tsx', 'ts', 'mdx', 'md']
+  pageExtensions: ['tsx', 'ts', 'mdx', 'md'],
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
+  },
 });
