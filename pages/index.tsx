@@ -5,6 +5,7 @@ import Title from 'components/title';
 import FullBleed from 'components/fullbleed';
 import Container from 'components/container';
 import ProfileImage from 'components/profile/image';
+import Footer from 'components/footer';
 
 export const config = { amp: true };
 
@@ -54,7 +55,7 @@ const Index = (): JSX.Element => {
       </FullBleed>
       <FullBleed>
         <Container>
-          <h2 id="projects">Projects</h2>
+          <Footer />
         </Container>
       </FullBleed>
     </main>
