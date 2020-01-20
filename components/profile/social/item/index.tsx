@@ -5,13 +5,14 @@ import styled, { AnyStyledComponent } from 'styled-components/macro';
 import { SocialAccount } from 'components/profile/social';
 
 const SocialItemWrapper = styled.span`
-  /* TODO: define styles */
+  display: inline-flex;
+  align-items: center;
 `;
 
-const styleIcon = (icon: ReactChild) => styled(icon as AnyStyledComponent)`
-  margin-right: 1em;
-  max-height: 1em;
-  max-width: 1em;
+const styleIcon = (icon: ReactChild): any => styled(icon as AnyStyledComponent)`
+  margin-right: 0.5em;
+  height: 1em;
+  width: 1em;
   fill: none;
   stroke: HSL(var(--color-grey));
   stroke-width: 2px;
@@ -21,13 +22,14 @@ const styleIcon = (icon: ReactChild) => styled(icon as AnyStyledComponent)`
 const SocialItem = (props: SocialAccount): JSX.Element => {
   const { icon, profile, provider, username } = props;
   const Icon = styleIcon(icon);
+  const user = username.replace(/^Sascha Zarhuber$/i, 'me');
 
   return (
     <SocialItemWrapper>
-      <Icon />
+      <Icon aria-hidden="true" title={`${provider} icon`} />
       <Link href={profile}>
         <a>
-          <strong>{username}</strong>on<strong>{provider}</strong>
+          <strong>{user}</strong> on <strong>{provider}</strong>
         </a>
       </Link>
     </SocialItemWrapper>

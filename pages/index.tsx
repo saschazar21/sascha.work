@@ -54,9 +54,7 @@ const Index = (): JSX.Element => {
         </Container>
       </FullBleed>
       <FullBleed>
-        <Container>
-          <Footer />
-        </Container>
+        <Footer />
       </FullBleed>
     </main>
   );

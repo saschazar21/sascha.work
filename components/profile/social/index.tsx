@@ -1,4 +1,5 @@
 import React, { ReactChild } from 'react';
+import styled from 'styled-components/macro';
 
 import SocialItem from 'components/profile/social/item';
 
@@ -13,7 +14,7 @@ const icons: { [key: string]: ReactChild } = {
   codepen: CodepenIcon,
   github: GithubIcon,
   linkedin: LinkedinIcon,
-  twitter: TwitterIcon,
+  twitter: TwitterIcon
 };
 
 export interface SocialProps {
@@ -28,17 +29,26 @@ export interface SocialAccount {
   profile: string;
 }
 
+const SocialAccountsList = styled.ul`
+  padding-left: 0;
+  list-style: none;
+
+  > li:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+`;
+
 const Social = (props: SocialProps): JSX.Element => {
   const { 'data-limit': limit } = props;
   const data =
     limit && Array.isArray(limit)
       ? SocialAccounts.filter(({ provider }: SocialAccount) =>
-          limit.includes(provider),
+          limit.includes(provider)
         )
       : SocialAccounts;
 
   return (
-    <ul>
+    <SocialAccountsList>
       {data.map((account: SocialAccount, index: number) => (
         <li key={`social-${index}`}>
           <SocialItem
@@ -47,7 +57,7 @@ const Social = (props: SocialProps): JSX.Element => {
           />
         </li>
       ))}
-    </ul>
+    </SocialAccountsList>
   );
 };
 

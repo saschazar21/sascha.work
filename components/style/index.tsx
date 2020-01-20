@@ -14,6 +14,7 @@ export const GlobalStyleSheet = createGlobalStyle`
     --font-family-normal: 'Source Sans Pro', sans-serif;
     --font-family-mono: 'Fira Mono', monospace;
     --font-weight-normal: 400;
+    --font-weight-strong: 600;
     --font-weight-mono: 500;
   }
 
@@ -42,6 +43,29 @@ export const GlobalStyleSheet = createGlobalStyle`
 
   body {
     font-size: 1.25rem;
+  }
+  
+  a {
+    transition: color 200ms ease-in;
+    color: HSLA(var(--color-primary), 0.75);
+    text-decoration: none;
+    border-bottom: 1px dashed HSLA(var(--color-primary), 0.6);
+
+    &:focus,
+    &:hover,
+    &:visited {
+      color: HSL(var(--color-primary));
+    }
+
+    @media print {
+      &[href]::after {
+        content: ", (" attr(href) ")";
+      }
+    }
+  }
+
+  strong {
+    font-weight: var(--font-weight-strong);
   }
 
   h1, h2, h3, h4, h5 {
@@ -83,6 +107,13 @@ export const GlobalStyleSheet = createGlobalStyle`
 
     small, .text_small {font-size: 0.8em;}
   }
+
+  @media print {
+    html,
+    html * {
+      background: white !important;
+    }
+  }
 `;
 
 export default function GlobalStyles(): JSX.Element {
@@ -90,7 +121,7 @@ export default function GlobalStyles(): JSX.Element {
     <>
       <Head>
         <link
-          href="https://fonts.googleapis.com/css?family=Fira+Mono:500|Source+Sans+Pro:400&display=swap"
+          href="https://fonts.googleapis.com/css?family=Fira+Mono:500|Source+Sans+Pro:400,600&display=swap"
           rel="stylesheet"
         />
       </Head>
