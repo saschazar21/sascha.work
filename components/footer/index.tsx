@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
+import GPGLink from 'components/profile/email';
 import Social from 'components/profile/social';
 
 const FooterWrapper = styled.footer`
@@ -11,7 +12,8 @@ const FooterWrapper = styled.footer`
   grid-template-areas:
     'nav'
     'about'
-    'social';
+    'social'
+    'email';
   grid-template-columns: 1fr;
   row-gap: 0;
   column-gap: 0;
@@ -23,7 +25,7 @@ const FooterWrapper = styled.footer`
   @media screen and (min-width: 768px) {
     grid-template-areas:
       'nav about'
-      'social';
+      'social email';
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -33,7 +35,7 @@ const FooterWrapper = styled.footer`
   }
 
   @media screen and (min-width: 1200px) {
-    grid-template-areas: 'nav about social';
+    grid-template-areas: 'nav about social' 'email';
     grid-template-columns: repeat(3, 1fr);
   }
 `;
@@ -43,6 +45,18 @@ const SocialWrapper = styled.aside`
 
   @media screen and (min-width: 1200px) {
     border-left: 0.5px solid hsla(var(--color-grey), 0.2);
+  }
+`;
+
+const EmailWrapper = styled.aside`
+  grid-area: email;
+
+  @media screen and (min-width: 768px) {
+    border-left: 0.5px solid hsla(var(--color-grey), 0.2);
+  }
+
+  @media screen and (min-width: 1200px) {
+    border-left: none;
   }
 `;
 
@@ -57,6 +71,10 @@ const Footer = (): JSX.Element => {
         <FooterHeading>Social Media</FooterHeading>
         <Social />
       </SocialWrapper>
+      <EmailWrapper>
+        <FooterHeading>Secure E-Mail</FooterHeading>
+        <GPGLink />
+      </EmailWrapper>
     </FooterWrapper>
   );
 };

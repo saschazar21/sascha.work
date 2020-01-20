@@ -107,13 +107,6 @@ export const GlobalStyleSheet = createGlobalStyle`
 
     small, .text_small {font-size: 0.8em;}
   }
-
-  @media print {
-    html,
-    html * {
-      background: white !important;
-    }
-  }
 `;
 
 export default function GlobalStyles(): JSX.Element {
