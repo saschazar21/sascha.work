@@ -1,0 +1,44 @@
+---
+title: API Docs
+layout: index
+---
+
+## `/feed.json`
+
+The [JSON Feed v1](https://jsonfeed.org/version/1) representation of this blog.
+
+As an example, the structure might look like the following:
+
+```JSON
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "The blog title",
+  "home_page_url": "https://sascha.work",
+  "feed_url": "https://sascha.work/feed.json",
+  "items": [
+    {
+      "id": "/2020/a-blog-post",
+      "url": "/2020/a-blog-post",
+      "content_text": "This is the content of a blog post in plain text."
+    }
+  ]
+}
+```
+
+## `/social.json`
+
+A [JSON API v1](https://jsonapi.org/format/)-conform endpoint, listing selected social media account information.
+
+Example:
+
+```JSON
+{
+  "data": [
+    {
+      "provider": "twitter",
+      "username": "@saschazar",
+      "profile": "https://twitter.com/saschazar"
+    }
+  ]
+}
+```

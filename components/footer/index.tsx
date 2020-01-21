@@ -1,11 +1,15 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components/macro';
 
 import GPGLink from 'components/profile/email';
 import Social from 'components/profile/social';
 
+import feed from 'public/feed.json';
+
 const FooterWrapper = styled.footer`
   display: grid;
+  border-top: 0.5px solid hsla(var(--color-grey), 0.25);
   margin: -2rem;
   min-width: 0;
   min-height: 0;
@@ -27,16 +31,31 @@ const FooterWrapper = styled.footer`
       'nav about'
       'social email';
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media screen and (min-width: calc(900px + 6rem)) {
     max-width: calc(900px + 4rem);
     margin: -2rem auto;
   }
 
   @media screen and (min-width: 1200px) {
-    grid-template-areas: 'nav about social' 'email';
+    grid-template-areas:
+      'nav about social'
+      '. email .';
     grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
+const NavigationWrapper = styled.section`
+  grid-area: nav;
+
+  @media print {
+    display: none;
+  }
+`;
+
+const AboutWrapper = styled.aside`
+  grid-area: about;
+
+  @media screen and (min-width: 768px) {
+    border-left: 0.5px solid hsla(var(--color-grey), 0.25);
   }
 `;
 
@@ -44,7 +63,7 @@ const SocialWrapper = styled.aside`
   grid-area: social;
 
   @media screen and (min-width: 1200px) {
-    border-left: 0.5px solid hsla(var(--color-grey), 0.2);
+    border-left: 0.5px solid hsla(var(--color-grey), 0.25);
   }
 `;
 
@@ -52,11 +71,7 @@ const EmailWrapper = styled.aside`
   grid-area: email;
 
   @media screen and (min-width: 768px) {
-    border-left: 0.5px solid hsla(var(--color-grey), 0.2);
-  }
-
-  @media screen and (min-width: 1200px) {
-    border-left: none;
+    border-left: 0.5px solid hsla(var(--color-grey), 0.25);
   }
 `;
 
@@ -65,8 +80,23 @@ const FooterHeading = styled.h2`
 `;
 
 const Footer = (): JSX.Element => {
+  const { description } = feed;
   return (
     <FooterWrapper>
+      <NavigationWrapper>
+        <FooterHeading>Navigation</FooterHeading>
+      </NavigationWrapper>
+      <AboutWrapper>
+        <FooterHeading>About</FooterHeading>
+        <p>{description}</p>
+        <span>
+          This website also contains a JSON API. More information in the{' '}
+          <Link href="/api_docs">
+            <a>API docs</a>
+          </Link>
+          .
+        </span>
+      </AboutWrapper>
       <SocialWrapper>
         <FooterHeading>Social Media</FooterHeading>
         <Social />

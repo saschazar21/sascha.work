@@ -2,6 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import { createGlobalStyle } from 'styled-components/macro';
 
+export { CodeHighlight } from 'components/style/mdx';
+
 export const GlobalStyleSheet = createGlobalStyle`
   :root {
     --color-primary: 140, 18%, 16%; /* #223127 */
@@ -57,10 +59,8 @@ export const GlobalStyleSheet = createGlobalStyle`
       color: HSL(var(--color-primary));
     }
 
-    @media print {
-      &[href]::after {
-        content: ", (" attr(href) ")";
-      }
+    &:focus {
+      outline: hsl(var(--color-accent)) dotted 2px;
     }
   }
 
@@ -106,6 +106,26 @@ export const GlobalStyleSheet = createGlobalStyle`
     h5 {font-size: 1.25em;}
 
     small, .text_small {font-size: 0.8em;}
+  }
+
+  @media print {
+    html {
+      font-size: 12pt;
+      line-height: 1.0;
+    }
+
+    body {
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      border-bottom: none;
+
+      &[href]::after {
+        content: ", (" attr(href) ")";
+      }
+    }
   }
 `;
 

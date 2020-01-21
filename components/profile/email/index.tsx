@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { LockIcon } from '@saschazar/unicat-icons';
+import { KeyIcon } from '@saschazar/unicat-icons';
 
 const PGPSection = styled.p`
   position: relative;
   padding: 1rem;
-  border: 4px dashed HSLA(var(--color-secondary), 0.5);
+  border: 2px dashed HSLA(var(--color-secondary), 0.5);
 `;
 
-const PGPIcon = styled(LockIcon)`
+const PGPIcon = styled(KeyIcon)`
   fill: currentColor;
   height: 1em;
   width: 1em;

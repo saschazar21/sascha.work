@@ -40,12 +40,13 @@ const SocialAccountsList = styled.ul`
 
 const Social = (props: SocialProps): JSX.Element => {
   const { 'data-limit': limit } = props;
+  const { data: socialAccounts } = SocialAccounts;
   const data =
     limit && Array.isArray(limit)
-      ? SocialAccounts.filter(({ provider }: SocialAccount) =>
+      ? socialAccounts.filter(({ provider }: SocialAccount) =>
           limit.includes(provider)
         )
-      : SocialAccounts;
+      : socialAccounts;
 
   return (
     <SocialAccountsList>
