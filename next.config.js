@@ -3,6 +3,7 @@
 /* eslint-disable no-undef */
 const highlight = require('rehype-highlight');
 const emoji = require('remark-emoji');
+const slug = require('remark-slug');
 const withMDXExtended = require('@saschazar/next-mdx-extended')({
   feed: {
     title: 'Sascha Zarhuber — Web Developer',
@@ -16,7 +17,7 @@ const withMDXExtended = require('@saschazar/next-mdx-extended')({
     }
   },
   rehypePlugins: [highlight],
-  remarkPlugins: [emoji]
+  remarkPlugins: [emoji, slug]
 });
 
 module.exports = withMDXExtended({
