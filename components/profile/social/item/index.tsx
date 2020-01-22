@@ -27,11 +27,9 @@ const SocialItem = (props: SocialAccount): JSX.Element => {
   return (
     <SocialItemWrapper>
       <Icon aria-hidden="true" title={`${provider} icon`} />
-      <Link href={profile}>
-        <a>
-          <strong>{user}</strong> on <strong>{provider}</strong>
-        </a>
-      </Link>
+      <a href={profile} rel="noopener noreferrer nofollow" target="_blank">
+        <strong>{user}</strong> on <strong>{provider}</strong>
+      </a>
     </SocialItemWrapper>
   );
 };

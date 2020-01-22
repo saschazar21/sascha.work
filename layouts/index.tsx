@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { MDXProvider } from '@mdx-js/react';
 
 import Container from 'components/container';
 import Footer from 'components/footer';
 import FullBleed from 'components/fullbleed';
 import Title from 'components/title';
 import { CodeHighlight } from 'components/style';
+import components from 'components/mdx';
 
 export const config = { amp: true };
 
@@ -41,7 +43,9 @@ const DefaultLayout = (props: any): JSX.Element => {
         </FullBleed>
       )}
       <FullBleed>
-        <CustomContainer>{children}</CustomContainer>
+        <CustomContainer>
+          <MDXProvider components={components}>{children}</MDXProvider>
+        </CustomContainer>
       </FullBleed>
       <FullBleed>
         <Footer />
