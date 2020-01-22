@@ -17,6 +17,7 @@ export default class WebsiteApp extends App {
       <>
         <Head>
           <title>Sascha Zarhuber — Web Developer</title>
+          <link rel="manifest" href="/manifest.json" />
         </Head>
         <ThemeProvider theme={theme}>
           <GlobalStyle />

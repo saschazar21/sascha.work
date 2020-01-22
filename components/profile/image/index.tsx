@@ -20,8 +20,8 @@ const ProfileImageFallback = styled(
 )`
   max-height: 100%;
   max-width: 100%;
-  background: #b3aa67; /* green background color of image */
-  fill: #2e2110; /* brownish hair color tone */
+  background: #b2aa6f; /* green background color of image */
+  fill: #120200; /* brownish hair color tone */
 `;
 
 const ProfileImageElement = ({

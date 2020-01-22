@@ -4,13 +4,16 @@
 const highlight = require('rehype-highlight');
 const emoji = require('remark-emoji');
 const slug = require('remark-slug');
-const withMDXExtended = require('@saschazar/next-mdx-extended')({
+const mdx = require('@saschazar/next-mdx-extended');
+
+const manifest = require('./public/manifest.json');
+
+const withMDXExtended = mdx({
   feed: {
-    title: 'Sascha Zarhuber — Web Developer',
+    title: manifest.name,
     home_page_url: 'https://sascha.work',
     feed_url: 'https://sascha.work/feed.json',
-    description:
-      'Personal website of Sascha Zarhuber — Web Developer with a strong focus on Open Source, Node.js, React, TypeScript and more. Loves photography and travelling as well. Contents include a blog, a resume and information about ongoing projects.',
+    description: manifest.description,
     author: {
       name: 'Sascha Zarhuber',
       url: 'https://sascha.work'
