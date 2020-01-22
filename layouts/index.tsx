@@ -36,7 +36,7 @@ const DefaultLayout = (props: any): JSX.Element => {
     <main>
       <CodeHighlight />
       {title && (
-        <FullBleed data-color="primary">
+        <FullBleed data-color="grey">
           <Container>
             <Title>{title}</Title>
           </Container>

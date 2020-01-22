@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components/macro';
 
 import GPGLink from 'components/profile/email';
+import Navigation from 'components/navigation';
 import Social from 'components/profile/social';
 
 import feed from 'public/feed.json';
@@ -85,6 +86,7 @@ const Footer = (): JSX.Element => {
     <FooterWrapper>
       <NavigationWrapper>
         <FooterHeading>Navigation</FooterHeading>
+        <Navigation />
       </NavigationWrapper>
       <AboutWrapper>
         <FooterHeading>About</FooterHeading>
