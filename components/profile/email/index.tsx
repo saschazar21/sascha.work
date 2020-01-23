@@ -45,6 +45,7 @@ const EmailSection = (): JSX.Element => {
     <PGPSection>
       <PGPLink
         href="https://keyserver.ubuntu.com/pks/lookup?search=sascha.zarhuber&op=get"
+        rel="noopener noreferrer nofollow"
         target="_blank"
       >
         <PGPIcon aria-hidden="true" />

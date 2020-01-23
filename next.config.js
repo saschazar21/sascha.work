@@ -3,6 +3,7 @@
 /* eslint-disable no-undef */
 const highlight = require('rehype-highlight');
 const emoji = require('remark-emoji');
+const externalLinks = require('remark-external-links');
 const slug = require('remark-slug');
 const mdx = require('@saschazar/next-mdx-extended');
 
@@ -20,7 +21,14 @@ const withMDXExtended = mdx({
     }
   },
   rehypePlugins: [highlight],
-  remarkPlugins: [emoji, slug]
+  remarkPlugins: [
+    emoji,
+    [
+      externalLinks,
+      { target: '_blank', rel: ['nofollow', 'noopener', 'noreferrer'] }
+    ],
+    slug
+  ]
 });
 
 module.exports = withMDXExtended({

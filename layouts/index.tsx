@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import styled from 'styled-components/macro';
 import { MDXProvider } from '@mdx-js/react';
 
@@ -30,10 +31,17 @@ const CustomContainer = styled.article`
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DefaultLayout = (props: any): JSX.Element => {
-  const { children, title } = props;
+  const { children, title, robots, summary, tags } = props;
+  const hasRobots = robots && robots.join(',');
+  const hasTags = tags && tags.join(',');
 
   return (
     <main>
+      <Head>
+        {hasRobots && <meta name="robots" content={hasRobots} />}
+        {hasTags && <meta name="keywords" content={hasTags} />}
+        {summary && <meta name="description" content={summary} />}
+      </Head>
       <CodeHighlight />
       {title && (
         <FullBleed data-color="grey">
