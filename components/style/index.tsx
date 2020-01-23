@@ -1,7 +1,7 @@
 import React from 'react';
-import Head from 'next/head';
 import { createGlobalStyle } from 'styled-components/macro';
 
+import FontStyleSheet from 'components/style/typography';
 export { CodeHighlight } from 'components/style/mdx';
 
 export const GlobalStyleSheet = createGlobalStyle`
@@ -132,12 +132,7 @@ export const GlobalStyleSheet = createGlobalStyle`
 export default function GlobalStyles(): JSX.Element {
   return (
     <>
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css?family=Fira+Mono:500|Source+Sans+Pro:400,600&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
+      <FontStyleSheet />
       <GlobalStyleSheet />
     </>
   );
