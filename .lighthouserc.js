@@ -2,7 +2,7 @@ const { data: { routes = [] } = {} } = require('./public/routes.json');
 const { items = [] } = require('./public/feed.json');
 
 const TEST_AMOUNT = 3;
-const baseUrl = 'http://localhost';
+const baseUrl = 'http://localhost:3000';
 const baseRoutes = routes.map(r => r.path);
 const blogPosts = new Array(TEST_AMOUNT)
   .fill(0)
@@ -15,7 +15,8 @@ module.exports = {
       preset: 'lighthouse:recommended',
       assertions: {
         'offscreen-images': 'off',
-        'uses-webp-images': 'off'
+        'uses-webp-images': 'off',
+        'uses-http2': 'off'
       }
     },
     collect: {

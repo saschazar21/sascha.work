@@ -12,10 +12,7 @@ import components from 'components/mdx';
 
 export const config = { amp: true };
 
-const CustomContainer = styled.article`
-  max-width: 750px;
-  margin: 0 auto;
-
+const CustomContainer = styled(Container)`
   pre {
     margin-top: 2rem;
     margin-bottom: 4rem;
@@ -51,7 +48,7 @@ const DefaultLayout = (props: any): JSX.Element => {
         </FullBleed>
       )}
       <FullBleed>
-        <CustomContainer>
+        <CustomContainer as="article">
           <MDXProvider components={components}>{children}</MDXProvider>
         </CustomContainer>
       </FullBleed>

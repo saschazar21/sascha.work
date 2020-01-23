@@ -1,18 +1,18 @@
 import React from 'react';
 import { MDXProviderComponents } from '@mdx-js/react';
 
-import Heading from 'components/mdx/heading';
+import Heading, { HeadingProps } from 'components/mdx/heading';
 
 export const components: MDXProviderComponents = {
-  h1: (props: HTMLHeadingElement): JSX.Element =>
+  h1: (props: HeadingProps): JSX.Element =>
     React.createElement(Heading, { 'data-level': '1', ...props }),
-  h2: (props: HTMLHeadingElement): JSX.Element =>
+  h2: (props: HeadingProps): JSX.Element =>
     React.createElement(Heading, { 'data-level': '2', ...props }),
-  h3: (props: HTMLHeadingElement): JSX.Element =>
+  h3: (props: HeadingProps): JSX.Element =>
     React.createElement(Heading, { 'data-level': '3', ...props }),
-  h4: (props: HTMLHeadingElement): JSX.Element =>
+  h4: (props: HeadingProps): JSX.Element =>
     React.createElement(Heading, { 'data-level': '4', ...props }),
-  h5: (props: HTMLHeadingElement): JSX.Element =>
+  h5: (props: HeadingProps): JSX.Element =>
     React.createElement(Heading, { 'data-level': '5', ...props })
 };
 

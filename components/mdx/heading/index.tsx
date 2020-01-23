@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components/macro';
 import { LinkIcon } from '@saschazar/unicat-icons';
 
-export interface HeadingProps extends HTMLHeadingElement {
+export interface HeadingProps {
+  /* the children */
+  children: ReactChild | ReactChild[];
   /* the h-level */
   'data-level': '1' | '2' | '3' | '4' | '5';
+  /* the ID of the Heading */
+  id?: string;
 }
 
 const StyledHeading = styled.h1`
