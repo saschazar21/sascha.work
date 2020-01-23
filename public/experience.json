@@ -1,0 +1,125 @@
+{
+  "data": {
+    "education": [
+      {
+        "institution": "University of Applied Sciences Upper Austria",
+        "city": "Hagenberg im Mühlkreis",
+        "programme": "Media Technology and Design",
+        "start": {
+          "month": 10,
+          "year": 2012
+        },
+        "end": {
+          "month": 9,
+          "year": 2015
+        },
+        "graduation": "BSc",
+        "url": "https://www.fh-ooe.at/en/hagenberg-campus/"
+      },
+      {
+        "institution": "University of Applied Sciences Upper Austria",
+        "city": "Hagenberg im Mühlkreis",
+        "programme": "Interactive Media",
+        "start": {
+          "month": 10,
+          "year": 2015
+        },
+        "end": {
+          "month": 7,
+          "year": 2017
+        },
+        "graduation": "MSc",
+        "url": "https://www.fh-ooe.at/en/hagenberg-campus/"
+      }
+    ],
+    "work": [
+      {
+        "institution": "Sparkasse Lambach Bank AG",
+        "city": "Vorchdorf",
+        "position": "Account Manager",
+        "start": {
+          "month": 7,
+          "year": 2008
+        },
+        "end": {
+          "month": 9,
+          "year": 2012
+        },
+        "url": "https://www.sparkasse.at/lambach/privatkunden"
+      },
+      {
+        "institution": "isiQiri interface technologies GmbH",
+        "city": "Hagenberg im Mühlkreis",
+        "position": "Junior Software Developer",
+        "start": {
+          "month": 7,
+          "year": 2013
+        },
+        "end": {
+          "month": 1,
+          "year": 2015
+        },
+        "url": "https://www.sticht-technologie.com/"
+      },
+      {
+        "institution": "University of Applied Sciences Upper Austria",
+        "city": "Hagenberg im Mühlkreis",
+        "position": "Tutor",
+        "start": {
+          "month": 10,
+          "year": 2014
+        },
+        "end": {
+          "month": 2,
+          "year": 2015
+        },
+        "url": "https://www.fh-ooe.at/en/hagenberg-campus/"
+      },
+      {
+        "institution": "Dynatrace Austria GmbH",
+        "city": "Linz",
+        "position": "Junior Web Developer",
+        "start": {
+          "month": 2,
+          "year": 2015
+        },
+        "end": {
+          "month": 2,
+          "year": 2017
+        },
+        "url": "https://www.sticht-technologie.com/"
+      },
+      {
+        "institution": "Hofer KG",
+        "city": "Sattledt",
+        "position": "Senior Web Developer",
+        "start": {
+          "month": 5,
+          "year": 2017
+        },
+        "end": {
+          "month": 10,
+          "year": 2018
+        },
+        "url": "https://www.hofer.at/"
+      },
+      {
+        "institution": "xxxldigital - Part of XXXLutz KG",
+        "city": "Wels",
+        "position": "Senior Web Developer",
+        "start": {
+          "month": 11,
+          "year": 2018
+        },
+        "url": "https://xxxl.digital/"
+      }
+    ]
+  },
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "links": {
+    "self": "https://sascha.work/experience.json",
+    "related": "https://sascha.work"
+  }
+}
