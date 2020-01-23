@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lighthouse": "npx lhci autorun",
-    "lint:css": "stylelint './(pages|components)/**/*.(tsx|ts|jsx|js)'",
-    "lint:ts": "eslint --ext .tsx,.ts pages/**/* components/**/*",
-    "lint": "yarn lint:css && yarn lint:ts"
+    "lighthouse:all": "yarn build && npx lhci autorun",
+    "lint:css": "stylelint './(pages|layouts|components)/**/*.(tsx|ts|jsx|js)'",
+    "lint:ts": "eslint --ext .tsx,.ts pages/ layouts/ components/",
+    "lint": "yarn lint:css && yarn lint:ts",
+    "test": "yarn lint && yarn lighthouse:all"
   },
   "dependencies": {
     "@saschazar/unicat-icons": "^0.1.0",

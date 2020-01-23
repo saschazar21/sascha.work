@@ -1,5 +1,4 @@
 import React, { ReactChild } from 'react';
-import Link from 'next/link';
 import styled, { AnyStyledComponent } from 'styled-components/macro';
 
 import { SocialAccount } from 'components/profile/social';
@@ -9,6 +8,7 @@ const SocialItemWrapper = styled.span`
   align-items: center;
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styleIcon = (icon: ReactChild): any => styled(icon as AnyStyledComponent)`
   margin-right: 0.5em;
   height: 1em;

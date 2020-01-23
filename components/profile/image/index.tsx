@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
 import { PortraitIcon } from '@saschazar/unicat-icons';
 
