@@ -33,7 +33,7 @@ export const ExperienceList = styled.ul`
         background-color: hsla(var(--color-grey), 0.5);
       }
 
-      @media (min-width: 768px) {
+      @media print, (min-width: 768px) {
         padding-bottom: 2rem;
 
         &:after {
@@ -56,7 +56,7 @@ export const ExperienceSection = styled.div`
     width: auto;
   }
 
-  @media (min-width: 768px) {
+  @media print, (min-width: 768px) {
     grid-template-columns: 3rem auto;
     grid-template-rows: 1fr;
 
@@ -70,7 +70,7 @@ export const ExperienceSection = styled.div`
 export const ExperienceHeading = styled(Heading)`
   margin-top: 0.5rem;
 
-  @media (min-width: 768px) {
+  @media print, (min-width: 768px) {
     margin-bottom: 2rem;
   }
 `;
