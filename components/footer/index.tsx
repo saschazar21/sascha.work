@@ -82,6 +82,7 @@ const FooterHeading = styled.h2`
 
 const Footer = (): JSX.Element => {
   const { description } = feed;
+
   return (
     <FooterWrapper>
       <NavigationWrapper>

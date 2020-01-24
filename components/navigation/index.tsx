@@ -42,8 +42,8 @@ const styledIcon = (icon: ReactChild): any => styled(
 )`
   margin-right: 0.5em;
   fill: hsl(var(--color-grey));
-  height: 1em;
-  width: 1em;
+  height: 1.25em;
+  width: 1.25em;
 `;
 
 const Navigation = (): JSX.Element => {

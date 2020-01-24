@@ -18,12 +18,21 @@ export const GlobalStyleSheet = createGlobalStyle`
     --font-weight-normal: 400;
     --font-weight-strong: 600;
     --font-weight-mono: 500;
+
+    &.dark {
+      --color-primary: 38, 24%, 95%; /* #F2EFEA */
+      --color-secondary: 78, 70%, 46%; /* #96C723 */
+      --color-accent: 13, 97%, 66%; /* #E73504 */
+      --color-bg-primary: 140, 5%, 10%; /* #223127 */
+      --color-bg-secondary: 182, 68%, 17%; /* #0e4749 */
+    }
   }
 
   @media screen and (prefers-color-scheme: dark) {
     :root:not(.light) {
       --color-primary: 38, 24%, 95%; /* #F2EFEA */
       --color-secondary: 78, 70%, 46%; /* #96C723 */
+      --color-accent: 13, 97%, 66%; /* #E73504 */
       --color-bg-primary: 140, 5%, 10%; /* #223127 */
       --color-bg-secondary: 182, 68%, 17%; /* #0e4749 */
     }

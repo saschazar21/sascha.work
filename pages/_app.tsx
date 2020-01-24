@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { ThemeProvider } from 'styled-components/macro';
 
 import GlobalStyle from 'components/style';
+import ld from 'components/profile/profile';
 
 import manifest from 'public/manifest.json';
 import pkg from 'package.json';
@@ -58,6 +59,10 @@ export default class WebsiteApp extends App {
           <meta name="description" content={manifest.description} />
           <meta name="generator" content={`Next.js ${pkg.dependencies.next}`} />
           <meta name="robots" content="index,follow" />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
+          />
         </Head>
         <ThemeProvider theme={theme}>
           <GlobalStyle />

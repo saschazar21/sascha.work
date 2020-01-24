@@ -1,11 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
 
-import FullBleed from 'components/fullbleed';
 import Container from 'components/container';
-import Title from 'components/title';
-import Heading from 'components/mdx/heading';
 import Footer from 'components/footer';
+import FullBleed from 'components/fullbleed';
+import Title from 'components/title';
+import Experience from 'components/profile/experience';
+
+export const config = { amp: 'hybrid' };
 
 const About = (): JSX.Element => {
   return (
@@ -22,13 +24,7 @@ const About = (): JSX.Element => {
           <Title>About</Title>
         </Container>
       </FullBleed>
-      <FullBleed>
-        <Container as="article">
-          <Heading data-level="2" id="education">
-            Education
-          </Heading>
-        </Container>
-      </FullBleed>
+      <Experience />
       <FullBleed>
         <Footer />
       </FullBleed>

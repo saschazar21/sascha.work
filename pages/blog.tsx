@@ -9,6 +9,8 @@ import Footer from 'components/footer';
 
 import feed from 'public/feed.json';
 
+export const config = { amp: true };
+
 const Blog = (): JSX.Element => {
   return (
     <main>
@@ -24,11 +26,12 @@ const Blog = (): JSX.Element => {
           <Title>Blog</Title>
         </Container>
       </FullBleed>
-      <FullBleed data-color="secondary">
+      <FullBleed>
         <Container>
-          <Heading data-level="2" id="latest-articles">
-            Latest Articles
+          <Heading data-level="2" id="no-articles-yet">
+            No articles yet
           </Heading>
+          <p>But I&apos;m working on it—promised!</p>
         </Container>
       </FullBleed>
       <FullBleed>

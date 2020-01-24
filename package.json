@@ -2,6 +2,11 @@
   "name": "sascha.work",
   "version": "0.0.0-semantic-release",
   "private": true,
+  "homepage": "https://sascha.work",
+  "author": {
+    "name": "Sascha Zarhuber",
+    "url": "https://sascha.work"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -36,6 +41,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.17.0",
     "jest-styled-components": "^6.3.4",
+    "param-case": "^3.0.3",
     "rehype-highlight": "^3.1.0",
     "remark-emoji": "^2.0.2",
     "remark-external-links": "^5.0.0",
