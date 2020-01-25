@@ -18,16 +18,18 @@ const ErrorMsg = styled.p`
 `;
 
 const Error = ({ statusCode }: ErrorProps): JSX.Element => {
+  const errorCode = statusCode || 404;
+
   return (
     <main>
       <Head>
-        <title>Error {statusCode}</title>
+        <title>Error {errorCode}</title>
       </Head>
       <FullBleed data-color="accent">
         <Container>
           <Title>Err... that&apos;s embarrassing!</Title>
           <ErrorMsg>
-            The bad-luck-number today is: <strong>{statusCode}</strong>.
+            The bad-luck-number today is: <strong>{errorCode}</strong>.
           </ErrorMsg>
         </Container>
       </FullBleed>
