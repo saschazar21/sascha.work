@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { PortraitIcon } from '@saschazar/unicat-icons';
 
+export const PROFILEIMAGE_URL = 'https://avatars0.githubusercontent.com/u/9016897';
+
 export enum PROFILEIMAGE_SIZE {
   SMALL = 64,
   MEDIUM = 150,
@@ -32,8 +34,9 @@ const ProfileImageElement = ({
     layout="responsive"
     width={size || PROFILEIMAGE_SIZE.MEDIUM}
     height={size || PROFILEIMAGE_SIZE.MEDIUM}
-    src={`https://avatars0.githubusercontent.com/u/9016897?s=${size ||
+    src={`${PROFILEIMAGE_URL}?s=${size ||
       PROFILEIMAGE_SIZE.MEDIUM}`}
+    srcset={`${PROFILEIMAGE_URL}?s=${PROFILEIMAGE_SIZE.LARGE} ${PROFILEIMAGE_SIZE.LARGE}w, ${PROFILEIMAGE_URL}?s=460 460w`}
   >
     <ProfileImageFallback placeholder="" />
   </amp-img>
