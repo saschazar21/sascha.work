@@ -12,6 +12,52 @@ tags:
   - blog
 ---
 
+## `/experience.json`
+
+A [JSON API v1](https://jsonapi.org/format/)-conform endpoint, listing experience gained on-the-job and at the university.
+
+Example:
+
+```JSON
+{
+  "data": {
+    "education": [
+      {
+        "institution": "University of Applied Sciences Upper Austria",
+        "city": "Hagenberg im Mühlkreis",
+        "programme": "Interactive Media",
+        "start": {
+          "month": 10,
+          "year": 2015
+        },
+        "end": {
+          "month": 7,
+          "year": 2017
+        },
+        "graduation": "MSc",
+        "url": "https://www.fh-ooe.at/en/hagenberg-campus/"
+      }
+    ],
+    "work": [
+      {
+        "institution": "isiQiri interface technologies GmbH",
+        "city": "Hagenberg im Mühlkreis",
+        "position": "Junior Software Developer",
+        "start": {
+          "month": 7,
+          "year": 2013
+        },
+        "end": {
+          "month": 1,
+          "year": 2015
+        },
+        "url": "https://www.sticht-technologie.com/"
+      }
+    ]
+  }
+}
+```
+
 ## `/feed.json`
 
 The [JSON Feed v1](https://jsonfeed.org/version/1) representation of this blog.
@@ -29,6 +75,23 @@ As an example, the structure might look like the following:
       "id": "/2020/a-blog-post",
       "url": "/2020/a-blog-post",
       "content_text": "This is the content of a blog post in plain text."
+    }
+  ]
+}
+```
+
+## `/routes.json`
+
+A [JSON API v1](https://jsonapi.org/format/)-conform endpoint, listing static URL mappings of the website (excluding dynamically generated [blog post URLs](#feedjson)).
+
+Example:
+
+```JSON
+{
+  "data": [
+    {
+      "name": "Home",
+      "path": "/"
     }
   ]
 }
