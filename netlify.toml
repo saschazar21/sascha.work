@@ -3,9 +3,6 @@
   publish = "out/"
   command = "yarn build:ci"
   
-[context.production]
-  environment = { NODE_ENV = "production" }
-  
 [[redirects]]
   from = "/about"
   to = "/about.amp"
