@@ -7,7 +7,7 @@ import FullBleed from 'components/fullbleed';
 import Title from 'components/title';
 import Experience from 'components/profile/experience';
 
-export const config = { amp: 'hybrid' };
+export const config = { amp: true };
 
 const About = (): JSX.Element => {
   return (

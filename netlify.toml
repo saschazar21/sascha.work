@@ -3,7 +3,3 @@
   publish = "out/"
   command = "yarn build:ci"
   
-[[redirects]]
-  from = "/about"
-  to = "/about.amp"
-  query = { amp = "1" }

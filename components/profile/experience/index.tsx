@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import Head from 'next/head';
 import styled from 'styled-components/macro';
 
 import Container from 'components/container';
@@ -7,9 +8,18 @@ import FullBleed from 'components/fullbleed';
 import Heading from 'components/mdx/heading';
 import Work from 'components/profile/experience/work';
 
+export const INITIAL_DISPLAY = 3; // show so many entries from the beginning
 export interface ExperienceDate {
   month: number;
   year: number;
+}
+
+export interface ExperienceButtonProps
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  on?: string;
 }
 
 export const ExperienceList = styled.ul`
@@ -75,7 +85,9 @@ export const ExperienceHeading = styled(Heading)`
   }
 `;
 
-export const ExperienceButton = styled.button`
+export const ExperienceButton = styled((props: ExperienceButtonProps) =>
+  React.createElement('button', props)
+)`
   --color-button: var(--color-primary);
 
   transition: background 200ms ease-in;
@@ -128,6 +140,13 @@ export const ExperienceButtonWrapper = styled.div`
 const Experience = (): JSX.Element => {
   return (
     <>
+      <Head>
+        <script
+          async
+          custom-element="amp-bind"
+          src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"
+        />
+      </Head>
       <FullBleed>
         <Container>
           <Heading data-level="2" id="work-experience">

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { useAmp } from 'next/amp';
+import React from 'react';
 
 import {
+  INITIAL_DISPLAY,
   ExperienceList,
   ExperienceDate,
   ExperienceButton,
   ExperienceButtonWrapper
 } from 'components/profile/experience';
+import WorkItem from 'components/profile/experience/work/item';
 
 import experience from 'public/experience.json';
-import WorkItem from './item';
 
 export interface WorkItemProps {
   city: string;
@@ -20,30 +20,44 @@ export interface WorkItemProps {
   url: string;
 }
 
+const renderExperiences = (list: WorkItemProps[], key: string): JSX.Element[] =>
+  list.map((workItemData: WorkItemProps, index: number) => (
+    <li
+      key={`${key}-${index}`}
+      {...Object.assign(
+        {},
+        key === 'HiddenWorkItem'
+          ? { hidden: true, 'data-amp-bind-hidden': 'workstate.visible' }
+          : null
+      )}
+    >
+      <WorkItem {...workItemData} />
+    </li>
+  ));
+
 const Work = (): JSX.Element => {
   const { data: { work = [] } = {} } = experience;
-  const isAmp = useAmp();
-
-  const [first, second, third] = work;
-  const [workItems, setWorkItems] = useState(
-    isAmp ? work : [first, second, third]
-  );
-
-  const handleClick = (): void => setWorkItems(work);
+  const initialWorkDisplay = work.slice(0, INITIAL_DISPLAY);
+  const additionalWorkDisplay = work.slice(INITIAL_DISPLAY);
 
   return (
     <>
+      <amp-state id="workstate">
+        <script
+          type="application/json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({ visible: false })
+          }}
+        />
+      </amp-state>
       <ExperienceList>
-        {workItems.map((workItemData: WorkItemProps, index: number) => (
-          <li key={`WorkItem-${index}`}>
-            <WorkItem {...workItemData} />
-          </li>
-        ))}
+        {renderExperiences(initialWorkDisplay, 'WorkItem')}
+        {renderExperiences(additionalWorkDisplay, 'HiddenWorkItem')}
       </ExperienceList>
-      {workItems.length !== work.length && (
-        <ExperienceButtonWrapper>
-          <ExperienceButton onClick={handleClick}>
-            See all positions
+      {additionalWorkDisplay.length > 0 && (
+        <ExperienceButtonWrapper data-amp-bind-hidden="!workstate.visible">
+          <ExperienceButton on="tap:AMP.setState({ visible: true })">
+            Show all positions
           </ExperienceButton>
         </ExperienceButtonWrapper>
       )}
