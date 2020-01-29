@@ -33,7 +33,7 @@ export default class WebsiteApp extends App {
           <link
             rel="icon"
             sizes="32x32"
-            href="/img/icon-32.png"
+            href="/img/favicon-32.png"
             type="image/png"
           />
           <link
