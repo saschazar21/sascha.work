@@ -63,7 +63,20 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  /^\/(?:about|index|api_docs|blog\/index)\.html$/,
+  /\/blog\/index\.html$/,
+  new workbox.strategies.NetworkFirst({
+    cacheName: getCache('pages'),
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7,
+        purgeOnQuotaError: true
+      })
+    ]
+  })
+);
+
+workbox.routing.registerRoute(
+  /\/(?:about|index|api_docs)\.html$/,
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: getCache('pages'),
     plugins: [

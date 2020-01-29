@@ -26,14 +26,14 @@ export default class WebsiteApp extends App {
           <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
           <link
             rel="icon"
-            sizes="192x192"
-            href="/img/icon-192.png"
+            sizes="16x16"
+            href="/img/favicon-16.png"
             type="image/png"
           />
           <link
             rel="icon"
-            sizes="512x512"
-            href="/img/icon-512.png"
+            sizes="32x32"
+            href="/img/icon-32.png"
             type="image/png"
           />
           <link
@@ -63,7 +63,11 @@ export default class WebsiteApp extends App {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
           />
-          <script async custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js" />
+          <script
+            async
+            custom-element="amp-install-serviceworker"
+            src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"
+          />
         </Head>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
@@ -73,8 +77,7 @@ export default class WebsiteApp extends App {
           src="/sw.js"
           data-iframe-src="https://sascha.work/serviceworker.html"
           layout="nodisplay"
-        >
-        </amp-install-serviceworker>
+        ></amp-install-serviceworker>
       </>
     );
   }
