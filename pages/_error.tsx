@@ -13,6 +13,8 @@ export interface ErrorProps {
   statusCode: number;
 }
 
+export const config = { amp: true };
+
 const ErrorMsg = styled.p`
   text-align: center;
 `;

@@ -8,7 +8,7 @@ export const GlobalStyleSheet = createGlobalStyle`
   :root {
     --color-primary: 140, 18%, 16%; /* #223127 */
     --color-secondary: 182, 68%, 27%; /* #0e4749 */
-    --color-accent: 13, 97%, 46%; /* #E73504 */
+    --color-accent: 13, 97%, 39%; /* #E73504 */
     --color-grey: 37, 10%, 61%; /* #A59E92 */
     --color-bg-primary: 38, 24%, 93%; /* #F2EFEA */
     --color-bg-secondary: 78, 70%, 46%; /* #96C723 */
