@@ -1,5 +1,4 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import Head from 'next/head';
 import styled from 'styled-components/macro';
 
 import Container from 'components/container';
@@ -86,7 +85,7 @@ export const ExperienceHeading = styled(Heading)`
 `;
 
 export const ExperienceButton = styled((props: ExperienceButtonProps) =>
-  React.createElement('button', props)
+  React.createElement('button', props),
 )`
   --color-button: var(--color-primary);
 
@@ -140,13 +139,6 @@ export const ExperienceButtonWrapper = styled.div`
 const Experience = (): JSX.Element => {
   return (
     <>
-      <Head>
-        <script
-          async
-          custom-element="amp-bind"
-          src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"
-        />
-      </Head>
       <FullBleed>
         <Container>
           <Heading data-level="2" id="work-experience">

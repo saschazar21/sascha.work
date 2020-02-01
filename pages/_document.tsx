@@ -41,8 +41,14 @@ export default class WebsiteDocument extends Document {
 
   public render(): JSX.Element {
     return (
-      <Html lang="en">
-        <Head />
+      <Html lang="en" data-amp-bind-class="lightswitch">
+        <Head>
+          <script
+            async
+            custom-element="amp-bind"
+            src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

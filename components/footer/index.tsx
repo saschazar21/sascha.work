@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components/macro';
 
@@ -7,6 +7,14 @@ import Navigation from 'components/navigation';
 import Social from 'components/profile/social';
 
 import feed from 'public/feed.json';
+
+export interface LightSwitchProps
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  on?: string;
+}
 
 const FooterWrapper = styled.footer`
   display: grid;
@@ -41,6 +49,32 @@ const FooterWrapper = styled.footer`
       'nav about social'
       '. email .';
     grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
+const LightSwitchWrapper = styled.div`
+  padding: 0 0 4rem;
+  text-align: center;
+`;
+
+const LightSwitch = styled((props: LightSwitchProps) =>
+  React.createElement('button', props),
+)`
+  transition: color 200ms ease-in, background 200ms ease-in;
+  border: 1px solid hsl(var(--color-secondary));
+  padding: 0.75rem 1.25rem;
+  background: hsl(var(--color-bg-primary));
+  color: hsl(var(--color-secondary));
+  font-size: 0.889em;
+
+  &:focus {
+    outline: hsl(var(--color-accent)) dotted 1px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: hsl(var(--color-secondary));
+    color: hsl(var(--color-bg-primary));
   }
 `;
 
@@ -84,31 +118,38 @@ const Footer = (): JSX.Element => {
   const { description } = feed;
 
   return (
-    <FooterWrapper>
-      <NavigationWrapper>
-        <FooterHeading>Navigation</FooterHeading>
-        <Navigation />
-      </NavigationWrapper>
-      <AboutWrapper>
-        <FooterHeading>About</FooterHeading>
-        <p>{description}</p>
-        <span>
-          This website also contains a JSON API. More information in the{' '}
-          <Link href="/api_docs">
-            <a>API docs</a>
-          </Link>
-          .
-        </span>
-      </AboutWrapper>
-      <SocialWrapper>
-        <FooterHeading>Social Media</FooterHeading>
-        <Social />
-      </SocialWrapper>
-      <EmailWrapper>
-        <FooterHeading>Secure E-Mail</FooterHeading>
-        <GPGLink />
-      </EmailWrapper>
-    </FooterWrapper>
+    <>
+      <LightSwitchWrapper>
+        <LightSwitch on="tap:AMP.setState({ lightswitch: !lightswitch.length ? 'dark light' : '' })">
+          Switch dark/light mode
+        </LightSwitch>
+      </LightSwitchWrapper>
+      <FooterWrapper>
+        <NavigationWrapper>
+          <FooterHeading>Navigation</FooterHeading>
+          <Navigation />
+        </NavigationWrapper>
+        <AboutWrapper>
+          <FooterHeading>About</FooterHeading>
+          <p>{description}</p>
+          <span>
+            This website also contains a JSON API. More information in the{' '}
+            <Link href="/api_docs">
+              <a>API docs</a>
+            </Link>
+            .
+          </span>
+        </AboutWrapper>
+        <SocialWrapper>
+          <FooterHeading>Social Media</FooterHeading>
+          <Social />
+        </SocialWrapper>
+        <EmailWrapper>
+          <FooterHeading>Secure E-Mail</FooterHeading>
+          <GPGLink />
+        </EmailWrapper>
+      </FooterWrapper>
+    </>
   );
 };
 

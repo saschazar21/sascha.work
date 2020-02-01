@@ -1,5 +1,5 @@
 [build]
   base = "/"
   publish = "out/"
-  command = "yarn build:ci"
+  command = "yarn test && yarn build:ci"
   

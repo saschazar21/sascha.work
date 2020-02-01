@@ -18,8 +18,10 @@ export const GlobalStyleSheet = createGlobalStyle`
     --font-weight-normal: 400;
     --font-weight-strong: 600;
     --font-weight-mono: 500;
+  }
 
-    &.dark {
+  @media screen and (prefers-color-scheme: light) {
+    :root.dark {
       --color-primary: 38, 24%, 95%; /* #F2EFEA */
       --color-secondary: 78, 70%, 46%; /* #96C723 */
       --color-accent: 13, 97%, 66%; /* #E73504 */
