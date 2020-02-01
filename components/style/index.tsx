@@ -21,7 +21,7 @@ export const GlobalStyleSheet = createGlobalStyle`
   }
 
   @media screen and (prefers-color-scheme: light) {
-    :root.dark {
+    :root.inverted {
       --color-primary: 38, 24%, 95%; /* #F2EFEA */
       --color-secondary: 78, 70%, 46%; /* #96C723 */
       --color-accent: 13, 97%, 66%; /* #E73504 */
@@ -31,7 +31,7 @@ export const GlobalStyleSheet = createGlobalStyle`
   }
 
   @media screen and (prefers-color-scheme: dark) {
-    :root:not(.light) {
+    :root:not(.inverted) {
       --color-primary: 38, 24%, 95%; /* #F2EFEA */
       --color-secondary: 78, 70%, 46%; /* #96C723 */
       --color-accent: 13, 97%, 66%; /* #E73504 */

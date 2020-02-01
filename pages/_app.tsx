@@ -63,21 +63,11 @@ export default class WebsiteApp extends App {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
           />
-          <script
-            async
-            custom-element="amp-install-serviceworker"
-            src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"
-          />
         </Head>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Component {...pageProps} />
         </ThemeProvider>
-        <amp-install-serviceworker
-          src="/sw.js"
-          data-iframe-src="https://sascha.work/serviceworker.html"
-          layout="nodisplay"
-        ></amp-install-serviceworker>
       </>
     );
   }

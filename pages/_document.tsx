@@ -45,6 +45,11 @@ export default class WebsiteDocument extends Document {
         <Head>
           <script
             async
+            custom-element="amp-install-serviceworker"
+            src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"
+          />
+          <script
+            async
             custom-element="amp-bind"
             src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"
           />
@@ -52,6 +57,11 @@ export default class WebsiteDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <amp-install-serviceworker
+            src="/sw.js"
+            data-iframe-src="https://sascha.work/serviceworker.html"
+            layout="nodisplay"
+          ></amp-install-serviceworker>
         </body>
       </Html>
     );

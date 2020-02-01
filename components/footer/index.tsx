@@ -120,7 +120,10 @@ const Footer = (): JSX.Element => {
   return (
     <>
       <LightSwitchWrapper>
-        <LightSwitch on="tap:AMP.setState({ lightswitch: !lightswitch.length ? 'dark light' : '' })">
+        <LightSwitch
+          id="lightswitch-button"
+          on="tap:AMP.setState({ lightswitch: !lightswitch.length ? 'inverted' : '' })"
+        >
           Switch dark/light mode
         </LightSwitch>
       </LightSwitchWrapper>
