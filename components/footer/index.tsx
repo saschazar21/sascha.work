@@ -68,9 +68,11 @@ const LightSwitch = styled((props: LightSwitchProps) =>
   font-size: 0.889em;
 
   &:focus {
-    outline: hsl(var(--color-accent)) dotted 1px;
+    outline: hsl(var(--color-accent)) dotted 2px;
   }
 
+  &:active,
+  &:focus,
   &:hover {
     cursor: pointer;
     background: hsl(var(--color-secondary));
