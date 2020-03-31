@@ -54,6 +54,6 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.9.0",
     "typescript": "^3.7.4",
-    "workbox-build": "^4.3.1"
+    "workbox-build": "^5.1.2"
   }
 }
