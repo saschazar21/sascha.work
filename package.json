@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@babel/compat-data": "7.8.0",
-    "@lhci/cli": "^0.3.8",
+    "@lhci/cli": "^0.3.12",
     "@saschazar/next-mdx-extended": "^2.0.0",
     "@svgr/webpack": "^5.3.0",
     "@types/mdx-js__react": "^1.5.1",
