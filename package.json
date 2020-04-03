@@ -34,7 +34,7 @@
     "@saschazar/next-mdx-extended": "^2.0.0",
     "@svgr/webpack": "^5.3.0",
     "@types/mdx-js__react": "^1.5.1",
-    "@types/node": "^13.9.8",
+    "@types/node": "^13.11.0",
     "@types/react": "^16.9.29",
     "@types/react-dom": "^16.9.4",
     "@types/styled-components": "^4.4.2",
