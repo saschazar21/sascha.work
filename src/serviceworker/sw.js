@@ -10,13 +10,13 @@ importScripts(
 const CACHE_PREFIX = 'sascha.work';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const getCache = name => `${CACHE_PREFIX}-${name}`;
+const getCache = (name) => `${CACHE_PREFIX}-${name}`;
 
 // Cache the Google Fonts stylesheets with a stale while revalidate strategy.
 workbox.routing.registerRoute(
   /^https:\/\/fonts\.googleapis\.com/,
   new workbox.strategies.StaleWhileRevalidate({
-    cacheName: getCache('google-fonts-stylesheets')
+    cacheName: getCache('google-fonts-stylesheets'),
   })
 );
 
@@ -27,12 +27,12 @@ workbox.routing.registerRoute(
     cacheName: getCache('google-fonts-webfonts'),
     plugins: [
       new workbox.cacheableResponse.Plugin({
-        statuses: [0, 200]
+        statuses: [0, 200],
       }),
       new workbox.expiration.Plugin({
-        maxAgeSeconds: 60 * 60 * 24 * 365
-      })
-    ]
+        maxAgeSeconds: 60 * 60 * 24 * 365,
+      }),
+    ],
   })
 );
 
@@ -42,9 +42,9 @@ workbox.routing.registerRoute(
     cacheName: getCache('avatars'),
     plugins: [
       new workbox.expiration.Plugin({
-        maxAgeSeconds: 60 * 60 * 24 * 60
-      })
-    ]
+        maxAgeSeconds: 60 * 60 * 24 * 60,
+      }),
+    ],
   })
 );
 
@@ -56,9 +56,9 @@ workbox.routing.registerRoute(
       new workbox.expiration.Plugin({
         maxEntries: 10,
         maxAgeSeconds: 60 * 60 * 24 * 365,
-        purgeOnQuotaError: true
-      })
-    ]
+        purgeOnQuotaError: true,
+      }),
+    ],
   })
 );
 
@@ -69,9 +69,9 @@ workbox.routing.registerRoute(
     plugins: [
       new workbox.expiration.Plugin({
         maxAgeSeconds: 60 * 60 * 24 * 7,
-        purgeOnQuotaError: true
-      })
-    ]
+        purgeOnQuotaError: true,
+      }),
+    ],
   })
 );
 
@@ -83,11 +83,11 @@ workbox.routing.registerRoute(
       new workbox.expiration.Plugin({
         maxEntries: 15,
         maxAgeSeconds: 60 * 60 * 24 * 7,
-        purgeOnQuotaError: true
-      })
-    ]
+        purgeOnQuotaError: true,
+      }),
+    ],
   })
 );
 
 // inject Precache Manifest
-workbox.precaching.precacheAndRoute([]);
+workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
