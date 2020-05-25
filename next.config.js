@@ -11,6 +11,7 @@ const manifest = require('./public/manifest.json');
 
 const withMDXExtended = mdx({
   blogDir: 'posts',
+  enableRewrites: false,
   feed: {
     title: manifest.name,
     home_page_url: 'https://sascha.work',
