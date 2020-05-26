@@ -2,22 +2,22 @@ import pkg from 'package.json';
 import experience from 'public/experience.json';
 
 const { data: { education = [], work = [] } = {} } = experience;
-const latestEducation = education[education.length - 1];
-const latestWork = work[work.length - 1];
+const [latestEducation] = education;
+const [latestWork] = work;
 
 export const alumniOf = {
   '@type': 'EducationalOrganization',
   department: {
     '@type': 'Organization',
-    name: latestEducation.programme
+    name: latestEducation.programme,
   },
   location: {
     '@type': 'PostalAddress',
-    addressLocality: latestEducation.city
+    addressLocality: latestEducation.city,
   },
   legalName: latestEducation.institution,
   name: latestEducation.institution,
-  url: latestEducation.url
+  url: latestEducation.url,
 };
 
 export const worksFor = {
@@ -25,10 +25,10 @@ export const worksFor = {
   description: latestWork.position,
   location: {
     '@type': 'PostalAddress',
-    addressLocality: latestWork.city
+    addressLocality: latestWork.city,
   },
   legalName: latestWork.institution,
-  url: latestWork.url
+  url: latestWork.url,
 };
 
 export const person = {
@@ -39,12 +39,12 @@ export const person = {
   worksFor,
   knowsAbout: ['HTML', 'JavaScript', 'React', 'Node.js', 'TypeScript'],
   knowsLanguage: ['de-AT', 'en-US', 'fr-FR'],
-  nationality: 'Austrian'
+  nationality: 'Austrian',
 };
 
 const ld = {
   '@context': 'http://schema.org',
-  ...person
+  ...person,
 };
 
 export default ld;
