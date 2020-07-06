@@ -3,14 +3,16 @@
 // ------------------------------
 // Pre Cache and Update
 // ------------------------------
+const WORKBOX_VERSION = '5.1.3';
+
 importScripts(
-  'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js'
+  `https://storage.googleapis.com/workbox-cdn/releases/${WORKBOX_VERSION}/workbox-sw.js`
 );
 
 const CACHE_PREFIX = 'sascha.work';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const getCache = (name) => `${CACHE_PREFIX}-${name}`;
+const getCache = name => `${CACHE_PREFIX}-${name}`;
 
 // Cache the Google Fonts stylesheets with a stale while revalidate strategy.
 workbox.routing.registerRoute(
@@ -26,10 +28,10 @@ workbox.routing.registerRoute(
   new workbox.strategies.CacheFirst({
     cacheName: getCache('google-fonts-webfonts'),
     plugins: [
-      new workbox.cacheableResponse.Plugin({
+      new workbox.cacheableResponse.CacheableResponsePlugin({
         statuses: [0, 200],
       }),
-      new workbox.expiration.Plugin({
+      new workbox.expiration.ExpirationPlugin({
         maxAgeSeconds: 60 * 60 * 24 * 365,
       }),
     ],
@@ -41,7 +43,7 @@ workbox.routing.registerRoute(
   new workbox.strategies.CacheFirst({
     cacheName: getCache('avatars'),
     plugins: [
-      new workbox.expiration.Plugin({
+      new workbox.expiration.ExpirationPlugin({
         maxAgeSeconds: 60 * 60 * 24 * 60,
       }),
     ],
@@ -53,7 +55,7 @@ workbox.routing.registerRoute(
   new workbox.strategies.CacheFirst({
     cacheName: getCache('posts'),
     plugins: [
-      new workbox.expiration.Plugin({
+      new workbox.expiration.ExpirationPlugin({
         maxEntries: 10,
         maxAgeSeconds: 60 * 60 * 24 * 365,
         purgeOnQuotaError: true,
@@ -67,7 +69,7 @@ workbox.routing.registerRoute(
   new workbox.strategies.NetworkFirst({
     cacheName: getCache('pages'),
     plugins: [
-      new workbox.expiration.Plugin({
+      new workbox.expiration.ExpirationPlugin({
         maxAgeSeconds: 60 * 60 * 24 * 7,
         purgeOnQuotaError: true,
       }),
@@ -80,7 +82,7 @@ workbox.routing.registerRoute(
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: getCache('pages'),
     plugins: [
-      new workbox.expiration.Plugin({
+      new workbox.expiration.ExpirationPlugin({
         maxEntries: 15,
         maxAgeSeconds: 60 * 60 * 24 * 7,
         purgeOnQuotaError: true,
