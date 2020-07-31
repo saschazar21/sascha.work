@@ -1175,10 +1175,10 @@
     gray-matter "^4.0.2"
     loader-utils "^1.2.3"
 
-"@saschazar/next-mdx-extended@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@saschazar/next-mdx-extended/-/next-mdx-extended-3.0.0.tgz#d6102480928bc1a1f2fde9853768b841010aa795"
-  integrity sha512-oTYyFyBrmBUtas+NYYsrcvYOd1AvtHl8riqsFzmbJ74+FGajD1huZ35DOSfYZsaGTAY7MaP/pYMIwbybn7RFUg==
+"@saschazar/next-mdx-extended@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@saschazar/next-mdx-extended/-/next-mdx-extended-4.0.0.tgz#e4a74510d0fa55a75d3143725e5c1c56560539b5"
+  integrity sha512-FKhsasXjBwR1otcAaKbUnD8BZj4rLdk/p0DkRIADHU32k35N91E8zipeiKyObFk09oq79U3QwvXAniryHHjUYQ==
   dependencies:
     "@mdx-js/react" "^1.6.4"
     "@saschazar/mdx-extended-loader" "^1.0.4"
