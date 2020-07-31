@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 
 import Container from 'components/container';

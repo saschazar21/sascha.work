@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { PortraitIcon } from '@saschazar/unicat-icons';
 
 export const PROFILEIMAGE_URL =

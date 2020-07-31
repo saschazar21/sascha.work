@@ -7,19 +7,19 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
-import { ServerStyleSheet } from 'styled-components/macro';
+import { ServerStyleSheet } from 'styled-components';
 import { RenderPageResult } from 'next/dist/next-server/lib/utils';
 
 export default class WebsiteDocument extends Document {
   static async getInitialProps(
-    ctx: DocumentContext,
+    ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
     const { renderPage } = ctx || {};
     const sheet = new ServerStyleSheet();
 
     ctx.renderPage = (): RenderPageResult =>
       renderPage({
-        enhanceApp: (App) => (props): ReactElement =>
+        enhanceApp: App => (props): ReactElement =>
           sheet.collectStyles(<App {...props} />),
       }) as RenderPageResult;
 

@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import Link from 'next/link';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 import GPGLink from 'components/profile/email';
 import Navigation from 'components/navigation';
@@ -58,7 +58,7 @@ const LightSwitchWrapper = styled.div`
 `;
 
 const LightSwitch = styled((props: LightSwitchProps) =>
-  React.createElement('button', props),
+  React.createElement('button', props)
 )`
   transition: color 200ms ease-in, background 200ms ease-in;
   border: 1px solid hsl(var(--color-secondary));

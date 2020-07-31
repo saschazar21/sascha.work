@@ -1,11 +1,11 @@
 import React, { ReactChild } from 'react';
 import Link from 'next/link';
-import styled, { AnyStyledComponent } from 'styled-components/macro';
+import styled, { AnyStyledComponent } from 'styled-components';
 import {
   AvatarIcon,
   HelmetIcon,
   HomeIcon,
-  PenIcon
+  PenIcon,
 } from '@saschazar/unicat-icons';
 
 import routeConfig from 'public/routes.json';
@@ -14,7 +14,7 @@ const iconMap = {
   Home: HomeIcon,
   About: AvatarIcon,
   Blog: PenIcon,
-  'API docs': HelmetIcon
+  'API docs': HelmetIcon,
 };
 
 export interface RouteConfig {

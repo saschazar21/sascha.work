@@ -1,11 +1,11 @@
 import React from 'react';
 import { paramCase } from 'param-case';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { TieIcon } from '@saschazar/unicat-icons';
 
 import {
   ExperienceSection,
-  ExperienceHeading
+  ExperienceHeading,
 } from 'components/profile/experience';
 import { WorkItemProps } from 'components/profile/experience/work';
 

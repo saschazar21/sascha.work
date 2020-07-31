@@ -1,7 +1,7 @@
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
-import { ThemeProvider } from 'styled-components/macro';
+import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from 'components/style';
 import ld from 'components/profile/profile';

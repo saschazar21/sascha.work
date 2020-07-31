@@ -2,7 +2,7 @@ import React from 'react';
 import { DocumentContext } from 'next/document';
 import Head from 'next/head';
 import Link from 'next/link';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 import Container from 'components/container';
 import Footer from 'components/footer';

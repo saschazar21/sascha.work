@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 import Container from 'components/container';
 import Education from 'components/profile/experience/education';
@@ -85,7 +85,7 @@ export const ExperienceHeading = styled(Heading)`
 `;
 
 export const ExperienceButton = styled((props: ExperienceButtonProps) =>
-  React.createElement('button', props),
+  React.createElement('button', props)
 )`
   --color-button: var(--color-primary);
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { paramCase } from 'param-case';
 import { TempleIcon } from '@saschazar/unicat-icons';
 
 import {
   ExperienceSection,
-  ExperienceHeading
+  ExperienceHeading,
 } from 'components/profile/experience';
 import { EducationItemProps } from 'components/profile/experience/education';
 

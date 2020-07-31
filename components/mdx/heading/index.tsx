@@ -1,6 +1,6 @@
 import React, { ReactChild } from 'react';
 import Link from 'next/link';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { LinkIcon } from '@saschazar/unicat-icons';
 
 export interface HeadingProps {

@@ -1,5 +1,5 @@
 import React, { ReactChild } from 'react';
-import styled, { AnyStyledComponent } from 'styled-components/macro';
+import styled, { AnyStyledComponent } from 'styled-components';
 
 import { SocialAccount } from 'components/profile/social';
 

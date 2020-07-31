@@ -1,5 +1,5 @@
 import React, { Component, ReactChild } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { ScissorsIcon } from '@saschazar/unicat-icons';
 
 export interface ErrorProps {

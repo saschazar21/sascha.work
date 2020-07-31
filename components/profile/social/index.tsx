@@ -1,5 +1,5 @@
 import React, { ReactChild } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 import SocialItem from 'components/profile/social/item';
 
@@ -14,7 +14,7 @@ const icons: { [key: string]: ReactChild } = {
   codepen: CodepenIcon,
   github: GithubIcon,
   linkedin: LinkedinIcon,
-  twitter: TwitterIcon
+  twitter: TwitterIcon,
 };
 
 export interface SocialProps {
