@@ -48,6 +48,7 @@ const ProfileImageFigure = styled.figure`
   align-items: center;
   place-content: center;
 
+  /* stylelint-disable-next-line selector-type-no-unknown */
   > amp-img {
     display: inline-block;
     margin: 0 auto;
