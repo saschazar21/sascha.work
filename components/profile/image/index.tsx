@@ -33,7 +33,7 @@ const ProfileImageElement = ({
 }: ProfileImageProps): JSX.Element => (
   <amp-img
     alt="Portrait of Sascha Zarhuber"
-    layout="responsive"
+    layout="fixed"
     width={size || PROFILEIMAGE_SIZE.MEDIUM}
     height={size || PROFILEIMAGE_SIZE.MEDIUM}
     src={`${PROFILEIMAGE_URL}?s=${size || PROFILEIMAGE_SIZE.MEDIUM}`}
@@ -44,16 +44,18 @@ const ProfileImageElement = ({
 );
 
 const ProfileImageFigure = styled.figure`
-  display: block;
-  margin: 0 auto;
-  background: hsl(var(--color-bg-primary));
-  border: 4px solid hsl(var(--color-bg-primary));
-  border-radius: 9999px;
-  box-shadow: 0 4px 12px -6px hsla(var(--color-primary), 0.5);
-  height: auto;
-  width: ${({ 'data-size': size }: ProfileImageProps): string =>
-    `${size || PROFILEIMAGE_SIZE.MEDIUM}px`};
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  place-content: center;
+
+  > amp-img {
+    display: inline-block;
+    margin: 0 auto;
+    background: hsl(var(--color-bg-primary));
+    border: 4px solid hsl(var(--color-bg-primary));
+    border-radius: 9999px;
+    box-shadow: 0 4px 12px -6px hsla(var(--color-primary), 0.5);
+  }
 `;
 
 const ProfileImage = (props: ProfileImageProps): JSX.Element => (
