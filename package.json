@@ -47,7 +47,7 @@
     "param-case": "^3.0.3",
     "rehype-highlight": "^4.0.0",
     "remark-emoji": "^2.1.0",
-    "remark-external-links": "^6.1.0",
+    "remark-external-links": "^7.0.0",
     "remark-slug": "^6.0.0",
     "stylelint": "^13.6.1",
     "stylelint-config-recommended": "^3.0.0",
