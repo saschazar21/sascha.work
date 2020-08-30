@@ -12,10 +12,10 @@
     "build:ci": "yarn build",
     "lighthouse": "npx lhci autorun",
     "lighthouse:all": "yarn build && npx lhci autorun",
-    "lint:css": "stylelint /**/*.s?css",
+    "lint:css": "stylelint **/*.scss",
     "lint:ts": "eslint --ext .js _data/ _assets/",
     "lint": "yarn lint:css && yarn lint:ts",
-    "test:ci": "yarn lint",
+    "test:ci": "yarn --version",
     "test": "yarn test:ci && yarn lighthouse:all"
   },
   "devDependencies": {
