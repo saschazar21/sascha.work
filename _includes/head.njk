@@ -2,12 +2,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% if page.title %}{{ page.title }} | {% endif %}{{ manifest.name }}</title>
-<link rel="canonical" href="{{ pkg.homepage }}" />
-<meta name="author" value="{{ pkg.author.name }}" />
-<meta name="description" value="{{ tldr or manifest.description }}" />
+<link rel="canonical" href="{{ '' | absoluteUrl }}" />
+<meta name="author" content="{{ pkg.author.name }}" />
+<meta name="description" content="{{ tldr or manifest.description }}" />
 {% if tags or keywords %}
-  <meta name="keywords" value="{{ tags or keywords | join(' ') }}" />
+  <meta name="keywords" content="{{ tags or keywords | join(' ') }}" />
 {% endif %}
-<meta name="robots" value="{% if draft %}noindex,nofollow{% else %}index,follow{% endif %}" />
 {% include "seo.njk" %}
 </head>
