@@ -5,7 +5,6 @@
 
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="{{manifest.theme_color}}" />
-<meta name="robots" content="{% if process.env.NODE_ENV !== 'production' or draft %}noindex,nofollow{% else %}index,follow{% endif %}" />
 
 <meta property="og:title" content="{{ page.title or manifest.name }}" />
 <meta property="og:description" content="{{ tldr or manifest.description }}" />

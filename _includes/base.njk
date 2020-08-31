@@ -3,5 +3,7 @@
   {% include "head.njk" %}
   <body>
     {{ content | safe }}
+    
+    <meta name="robots" content="{% if process.env.NODE_ENV !== 'production' or draft %}noindex,nofollow{% else %}index,follow{% endif %}" data-helmet="robots" />
   </body>
 </html>

@@ -1,9 +1,10 @@
 ---
 layout: base.njk
+permalink: sw.html
 ---
 
-<meta name="robots" content="noindex,nofollow">
-<script type="text/javascript">
+<meta name="robots" content="noindex,nofollow" data-helmet="robots">
+<script type="text/javascript" data-helmet>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(console.error));
 }
