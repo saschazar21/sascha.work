@@ -1,5 +1,5 @@
 :root {
-  --font-main: 'Inter';
+  --font-main: 'Encode Sans';
   --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
@@ -12,9 +12,13 @@
   --color-secondary-offset: 351, 97%, 24%;
   --color-tertiary: 269, 97%, 35%;
 
+  --space-sm: 1.25rem;
+  --space-md: 1.75rem;
+  --space-lg: 2.25rem;
+
   font-family: var(--font-main), var(--font-system);
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 450;
   line-height: 1.65;
 }
 
@@ -25,29 +29,66 @@ body {
   box-sizing: border-box;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  padding: var(--space-sm);
+}
+
 body * {
   box-sizing: inherit;
 }
 
 p {
-  margin-bottom: 1.15rem;
-  font-size: inherit;
-  line-height: 28px;
+  margin-bottom: var(--space-sm);
+  font-size: 18.9189px;
+  line-height: 26px;
   padding: 0.05px 0;
+  max-width: 640px;
+  text-align: justify;
 }
 
 p::before {
   content: '';
-  margin-top: -0.275em;
+  margin-top: -0.3548em;
   display: block;
   height: 0;
 }
 
 p::after {
   content: '';
-  margin-bottom: -0.275em;
+  margin-bottom: -0.2848em;
   display: block;
   height: 0;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-weight: 350;
+    font-variation-settings: 'wdth' 110;
+  }
+
+  p {
+    margin-bottom: var(--space-lg);
+    font-size: 21.6216px;
+    line-height: 36px;
+    padding: 0.05px 0;
+  }
+
+  p::before {
+    content: '';
+    margin-top: -0.4998em;
+    display: block;
+    height: 0;
+  }
+
+  p::after {
+    content: '';
+    margin-bottom: -0.4298em;
+    display: block;
+    height: 0;
+  }
 }
 
 h1,
@@ -55,10 +96,10 @@ h2,
 h3,
 h4,
 h5 {
-  margin: 2.75rem 0 1.05rem;
-  font-weight: 300;
+  margin: var(--space-lg) 0 var(--space-sm);
+  font-weight: 700;
   line-height: 1.15;
-  font-variation-settings: 'slnt' -3;
+  font-variation-settings: 'wdth' 100;
 }
 
 h1 {
@@ -82,7 +123,24 @@ h5 {
   font-size: 1.125em;
 }
 
+code,
 small,
 .text_small {
   font-size: 0.889em;
+}
+
+@media screen and (min-width: 768px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: var(--space-lg) 0 var(--space-lg);
+  }
+}
+
+.full-bleed {
+  display: block;
+  width: 100vw;
+  margin: 0 0 var(--space-lg);
 }

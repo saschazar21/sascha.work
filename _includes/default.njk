@@ -1,6 +1,12 @@
 ---
 layout: base.njk
 ---
-
+<main>
+{% if cover %}
+<section class="full-bleed">
+<amp-img alt="{{ cover.alt }}" src="{{ cover.src | absoluteUrl }}" width="{{ cover.width }}" height="{{ cover.height }}" layout="responsive" />
+</section>
+{% endif %}
 {{ content | safe }}
+</main>
 {% include "sw.njk" %}

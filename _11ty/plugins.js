@@ -10,7 +10,7 @@ module.exports = [
   [
     jsonFeedPlugin,
     {
-      banner_image_metadata_field_name: 'cover',
+      banner_image_metadata_field_name: 'cover.src',
       content_html: true,
       image_metadata_field_name: 'image',
       summary_metadata_field_name: 'tldr',

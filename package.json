@@ -8,7 +8,7 @@
     "url": "https://sascha.work"
   },
   "scripts": {
-    "build": "rimraf out && npx @11ty/eleventy",
+    "build": "rimraf out && npx eleventy",
     "build:ci": "yarn build",
     "lighthouse": "npx lhci autorun",
     "lighthouse:all": "yarn build && npx lhci autorun",

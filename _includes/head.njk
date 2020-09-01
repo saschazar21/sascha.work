@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% if page.title %}{{ page.title }} | {% endif %}{{ manifest.name }}</title>
-<link rel="canonical" href="{{ '' | absoluteUrl }}" />
+<link rel="canonical" href="{{ page.url | absoluteUrl }}" />
 <meta name="author" content="{{ pkg.author.name }}" />
 <meta name="description" content="{{ tldr or manifest.description }}" />
 {% if tags or keywords %}
@@ -10,5 +10,5 @@
 {% endif %}
 {% include "seo.njk" %}
 <style>{% include "styles/main.css" %}</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wdth,wght@75..125,100..900&display=swap" rel="stylesheet">
 </head>
