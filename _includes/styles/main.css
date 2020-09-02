@@ -1,16 +1,44 @@
+:root,
+[data-theme='light'] {
+  --color-text: 240, 5%, 11%;
+  --color-bg: 240, 5%, 96%;
+  --color-bg-offset: 240, 15%, 92%;
+  --color-primary: 54, 30%, 33%;
+  --color-primary-offset: 53, 30%, 57%;
+  --color-secondary: 351, 97%, 33%;
+  --color-secondary-offset: 351, 97%, 72%;
+  --color-tertiary: 269, 97%, 45%;
+}
+
+[data-theme='dark'] {
+  --color-text: 240, 2%, 92%;
+  --color-bg: 240, 6%, 20%;
+  --color-bg-offset: 240, 6%, 25%;
+  --color-primary: 53, 30%, 57%;
+  --color-primary-offset: 54, 30%, 27%;
+  --color-secondary: 351, 97%, 72%;
+  --color-secondary-offset: 351, 97%, 33%;
+  --color-tertiary: 269, 98%, 80%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-text: 240, 2%, 92%;
+    --color-bg: 240, 6%, 20%;
+    --color-bg-offset: 240, 6%, 25%;
+    --color-primary: 53, 30%, 57%;
+    --color-primary-offset: 54, 30%, 27%;
+    --color-secondary: 351, 97%, 72%;
+    --color-secondary-offset: 351, 97%, 33%;
+    --color-tertiary: 269, 98%, 80%;
+  }
+}
+
 :root {
   --font-main: 'Encode Sans';
   --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
-
-  --color-text: 240, 5%, 11%;
-  --color-bg: 240, 5%, 96%;
-  --color-primary: 53, 30%, 57%;
-  --color-primary-offset: 53, 30%, 44%;
-  --color-secondary: 351, 96%, 30%;
-  --color-secondary-offset: 351, 97%, 24%;
-  --color-tertiary: 269, 97%, 35%;
 
   --space-sm: 1.25rem;
   --space-md: 1.75rem;
@@ -102,6 +130,16 @@ h5 {
   font-variation-settings: 'wdth' 100;
 }
 
+@media screen and (min-width: 768px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: var(--space-lg) 0 var(--space-lg);
+  }
+}
+
 h1 {
   margin-top: 0;
   font-size: 1.802em;
@@ -127,16 +165,6 @@ code,
 small,
 .text_small {
   font-size: 0.889em;
-}
-
-@media screen and (min-width: 768px) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    margin: var(--space-lg) 0 var(--space-lg);
-  }
 }
 
 .full-bleed {
