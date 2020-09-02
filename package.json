@@ -49,7 +49,7 @@
     "remark-emoji": "^2.1.0",
     "remark-external-links": "^7.0.0",
     "remark-slug": "^6.0.0",
-    "stylelint": "^13.6.1",
+    "stylelint": "^13.7.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
