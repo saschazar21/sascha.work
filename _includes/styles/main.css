@@ -7,7 +7,7 @@
   --color-primary-offset: 53, 30%, 85%;
   --color-secondary: 351, 97%, 33%;
   --color-secondary-offset: 351, 97%, 86%;
-  --color-tertiary: 269, 97%, 45%;
+  --color-tertiary: 269, 97%, 35%;
 }
 
 [data-theme='dark'] {
@@ -18,18 +18,29 @@
   --color-primary-offset: 54, 30%, 20%;
   --color-secondary: 15, 97%, 72%;
   --color-secondary-offset: 15, 97%, 23%;
-  --color-tertiary: 269, 98%, 80%;
+  --color-tertiary: 89, 98%, 75%;
 }
 
 [data-theme='beach'] {
   --color-text: 24, 93%, 24%;
-  --color-bg: 24, 36%, 90%;
-  --color-bg-offset: 24, 35%, 85%;
+  --color-bg: 24, 86%, 90%;
+  --color-bg-offset: 24, 85%, 85%;
   --color-primary: 208, 48%, 33%;
   --color-primary-offset: 212, 43%, 85%;
   --color-secondary: 69, 100%, 20%;
   --color-secondary-offset: 69, 100%, 80%;
-  --color-tertiary: 309, 56%, 40%;
+  --color-tertiary: 309, 56%, 30%;
+}
+
+[data-theme='fire'] {
+  --color-text: 210, 35%, 88%;
+  --color-bg: 285, 18%, 4%;
+  --color-bg-offset: 285, 18%, 10%;
+  --color-primary: 344, 79%, 59%;
+  --color-primary-offset: 344, 79%, 11%;
+  --color-secondary: 7, 86%, 61%;
+  --color-secondary-offset: 7, 86%, 11%;
+  --color-tertiary: 44, 94%, 78%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,7 +52,7 @@
     --color-primary-offset: 54, 30%, 20%;
     --color-secondary: 15, 97%, 72%;
     --color-secondary-offset: 15, 97%, 23%;
-    --color-tertiary: 269, 98%, 80%;
+    --color-tertiary: 89, 98%, 75%;
   }
 }
 
@@ -55,10 +66,17 @@
   --space-md: 1.75rem;
   --space-lg: 2.25rem;
 
+  --border-radius: 6px;
+
   font-family: var(--font-main), var(--font-system);
   font-size: 20px;
   font-weight: 450;
   line-height: 1.65;
+}
+
+::selection {
+  color: HSL(var(--color-bg));
+  background-color: HSL(var(--color-tertiary));
 }
 
 body {
