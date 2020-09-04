@@ -8,7 +8,7 @@
 {% if tags or keywords %}
   <meta name="keywords" content="{{ tags or keywords | join(' ') }}" />
 {% endif %}
-{% include "seo.njk" %}
+{% include "partials/seo.njk" %}
 <style>{% include "styles/main.css" %}</style>
 <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wdth,wght@75..125,100..900&display=swap" rel="stylesheet">
 </head>

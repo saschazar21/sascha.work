@@ -1,0 +1,7 @@
+<nav>
+  <ul>
+    {% for route in routes.data.routes %}
+      <li><a href="{{ route.path }}">{{ route.name }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>

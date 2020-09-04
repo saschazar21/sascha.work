@@ -1,7 +1,10 @@
 <!doctype html>
 <html lang="en">
-  {% include "head.njk" %}
+  {% include "partials/head.njk" %}
   <body>
+    {% if not skipHeader %}
+      {% include "partials/header.njk" %}
+    {% endif %}
     {{ content | safe }}
     
     <meta name="robots" content="{% if process.env.NODE_ENV !== 'production' or draft %}noindex,nofollow{% else %}index,follow{% endif %}" data-helmet="robots" />

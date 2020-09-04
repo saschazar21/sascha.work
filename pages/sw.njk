@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 permalink: sw.html
+skipHeader: true
 ---
 
 <meta name="robots" content="noindex,nofollow" data-helmet="robots">
@@ -9,3 +10,4 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(console.error));
 }
 </script>
+
