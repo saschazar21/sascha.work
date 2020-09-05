@@ -1,4 +1,12 @@
+{% set srcset = "" %}
+{% for size in [64, 128, 256, 512] %}
+  {% set srcset %}{% if srcset.length %}{{srcset}}, {% endif %}{{ pkg.author.email | gravatar(size) }} {{ size }}w{% endset %}
+{% endfor %}
+
+<style data-helmet>{% include "styles/header.css" %}</style>
 <header>
-  <amp-img alt="Avatar of {{ feed.author.name }}" src="{{ feed.author.avatar }}" layout="fixed" width="640" height="640"></amp-img>
+  <div class="avatar-container">
+    <amp-img alt="Avatar of {{ feed.author.name }}" srcset="{{ srcset }}" layout="fill"></amp-img>
+  </div>
   {% include "partials/navigation.njk" %}
 </header>

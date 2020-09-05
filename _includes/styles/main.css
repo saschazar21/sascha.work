@@ -86,11 +86,6 @@ body {
   box-sizing: border-box;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -221,8 +216,8 @@ h5 {
 
 code,
 small,
-.text_small {
-  font-size: 0.889em;
+.small-text {
+  font-size: 0.875em;
 }
 
 .full-bleed {

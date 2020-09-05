@@ -1,7 +1,8 @@
+<style data-helmet>{% include "styles/navigation.css" %}</style>
 <nav>
   <ul>
     {% for route in routes.data.routes %}
-      <li><a href="{{ route.path }}">{{ route.name }}</a></li>
+      <li class="small-text"><a href="{{ route.path }}">{{ route.name }}</a></li>
     {% endfor %}
   </ul>
 </nav>
