@@ -5,8 +5,8 @@
 
 <style data-helmet>{% include "styles/header.css" %}</style>
 <header>
-  <div class="avatar-container">
+  <a href="/about" class="avatar-container">
     <amp-img alt="Avatar of {{ feed.author.name }}" srcset="{{ srcset }}" layout="fill"></amp-img>
-  </div>
+  </a>
   {% include "partials/navigation.njk" %}
 </header>
