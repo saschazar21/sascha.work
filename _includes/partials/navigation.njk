@@ -1,8 +1,18 @@
-<style data-helmet>{% include "styles/navigation.css" %}</style>
-<nav>
+{% set navigation %}
+<nav toolbar="(min-width: 768px)" toolbar-target="navigation">
   <ul>
     {% for route in routes.data.routes %}
-      <li class="small-text"><a href="{{ route.path }}">{{ route.name }}</a></li>
+    {% set padLength = loop.length.toString().length + 1 %}
+      <li class="small-text" data-index="{{ loop.index | padZero(padLength) }}"><a href="{{ route.path }}">{{ route.name }}</a></li>
     {% endfor %}
   </ul>
 </nav>
+{% endset %}
+
+<style data-helmet>{% include "styles/navigation.css" %}</style>
+<div id="navigation"></div>
+<amp-sidebar id="sidebar" layout="nodisplay" side="right">
+  <button on="tap:sidebar.close">Close</button>
+  {{ navigation | safe }}
+</amp-sidebar>
+<button on="tap:sidebar.open" class="sidebar-launcher">Menu</button>

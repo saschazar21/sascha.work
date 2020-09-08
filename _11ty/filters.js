@@ -24,5 +24,15 @@ module.exports = {
       'https://www.gravatar.com'
     );
     return url.toString();
+  },
+  padZero: (value, length = 2) => {
+    const stringified = value.toString();
+    const gap = length - stringified.length;
+    if (gap < 0) {
+      return stringified;
+    }
+    return new Array(gap)
+      .fill(0)
+      .reduce((prev, curr) => `${curr}${prev}`, stringified);
   }
 };

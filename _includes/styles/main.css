@@ -149,11 +149,14 @@ p::after {
 }
 
 a,
+a:focus,
 a:hover,
 a:visited {
   position: relative;
   color: HSL(var(--color-tertiary));
   text-decoration: none;
+  font-weight: 500;
+  outline: none;
 }
 
 a::before {
@@ -167,9 +170,14 @@ a::before {
   background-color: HSL(var(--color-tertiary), 0.125);
 }
 
+a:focus::before,
 a:hover::before {
   width: 100%;
   background-color: HSL(var(--color-tertiary), 0.5);
+}
+
+a:focus::before {
+  background-color: HSL(var(--color-tertiary), 0.875);
 }
 
 h1,
