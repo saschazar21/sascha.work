@@ -27,6 +27,7 @@
     "eleventy-plugin-helmet": "^0.2.1",
     "eleventy-plugin-json-feed": "^0.0.7",
     "eleventy-plugin-pwa": "^1.0.8",
+    "eleventy-plugin-svg-contents": "^0.7.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.20.5",
     "html-minifier-terser": "^5.1.1",

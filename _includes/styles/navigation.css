@@ -6,7 +6,7 @@ ul {
 }
 
 li:not(:first-child) {
-  margin-left: 1rem;
+  margin-left: var(--container-space, 1rem);
 }
 
 li[data-index]::before {
@@ -17,8 +17,55 @@ li[data-index]::before {
   font-weight: 200;
 }
 
+amp-sidebar {
+  --background: var(--color-bg-offset);
+
+  padding: calc(var(--container-space) - 6px)
+    var(--container-space, var(--padding))
+    var(--container-space, var(--padding));
+  background-color: HSL(var(--background));
+  text-align: right;
+}
+
+amp-sidebar[open] {
+  display: flex;
+  flex-direction: column;
+  place-items: flex-end;
+  width: 80vw;
+}
+
+amp-sidebar h2 {
+  align-self: flex-start;
+  border-bottom: 1px dashed HSL(var(--color-text), 0.25);
+  margin-bottom: 0;
+  padding-bottom: var(--padding);
+  color: HSL(var(--color-text), 0.75);
+  width: 100%;
+  letter-spacing: 0.2em;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.667em;
+  font-weight: 200;
+  font-variation-settings: 'wdth' 125;
+}
+
+amp-sidebar nav {
+  padding-bottom: calc(var(--container-space, 1rem) * 2);
+  width: 100%;
+  font-size: 1.25em;
+}
+
+amp-sidebar ul {
+  flex-direction: column;
+}
+
+amp-sidebar li {
+  margin-top: var(--container-space, 1rem);
+  margin-left: 0;
+}
+
 @media screen and (min-width: 768px) {
-  .sidebar-launcher {
+  .navigation-launcher {
     display: none;
   }
 }

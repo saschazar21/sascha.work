@@ -12,7 +12,8 @@
 <style data-helmet>{% include "styles/navigation.css" %}</style>
 <div id="navigation"></div>
 <amp-sidebar id="sidebar" layout="nodisplay" side="right">
-  <button on="tap:sidebar.close">Close</button>
+  <button aria-label="Close Menu" on="tap:sidebar.close">{{ '/_includes/assets/icons/close.svg' | svgContents | safe }}</button>
+  <h2>Navigation</h2>
   {{ navigation | safe }}
 </amp-sidebar>
-<button aria-label="Open Menu" on="tap:sidebar.open" class="sidebar-launcher">Menu</button>
+<button aria-label="Open Menu" on="tap:sidebar.open" class="navigation-launcher">{{ '/_includes/assets/icons/menu.svg' | svgContents | safe }}</button>

@@ -22,7 +22,7 @@
 }
 
 [data-theme='beach'] {
-  --color-text: 24, 93%, 24%;
+  --color-text: 24, 93%, 18%;
   --color-bg: 24, 86%, 90%;
   --color-bg-offset: 24, 85%, 85%;
   --color-primary: 208, 48%, 33%;
@@ -234,25 +234,29 @@ button {
   padding: 0.5em 0.75em;
   border: 2px solid HSL(var(--color-secondary));
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 10px -2px HSL(var(--color-secondary), 0.333);
-  color: HSL(var(--color-text));
-  background: linear-gradient(
-    61.2deg,
-    HSL(var(--color-secondary), 0.667),
-    HSL(var(--color-secondary-offset), 66.666%)
-  );
+  box-shadow: 0 4px 10px HSL(var(--color-secondary), 0.4);
+  color: HSL(var(--color-secondary));
+  background-color: transparent;
   font-family: inherit;
   font-size: inherit;
   font-weight: 300;
   font-variation-settings: 'wdth' 120;
-  transition: box-shadow 200ms ease-in, transform 200ms ease-in;
+  transition: background-color 200ms ease-in, box-shadow 200ms ease-in,
+    transform 200ms ease-in;
 }
 
 button:focus,
 button:hover {
-  box-shadow: 0 12px 20px -3px HSL(var(--color-secondary), 0.5);
+  box-shadow: 0 6px 10px -1px HSL(var(--color-secondary), 0.75);
+  background-color: HSL(var(--color-secondary-offset), 0.75);
   transform: scale(1.0125);
   outline: none;
+}
+
+svg {
+  max-height: 100%;
+  max-width: 100%;
+  fill: currentColor;
 }
 
 .full-bleed {

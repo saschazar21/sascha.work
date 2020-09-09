@@ -3,6 +3,7 @@ const helmetPlugin = require('eleventy-plugin-helmet');
 const jsonFeedPlugin = require('eleventy-plugin-json-feed');
 const pwaPlugin = require('eleventy-plugin-pwa');
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
+const svgPlugin = require('eleventy-plugin-svg-contents');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -18,6 +19,7 @@ module.exports = [
     }
   ],
   [rssPlugin, {}],
+  [svgPlugin, {}],
   [helmetPlugin, {}],
   [
     ampPlugin,

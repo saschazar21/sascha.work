@@ -3,6 +3,7 @@ header {
   --padding: 0.333rem;
   --border-radius: 9999px;
   --border-width: 4px;
+  --container-space: 1rem;
 
   position: relative;
   display: flex;
@@ -20,7 +21,7 @@ header {
       transparent 15.05%,
       HSL(var(--color-text), 0.15) 38.2%
     );
-  padding: var(--padding);
+  padding: var(--padding) var(--container-space);
   width: 100%;
   overflow: hidden;
 }
@@ -40,10 +41,29 @@ header + main {
   margin-top: 2rem;
 }
 
+header button {
+  --border-radius: 9999px;
+
+  height: 48px;
+  width: 48px;
+  padding: 0.5em;
+}
+
 .avatar-container {
+  --border-color: transparent;
+  --border-radius: 9999px;
+
   position: relative;
-  height: var(--height);
-  width: var(--height);
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--border-color);
+  height: calc(var(--height) + var(--border-width) * 2);
+  width: calc(var(--height) + var(--border-width) * 2);
+  transition: border-color 200ms ease-in;
+}
+
+.avatar-container:focus,
+.avatar-container:hover {
+  --border-color: HSL(var(--color-tertiary));
 }
 
 .avatar-container::before {
