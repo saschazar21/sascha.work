@@ -11,3 +11,31 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
+<style data-helmet>
+  main {
+    margin-top: var(--space-sm);
+  }
+
+  @media screen and (min-width: 768px) {
+    main {
+      margin-top: var(--space-lg);
+    }
+  }
+
+ img {
+  width: 384px;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  filter: drop-shadow(0px 4px 12px HSL(var(--color-text), 0.333));
+  margin-bottom: 2rem;
+ }
+</style>
+
+<main>
+<h1>All set, ready to go!</h1>
+<p>The <a href="https://web.dev/service-worker/" rel="noindex,nofollow" target="_blank">service worker</a> should have been successfully installed. Now you can use this website offline as well! 🎉</p>
+<img src="{{ '/img/typing.gif' | absoluteUrl }}" alt="A pixel graphic of me typing on a notebook" width="384" height="384" />
+<p>If you got here unintentionally, you may head back to the <a href="{{ feed.home_page_url }}" rel="index,follow">homepage</a> now.</p>
+</main>
+
