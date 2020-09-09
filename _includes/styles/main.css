@@ -5,8 +5,8 @@
   --color-bg-offset: 240, 15%, 92%;
   --color-primary: 54, 30%, 30%;
   --color-primary-offset: 53, 30%, 85%;
-  --color-secondary: 351, 97%, 33%;
-  --color-secondary-offset: 351, 97%, 86%;
+  --color-secondary: 31, 97%, 33%;
+  --color-secondary-offset: 31, 97%, 86%;
   --color-tertiary: 269, 97%, 35%;
 }
 
@@ -14,10 +14,10 @@
   --color-text: 240, 2%, 92%;
   --color-bg: 240, 6%, 20%;
   --color-bg-offset: 240, 6%, 25%;
-  --color-primary: 53, 30%, 57%;
-  --color-primary-offset: 54, 30%, 20%;
-  --color-secondary: 15, 97%, 72%;
-  --color-secondary-offset: 15, 97%, 23%;
+  --color-primary: 53, 92%, 75%;
+  --color-primary-offset: 54, 92%, 20%;
+  --color-secondary: 211, 97%, 72%;
+  --color-secondary-offset: 211, 97%, 23%;
   --color-tertiary: 89, 98%, 75%;
 }
 
@@ -48,10 +48,10 @@
     --color-text: 240, 2%, 92%;
     --color-bg: 240, 6%, 20%;
     --color-bg-offset: 240, 6%, 25%;
-    --color-primary: 53, 30%, 57%;
-    --color-primary-offset: 54, 30%, 20%;
-    --color-secondary: 15, 97%, 72%;
-    --color-secondary-offset: 15, 97%, 23%;
+    --color-primary: 53, 92%, 75%;
+    --color-primary-offset: 54, 92%, 20%;
+    --color-secondary: 211, 97%, 72%;
+    --color-secondary-offset: 211, 97%, 23%;
     --color-tertiary: 89, 98%, 75%;
   }
 }
@@ -226,6 +226,33 @@ code,
 small,
 .small-text {
   font-size: 0.875em;
+}
+
+button {
+  --border-radius: 6px;
+
+  padding: 0.5em 0.75em;
+  border: 2px solid HSL(var(--color-secondary));
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px -2px HSL(var(--color-secondary), 0.333);
+  color: HSL(var(--color-text));
+  background: linear-gradient(
+    61.2deg,
+    HSL(var(--color-secondary), 0.667),
+    HSL(var(--color-secondary-offset), 66.666%)
+  );
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 300;
+  font-variation-settings: 'wdth' 120;
+  transition: box-shadow 200ms ease-in, transform 200ms ease-in;
+}
+
+button:focus,
+button:hover {
+  box-shadow: 0 12px 20px -3px HSL(var(--color-secondary), 0.5);
+  transform: scale(1.0125);
+  outline: none;
 }
 
 .full-bleed {
