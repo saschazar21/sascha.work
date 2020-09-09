@@ -20,9 +20,7 @@ li[data-index]::before {
 amp-sidebar {
   --background: var(--color-bg-offset);
 
-  padding: calc(var(--container-space) - 6px)
-    var(--container-space, var(--padding))
-    var(--container-space, var(--padding));
+  padding: var(--container-space, var(--padding));
   background-color: HSL(var(--background));
   text-align: right;
 }
@@ -37,7 +35,7 @@ amp-sidebar[open] {
 amp-sidebar h2 {
   align-self: flex-start;
   border-bottom: 1px dashed HSL(var(--color-text), 0.25);
-  margin-bottom: 0;
+  margin-top: -4px;
   padding-bottom: var(--padding);
   color: HSL(var(--color-text), 0.75);
   width: 100%;
@@ -62,6 +60,27 @@ amp-sidebar ul {
 amp-sidebar li {
   margin-top: var(--container-space, 1rem);
   margin-left: 0;
+}
+
+.social-accounts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(auto, 1fr));
+  place-content: center;
+  column-gap: 1.25rem;
+  row-gap: 2rem;
+}
+
+.social-accounts li {
+  margin: 0;
+}
+
+.social-accounts a {
+  --color-theme: var(--color-primary);
+
+  display: block;
+  margin: 0;
+  height: 32px;
+  width: 32px;
 }
 
 @media screen and (min-width: 768px) {

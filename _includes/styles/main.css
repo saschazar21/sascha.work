@@ -152,8 +152,10 @@ a,
 a:focus,
 a:hover,
 a:visited {
+  --color-theme: var(--color-tertiary);
+
   position: relative;
-  color: HSL(var(--color-tertiary));
+  color: HSL(var(--color-theme));
   text-decoration: none;
   font-weight: 500;
   outline: none;
@@ -167,17 +169,17 @@ a::before {
   left: 0;
   height: 0.25em;
   width: 33.333%;
-  background-color: HSL(var(--color-tertiary), 0.125);
+  background-color: HSL(var(--color-theme), 0.125);
 }
 
 a:focus::before,
 a:hover::before {
   width: 100%;
-  background-color: HSL(var(--color-tertiary), 0.5);
+  background-color: HSL(var(--color-theme), 0.5);
 }
 
 a:focus::before {
-  background-color: HSL(var(--color-tertiary), 0.875);
+  background-color: HSL(var(--color-theme), 0.875);
 }
 
 h1,
@@ -254,6 +256,7 @@ button:hover {
 }
 
 svg {
+  display: block;
   max-height: 100%;
   max-width: 100%;
   fill: currentColor;
