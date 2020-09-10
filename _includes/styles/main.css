@@ -80,16 +80,20 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   color: HSL(var(--color-text));
   background-color: HSL(var(--color-bg));
   box-sizing: border-box;
+  min-height: 100vh;
 }
 
 main {
   display: flex;
   flex-direction: column;
   place-items: center;
+  flex: 1 1 auto;
   padding: 0 var(--space-sm) var(--space-sm);
 }
 
@@ -152,8 +156,10 @@ a,
 a:focus,
 a:hover,
 a:visited {
+  --before-gap: 0;
   --color-theme: var(--color-tertiary);
 
+  display: inline-block;
   position: relative;
   color: HSL(var(--color-theme));
   text-decoration: none;
@@ -165,7 +171,7 @@ a::before {
   transition: background-color 200ms ease-out, width 200ms ease-out;
   position: absolute;
   content: '';
-  bottom: -0.25em;
+  bottom: var(--before-gap);
   left: 0;
   height: 0.25em;
   width: 33.333%;
@@ -230,6 +236,25 @@ small,
   font-size: 0.875em;
 }
 
+ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li:not(:first-child) {
+  margin-left: var(--container-space, 1rem);
+}
+
+li[data-index]::before {
+  content: attr(data-index);
+  margin-right: 0.25rem;
+  color: HSL(var(--color-text), 0.667);
+  font-size: 0.875em;
+  font-weight: 200;
+}
+
 button {
   --border-radius: 6px;
 
@@ -266,4 +291,25 @@ svg {
   display: block;
   width: 100vw;
   margin: 0 0 var(--space-lg);
+}
+
+.social-accounts {
+  --size: 32px;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(auto, var(--size)));
+  column-gap: 1.25rem;
+  row-gap: 2rem;
+}
+
+.social-accounts.social-accounts li {
+  margin: 0;
+}
+
+.social-accounts.social-accounts a {
+  --before-gap: -0.5em;
+  --color-theme: var(--color-primary);
+
+  display: block;
+  margin: 0;
 }

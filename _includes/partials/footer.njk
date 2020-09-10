@@ -1,0 +1,32 @@
+<style data-helmet>{% include "styles/footer.css" %}</style>
+<footer>
+  <div>
+    <strong><a href="{{ feed.home_page_url }}">{{ pkg.homepage }}</a></strong>
+    <span>&copy; {{ feed.author.name }}, 2018 &ndash; {{ build.timestamp | format('YYYY') }}</span>
+  </div>
+  {% if social.data %}
+    <div>
+      <strong id="social-media-label-footer">Social Media</strong>
+      <ul class="social-accounts" aria-labelledby="social-media-label-footer">
+      {% for account in social.data %}
+      {% set svgPath = "/_includes/assets/icons/" + account.provider + ".svg" %}
+        <li class="small-text"><a aria-label="{{ account.username }} on {{ account.provider }}" href="{{ account.profile }}" rel="noindex,nofollow,noopener,noreferrer" target="_blank">{{ svgPath | svgContents | safe }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+  <div>
+    <strong id="feed-links-label">Feed Links</strong>
+    <ul class="feed-list" aria-labelledby="feed-links-label">
+      <li>
+        <a aria-label="RSS Feed" href="/feed.xml" rel="noindex,nofollow" target="_blank">{{ '/_includes/assets/icons/rss.svg' | svgContents | safe }}</a>
+      </li>
+      <li>
+        <a aria-label="JSON Feed" href="/feed.json" rel="noindex,nofollow" target="_blank">{{ '/_includes/assets/icons/jsonfeed.svg' | svgContents | safe }}</a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <span>Made with lots of ❤️ in Upper Austria.</span>
+  </div>
+</footer>

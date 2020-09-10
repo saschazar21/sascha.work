@@ -1,4 +1,5 @@
 const { createHash } = require('crypto');
+const day = require('dayjs');
 const { URL } = require('url');
 
 const pkg = require('../package.json');
@@ -13,6 +14,7 @@ module.exports = {
     const absolutePath = path.startsWith('/') ? path : `/${path}`;
     return `${domain}${absolutePath}`;
   },
+  format: (date, format) => day(date).format(format),
   gravatar: (email, size = 256) => {
     if (!email || !email.length) {
       throw new Error('No email given to calculate Gravatar hash!');

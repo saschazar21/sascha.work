@@ -1,5 +1,5 @@
 {% set navigation %}
-<nav toolbar="(min-width: 768px)" toolbar-target="navigation">
+<nav aria-labelledby="navigation-label" toolbar="(min-width: 768px)" toolbar-target="navigation-container">
   <ul>
     {% for route in routes.data.routes %}
     {% set padLength = loop.length.toString().length + 1 %}
@@ -10,19 +10,19 @@
 {% endset %}
 
 <style data-helmet>{% include "styles/navigation.css" %}</style>
-<div id="navigation"></div>
+<div id="navigation-container"></div>
 <amp-sidebar id="sidebar" layout="nodisplay" side="right">
   <button aria-label="Close Menu" on="tap:sidebar.close">{{ '/_includes/assets/icons/close.svg' | svgContents | safe }}</button>
-  <h2>Navigation</h2>
+  <span id="navigation-label">Navigation</span>
   {{ navigation | safe }}
   {% if social.data %}
-  <h2>Social</h2>
-  <ul class="social-accounts">
+  <span id="social-media-label">Social Media</span>
+  <ul class="social-accounts" aria-labelledby="social-media-label">
   {% for account in social.data %}
   {% set svgPath = "/_includes/assets/icons/" + account.provider + ".svg" %}
-    <li class="small-text"><a aria-label="{{ account.username }} on {{ account.provider }}" href="{{ account.profile }}" rel="noindex,nofollow" target="_blank">{{ svgPath | svgContents | safe }}</a></li>
+    <li class="small-text"><a aria-label="{{ account.username }} on {{ account.provider }}" href="{{ account.profile }}" rel="noindex,nofollow,noopener,noreferrer" target="_blank">{{ svgPath | svgContents | safe }}</a></li>
   {% endfor %}
-  {% endif %}
   </ul>
+  {% endif %}
 </amp-sidebar>
 <button aria-label="Open Menu" on="tap:sidebar.open" class="navigation-launcher">{{ '/_includes/assets/icons/menu.svg' | svgContents | safe }}</button>
