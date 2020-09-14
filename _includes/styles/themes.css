@@ -1,0 +1,78 @@
+.theme-selector {
+  transition: transform 200ms ease-out;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  transform: translateY(-100%);
+}
+
+.theme-selector ul {
+  height: 100%;
+}
+
+.theme-selector li {
+  --height: 44px;
+
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex: 1 1 auto;
+  box-shadow: inset 0 0 10px 5px HSL(var(--color-text), 0.175);
+  margin-left: 0;
+  background-color: HSL(var(--color-bg));
+}
+
+.theme-selector li::after {
+  transition: transform 200ms ease-out;
+  content: '';
+  position: absolute;
+  border: 18px solid transparent;
+  border-top-color: HSL(var(--color-tertiary));
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.theme-selector li:focus::after,
+.theme-selector li:hover::after {
+  transform: translateX(-50%) translateY(0);
+}
+
+.theme-selector li:hover {
+  cursor: pointer;
+}
+
+.theme-selector svg {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  max-height: var(--height);
+}
+
+.theme-selector rect,
+.theme-selector path {
+  fill: HSL(var(--color-text));
+}
+
+.theme-selector circle {
+  fill: HSL(var(--color-secondary));
+}
+
+.theme-selector circle:first-child {
+  fill: HSL(var(--color-tertiary));
+}
+
+.theme-selector circle:last-child {
+  fill: HSL(var(--color-primary));
+}
+
+@media screen and (min-width: 768px) {
+  .theme-selector li {
+    --height: 96px;
+  }
+}

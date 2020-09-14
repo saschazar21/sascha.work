@@ -1,13 +1,16 @@
 footer {
   --gap-width: var(--space-md);
+  --width: 100%;
 
   display: grid;
   position: relative;
   grid-template-columns: 1fr;
   column-gap: var(--gap-width);
   row-gap: var(--gap-width);
+  align-self: center;
   margin-top: var(--space-md);
   padding: var(--space-lg) var(--space-sm) var(--space-sm);
+  width: var(--width);
   font-size: 0.875em;
 }
 
@@ -77,5 +80,18 @@ footer strong {
   footer > div:last-child {
     grid-column: 1/-1;
     place-self: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  footer {
+    --space-lg: 2.75rem;
+    --gap-width: var(--space-lg);
+    --width: 1280px;
+  }
+
+  footer .feed-list,
+  footer .social-accounts {
+    --size: 24px;
   }
 }

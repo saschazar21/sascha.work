@@ -1,7 +1,7 @@
 <style data-helmet>{% include "styles/footer.css" %}</style>
 <footer>
   <div>
-    <strong><a href="{{ feed.home_page_url }}">{{ pkg.homepage }}</a></strong>
+    <strong><a href="{{ '' | absoluteUrl }}">{{ '' | absoluteUrl }}</a></strong>
     <span>&copy; {{ feed.author.name }}, 2018 &ndash; {{ build.timestamp | format('YYYY') }}</span>
   </div>
   {% if social.data %}
