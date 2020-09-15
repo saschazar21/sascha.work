@@ -1,20 +1,21 @@
 {% if themes.length %}
 <style data-helmet>{% include "styles/themes.css" %}</style>
-<aside class="theme-selector">
-<ul aria-label="Theme Selector">
-{% for theme in themes %}
-  <li data-theme="{{ theme }}" aria-label="Select {{ theme }} theme" tabindex="0" role="button">
-    <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-      <rect x="1" y="2" width="61.8%" height="2" />
-      <path d="M1 5h14v1H1z" />
-      <g>
-        <circle cx="12" cy="11" r="3" />
-        <circle cx="8" cy="11" r="3" />
-        <circle cx="4" cy="11" r="3" />
-      </g>
-    </svg>
-  </li>
-{% endfor %}
-</ul>
+<aside class="theme-selector" [hidden]="!open" hidden>
+  <ul aria-label="Theme Selector">
+  {% for theme in themes %}
+    {% set handler = "tap:AMP.setState({ open: !open, theme: '" + theme + "' })" %}
+    <li class="theme-{{ theme }}" aria-label="Select {{ theme }} theme" tabindex="0" role="button" on="{{ handler }}">
+      <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <rect x="1" y="2" width="61.8%" height="2" />
+        <path d="M1 5h14v1H1z" />
+        <g>
+          <circle cx="12" cy="11" r="3" />
+          <circle cx="8" cy="11" r="3" />
+          <circle cx="4" cy="11" r="3" />
+        </g>
+      </svg>
+    </li>
+  {% endfor %}
+  </ul>
 </aside>
 {% endif %}

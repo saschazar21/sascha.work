@@ -1,5 +1,5 @@
 :root,
-[data-theme='light'] {
+.theme-light {
   --color-text: 240, 5%, 11%;
   --color-bg: 240, 5%, 96%;
   --color-bg-offset: 240, 15%, 92%;
@@ -10,7 +10,7 @@
   --color-tertiary: 269, 97%, 35%;
 }
 
-[data-theme='dark'] {
+.theme-dark {
   --color-text: 240, 2%, 92%;
   --color-bg: 240, 6%, 20%;
   --color-bg-offset: 240, 6%, 25%;
@@ -21,7 +21,7 @@
   --color-tertiary: 89, 98%, 75%;
 }
 
-[data-theme='beach'] {
+.theme-beach {
   --color-text: 24, 93%, 18%;
   --color-bg: 24, 86%, 90%;
   --color-bg-offset: 24, 85%, 85%;
@@ -32,7 +32,7 @@
   --color-tertiary: 309, 56%, 30%;
 }
 
-[data-theme='fire'] {
+.theme-fire {
   --color-text: 210, 35%, 88%;
   --color-bg: 285, 18%, 4%;
   --color-bg-offset: 285, 18%, 10%;
@@ -44,7 +44,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
+  :root:not([class*='theme-']) {
     --color-text: 240, 2%, 92%;
     --color-bg: 240, 6%, 20%;
     --color-bg-offset: 240, 6%, 25%;

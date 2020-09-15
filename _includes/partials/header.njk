@@ -4,10 +4,15 @@
 {% endfor %}
 
 <style data-helmet>{% include "styles/header.css" %}</style>
+{% include "partials/navigation.njk" %}
 <header>
   <a href="/about" class="avatar-container" aria-label="About page">
     <amp-img aria-hidden="true" role="image" alt="Avatar of {{ feed.author.name }}" srcset="{{ srcset }}" layout="fill"></amp-img>
   </a>
-  {% include "partials/navigation.njk" %}
+  <div class="header-container">
+    <div id="navigation-container"></div>
+    <button aria-label="Select Theme" on="tap:AMP.setState({ open: !open })">{{ '/_includes/assets/icons/brush.svg' | svgContents | safe }}</button>
+    <button aria-label="Open Menu" on="tap:sidebar.open" class="navigation-launcher">{{ '/_includes/assets/icons/menu.svg' | svgContents | safe }}</button>
+  </div>
   {% include "partials/themes.njk" %}
 </header>

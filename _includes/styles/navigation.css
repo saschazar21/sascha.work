@@ -1,4 +1,9 @@
 amp-sidebar {
+  --height: 64px;
+  --padding: 0.333rem;
+  --border-radius: 9999px;
+  --border-width: 4px;
+  --container-space: 1rem;
   --background: var(--color-bg-offset);
 
   padding: var(--container-space, var(--padding));
@@ -59,10 +64,4 @@ amp-sidebar ul {
 amp-sidebar li {
   margin-top: var(--container-space, 1rem);
   margin-left: 0;
-}
-
-@media screen and (min-width: 768px) {
-  .navigation-launcher {
-    display: none;
-  }
 }

@@ -43,12 +43,17 @@ header + main {
   margin-top: var(--margin);
 }
 
-header button {
+header button,
+amp-sidebar button {
   --border-radius: 9999px;
 
   height: 48px;
   width: 48px;
   padding: 0.5em;
+}
+
+header button + button {
+  margin-left: var(--container-space);
 }
 
 .avatar-container {
@@ -94,6 +99,11 @@ header button {
   object-fit: contain;
 }
 
+#navigation-container {
+  display: flex;
+  align-items: center;
+}
+
 @media screen and (min-width: 768px) {
   header {
     --padding: 1rem;
@@ -105,5 +115,17 @@ header button {
 
   header + main {
     --margin: var(--space-xl);
+  }
+
+  .header-container {
+    display: flex;
+  }
+
+  .header-container button {
+    margin-left: var(--container-space);
+  }
+
+  .navigation-launcher {
+    display: none;
   }
 }
