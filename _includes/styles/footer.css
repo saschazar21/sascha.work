@@ -36,13 +36,17 @@ footer::before {
   opacity: 0.333;
 }
 
-footer .social-accounts {
-  place-content: start;
+footer div > section + section {
+  margin-top: var(--space-md);
 }
 
 footer strong {
   display: block;
   margin-bottom: var(--space-sm);
+}
+
+footer .social-accounts {
+  place-content: start;
 }
 
 .feed-list {

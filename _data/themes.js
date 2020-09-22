@@ -1,1 +1,1 @@
-module.exports = ['light', 'dark', 'beach', 'fire'];
+module.exports = ['light', 'beach', 'dark', 'fire'];
