@@ -24,7 +24,8 @@ module.exports = [
   [
     ampPlugin,
     {
-      filter: /(?<!serviceworker)\/index\.html/i
+      filter: /^out\/(?!sw\.html)/,
+      pathPrefix: '/'
     }
   ],
   [

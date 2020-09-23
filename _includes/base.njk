@@ -6,8 +6,7 @@
       {% include "partials/header.njk" %}
     {% endif %}
     {{ content | safe }}
-    
-    <meta name="robots" content="{% if process.env.NODE_ENV !== 'production' or draft %}noindex,nofollow{% else %}index,follow{% endif %}" data-helmet="robots" />
+    {% if not env.production or draft %}<meta name="robots" content="noindex,nofollow" data-helmet="robots" />{% endif %}
     {% include "partials/footer.njk" %}
   </body>
 </html>
