@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<style data-helmet>{% include "styles/api-docs.css" %}</style>
+
+<h1>API docs</h1>
+<p>
+This website contains some full-featured JSON API v1-conform endpoints. Those contain mainly static information, but are recreated during every deployment for staying up to date.
+</p>
+<div class="api-wrapper">
+{% for endpoint in apidocs %}
+  <section>
+    <h2><a href="{{ endpoint.url | absoluteUrl }}" target="_blank">{{ endpoint.url }}</a></h2>
+    <p>
+      {{ endpoint.description }}
+    </p>
+  </section>
+  <pre>
+  <code>
+  {{ endpoint.code }}
+  </code>
+  </pre>
+{% endfor %}
+</div>

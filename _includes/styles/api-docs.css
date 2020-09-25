@@ -1,0 +1,20 @@
+.api-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--space-md);
+}
+
+.api-wrapper pre {
+  border-radius: var(--border-radius);
+  background-color: HSL(var(--color-bg-offset));
+  padding: var(--space-sm);
+  overflow-x: auto;
+}
+
+@media screen and (min-width: 1200px) {
+  .api-wrapper {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-sm);
+    row-gap: 0;
+  }
+}
