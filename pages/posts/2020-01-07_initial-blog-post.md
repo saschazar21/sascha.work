@@ -35,6 +35,74 @@ Dignissimos non non nulla eos. Consequuntur enim expedita adipisci inventore asp
 
 ![A random image from Unsplash](https://source.unsplash.com/random/800x600)
 
-```json
-{ "code": true }
+```javascript
+const width = 160;
+const height = 120;
+const cellSize = 5;
+const distribution = 0.618;
+
+const canvas = document.querySelector('canvas');
+canvas.height = height * cellSize;
+canvas.width = width * cellSize;
+
+const ctx = canvas.getContext('2d');
+
+let world = new Array(width * height)
+  .fill(false)
+  .map(v => Math.random() < distribution);
+let newWorld = world.slice();
+
+const position = (x, y) => {
+  const absX = (x < 0 ? Math.abs(width + x) : x) % width;
+  const absY = (y < 0 ? Math.abs(height + y) : y) % height;
+  return absY * width + absX;
+};
+
+const coords = pos => {
+  const y = Math.floor(pos / width);
+  const x = pos % width;
+
+  return [x, y];
+};
+
+const check = (x, y) => {
+  const i = world[position(x, y)];
+  const neighbors = [
+    world[position(x - 1, y - 1)],
+    world[position(x, y - 1)],
+    world[position(x + 1, y - 1)],
+    world[position(x - 1, y)],
+    world[position(x + 1, y)],
+    world[position(x - 1, y + 1)],
+    world[position(x, y + 1)],
+    world[position(x + 1, y + 1)]
+  ];
+
+  const aliveNeighbors = neighbors.reduceRight((count, neighbor) => {
+    const alive = !isNaN(parseInt(count, 10)) ? count : count ? 1 : 0;
+    return neighbor ? alive + 1 : alive;
+  });
+
+  return aliveNeighbors === 2 ? i : aliveNeighbors === 3;
+};
+
+const paint = theme =>
+  world.forEach((cell, pos) => {
+    const [x, y] = coords(pos);
+    const state = check(x, y);
+
+    newWorld[pos] = !!state;
+
+    ctx.fillStyle = state ? 'RGBA(0,0,0,0.667)' : 'RGBA(255,255,255,0.667)';
+    ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+  });
+
+const loop = () =>
+  setTimeout(() => {
+    paint();
+    world = newWorld.slice();
+    window.requestAnimationFrame(loop);
+  }, 100);
+
+window.requestAnimationFrame(loop);
 ```

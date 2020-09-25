@@ -34,6 +34,15 @@
   --color-secondary: 31, 97%, 33%;
   --color-secondary-offset: 31, 97%, 86%;
   --color-tertiary: 269, 97%, 35%;
+
+  --hl-bg: var(--color-text);
+  --hl-text: var(--color-bg-offset);
+  --hl-comment: var(--color-primary-offset);
+  --hl-value: 174, 100%, 58%;
+  --hl-number: 18, 100%, 69%;
+  --hl-function: 268, 74%, 78%;
+  --hl-regex: 350, 95%, 78%;
+  --hl-selector: 95, 89%, 74%;
 }
 
 .theme-dark {
@@ -45,6 +54,15 @@
   --color-secondary: 211, 97%, 72%;
   --color-secondary-offset: 211, 97%, 23%;
   --color-tertiary: 89, 98%, 75%;
+
+  --hl-bg: var(--color-text);
+  --hl-text: var(--color-bg-offset);
+  --hl-comment: var(--color-primary-offset);
+  --hl-value: 214, 100%, 28%;
+  --hl-number: 18, 100%, 39%;
+  --hl-function: 178, 64%, 28%;
+  --hl-regex: 350, 75%, 34%;
+  --hl-selector: 315, 89%, 40%;
 }
 
 .theme-beach {
@@ -56,6 +74,15 @@
   --color-secondary: 69, 100%, 20%;
   --color-secondary-offset: 69, 100%, 80%;
   --color-tertiary: 309, 56%, 30%;
+
+  --hl-bg: var(--color-text);
+  --hl-text: var(--color-bg-offset);
+  --hl-comment: var(--color-primary-offset);
+  --hl-value: 174, 100%, 58%;
+  --hl-number: 48, 100%, 69%;
+  --hl-function: 98, 64%, 68%;
+  --hl-regex: 311, 95%, 78%;
+  --hl-selector: 325, 89%, 74%;
 }
 
 .theme-fire {
@@ -67,6 +94,15 @@
   --color-secondary: 7, 86%, 61%;
   --color-secondary-offset: 7, 86%, 11%;
   --color-tertiary: 44, 94%, 78%;
+
+  --hl-bg: 210, 35%, 98%;
+  --hl-text: var(--color-bg-offset);
+  --hl-comment: var(--color-primary-offset);
+  --hl-value: 214, 100%, 28%;
+  --hl-number: 18, 100%, 39%;
+  --hl-function: 328, 84%, 28%;
+  --hl-regex: 120, 75%, 24%;
+  --hl-selector: 315, 89%, 40%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,6 +115,15 @@
     --color-secondary: 211, 97%, 72%;
     --color-secondary-offset: 211, 97%, 23%;
     --color-tertiary: 89, 98%, 75%;
+
+    --hl-bg: var(--color-text);
+    --hl-text: var(--color-bg-offset);
+    --hl-comment: var(--color-primary-offset);
+    --hl-value: 214, 100%, 28%;
+    --hl-number: 18, 100%, 39%;
+    --hl-function: 178, 64%, 28%;
+    --hl-regex: 350, 75%, 34%;
+    --hl-selector: 315, 89%, 40%;
   }
 }
 
@@ -94,6 +139,8 @@
   --space-xl: 3rem;
 
   --border-radius: 6px;
+
+  --paragraph-width: 640px;
 
   font-family: var(--font-main), var(--font-system);
   font-size: 20px;
@@ -117,6 +164,7 @@ body {
 }
 
 main {
+  position: relative;
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -133,7 +181,7 @@ p {
   font-size: 18.9189px;
   line-height: 26px;
   padding: 0.05px 0;
-  max-width: 640px;
+  max-width: var(--paragraph-width);
   text-align: justify;
 }
 

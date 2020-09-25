@@ -11,6 +11,7 @@ footer {
   margin-top: var(--space-md);
   padding: var(--space-lg) var(--space-sm) var(--space-sm);
   width: var(--width);
+  background-color: inherit;
   font-size: 0.875em;
 }
 
