@@ -6667,9 +6667,9 @@ remark-emoji@^2.1.0:
     node-emoji "^1.10.0"
     unist-util-visit "^2.0.2"
 
-remark-external-links@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/remark-external-links/-/remark-external-links-7.0.0.tgz#f9415a622e2d965c4017c0dde7e659a061bd8b5c"
+remark-external-links@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/remark-external-links/-/remark-external-links-7.0.1.tgz#c71ca81ea4cca48f067a9659645e4e87a94e54d5"
   dependencies:
     extend "^3.0.0"
     is-absolute-url "^3.0.0"
