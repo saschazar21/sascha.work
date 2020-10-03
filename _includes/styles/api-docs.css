@@ -2,6 +2,12 @@
   display: grid;
   grid-template-columns: 1fr;
   row-gap: var(--space-md);
+  width: 100%;
+}
+
+.api-wrapper button {
+  align-self: center;
+  justify-self: center;
 }
 
 .api-wrapper pre {

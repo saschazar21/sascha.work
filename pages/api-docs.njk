@@ -9,13 +9,15 @@ This website contains some full-featured JSON API v1-conform endpoints. Those co
 </p>
 <div class="api-wrapper">
 {% for endpoint in apidocs %}
+  {% set handler = "tap:AMP.setState({ apistate : { " + endpoint.id + ": !" + endpoint.id + " } })" %}
   <section>
     <h2><a href="{{ endpoint.url | absoluteUrl }}" target="_blank">{{ endpoint.url }}</a></h2>
     <p>
       {{ endpoint.description }}
     </p>
   </section>
-  <pre>
+  <button [hidden]="apistate.{{ endpoint.id }}" on="{{ handler }}">Show sample</button>
+  <pre hidden [hidden]="!apistate.{{ endpoint.id }}">
   <code>
   {{ endpoint.code }}
   </code>

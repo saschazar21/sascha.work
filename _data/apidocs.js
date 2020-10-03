@@ -40,7 +40,8 @@ module.exports = [
 }`,
     description:
       'A JSON API v1-conform endpoint, listing experience gained on-the-job and at the university.',
-    url: '/experience.json'
+    url: '/experience.json',
+    id: 'experience'
   },
   {
     code: `
@@ -58,7 +59,8 @@ module.exports = [
   ]
 }`,
     description: 'The JSON Feed v1 representation of this blog.',
-    url: '/feed.json'
+    url: '/feed.json',
+    id: 'feed'
   },
   {
     code: `
@@ -72,7 +74,8 @@ module.exports = [
 }`,
     description:
       'A JSON API v1-conform endpoint, listing static URL mappings of the website (excluding dynamically generated blog post URLs).',
-    url: '/routes.json'
+    url: '/routes.json',
+    id: 'routes'
   },
   {
     code: `
@@ -87,6 +90,7 @@ module.exports = [
 }`,
     description:
       'A JSON API v1-conform endpoint, listing selected social media account information.',
-    url: '/social.json'
+    url: '/social.json',
+    id: 'social'
   }
 ];
