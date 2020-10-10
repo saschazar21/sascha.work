@@ -1,0 +1,51 @@
+---
+layout: default
+page:
+  title: About me
+---
+{% macro experiencelist(kind) %}
+  <ul>
+    {% for item in kind %}
+      <li {% if loop.index0 > 2 %}hidden{% endif %}>
+        <section>
+          <span>{{ item.start.year }}-{% if item.end %}{{ item.end.year}}{% else %}current{% endif %}</span>
+          <h3>{{ item.position or item.programme }}{% if item.graduation %}, {{ item.graduation }}{% endif %}</h3>
+          <span><a href="{{ item.url }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ item.institution }}</a> in {{ item.city }}</span>
+        </section>
+      </li>
+    {% if loop.length > 2 and loop.last %}
+      <li>
+        See all
+      </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+<h1>Hi, I'm Sascha</h1>
+<article>
+<h2>Personal</h2>
+<p>
+I'm a frontend web developer from <a href="https://www.openstreetmap.org/#map=13/47.9181/13.7994" rel="noopener nofollow noindex noreferrer" target="_blank">Upper Austria</a>.
+</p>
+<p>
+I've been playing around the web for more than 10 years now — fortunately I was able to focus on my passion even more during my Bachelor's and Master's. Ever since then, I was working full-time as a frontend web developer for different companies.
+</p>
+<p>
+In my spare time, I enjoy travelling, as well as being out in the surrounding nature with my DSLR.
+</p>
+</article>
+
+{% if experience.data.work %}
+<article>
+<h2>Experience</h2>
+{{ experiencelist(experience.data.work) }}
+</article>
+{% endif %}
+
+{% if experience.data.education %}
+<article>
+<h2>Education</h2>
+{{ experiencelist(experience.data.education) }}
+</article>
+{% endif %}

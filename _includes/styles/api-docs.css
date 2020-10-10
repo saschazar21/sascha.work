@@ -3,6 +3,7 @@
   grid-template-columns: 1fr;
   row-gap: var(--space-md);
   width: 100%;
+  max-width: 1920px;
 }
 
 .api-wrapper button {

@@ -242,6 +242,10 @@ a:visited {
   outline: none;
 }
 
+a:focus {
+  outline: 1px dotted HSL(var(--color-theme), 0.5);
+}
+
 a::before {
   transition: background-color 200ms ease-out, width 200ms ease-out;
   position: absolute;
