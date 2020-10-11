@@ -1,0 +1,15 @@
+---
+layout: default
+page:
+  title: Blog
+tldr: Blog archive of Sascha Zarhuber's personal website. Contents are updated regularly.
+---
+
+<h1>Blog</h1>
+<section>
+{% for post in collections.post %}
+  <article>
+    <h2>{{ post.data.page.title }}</h2>
+  </article>
+{% endfor %}
+</section>

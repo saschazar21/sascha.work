@@ -4,6 +4,8 @@ cover:
   src: https://source.unsplash.com/random/1920x480
   width: 1920
   height: 480
+page:
+  title: Initial blog post
 tags:
   - initial
   - first
