@@ -21,7 +21,7 @@ This website contains some full-featured JSON API v1-conform endpoints. Those co
       {{ endpoint.description }}
     </p>
   </section>
-  <button [hidden]="apistate.{{ endpoint.id }}" on="{{ handler }}">Show sample</button>
+  <button [hidden]="apistate.{{ endpoint.id }}" on="{{ handler }}">Show sample &rarr;</button>
   <pre hidden [hidden]="!apistate.{{ endpoint.id }}">
   <code>
   {{ endpoint.code }}

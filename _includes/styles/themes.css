@@ -37,6 +37,10 @@
   filter: unset;
 }
 
+.theme-selector li:last-child svg {
+  min-width: 32px;
+}
+
 .theme-selector li:focus,
 .theme-selector li:hover {
   box-shadow: inset 0 0 0 5px HSL(var(--color-tertiary));
