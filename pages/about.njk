@@ -3,19 +3,20 @@ layout: default
 page:
   title: About me
 ---
+<style data-helmet>{% include "styles/about.css" %}</style>
 {% macro experiencelist(kind) %}
-  <ul>
+  <ul class="experience-list">
     {% for item in kind %}
-      <li {% if loop.index0 > 2 %}hidden{% endif %}>
+      <li {% if loop.index0 > 2 %}hidden [hidden]="!showExperience"{% endif %}>
         <section>
           <span>{{ item.start.year }}-{% if item.end %}{{ item.end.year}}{% else %}current{% endif %}</span>
-          <h3>{{ item.position or item.programme }}{% if item.graduation %}, {{ item.graduation }}{% endif %}</h3>
+          <h3>{{ item.position or item.programme }}{% if item.graduation %}, <span class="graduation">{{ item.graduation }}</span>{% endif %}</h3>
           <span><a href="{{ item.url }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ item.institution }}</a> in {{ item.city }}</span>
         </section>
       </li>
     {% if loop.length > 2 and loop.last %}
-      <li>
-        See all
+      <li class="see-all" [hidden]="showExperience">
+        <button on="tap:AMP.setState({ showExperience: !showExperience })">See all &rarr;</button>
       </li>
     {% endif %}
     {% endfor %}
@@ -37,14 +38,14 @@ In my spare time, I enjoy travelling, as well as being out in the surrounding na
 </article>
 
 {% if experience.data.work %}
-<article>
+<article class="experience-container">
 <h2>Experience</h2>
 {{ experiencelist(experience.data.work) }}
 </article>
 {% endif %}
 
 {% if experience.data.education %}
-<article>
+<article class="experience-container">
 <h2>Education</h2>
 {{ experiencelist(experience.data.education) }}
 </article>

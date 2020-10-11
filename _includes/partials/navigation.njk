@@ -19,7 +19,7 @@
   <ul class="social-accounts" aria-labelledby="social-media-label">
   {% for account in social.data %}
   {% set svgPath = "/_includes/assets/icons/" + account.provider + ".svg" %}
-    <li class="small-text"><a aria-label="{{ account.username }} on {{ account.provider }}" href="{{ account.profile }}" rel="noindex,nofollow,noopener,noreferrer" target="_blank">{{ svgPath | svgContents | safe }}</a></li>
+    <li class="small-text"><a aria-label="{{ account.username }} on {{ account.provider }}" href="{{ account.profile }}" rel="me noindex nofollow noopener noreferrer" target="_blank">{{ svgPath | svgContents | safe }}</a></li>
   {% endfor %}
   </ul>
   {% endif %}
