@@ -4,15 +4,15 @@
   background-color: HSL(var(--color-secondary-offset));
 }
 
-.experience-list>li {
+.experience-list > li {
   padding: var(--space-md);
 }
 
-.experience-list>li:nth-child(2n) {
+.experience-list > li:nth-child(2n) {
   background-color: HSL(var(--color-secondary), 0.125);
 }
 
-.experience-list>li {
+.experience-list > li {
   margin: 0;
 }
 
@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: HSL(var(--color-bg-offset));
+  background-color: HSL(var(--color-bg));
   min-width: 0;
 }
 
@@ -41,7 +41,7 @@
     overflow-x: auto;
   }
 
-  .experience-list>li {
+  .experience-list > li {
     flex: 1 1 150px;
     min-width: 230px;
   }

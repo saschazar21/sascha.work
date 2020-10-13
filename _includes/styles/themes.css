@@ -30,7 +30,7 @@
 
 .theme-selector li:last-child {
   transition: color 200ms ease-out, background-color 200ms ease-out;
-  flex: 1 0 44px;
+  flex: 0 1 44px;
   padding: var(--button-padding);
   color: inherit;
   background-color: HSL(var(--color-secondary-offset));
