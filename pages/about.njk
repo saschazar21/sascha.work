@@ -4,6 +4,8 @@ page:
   title: About me
 ---
 <style data-helmet>{% include "styles/about.css" %}</style>
+<style data-helmet>{% include "styles/travels.css" %}</style>
+
 {% macro experiencelist(kind) %}
   <ul class="experience-list">
     {% for item in kind %}
@@ -49,3 +51,8 @@ In my spare time, I enjoy travelling, as well as being out in the surrounding na
 {{ experiencelist(experience.data.education) }}
 </article>
 {% endif %}
+
+<article class="world-container" role="presentation">
+<h2>Travels</h2>
+{{ "/_includes/assets/world.svg" | svgContents | safe }}
+</article>
