@@ -18,7 +18,7 @@
 <meta name="twitter:url" content="{{ page.url | absoluteUrl }}">
 <meta name="twitter:title" content="{{ page.title or manifest.name }}">
 <meta name="twitter:description" content="{{ tldr or manifest.description }}">
-<meta name="twitter:image" content="{{ image }}">
+{% if image %}<meta name="twitter:image" content="{{ image }}">{% endif %}
 <meta name="twitter:site" content="{{ twitter.username }}">
 <meta name="twitter:creator" content="{{ twitter.username }}">
 

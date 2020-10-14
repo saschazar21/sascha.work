@@ -8,8 +8,10 @@ tldr: Blog archive of Sascha Zarhuber's personal website. Contents are updated r
 <h1>Blog</h1>
 <section>
 {% for post in collections.post %}
-  <article>
-    <h2>{{ post.data.page.title }}</h2>
-  </article>
+  {% if not post.data.draft %}
+    <article>
+      <h2>{{ post.data.page.title }}</h2>
+    </article>
+  {% endif %}
 {% endfor %}
 </section>

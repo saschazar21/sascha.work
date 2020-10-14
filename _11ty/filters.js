@@ -36,5 +36,7 @@ module.exports = {
     return new Array(gap)
       .fill(0)
       .reduce((prev, curr) => `${curr}${prev}`, stringified);
-  }
+  },
+  rewrite: (path, slug) =>
+    slug || path.replace(/\d{4}-\d{2}-\d{2}_/, '').toLowerCase()
 };

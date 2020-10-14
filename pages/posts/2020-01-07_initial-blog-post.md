@@ -6,6 +6,7 @@ cover:
   height: 480
 page:
   title: Initial blog post
+draft: true
 tags:
   - initial
   - first
