@@ -11,9 +11,9 @@ page:
     {% for item in kind %}
       <li {% if loop.index0 > 2 %}hidden [hidden]="!showExperience"{% endif %}>
         <section>
-          <span>{{ item.start.year }}-{% if item.end %}{{ item.end.year}}{% else %}current{% endif %}</span>
+          <span role="heading" aria-level="4">{{ item.start.year }}-{% if item.end %}{{ item.end.year}}{% else %}current{% endif %}</span>
           <h3>{{ item.position or item.programme }}{% if item.graduation %}, <span class="graduation">{{ item.graduation }}</span>{% endif %}</h3>
-          <span><a href="{{ item.url }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ item.institution }}</a> in {{ item.city }}</span>
+          <span><a href="{{ item.url }}" aria-label="Visit {{ item.institution }}'s website" title="{{ item.institution }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ item.institution }}</a> in {{ item.city }}</span>
         </section>
       </li>
     {% if loop.length > 2 and loop.last %}
@@ -28,7 +28,7 @@ page:
 <article>
 <h1>Hi, I'm Sascha</h1>
 <p>
-I'm a frontend web developer from <a href="https://www.openstreetmap.org/#map=13/47.9181/13.7994" rel="noopener nofollow noindex noreferrer" target="_blank">Upper Austria</a>.
+I'm a frontend web developer from <a href="https://www.openstreetmap.org/#map=13/47.9181/13.7994" aria-label="View position of Upper Austria on OpenStreetMap" title="Upper Austria" rel="noopener nofollow noindex noreferrer" target="_blank">Upper Austria</a>.
 </p>
 <p>
 I've been playing around the web for more than 10 years now — fortunately I was able to focus on my passion even more during my Bachelor's and Master's. Ever since then, I was working full-time as a frontend web developer for different companies.
