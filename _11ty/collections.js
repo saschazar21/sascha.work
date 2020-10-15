@@ -1,4 +1,6 @@
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
   released: collection =>
-    collection.getFilteredByTag('post').filter(p => !p.data.draft)
+    collection.getFilteredByTag('post').filter(p => !isProd || !p.data.draft)
 };
