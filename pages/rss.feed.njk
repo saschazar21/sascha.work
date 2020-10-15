@@ -15,7 +15,7 @@ permalink: feed.xml
     <name>{{ feed.author.name }}</name>
     <uri>{{ feed.author.url }}</uri>
   </author>
-  {%- for post in collections.post %}
+  {%- for post in collections.released %}
   {% set absolutePostUrl %}{{ post.url | absoluteUrl }}{% endset %}
   <entry>
     {% if post.data.tldr %}

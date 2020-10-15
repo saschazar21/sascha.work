@@ -6,12 +6,14 @@ tldr: Blog archive of Sascha Zarhuber's personal website. Contents are updated r
 ---
 
 <h1>Blog</h1>
-<section>
-{% for post in collections.post %}
-  {% if not post.data.draft %}
+{% if collections.released.length %}
+  <section>
+  {% for post in collections.released %}
     <article>
       <h2>{{ post.data.page.title }}</h2>
     </article>
-  {% endif %}
-{% endfor %}
-</section>
+  {% endfor %}
+  </section>
+{% else %}
+  <span>No posts yet, please check back later.</span>
+{% endif %}
