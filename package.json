@@ -9,8 +9,9 @@
     "url": "https://sascha.work"
   },
   "scripts": {
-    "build": "rimraf out && npx eleventy",
-    "build:ci": "yarn build",
+    "dev": "yarn build --watch --serve",
+    "prebuild": "rimraf out",
+    "build": "npx eleventy",
     "lighthouse": "npx lhci autorun",
     "lighthouse:all": "yarn build && npx lhci autorun",
     "lint:css": "stylelint **/*.scss",
@@ -29,6 +30,7 @@
     "eleventy-plugin-helmet": "^0.2.1",
     "eleventy-plugin-json-feed": "^0.0.7",
     "eleventy-plugin-pwa": "^1.0.8",
+    "eleventy-plugin-reading-time": "^0.0.1",
     "eleventy-plugin-svg-contents": "^0.7.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.20.5",

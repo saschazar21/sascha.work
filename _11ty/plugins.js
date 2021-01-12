@@ -2,6 +2,7 @@ const ampPlugin = require('@ampproject/eleventy-plugin-amp');
 const helmetPlugin = require('eleventy-plugin-helmet');
 const jsonFeedPlugin = require('eleventy-plugin-json-feed');
 const pwaPlugin = require('eleventy-plugin-pwa');
+const readingTimePlugin = require('eleventy-plugin-reading-time');
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const svgPlugin = require('eleventy-plugin-svg-contents');
 const syntaxHighlightPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
@@ -19,6 +20,7 @@ module.exports = [
       tags_metadata_field_name: 'tags'
     }
   ],
+  [readingTimePlugin, {}],
   [rssPlugin, {}],
   [svgPlugin, {}],
   [

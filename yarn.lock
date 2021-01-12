@@ -2066,6 +2066,11 @@ eleventy-plugin-pwa@^1.0.8:
     shimmer "^1.2.1"
     workbox-build "^4.3.0"
 
+eleventy-plugin-reading-time@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/eleventy-plugin-reading-time/-/eleventy-plugin-reading-time-0.0.1.tgz#e57c85aa26e9d055b3beca2809c650099ecaa610"
+  integrity sha512-6MRHwrWMYm/u9lJK4/mnyS+6SyQxJSQcTfa1DqQS9fpQRPsZ9mdO9rZ/6DAhZpX2/cXxrbc6qxgcv6Qj90im1g==
+
 eleventy-plugin-svg-contents@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/eleventy-plugin-svg-contents/-/eleventy-plugin-svg-contents-0.7.0.tgz#b2fd3c98eeaa388d89db9aeb96cc193387ee57c8"

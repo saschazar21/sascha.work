@@ -141,9 +141,10 @@
   --border-radius: 6px;
 
   --paragraph-width: 640px;
+  --special-width: 800px;
 
   font-family: var(--font-main), var(--font-system);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 450;
   line-height: 1.65;
 }
@@ -200,6 +201,10 @@ p::after {
 }
 
 @media screen and (min-width: 768px) {
+  :root {
+    font-size: 20px;
+  }
+
   body {
     font-weight: 350;
     font-variation-settings: 'wdth' 110;

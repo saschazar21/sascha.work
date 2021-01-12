@@ -4,7 +4,10 @@ const { URL } = require('url');
 
 const pkg = require('../package.json');
 
-const domain = process.env.DEPLOY_URL || pkg.homepage;
+const domain =
+  process.env.CONTEXT === 'production'
+    ? process.env.URL
+    : process.env.DEPLOY_PRIME_URL || pkg.homepage;
 
 module.exports = {
   absoluteUrl: (path = '') => {

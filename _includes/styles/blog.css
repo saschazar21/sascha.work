@@ -1,0 +1,22 @@
+.blog-preview {
+  width: var(--paragraph-width);
+  max-width: 100%;
+}
+
+.blog-preview + .blog-preview {
+  margin-top: var(--space-md);
+}
+
+.blog-preview a {
+  padding-bottom: calc(var(--space-sm) * 0.333);
+}
+
+.blog-preview h2 {
+  margin: var(--space-sm) 0;
+}
+
+@media (min-width: 768px) {
+  .blog-preview + .blog-preview {
+    margin-top: var(--space-lg);
+  }
+}

@@ -6,7 +6,6 @@ cover:
   height: 480
 page:
   title: Initial blog post
-draft: true
 tags:
   - initial
   - first
@@ -14,6 +13,7 @@ tags:
   - post
   - react
   - mdx
+tldr: This is a random blog post.
 ---
 
 # Initial blog post
@@ -38,7 +38,7 @@ Dignissimos non non nulla eos. Consequuntur enim expedita adipisci inventore asp
 
 ![A random image from Unsplash](https://source.unsplash.com/random/800x600)
 
-```javascript
+```js
 const width = 160;
 const height = 120;
 const cellSize = 5;

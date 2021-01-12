@@ -23,7 +23,7 @@ pre[class*='language-'] {
   display: block;
   width: 100%;
   max-height: 350px;
-  max-width: var(--paragraph-width);
+  max-width: var(--special-width);
   color: HSL(var(--hl-text));
   background: none;
   font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
@@ -34,9 +34,9 @@ pre[class*='language-'] {
   word-break: normal;
   word-wrap: normal;
   line-height: 1.5;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
