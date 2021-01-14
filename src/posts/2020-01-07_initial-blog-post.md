@@ -5,7 +5,7 @@ cover:
   width: 1920
   height: 480
 page:
-  title: Initial blog post
+  title: Initial blog post with a very, very long title
 tags:
   - initial
   - first
