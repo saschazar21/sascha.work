@@ -4,7 +4,7 @@ const plugins = require('./_11ty/plugins');
 const transforms = require('./_11ty/transforms');
 
 module.exports = config => {
-  config.addPassthroughCopy({ '_data/**/*.json': './' });
+  config.addPassthroughCopy({ 'src/_data/**/*.json': './' });
   config.addPassthroughCopy({ public: './' });
 
   plugins.forEach(([plugin, pluginConfig]) =>
@@ -25,9 +25,9 @@ module.exports = config => {
 
   return {
     dir: {
-      input: 'pages',
-      includes: '../_includes',
-      data: '../_data',
+      input: 'src',
+      includes: '_includes',
+      data: '_data',
       output: 'out'
     }
   };

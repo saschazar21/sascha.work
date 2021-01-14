@@ -11,8 +11,8 @@
   </a>
   <div class="header-container">
     <div id="navigation-container"></div>
-    <button aria-label="Select Theme" on="tap:AMP.setState({ open: !open })">{{ '/_includes/assets/icons/brush.svg' | svgContents | safe }}</button>
-    <button aria-label="Open Menu" on="tap:sidebar.open" class="navigation-launcher">{{ '/_includes/assets/icons/menu.svg' | svgContents | safe }}</button>
+    <button aria-label="Select Theme" on="tap:AMP.setState({ open: !open })">{{ '/src/_includes/assets/icons/brush.svg' | svgContents | safe }}</button>
+    <button aria-label="Open Menu" on="tap:sidebar.open" class="navigation-launcher">{{ '/src/_includes/assets/icons/menu.svg' | svgContents | safe }}</button>
   </div>
   {% include "partials/themes.njk" %}
 </header>

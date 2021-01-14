@@ -15,7 +15,7 @@
       <strong role="heading" aria-level="2" id="social-media-label-footer">Social Media</strong>
       <ul class="social-accounts" aria-labelledby="social-media-label-footer">
       {% for account in social.data %}
-      {% set svgPath = "/_includes/assets/icons/" + account.provider + ".svg" %}
+      {% set svgPath = "/src/_includes/assets/icons/" + account.provider + ".svg" %}
         <li class="small-text"><a aria-label="{{ account.username }} on {{ account.provider }}" href="{{ account.profile }}" rel="me noindex nofollow noopener noreferrer" target="_blank">{{ svgPath | svgContents | safe }}</a></li>
       {% endfor %}
       </ul>
@@ -25,10 +25,10 @@
     <strong role="heading" aria-level="2" id="feed-links-label">Feed Links</strong>
     <ul class="feed-list" aria-labelledby="feed-links-label">
       <li>
-        <a aria-label="RSS Feed" href="/feed.xml" rel="noindex,nofollow" target="_blank">{{ '/_includes/assets/icons/rss.svg' | svgContents | safe }}</a>
+        <a aria-label="RSS Feed" href="/feed.xml" rel="noindex,nofollow" target="_blank">{{ '/src/_includes/assets/icons/rss.svg' | svgContents | safe }}</a>
       </li>
       <li>
-        <a aria-label="JSON Feed" href="/feed.json" rel="noindex,nofollow" target="_blank">{{ '/_includes/assets/icons/jsonfeed.svg' | svgContents | safe }}</a>
+        <a aria-label="JSON Feed" href="/feed.json" rel="noindex,nofollow" target="_blank">{{ '/src/_includes/assets/icons/jsonfeed.svg' | svgContents | safe }}</a>
       </li>
     </ul>
   </section>

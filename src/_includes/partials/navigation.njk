@@ -11,14 +11,14 @@
 
 <style data-helmet>{% include "styles/navigation.css" %}</style>
 <amp-sidebar id="sidebar" layout="nodisplay" side="right">
-  <button aria-label="Close Menu" on="tap:sidebar.close">{{ '/_includes/assets/icons/close.svg' | svgContents | safe }}</button>
+  <button aria-label="Close Menu" on="tap:sidebar.close">{{ '/src/_includes/assets/icons/close.svg' | svgContents | safe }}</button>
   <span id="navigation-label">Navigation</span>
   {{ navigation | safe }}
   {% if social.data %}
   <span id="social-media-label">Social Media</span>
   <ul class="social-accounts" aria-labelledby="social-media-label">
   {% for account in social.data %}
-  {% set svgPath = "/_includes/assets/icons/" + account.provider + ".svg" %}
+  {% set svgPath = "/src/_includes/assets/icons/" + account.provider + ".svg" %}
     <li class="small-text"><a aria-label="{{ account.username }} on {{ account.provider }}" href="{{ account.profile }}" rel="me noindex nofollow noopener noreferrer" target="_blank">{{ svgPath | svgContents | safe }}</a></li>
   {% endfor %}
   </ul>

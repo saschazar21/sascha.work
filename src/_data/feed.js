@@ -1,6 +1,6 @@
-const { absoluteUrl } = require('../_11ty/filters');
+const { absoluteUrl } = require('../../_11ty/filters');
 
-const pkg = require('../package.json');
+const pkg = require('../../package.json');
 const manifest = require('./manifest.json');
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
     url: pkg.author.url,
     avatar: absoluteUrl(
       'https://avatars2.githubusercontent.com/u/9016897?s=460'
-    ),
+    )
   },
-  expired: false,
+  expired: false
 };
