@@ -1,4 +1,5 @@
 const collections = require('./_11ty/collections');
+const events = require('./_11ty/events');
 const filters = require('./_11ty/filters');
 const plugins = require('./_11ty/plugins');
 const transforms = require('./_11ty/transforms');
@@ -23,12 +24,16 @@ module.exports = config => {
     config.addTransform(transform, transforms[transform])
   );
 
+  Object.keys(events).forEach(event =>
+    events[event].forEach(handler => config.on(event, handler))
+  );
+
   return {
     dir: {
       input: 'src',
       includes: '_includes',
       data: '_data',
-      output: 'out'
-    }
+      output: 'out',
+    },
   };
 };

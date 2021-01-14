@@ -19,7 +19,7 @@
     "test": "yarn test:ci"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy": "^0.11.1",
     "@11ty/eleventy-plugin-rss": "^1.0.9",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
     "@ampproject/eleventy-plugin-amp": "^0.5.3",
@@ -30,9 +30,11 @@
     "eleventy-plugin-reading-time": "^0.0.1",
     "eleventy-plugin-svg-contents": "^0.7.0",
     "eslint": "^6.8.0",
+    "globby": "^11.0.2",
     "html-minifier-terser": "^5.1.1",
     "nunjucks": "^3.2.2",
     "rimraf": "^3.0.2",
+    "sharp": "^0.27.0",
     "stylelint": "^13.6.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
