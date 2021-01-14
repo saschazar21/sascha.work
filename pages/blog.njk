@@ -1,23 +1,15 @@
 ---
 layout: default
+eleventyExcludeFromCollections: true
 page:
   title: Blog
+pagination:
+  data: collections.public
+  size: 5
+  alias: posts
+  reverse: true
+permalink: "blog{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber + 2 }}{% endif %}/"
 tldr: Blog archive of Sascha Zarhuber's personal website. Contents are updated regularly.
 ---
-<style data-helmet>{% include "styles/blog.css" %}</style>
 
-<h1>Blog</h1>
-{% if collections.public.length %}
-  {% for post in collections.public %}
-    <article class="blog-preview" aria-labelledby="{{ post.data.page.title | slug }}">
-        <code>{{ post.date | format('MMMM D, YYYY') }}</code><br />
-        <small>{{ post | readingTime }} reading time</small>{% if post.data.tags.length %} | <small>{{ post.data.tags.join(', ') }}</small> {% endif %}
-        <h2 id="{{ post.data.page.title | slug }}">
-          <a href="{{ post.url }}" title="View {{ post.data.page.title }} article">{{ post.data.page.title }}</a>
-        </h2>
-        {%if post.data.tldr %}<p>{{ post.data.tldr }}</p>{% endif %}
-    </article>
-  {% endfor %}
-{% else %}
-  <span>No posts yet, please check back later.</span>
-{% endif %}
+{% include "partials/posts.njk" %}

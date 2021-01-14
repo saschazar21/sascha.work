@@ -1,0 +1,29 @@
+{% macro tags(t) %}
+  <small>Tags:</small>
+  <ul>
+    {% for tag in t %}
+      <li><a href="/tags/{{ tag }}" title="View other posts containing tag: {{ tag }}">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+<style data-helmet>{% include "styles/blog.css" %}</style>
+
+<h1>{{ page.title }}</h1>
+{% if posts.length %}
+  {% for post in posts %}
+  <div class="full-bleed">
+    <article class="blog-preview" aria-labelledby="{{ post.data.page.title | slug }}">
+      <strong class="date">{{ post.date | format('MMMM D, YYYY') }}</strong>
+      <small>~ {{ post | readingTime }} reading time</small>
+      <h2 id="{{ post.data.page.title | slug }}">
+        <a href="{{ post.url }}" title="View {{ post.data.page.title }} article">{{ post.data.page.title }}</a>
+      </h2>
+      {% if post.data.tags.length %}{{ tags(post.data.tags) | safe }}{% endif %}
+      {% if post.data.tldr %}<p><strong>TL/DR:</strong> {{ post.data.tldr }}</p>{% endif %}
+    </article>
+  </div>
+  {% endfor %}
+{% else %}
+  <span>No posts yet, please check back later.</span>
+{% endif %}
