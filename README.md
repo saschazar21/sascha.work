@@ -1,12 +1,15 @@
 <div align="center">
+  <img alt="The icon of the website, showing a graphical version of myself" src="public/img/rounded-192.png" />
+  <br />
   <h1><a href="https://sascha.work" hreflang="en" target="_blank">https://sascha.work</a></h1>
   <strong>The git repository of my personal website. 🌐</strong>
+  <br />
   <br />
   <br />
 </div>
 
 <div align="center">
-  <img alt="The cover image used for social media cards" src="public/card.png" width="640px" />
+  <img alt="The cover image used for social media cards" src="public/img/card.png" width="640px" />
   <br />
   <br />
 </div>
