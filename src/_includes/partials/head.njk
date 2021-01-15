@@ -1,15 +1,18 @@
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% if page.title %}{{ page.title }} | {% endif %}{{ manifest.name }}</title>
-<link rel="canonical" href="{{ page.url | absoluteUrl }}" />
-<meta name="author" content="{{ pkg.author.name }}" />
-<meta name="description" content="{{ tldr or manifest.description }}" />
-{% if tags or keywords %}
-  <meta name="keywords" content="{{ tags or keywords | join(' ') }}" />
-{% endif %}
-{% include "partials/seo.njk" %}
-<style>{% include "styles/main.css" %}</style>
-<link rel="preload" href="/Oxygen-Light.woff2" as="font" />
-<link rel="preload" href="/Oxygen-Bold.woff2" as="font" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ manifest.name }}</title>
+  <link rel="canonical" href="{{ page.url | absoluteUrl }}" />
+  <meta name="author" content="{{ pkg.author.name }}" />
+  <meta name="description" content="{{ tldr or manifest.description }}" />
+  <link rel="icon" type="image/png" href="/img/favicon-32.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-192.png">
+  {% if tags or keywords %}
+    <meta name="keywords" content="{{ tags or keywords | join(' ') }}" />
+  {% endif %}
+  {% include "partials/seo.njk" %}
+  <style>{% include "styles/main.css" %}</style>
+  <link rel="preload" href="/Oxygen-Light.woff2" as="font" />
+  <link rel="preload" href="/Oxygen-Bold.woff2" as="font" />
 </head>

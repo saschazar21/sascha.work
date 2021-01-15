@@ -14,9 +14,7 @@
     "build": "npx eleventy",
     "lint:css": "stylelint **/*.scss",
     "lint:ts": "eslint --ext .js _data/ _assets/",
-    "lint": "yarn lint:css && yarn lint:ts",
-    "test:ci": "yarn --version",
-    "test": "yarn test:ci"
+    "lint": "yarn lint:css && yarn lint:ts"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
