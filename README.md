@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="The icon of the website, showing a graphical version of myself" src="public/img/rounded-192.png" />
+  <img alt="The icon of the website, showing a graphical version of myself" src="public/img/rounded-512.png" width="192px" />
   <br />
   <h1><a href="https://sascha.work" hreflang="en" target="_blank">https://sascha.work</a></h1>
   <strong>The git repository of my personal website. 🌐</strong>
