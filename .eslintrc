@@ -1,4 +1,8 @@
 {
   "root": true,
-  "extends": ["eslint:recommended"]
+  "extends": ["airbnb-base"],
+  "ignorePatterns": ["node_modules/", "out/"],
+  "rules": {
+    "arrow-parens": ["error", "as-needed"]
+  }
 }

@@ -10,7 +10,6 @@ header {
   justify-content: space-between;
   align-items: center;
   border-bottom: var(--border-width) solid HSL(var(--color-tertiary));
-  background-color: HSL(var(--color-bg-offset));
   background: linear-gradient(
       -45deg,
       HSL(var(--color-bg-offset)) 61.8%,
@@ -21,6 +20,7 @@ header {
       transparent 15.05%,
       HSL(var(--color-text), 0.15) 38.2%
     );
+  background-color: HSL(var(--color-bg-offset));
   padding: var(--padding) var(--container-space);
   width: 100%;
   overflow: hidden;

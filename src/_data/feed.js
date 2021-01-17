@@ -14,8 +14,8 @@ module.exports = {
     name: pkg.author.name,
     url: pkg.author.url,
     avatar: absoluteUrl(
-      'https://avatars2.githubusercontent.com/u/9016897?s=460'
-    )
+      'https://avatars2.githubusercontent.com/u/9016897?s=460',
+    ),
   },
-  expired: false
+  expired: false,
 };

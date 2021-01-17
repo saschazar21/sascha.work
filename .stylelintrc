@@ -1,9 +1,17 @@
 {
-  "processors": [
-    "stylelint-processor-styled-components"
-  ],
   "extends": [
-    "stylelint-config-recommended",
-    "stylelint-config-styled-components"
-  ]
+    "stylelint-config-recommended"
+  ],
+  "rules": {
+    "declaration-no-important": true,
+    "keyframe-declaration-no-important": true,
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "/^amp-/"
+        ]
+      }
+    ]
+  }
 }

@@ -37,6 +37,13 @@
   filter: unset;
 }
 
+.theme-selector svg {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  max-height: var(--height);
+}
+
 .theme-selector li:last-child svg {
   min-width: 32px;
 }
@@ -45,6 +52,10 @@
 .theme-selector li:hover {
   box-shadow: inset 0 0 0 5px HSL(var(--color-tertiary));
   outline: none;
+}
+
+.theme-selector li:hover {
+  cursor: pointer;
 }
 
 .theme-selector li:last-child:focus,
@@ -70,17 +81,6 @@
 .theme:focus::after,
 .theme:hover::after {
   transform: translateX(-50%) translateY(0);
-}
-
-.theme-selector li:hover {
-  cursor: pointer;
-}
-
-.theme-selector svg {
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  max-height: var(--height);
 }
 
 .theme rect,

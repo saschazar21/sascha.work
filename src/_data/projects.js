@@ -7,19 +7,15 @@ const featured = [
 ];
 
 const fetchRepo = async repo => {
+  const authorization = process.env.GITHUB_TOKEN && {
+    authorization: `token ${process.env.GITHUB_TOKEN}`,
+  };
   const res = await fetch(`https://api.github.com/repos/${repo}`, {
     method: 'GET',
-    headers: Object.assign(
-      {},
-      {
-        accept: 'application/vnd.github.v3+json',
-      },
-      process.env.GITHUB_TOKEN
-        ? {
-            authorization: `token ${process.env.GITHUB_TOKEN}`,
-          }
-        : null
-    ),
+    headers: {
+      accept: 'application/vnd.github.v3+json',
+      ...(authorization || {}),
+    },
   });
 
   return res.json();
