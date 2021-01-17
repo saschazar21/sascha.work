@@ -34,11 +34,13 @@
     "html-minifier-terser": "^5.1.1",
     "nunjucks": "^3.2.2",
     "rimraf": "^3.0.2",
-    "sharp": "^0.26.0",
     "stylelint": "^13.8.0",
     "stylelint-config-recommended": "^3.0.0"
   },
   "dependencies": {
     "node-fetch": "^2.6.1"
+  },
+  "resolutions": {
+    "sharp": "^0.27.0"
   }
 }
