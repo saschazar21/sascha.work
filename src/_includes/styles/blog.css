@@ -1,5 +1,4 @@
 .full-bleed {
-  padding: 0 var(--space-sm);
   margin-bottom: unset;
 }
 
@@ -13,7 +12,7 @@
 }
 
 .blog-preview {
-  padding: calc(var(--space-md) * 2) 0;
+  padding: calc(var(--space-md) * 2) var(--padding, 0);
   width: var(--paragraph-width);
   max-width: 100%;
 }
@@ -63,9 +62,5 @@
 @media (min-width: 768px) {
   .full-bleed {
     padding: unset;
-  }
-
-  .blog-preview {
-    margin: 0 auto;
   }
 }

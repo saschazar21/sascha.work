@@ -24,4 +24,8 @@
     column-gap: var(--space-sm);
     row-gap: 0;
   }
+
+  .api-wrapper pre {
+    grid-column: 1 / -1;
+  }
 }

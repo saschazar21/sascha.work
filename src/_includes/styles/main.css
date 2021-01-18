@@ -135,10 +135,13 @@
   --space-lg: 2.25rem;
   --space-xl: 3rem;
 
+  --margin: var(--space-lg);
+  --padding: var(--space-sm);
+
   --border-radius: 6px;
 
-  --paragraph-width: 640px;
-  --special-width: 800px;
+  --paragraph-width: 768px;
+  --special-width: 860px;
 
   font-family: var(--font-main), var(--font-system);
   font-size: 16px;
@@ -163,11 +166,11 @@ body {
 
 main {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  place-items: center;
   flex: 1 1 auto;
+  margin: 0 auto;
   padding: 0 var(--space-sm) var(--space-sm);
+  width: 100%;
+  max-width: var(--paragraph-width);
 }
 
 body * {
@@ -175,11 +178,10 @@ body * {
 }
 
 p {
-  margin-bottom: var(--space-sm);
   font-size: 18.9189px;
   line-height: 26px;
+  margin-bottom: var(--space-sm);
   padding: 0.05px 0;
-  max-width: var(--paragraph-width);
   text-align: justify;
 }
 
@@ -199,11 +201,18 @@ p::after {
 
 @media screen and (min-width: 768px) {
   :root {
+    --padding: var(--space-md);
+    --margin: var(--space-xl);
+
     font-size: 20px;
   }
 
+  main {
+    padding: 0 var(--padding);
+  }
+
   p {
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--margin);
     font-size: 21.4286px;
     line-height: 27px;
     padding: 0.05px 0;
@@ -364,9 +373,15 @@ svg {
 }
 
 .full-bleed {
-  display: block;
+  position: relative;
+  right: 50%;
+  left: 50%;
   width: 100vw;
-  margin: 0 0 var(--space-lg);
+  margin: 0 -50vw var(--margin) -50vw;
+}
+
+.full-bleed > * {
+  margin: 0 auto;
 }
 
 .social-accounts {

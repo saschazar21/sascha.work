@@ -7,22 +7,24 @@ page:
 <style data-helmet>{% include "styles/travels.css" %}</style>
 
 {% macro experiencelist(kind) %}
-  <ul class="experience-list">
-    {% for item in kind %}
-      <li {% if loop.index0 > 2 %}hidden [hidden]="!showExperience"{% endif %}>
-        <section>
-          <span role="heading" aria-level="4">{{ item.start.year }}-{% if item.end %}{{ item.end.year}}{% else %}current{% endif %}</span>
-          <h3>{{ item.position or item.programme }}{% if item.graduation %}, <span class="graduation">{{ item.graduation }}</span>{% endif %}</h3>
-          <span><a href="{{ item.url }}" aria-label="Visit {{ item.institution }}'s website" title="{{ item.institution }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ item.institution }}</a> in {{ item.city }}</span>
-        </section>
-      </li>
-    {% if loop.length > 2 and loop.last %}
-      <li class="see-all" [hidden]="showExperience">
-        <button on="tap:AMP.setState({ showExperience: !showExperience })">See all &rarr;</button>
-      </li>
-    {% endif %}
-    {% endfor %}
-  </ul>
+  <div class="full-bleed">
+    <ul class="experience-list">
+      {% for item in kind %}
+        <li {% if loop.index0 > 2 %}hidden [hidden]="!showExperience"{% endif %}>
+          <section>
+            <span role="heading" aria-level="4">{{ item.start.year }}-{% if item.end %}{{ item.end.year}}{% else %}current{% endif %}</span>
+            <h3>{{ item.position or item.programme }}{% if item.graduation %}, <span class="graduation">{{ item.graduation }}</span>{% endif %}</h3>
+            <span><a href="{{ item.url }}" aria-label="Visit {{ item.institution }}'s website" title="{{ item.institution }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ item.institution }}</a> in {{ item.city }}</span>
+          </section>
+        </li>
+      {% if loop.length > 2 and loop.last %}
+        <li class="see-all" [hidden]="showExperience">
+          <button on="tap:AMP.setState({ showExperience: !showExperience })">See all &rarr;</button>
+        </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
 {% endmacro %}
 
 <article>
@@ -39,17 +41,17 @@ In my spare time, I enjoy travelling, as well as being out in the surrounding na
 </article>
 
 {% if experience.data.work %}
-<article class="experience-container">
+<section class="experience-container">
 <h2>Experience</h2>
 {{ experiencelist(experience.data.work) }}
-</article>
+</section>
 {% endif %}
 
 {% if experience.data.education %}
-<article class="experience-container">
+<section class="experience-container">
 <h2>Education</h2>
 {{ experiencelist(experience.data.education) }}
-</article>
+</section>
 {% endif %}
 
 <article class="world-container" role="presentation">

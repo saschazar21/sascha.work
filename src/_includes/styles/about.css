@@ -1,12 +1,12 @@
 .experience-list {
   flex-direction: column;
-  margin: 0 calc(var(--space-lg) * -1);
   background-color: HSL(var(--color-secondary-offset));
 }
 
 .experience-list > li {
-  padding: var(--space-md);
+  padding: var(--padding);
   margin: 0;
+  max-width: 480px;
 }
 
 .experience-list > li:nth-child(2n) {
@@ -34,7 +34,6 @@
   .experience-list {
     flex-direction: row;
     flex-wrap: nowrap;
-    margin: 0 calc(var(--space-md) * -1);
     overflow-x: auto;
   }
 

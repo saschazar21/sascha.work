@@ -9,7 +9,7 @@ footer {
   row-gap: var(--gap-width);
   align-self: center;
   margin-top: var(--space-md);
-  padding: var(--space-lg) var(--space-sm) var(--space-sm);
+  padding: var(--space-lg) var(--padding) var(--padding);
   width: var(--width);
   background-color: inherit;
 }
@@ -73,7 +73,7 @@ footer .social-accounts {
     --gap-width: var(--space-lg);
 
     grid-template-columns: repeat(3, auto);
-    padding: var(--space-lg);
+    padding: var(--padding);
     font-size: 0.875em;
   }
 

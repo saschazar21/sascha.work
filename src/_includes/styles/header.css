@@ -38,8 +38,6 @@ header::before {
 }
 
 header + main {
-  --margin: var(--space-lg);
-
   margin-top: var(--margin);
 }
 
@@ -111,10 +109,6 @@ header button + button {
     --border-width: 8px;
 
     justify-content: space-around;
-  }
-
-  header + main {
-    --margin: var(--space-xl);
   }
 
   .header-container {
