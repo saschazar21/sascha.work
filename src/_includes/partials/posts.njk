@@ -2,7 +2,9 @@
   <small>Tags:</small>
   <ul>
     {% for tag in t %}
-      <li><a href="/tags/{{ tag }}" title="View other posts containing tag: {{ tag }}">{{ tag }}</a></li>
+      {% if tag != "post" %}
+        <li><a href="/tags/{{ tag }}" title="View other posts containing tag: {{ tag }}">{{ tag }}</a></li>
+      {% endif %}
     {% endfor %}
   </ul>
 {% endmacro %}

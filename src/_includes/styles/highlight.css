@@ -25,8 +25,7 @@ pre[class*='language-'] {
   max-width: var(--special-width);
   color: HSL(var(--hl-text));
   background: none;
-  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
-    monospace;
+  font-family: 'Fira Code', var(--font-monospace);
   text-align: left;
   white-space: pre;
   word-spacing: normal;

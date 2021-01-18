@@ -6,7 +6,6 @@
 .experience-list > li {
   padding: var(--padding);
   margin: 0;
-  max-width: 480px;
 }
 
 .experience-list > li:nth-child(2n) {
@@ -40,5 +39,6 @@
   .experience-list > li {
     flex: 1 1 150px;
     min-width: 230px;
+    max-width: 480px;
   }
 }

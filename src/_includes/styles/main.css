@@ -129,6 +129,7 @@
   --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
+  --font-monospace: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 
   --space-sm: 1.25rem;
   --space-md: 1.75rem;

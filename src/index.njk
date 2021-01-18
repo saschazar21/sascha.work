@@ -13,3 +13,10 @@ layout: default
     Besides that, I'd like to play around with everything tech-related, get my hands on the nearest available DSLRs and travel different parts of the world. Want to know more? Visit my <a href="/about">About page</a> for more information.
   </p>
 </article>
+
+{% if projects.length %}
+  <aside>
+  <h2>Featured Projects</h2>
+  {% include "partials/featured.njk" %}
+  </aside>
+{% endif %}
