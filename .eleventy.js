@@ -9,23 +9,23 @@ module.exports = config => {
   config.addPassthroughCopy({ public: './' });
 
   plugins.forEach(([plugin, pluginConfig]) =>
-    config.addPlugin(plugin, pluginConfig)
+    config.addPlugin(plugin, pluginConfig),
   );
 
   Object.keys(collections).forEach(collection =>
-    config.addCollection(collection, collections[collection])
+    config.addCollection(collection, collections[collection]),
   );
 
   Object.keys(filters).forEach(filter =>
-    config.addFilter(filter, filters[filter])
+    config.addFilter(filter, filters[filter]),
   );
 
   Object.keys(transforms).forEach(transform =>
-    config.addTransform(transform, transforms[transform])
+    config.addTransform(transform, transforms[transform]),
   );
 
   Object.keys(events).forEach(event =>
-    events[event].forEach(handler => config.on(event, handler))
+    events[event].forEach(handler => config.on(event, handler)),
   );
 
   return {
