@@ -316,24 +316,37 @@ h5 {
   font-size: 1.125em;
 }
 
+abbr {
+  display: inline-block;
+  border-bottom: 1px dashed HSL(var(--color-text));
+  padding-bottom: 1px;
+  margin-right: 0.5em;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+abbr:hover {
+  cursor: help;
+}
+
 code,
 small,
 .small-text {
   font-size: 0.875em;
 }
 
-ul {
+ul.horizontal {
   display: flex;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li:not(:first-child) {
+.horizontal li:not(:first-child) {
   margin-left: var(--container-space, 1rem);
 }
 
-li[data-index]::before {
+.horizontal li[data-index]::before {
   content: attr(data-index);
   margin-right: 0.25rem;
   color: HSL(var(--color-text), 0.667);
@@ -385,7 +398,7 @@ svg {
   margin: 0 auto;
 }
 
-.social-accounts {
+.social-accounts.social-accounts {
   --size: 32px;
 
   display: grid;

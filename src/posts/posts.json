@@ -1,5 +1,5 @@
 {
-  "layout": "default.njk",
+  "layout": "post.njk",
   "eleventyComputed": {
     "image": "https://sascha.work/assets{{ page.url }}teaser-card.jpg"
   },

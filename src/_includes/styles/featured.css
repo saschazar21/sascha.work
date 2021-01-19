@@ -1,8 +1,11 @@
+.featured {
+  background-color: HSL(var(--color-primary-offset), 0.666);
+}
+
 .featured-container {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  background-color: HSL(var(--color-primary-offset), 0.666);
   overflow-x: auto;
 }
 
@@ -50,5 +53,12 @@
   .featured-container article {
     min-width: 230px;
     max-width: 320px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .featured-container {
+    margin: 0 auto;
+    max-width: 1200px;
   }
 }

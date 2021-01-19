@@ -26,6 +26,19 @@ Illo eligendi earum enim. Tenetur itaque itaque in ipsa odio. Vitae cum et quia.
 
 Sed excepturi aperiam quas rerum quas vel. Amet culpa officia accusantium quia voluptatibus provident eum. Quaerat ut dolores rerum deserunt. Qui minus non saepe molestiae fuga. Esse maxime ex itaque.
 
+<amp-twitter width="375" height="472" layout="responsive" data-tweetid="638793490521001985">
+  <blockquote placeholder>
+    <p>
+      I only needed to change some CSS.
+      <a href="http://t.co/LvjLbjgY9F">pic.twitter.com/LvjLbjgY9F</a>
+    </p>
+    &mdash; Malte Ubl (@cramforce)
+    <a href="https://twitter.com/cramforce/status/638793490521001985"
+      >September 1, 2015</a
+    >
+  </blockquote>
+</amp-twitter>
+
 <section class="full-bleed">
 <amp-img alt="A random image from unsplash" src="https://source.unsplash.com/random/1920x600" height="600" width="1920" layout="responsive" />
 </section>
@@ -78,7 +91,7 @@ const check = (x, y) => {
     world[position(x + 1, y)],
     world[position(x - 1, y + 1)],
     world[position(x, y + 1)],
-    world[position(x + 1, y + 1)]
+    world[position(x + 1, y + 1)],
   ];
 
   const aliveNeighbors = neighbors.reduceRight((count, neighbor) => {

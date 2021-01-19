@@ -96,7 +96,7 @@ footer .social-accounts {
   }
 
   footer .feed-list,
-  footer .social-accounts {
+  footer .social-accounts.social-accounts {
     --size: 24px;
   }
 }

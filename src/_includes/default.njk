@@ -1,15 +1,8 @@
 ---
 layout: base.njk
 ---
-<link rel="preload" href="/FiraCode-Regular.woff2" as="font" data-helmet />
-<style data-helmet>{% include "styles/highlight.css" %}</style>
+
 <main>
-{% if cover %}
-<style data-helmet>{% include "styles/cover.css" %}</style>
-<section class="full-bleed cover-container">
-<amp-img alt="{{ cover.alt }}" src="{{ cover.src | absoluteUrl }}" width="{{ cover.width }}" height="{{ cover.height }}" layout="responsive" />
-</section>
-{% endif %}
 {{ content | safe }}
 </main>
 {% include "partials/sw.njk" %}

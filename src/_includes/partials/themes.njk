@@ -1,7 +1,7 @@
 {% if themes.length %}
 <style data-helmet>{% include "styles/themes.css" %}</style>
-<aside class="theme-selector" [hidden]="!open" hidden>
-  <ul aria-label="Theme Selector">
+<aside id="theme-selector" [hidden]="!open" hidden>
+  <ul class="horizontal" aria-label="Theme Selector">
   {% for theme in themes %}
     {% set handler = "tap:AMP.setState({ open: !open, theme: '" + theme + "' })" %}
     <li class="theme theme-{{ theme }}" aria-label="Select {{ theme }} theme" tabindex="0" role="button" on="{{ handler }}">

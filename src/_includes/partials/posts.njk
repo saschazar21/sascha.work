@@ -1,6 +1,6 @@
 {% macro tags(t) %}
   <small>Tags:</small>
-  <ul>
+  <ul class="horizontal">
     {% for tag in t %}
       {% if tag != "post" %}
         <li><a href="/tags/{{ tag }}" title="View other posts containing tag: {{ tag }}">{{ tag }}</a></li>

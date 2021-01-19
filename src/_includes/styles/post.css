@@ -1,0 +1,13 @@
+p:first-of-type {
+  font-size: 1.333em;
+  line-height: 1.4em;
+  text-align: left;
+}
+
+.tldr {
+  display: block;
+  border-radius: var(--border-radius);
+  margin: calc(var(--space-sm) * -1) calc(var(--space-sm) * -1) var(--space-md);
+  padding: var(--space-sm);
+  background-color: HSL(var(--color-secondary-offset), 0.5);
+}

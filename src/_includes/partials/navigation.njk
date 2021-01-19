@@ -1,6 +1,6 @@
 {% set navigation %}
 <nav aria-labelledby="navigation-label" toolbar="(min-width: 768px)" toolbar-target="navigation-container">
-  <ul>
+  <ul class="horizontal">
     {% for route in routes.data.routes %}
     {% set padLength = loop.length.toString().length + 1 %}
       <li class="small-text" data-index="{{ loop.index | padZero(padLength) }}"><a href="{{ route.path }}">{{ route.name }}</a></li>
@@ -16,7 +16,7 @@
   {{ navigation | safe }}
   {% if social.data %}
   <span id="social-media-label">Social Media</span>
-  <ul class="social-accounts" aria-labelledby="social-media-label">
+  <ul class="horizontal social-accounts" aria-labelledby="social-media-label">
   {% for account in social.data %}
   {% set svgPath = "/src/_includes/assets/icons/" + account.provider + ".svg" %}
     <li class="small-text"><a aria-label="{{ account.username }} on {{ account.provider }}" href="{{ account.profile }}" rel="me noindex nofollow noopener noreferrer" target="_blank">{{ svgPath | svgContents | safe }}</a></li>
