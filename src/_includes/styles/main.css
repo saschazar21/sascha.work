@@ -178,6 +178,10 @@ body * {
   box-sizing: inherit;
 }
 
+address {
+  font-style: unset;
+}
+
 p {
   font-size: 18.9189px;
   line-height: 26px;
@@ -327,6 +331,28 @@ abbr {
 
 abbr:hover {
   cursor: help;
+}
+
+em {
+  display: inline-block;
+  position: relative;
+  padding: 0 4px;
+}
+
+em::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0.5em;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    HSL(var(--color-secondary), 0.25),
+    HSL(var(--color-secondary), 0.5)
+  );
+  transform: skew(-20deg);
+  z-index: -1;
 }
 
 code,

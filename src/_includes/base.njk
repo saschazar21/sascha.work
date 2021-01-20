@@ -2,11 +2,11 @@
 <html lang="en" [class]="theme ? 'theme-' + theme : ''">
   {% include "partials/head.njk" %}
   <body>
+    {% if not env.production or draft %}<meta name="robots" content="noindex nofollow" data-helmet="robots" />{% endif %}
     {% if not skipHeader %}
       {% include "partials/header.njk" %}
     {% endif %}
     {{ content | safe }}
-    {% if not env.production or draft %}<meta name="robots" content="noindex,nofollow" data-helmet="robots" />{% endif %}
     {% include "partials/footer.njk" %}
   </body>
 </html>

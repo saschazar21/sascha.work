@@ -1,3 +1,3 @@
 module.exports = {
-  production: process.env.NODE_ENV === 'production',
+  production: process.env.CONTEXT === 'production',
 };

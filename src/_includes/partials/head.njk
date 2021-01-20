@@ -5,10 +5,12 @@
   <link rel="canonical" href="{{ page.url | absoluteUrl }}" />
   <meta name="author" content="{{ pkg.author.name }}" />
   <meta name="description" content="{{ tldr or manifest.description }}" />
-  <meta name="generator" content="Eleventy {{ package.devDependencies['@11ty/eleventy'] | replace('^', '') }}" />
-  <link rel="icon" type="image/png" href="/img/favicon-32.png" />
-  <link rel="icon" href="/favicon.ico" />
+  <meta name="generator" content="Eleventy {{ pkg.devDependencies['@11ty/eleventy'] | replace('^', '') }}" />
+  <link rel="icon" type="image/png" href="/img/favicon-32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/img/favicon-16.png" sizes="16x16" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="apple-touch-icon" href="/img/apple-touch-192.png">
+  <link rel="alternate" type="application/atom+xml" title="{{ manifest.name }}" href="{{ '/feed.xml' | absoluteUrl }}" />
   {% if tags or keywords %}
     <meta name="keywords" content="{{ tags or keywords | join(' ') }}" />
   {% endif %}
