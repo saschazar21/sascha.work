@@ -2,6 +2,8 @@
 layout: default.njk
 ---
 
+{% if not env.production or (env.production and not public) %}<meta name="robots" value="noindex nofollow" data-helmet="robots" />{% endif %}
+
 <link rel="preload" href="/FiraCode-Regular.woff2" as="font" data-helmet />
 <style data-helmet>{% include "styles/highlight.css" %}</style>
 <style data-helmet>{% include "styles/post.css" %}</style>

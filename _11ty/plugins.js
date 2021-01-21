@@ -15,8 +15,8 @@ module.exports = [
       content_html: true,
       image_metadata_field_name: 'image',
       summary_metadata_field_name: 'tldr',
-      tags_metadata_field_name: 'tags'
-    }
+      tags_metadata_field_name: 'tags',
+    },
   ],
   [readingTimePlugin, {}],
   [rssPlugin, {}],
@@ -24,21 +24,21 @@ module.exports = [
   [
     syntaxHighlightPlugin,
     {
-      templateFormats: ['njk', 'md']
-    }
+      templateFormats: ['njk', 'md'],
+    },
   ],
   [helmetPlugin, {}],
   [
     ampPlugin,
     {
       filter: /^out\/(?!sw\.html)/,
-      pathPrefix: '/'
-    }
+      pathPrefix: '/',
+    },
   ],
   [
     pwaPlugin,
     {
-      swDest: 'out/sw.js'
-    }
-  ]
+      swDest: 'out/sw.js',
+    },
+  ],
 ];

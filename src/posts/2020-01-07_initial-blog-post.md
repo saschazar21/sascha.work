@@ -26,7 +26,7 @@ Illo eligendi earum enim. Tenetur itaque itaque in ipsa odio. Vitae cum et quia.
 
 Sed excepturi aperiam quas rerum quas vel. Amet culpa officia accusantium quia voluptatibus provident eum. Quaerat ut dolores rerum deserunt. Qui minus non saepe molestiae fuga. Esse maxime ex itaque.
 
-<amp-twitter width="375" height="472" layout="responsive" data-tweetid="638793490521001985">
+<amp-twitter width="640" height="270" layout="responsive" data-tweetid="638793490521001985">
   <blockquote placeholder>
     <p>
       I only needed to change some CSS.

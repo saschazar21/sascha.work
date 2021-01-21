@@ -182,6 +182,31 @@ address {
   font-style: unset;
 }
 
+blockquote {
+  --border-width: 4px;
+
+  position: relative;
+  border-left: var(--border-width) solid HSL(var(--color-primary));
+  margin: var(--space-md) var(--space-sm);
+  padding: var(--space-sm);
+  background-color: HSL(var(--color-primary-offset), 0.333);
+}
+
+blockquote::before {
+  content: '';
+  position: absolute;
+  border-radius: 9999px;
+  border: var(--border-width) solid HSL(var(--color-primary));
+  height: 2em;
+  width: 2em;
+  max-height: 2em;
+  max-width: 2em;
+  top: calc(var(--border-width) * -0.5);
+  left: calc(var(--border-width) * -0.5);
+  background-color: HSL(var(--color-bg));
+  transform: translateX(-50%) translateY(-50%);
+}
+
 p {
   font-size: 18.9189px;
   line-height: 26px;
@@ -359,6 +384,10 @@ code,
 small,
 .small-text {
   font-size: 0.875em;
+}
+
+strong {
+  font-weight: bold;
 }
 
 ul.horizontal {

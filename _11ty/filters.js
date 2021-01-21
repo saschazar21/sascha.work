@@ -26,7 +26,7 @@ module.exports = {
     const hash = createHash('md5').update(email).digest('hex');
     const url = new URL(
       `/avatar/${hash}?s=${size}`,
-      'https://www.gravatar.com'
+      'https://www.gravatar.com',
     );
     return url.toString();
   },
@@ -58,5 +58,5 @@ module.exports = {
       }
       return [...lines.slice(0, -1), `${prev} ${current}`];
     }, []);
-  }
+  },
 };
