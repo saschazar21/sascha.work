@@ -10,5 +10,7 @@ const htmlminOptions = {
 
 module.exports = {
   htmlmin: (content, outputPath) =>
-    outputPath.endsWith('.html') ? htmlmin(content, htmlminOptions) : content,
+    outputPath && outputPath.endsWith('.html')
+      ? htmlmin(content, htmlminOptions)
+      : content,
 };

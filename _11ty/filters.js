@@ -14,7 +14,7 @@ module.exports = {
     if (/^https?:\/\//i.test(path)) {
       return path;
     }
-    const absolutePath = path.startsWith('/') ? path : `/${path}`;
+    const absolutePath = path && path.startsWith('/') ? path : `/${path}`;
     return `${domain}${absolutePath}`;
   },
   format: (date, format) => day(date).format(format),

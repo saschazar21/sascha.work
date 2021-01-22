@@ -16,8 +16,4 @@ tldr: Blog archive of Sascha Zarhuber's personal website. Contents are updated r
 <meta name="robots" content="noindex nofollow" data-helmet="robots" />
 {% endif %}
 
-{% if pagination.items.length > 0 %}
-  {% include "partials/posts.njk" %}
-{% elif %}
-  <p>Sorry, no posts yet. Please check back later...</p>
-{% endif %}
+{% include "partials/posts.njk" %}
