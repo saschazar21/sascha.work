@@ -42,7 +42,7 @@ module.exports = {
   },
   rewrite: (path, slug) =>
     slug || path.replace(/\d{4}-\d{2}-\d{2}_/, '').toLowerCase(),
-  svgline: path => {
+  svgline: (path) => {
     const MAX_LENGTH = 17;
     if (path.length <= MAX_LENGTH) {
       return [path];

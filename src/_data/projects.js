@@ -6,7 +6,7 @@ const featured = [
   'saschazar21/webassembly',
 ];
 
-const fetchRepo = async repo => {
+const fetchRepo = async (repo) => {
   const authorization = process.env.GITHUB_TOKEN && {
     authorization: `token ${process.env.GITHUB_TOKEN}`,
   };

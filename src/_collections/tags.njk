@@ -12,6 +12,8 @@ eleventyComputed:
 permalink: "tags/{{ tag[0] | slug }}/"
 ---
 
+<meta name="robots" content="noindex nofollow" data-helmet="robots" />
+
 {% set posts = tag[1] %}
 
 {% include "partials/posts.njk" %}

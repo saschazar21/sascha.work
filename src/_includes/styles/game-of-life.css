@@ -6,11 +6,12 @@
 .gol.gol {
   position: absolute;
   top: calc(var(--margin) * -1);
-  right: 0;
+  right: 50%;
   bottom: 0;
-  left: 0;
+  left: 50%;
   opacity: 0.05;
   z-index: -1;
+  transform: translateX(-50vw);
 }
 
 .theme-dark .gol-canvas,

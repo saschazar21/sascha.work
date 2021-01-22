@@ -3,7 +3,7 @@
   <ul class="horizontal">
     {% for route in routes.data.routes %}
     {% set padLength = loop.length.toString().length + 1 %}
-      <li class="small-text" data-index="{{ loop.index | padZero(padLength) }}"><a href="{{ route.path }}">{{ route.name }}</a></li>
+      <li class="small-text" data-index="{{ loop.index | padZero(padLength) }}"><a href="{{ route.path }}" {% if page.url.startsWith(route.path) %}aria-current="page"{% endif %}>{{ route.name }}</a></li>
     {% endfor %}
   </ul>
 </nav>
