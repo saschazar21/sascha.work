@@ -17,6 +17,7 @@ module.exports = {
     const absolutePath = path && path.startsWith('/') ? path : `/${path}`;
     return `${domain}${absolutePath}`;
   },
+  console: console.log,
   format: (date, format) => day(date).format(format),
   gravatar: (email, size = 256) => {
     if (!email || !email.length) {

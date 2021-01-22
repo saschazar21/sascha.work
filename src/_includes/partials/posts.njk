@@ -22,7 +22,7 @@
         <a href="{{ post.url }}" title="View {{ post.data.page.title }} article">{{ post.data.page.title }}</a>
       </h2>
       {% if post.data.tags.length %}{{ tags(post.data.tags) | safe }}{% endif %}
-      {% if post.data.tldr %}<p><strong>TL/DR:</strong> {{ post.data.tldr }}</p>{% endif %}
+      {% if post.data.tldr %}<p><abbr title="Too long, didn't read">TL/DR:</abbr> {{ post.data.tldr }}</p>{% endif %}
     </article>
   </div>
   {% endfor %}

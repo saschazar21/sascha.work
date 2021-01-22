@@ -349,7 +349,7 @@ abbr {
   display: inline-block;
   border-bottom: 1px dashed HSL(var(--color-text));
   padding-bottom: 1px;
-  margin-right: 0.5em;
+  margin: 0 0.25em 0.333em 0;
   text-decoration: none;
   font-weight: bold;
 }

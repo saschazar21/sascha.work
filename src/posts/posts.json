@@ -1,7 +1,7 @@
 {
   "layout": "post.njk",
   "eleventyComputed": {
-    "image": "https://sascha.work/assets{{ page.url }}teaser-card.jpg"
+    "image": "{{ page.url | absoluteUrl }}teaser-card.jpg"
   },
   "permalink": "/posts/{{ page.fileSlug | rewrite }}/index.html",
   "tags": ["post"]
