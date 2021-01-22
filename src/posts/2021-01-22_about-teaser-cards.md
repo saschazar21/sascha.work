@@ -1,7 +1,6 @@
 ---
 page:
   title: About Teaser Cards
-public: true
 related:
   - author: Stefan Baumgartner
     title: '11ty: Generate Twitter cards automatically'
