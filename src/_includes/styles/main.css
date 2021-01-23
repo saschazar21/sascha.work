@@ -390,6 +390,11 @@ strong {
   font-weight: bold;
 }
 
+ul {
+  margin: var(--space-sm) 0 var(--space-lg);
+  padding-left: var(--space-sm);
+}
+
 ul.horizontal {
   display: flex;
   list-style-type: none;

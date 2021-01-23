@@ -3,7 +3,7 @@ const { dirname, join } = require('path');
 const sharp = require('sharp');
 
 const svg2jpg = async () => {
-  const svgs = await globby('./out/assets/posts/**/*.svg');
+  const svgs = await globby('./out/posts/**/*.svg');
   return Promise.all(
     svgs.map((p) =>
       sharp(p)
