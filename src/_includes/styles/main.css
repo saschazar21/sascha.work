@@ -144,8 +144,10 @@
   --paragraph-width: 768px;
   --special-width: 860px;
 
+  --font-size: 18.9189px;
+
   font-family: var(--font-main), var(--font-system);
-  font-size: 16px;
+  font-size: var(--font-size);
   font-weight: 300;
   line-height: 1.65;
 }
@@ -208,7 +210,6 @@ blockquote::before {
 }
 
 p {
-  font-size: 18.9189px;
   line-height: 26px;
   margin-bottom: var(--space-sm);
   padding: 0.05px 0;
@@ -234,7 +235,7 @@ p::after {
     --padding: var(--space-md);
     --margin: var(--space-xl);
 
-    font-size: 20px;
+    --font-size: 21.4286px;
   }
 
   main {
@@ -243,7 +244,6 @@ p::after {
 
   p {
     margin-bottom: var(--margin);
-    font-size: 21.4286px;
     line-height: 27px;
     padding: 0.05px 0;
   }
@@ -349,7 +349,7 @@ abbr {
   display: inline-block;
   border-bottom: 1px dashed HSL(var(--color-text));
   padding-bottom: 1px;
-  margin: 0 0.25em 0.333em 0;
+  margin: 0 0.25em 0;
   text-decoration: none;
   font-weight: bold;
 }
@@ -384,6 +384,17 @@ code,
 small,
 .small-text {
   font-size: 0.875em;
+}
+
+code {
+  display: inline-block;
+  border-radius: var(--border-radius);
+  padding: 0 var(--border-radius);
+  font-family: var(--font-monospace);
+}
+
+:not(pre) > code {
+  background-color: HSL(var(--color-text), 0.125);
 }
 
 strong {

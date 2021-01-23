@@ -1,6 +1,6 @@
 ---
 page:
-  title: About Teaser Cards
+  title: Teaser Cards in Eleventy
 related:
   - author: Stefan Baumgartner
     title: '11ty: Generate Twitter cards automatically'
@@ -13,7 +13,7 @@ tags:
 tldr: Creating teaser cards for social media now also works using Sharp v0.27 in your Eleventy setup.
 ---
 
-# About Teaser Cards
+# Teaser Cards in Eleventy
 
 Ever seen one of those fancy preview (or teaser) cards in your social media timeline? Always thought that extra effort for your own blog just doesn't pay off?<br />
 Well, I thought so too, until I read [Stefan's](https://fettblog.eu/) article ["11ty: Generate Twitter cards automatically"](https://fettblog.eu/11ty-automatic-twitter-cards/).
@@ -26,12 +26,16 @@ Of course I recommend reading Stefan's article, as I won't go into detail settin
 
 As this article mainly targets users of Eleventy, it is of course a bit biased. Nevertheless, there should be an adequate alternative on other static site generators.
 
-The following list should contain everything needed to generate teaser cards on your Eleventy website:
+The following list should contain everything you need for generating teaser cards in your Eleventy website:
 
-- [Eleventy v0.11.1](https://11ty.dev) (`v0.11.1` is needed for supporting the [afterBuild](https://www.11ty.dev/docs/events/#afterbuild) event handler)
-- [Sharp v0.27.0](https://sharp.pixelplumbing.com/) (should be included in Eleventy already, but versions below `v0.27.0` seem to have issues rendering SVG &lt;text&gt; properly)
+- [Eleventy v0.11.1](https://11ty.dev) &mdash; `v0.11.1` is needed for supporting the [afterBuild](https://www.11ty.dev/docs/events/#afterbuild) event handler
+- [Sharp v0.27.0](https://sharp.pixelplumbing.com/) &mdash; should be included in Eleventy already, but versions below `v0.27.0` seem to have issues rendering SVG &lt;text&gt; properly
 
 That's it. All that's left is configuring Eleventy.
+
+## Using Eleventy's afterBuild event
+
+I assume you've followed Stefan's article to the point, where the SVGs are created using Eleventy's pagination functionality. If not, I'd invite you to pay close attention to the [Creating an SVG](https://fettblog.eu/11ty-automatic-twitter-cards/#creating-an-svg) section, as this will be the base for everything that follows.
 
 ## Try it
 
