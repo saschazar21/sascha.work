@@ -21,7 +21,7 @@ code[class*='language-'],
 pre[class*='language-'] {
   display: block;
   width: 100%;
-  max-height: 350px;
+  padding: 0;
   max-width: var(--special-width);
   color: HSL(var(--hl-text));
   background: none;
@@ -43,10 +43,10 @@ pre[class*='language-'] {
 
 /* Code blocks */
 pre[class*='language-'] {
-  padding: 1em;
-  margin: 0.5em 0;
+  padding: var(--space-sm);
+  margin: var(--space-md) calc(var(--space-sm) * -1) var(--space-lg);
+  width: calc(100% + var(--space-sm) * 2);
   overflow: auto;
-  border-radius: 0.3em;
 }
 
 :not(pre) > code[class*='language-'],
@@ -137,4 +137,10 @@ pre[class*='language-'] {
 
 .token.entity {
   cursor: help;
+}
+
+@media (min-width: 768px) {
+  pre[class*='language-'] {
+    border-radius: var(--border-radius);
+  }
 }

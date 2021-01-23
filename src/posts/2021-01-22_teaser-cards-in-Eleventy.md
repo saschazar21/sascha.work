@@ -30,12 +30,42 @@ The following list should contain everything you need for generating teaser card
 
 - [Eleventy v0.11.1](https://11ty.dev) &mdash; `v0.11.1` is needed for supporting the [afterBuild](https://www.11ty.dev/docs/events/#afterbuild) event handler
 - [Sharp v0.27.0](https://sharp.pixelplumbing.com/) &mdash; should be included in Eleventy already, but versions below `v0.27.0` seem to have issues rendering SVG &lt;text&gt; properly
+- [globby](https://github.com/sindresorhus/globby#readme) &mdash; or similar, for glob matching `.svg` files
 
 That's it. All that's left is configuring Eleventy.
 
 ## Using Eleventy's afterBuild event
 
 I assume you've followed Stefan's article to the point, where the SVGs are created using Eleventy's pagination functionality. If not, I'd invite you to pay close attention to the [Creating an SVG](https://fettblog.eu/11ty-automatic-twitter-cards/#creating-an-svg) section, as this will be the base for everything that follows.
+
+To make use of the _afterBuild_ event, you have to register an event handler to it in your `.eleventy.js` configuration file:
+
+```js
+// .eleventy.js
+const globby = require('globby');
+const { join, dirname } = require('path');
+const sharp = require('sharp');
+
+module.exports = (eleventyConfig) => {
+  eleventyConfig.on('afterBuild', async () => {
+    const svgs = await globby('./out/posts/**/*.svg');
+    return Promise.all(
+      svgs.map((p) =>
+        sharp(p)
+          .toFormat('png')
+          .toFile(join(dirname(p), '/teaser.png')),
+      ),
+    );
+  });
+};
+```
+
+This piece of code does the following:
+
+1. register an `async` function to the _afterBuild_ event,
+1. glob match available `.svg` files in the destination directory of your paginated SVG templates,
+1. iterate over resolved paths and transform them via `sharp`,
+   - `toFormat()` accepts various image formats, such as `png`, `jpeg`, `webp`, etc... (see [Sharp's documentation](https://sharp.pixelplumbing.com/api-output#toformat) for supported formats). However, it's suggested to use either `png` or `jpeg` for social media images.
 
 ## Try it
 

@@ -380,7 +380,6 @@ em::before {
   z-index: -1;
 }
 
-code,
 small,
 .small-text {
   font-size: 0.875em;
@@ -391,6 +390,7 @@ code {
   border-radius: var(--border-radius);
   padding: 0 var(--border-radius);
   font-family: var(--font-monospace);
+  font-size: 0.75em;
 }
 
 :not(pre) > code {
@@ -401,6 +401,7 @@ strong {
   font-weight: bold;
 }
 
+ol,
 ul {
   margin: var(--space-sm) 0 var(--space-lg);
   padding-left: var(--space-sm);
