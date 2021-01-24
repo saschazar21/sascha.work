@@ -1,0 +1,10 @@
+---
+eleventyExcludeFromCollections: true
+pagination:
+  data: collections.public
+  size: 1
+  alias: post
+permalink: "{{ post.url }}teaser-card.svg"
+---
+
+{% include "partials/teaser-card.njk" %}

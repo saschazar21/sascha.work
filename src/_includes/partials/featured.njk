@@ -1,0 +1,18 @@
+<style data-helmet="featured">{% include "styles/featured.css" %}</style>
+
+<div class="full-bleed featured">
+  <div class="featured-container">
+  {% for project in projects %}
+  <article>
+    <div>
+      <small class="language">{{ project.language }}</small>
+      <h3>{{ project.name }}</h3>
+      <span>{{ project.description }}</span>
+    </div>
+    <a href="{{ project.html_url }}" rel="noindex nofollow noopener noreferrer" target="_blank" title="View {{ project.name }} on Github">
+      To the source code &rarr;
+    </a>
+  </article>
+  {% endfor %}
+  </div>
+</div>

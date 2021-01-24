@@ -1,0 +1,102 @@
+footer {
+  --gap-width: var(--space-md);
+  --width: 100%;
+
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr;
+  column-gap: var(--gap-width);
+  row-gap: var(--gap-width);
+  align-self: center;
+  margin-top: var(--space-md);
+  padding: var(--space-lg) var(--padding) var(--padding);
+  width: var(--width);
+  background-color: inherit;
+}
+
+footer::before {
+  --height: 2px;
+  --size: 1rem;
+
+  content: '';
+  display: block;
+  position: absolute;
+  box-shadow: 0 4px 10px 6px HSL(var(--color-bg-offset));
+  top: 0;
+  height: var(--height);
+  width: 100%;
+  background: linear-gradient(90deg, transparent 50%, HSL(var(--color-bg)) 50%),
+    linear-gradient(
+      90deg,
+      HSL(var(--color-primary)),
+      HSL(var(--color-secondary)),
+      HSL(var(--color-tertiary))
+    );
+  background-size: var(--size), 100% 100%;
+  opacity: 0.333;
+}
+
+footer div > section + section {
+  margin-top: var(--space-md);
+}
+
+footer strong {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+footer .social-accounts {
+  place-content: start;
+}
+
+.feed-list {
+  --size: 32px;
+
+  flex-direction: row;
+}
+
+.feed-list li {
+  height: var(--size);
+  width: var(--size);
+}
+
+.feed-list a {
+  --before-gap: -0.5em;
+
+  display: block;
+  max-height: var(--size);
+  max-width: var(--size);
+}
+
+@media screen and (min-width: 768px) {
+  footer {
+    --gap-width: var(--space-lg);
+
+    grid-template-columns: repeat(3, auto);
+    padding: var(--padding);
+    font-size: 0.875em;
+  }
+
+  footer::before {
+    --height: 4px;
+    --size: 3rem;
+  }
+
+  footer > div:last-child {
+    grid-column: 1/-1;
+    place-self: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  footer {
+    --space-lg: 2.75rem;
+    --gap-width: var(--space-lg);
+    --width: 1280px;
+  }
+
+  footer .feed-list,
+  footer .social-accounts.social-accounts {
+    --size: 24px;
+  }
+}

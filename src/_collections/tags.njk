@@ -1,0 +1,19 @@
+---
+layout: default
+eleventyExcludeFromCollections: true
+pagination:
+  data: collections.tags
+  size: 1
+  alias: tag
+  reverse: true
+eleventyComputed:
+  page:
+    title: "Posts tagged \"{{ tag[0] }}\""
+permalink: "tags/{{ tag[0] | slug }}/"
+---
+
+<meta name="robots" content="noindex nofollow" data-helmet="robots" />
+
+{% set posts = tag[1] %}
+
+{% include "partials/posts.njk" %}

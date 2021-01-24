@@ -1,0 +1,8 @@
+{
+  "layout": "post.njk",
+  "eleventyComputed": {
+    "image": "{{ page.url | absoluteUrl }}teaser-card.jpg"
+  },
+  "permalink": "/posts/{{ page.fileSlug | rewrite }}/index.html",
+  "tags": ["post"]
+}

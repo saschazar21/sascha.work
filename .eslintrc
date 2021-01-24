@@ -1,16 +1,11 @@
 {
   "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
-  ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
+  "extends": ["airbnb-base"],
+  "ignorePatterns": ["node_modules/", "out/"],
+  "rules": {
+    "function-paren-newline": ["off"],
+    "implicit-arrow-linebreak": ["off"],
+    "no-confusing-arrow": ["off"],
+    "operator-linebreak": ["off"]
   }
 }

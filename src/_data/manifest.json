@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json.schemastore.org/web-manifest",
+  "short_name": "Sascha",
+  "name": "Sascha Zarhuber — Web Developer",
+  "description": "Personal website of Sascha Zarhuber, a Web Developer with a strong focus on Open Source, Node.js, React, TypeScript and more.",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/img/rounded-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/rounded-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "background_color": "#b2aa6f",
+  "theme_color": "#b2aa6f",
+  "start_url": "/?utm_source=web_app_manifest",
+  "display": "standalone",
+  "orientation": "any"
+}

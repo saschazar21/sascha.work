@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en" [class]="theme ? 'theme-' + theme : ''">
+  {% include "partials/head.njk" %}
+  <body>
+    {% if not env.production %}<meta name="robots" content="noindex nofollow" data-helmet="robots" />{% endif %}
+    {% if not skipHeader %}
+      {% include "partials/header.njk" %}
+    {% endif %}
+    {{ content | safe }}
+    {% include "partials/footer.njk" %}
+  </body>
+</html>

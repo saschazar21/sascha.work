@@ -1,0 +1,33 @@
+#AT {
+  fill: HSL(var(--color-secondary));
+}
+
+#CA,
+#CH,
+#CZ,
+#DE,
+#DK,
+#ES,
+#FR,
+#GB,
+#HR,
+#IE,
+#IT,
+#LI,
+#NL,
+#NO,
+#PT,
+#SE,
+#SI,
+#US {
+  fill: HSL(var(--color-primary));
+}
+
+.world-container {
+  width: var(--paragraph-width);
+  max-width: 100%;
+}
+
+.world-container svg {
+  fill: HSL(var(--color-text), 0.175);
+}

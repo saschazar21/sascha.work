@@ -1,0 +1,67 @@
+{% set image %}{{ image or cover or 'https://sascha.work/img/card.png' }}{% endset %}
+{% set education = experience.data.education | first %}
+{% set work = experience.data.work | first %}
+{% set twitter = social.data | first %}
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="{{manifest.theme_color}}" />
+
+<meta property="og:title" content="{{ page.title or manifest.name }}" />
+<meta property="og:description" content="{{ tldr or manifest.description }}" />
+<meta property="og:site_name" content="{{ pkg.name }}" />
+<meta property="og:url" content="{{ page.url | absoluteUrl }}" />
+<meta property="og:image" content="{{ image }}" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ page.url | absoluteUrl }}">
+<meta name="twitter:title" content="{{ page.title or manifest.name }}">
+<meta name="twitter:description" content="{{ tldr or manifest.description }}">
+<meta name="twitter:image" content="{{ image }}">
+<meta name="twitter:site" content="{{ twitter.username }}">
+<meta name="twitter:creator" content="{{ twitter.username }}">
+
+<script type="application/ld+json">
+{
+  
+  "@context": "http://schema.org",
+  "name": "{{ manifest.name }}",
+  "description": "{{ manifest.description }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ pkg.author.name }}",
+    "url": "{{ pkg.homepage }}",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "department": { "@type": "Organization", "name": "{{ education.programme }}" },
+      "location": {
+        "@type": "PostalAddress",
+        "addressLocality": "{{ education.city }}"
+      },
+      "legalName": "{{ education.institution }}",
+      "name": "{{ education.institution }}",
+      "url": "{{ education.url }}"
+    },
+    "worksFor": {
+      "@type": "Corporation",
+      "description": "{{ work.position }}",
+      "location": { "@type": "PostalAddress", "addressLocality": "{{ work.city }}" },
+      "legalName": "{{ work.institution }}",
+      "url": "{{ work.url }}"
+    },
+    "knowsAbout": ["HTML", "JavaScript", "React", "Node.js", "TypeScript"],
+    "knowsLanguage": ["de-AT", "en-US", "fr-FR"],
+    "nationality": "Austrian"
+  },
+  "@type": "WebSite",
+  "url": "{{ pkg.homepage }}",
+  "image": "{{ image }}",
+  "headline": "{{ page.title or manifest.name }}",
+  "sameAs": [
+      {% for account in social.data %}
+        "{{ account.profile }}"{% if not loop.last %},{% endif %}
+      {% endfor %}
+  ]
+}
+</script>

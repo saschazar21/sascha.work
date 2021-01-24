@@ -1,0 +1,60 @@
+---
+layout: default
+page:
+  title: About me
+---
+<style data-helmet>{% include "styles/about.css" %}</style>
+<style data-helmet>{% include "styles/travels.css" %}</style>
+
+{% macro experiencelist(list, kind) %}
+  <div class="full-bleed">
+    <ul class="horizontal experience-list" [class]="{{ kind }} ? 'horizontal experience-list full-width' : 'horizontal experience-list'">
+      {% for item in list %}
+        <li {% if loop.index0 > 2 %}hidden [hidden]="!{{ kind }}"{% endif %}>
+          <section>
+            <span role="heading" aria-level="4">{{ item.start.year }}-{% if item.end %}{{ item.end.year}}{% else %}current{% endif %}</span>
+            <h3>{{ item.position or item.programme }}{% if item.graduation %}, <span class="graduation">{{ item.graduation }}</span>{% endif %}</h3>
+            <span><a href="{{ item.url }}" aria-label="Visit {{ item.institution }}'s website" title="{{ item.institution }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ item.institution }}</a> in {{ item.city }}</span>
+          </section>
+        </li>
+      {% if loop.length > 2 and loop.last %}
+        <li class="see-all" [hidden]="{{ kind }}">
+          <button on="tap:AMP.setState({ {{ kind }}: !{{ kind }} })">See all &rarr;</button>
+        </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endmacro %}
+
+<article>
+<h1>Hi, I'm Sascha</h1>
+<p>
+I'm a frontend web developer from <a href="https://www.openstreetmap.org/#map=13/47.9181/13.7994" aria-label="View position of Upper Austria on OpenStreetMap" title="Upper Austria" rel="noopener nofollow noindex noreferrer" target="_blank">Upper Austria</a>.
+</p>
+<p>
+I've been playing around the web for more than 10 years now — fortunately I was able to focus on my passion even more during my Bachelor's and Master's. Ever since then, I was working full-time as a frontend web developer for different companies.
+</p>
+<p>
+In my spare time, I enjoy travelling, as well as being out in the surrounding nature with my DSLR.
+</p>
+</article>
+
+{% if experience.data.work %}
+<section class="experience-container">
+<h2>Experience</h2>
+{{ experiencelist(experience.data.work, 'work') }}
+</section>
+{% endif %}
+
+{% if experience.data.education %}
+<section class="experience-container">
+<h2>Education</h2>
+{{ experiencelist(experience.data.education, 'education') }}
+</section>
+{% endif %}
+
+<article class="world-container" role="presentation">
+<h2>Travels</h2>
+{{ "/src/_includes/assets/world.svg" | svgContents | safe }}
+</article>

@@ -1,0 +1,125 @@
+header {
+  --height: 64px;
+  --padding: 0.333rem;
+  --border-radius: 9999px;
+  --border-width: 4px;
+  --container-space: 1rem;
+
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--border-width) solid HSL(var(--color-tertiary));
+  background: linear-gradient(
+      -45deg,
+      HSL(var(--color-bg-offset)) 61.8%,
+      transparent 61.8%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 15.05%,
+      HSL(var(--color-text), 0.15) 38.2%
+    );
+  background-color: HSL(var(--color-bg-offset));
+  padding: var(--padding) var(--container-space);
+  width: 100%;
+  overflow: hidden;
+}
+
+header::before {
+  position: absolute;
+  content: '';
+  background-color: transparent;
+  box-shadow: 0 -8px 16px -2px HSL(var(--color-tertiary), 0.75);
+  height: var(--border-width);
+  width: 100%;
+  bottom: calc(var(--border-width) * -1);
+  left: 0;
+}
+
+header + main {
+  margin-top: var(--margin);
+}
+
+header button,
+amp-sidebar button {
+  --border-radius: 9999px;
+
+  height: 48px;
+  width: 48px;
+  padding: 0.5em;
+}
+
+header button + button {
+  margin-left: var(--container-space);
+}
+
+.avatar-container {
+  --border-color: transparent;
+  --border-radius: 9999px;
+
+  position: relative;
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--border-color);
+  height: calc(var(--height) + var(--border-width) * 2);
+  width: calc(var(--height) + var(--border-width) * 2);
+  transition: border-color 200ms ease-in;
+}
+
+.avatar-container:focus,
+.avatar-container:hover {
+  --border-color: HSL(var(--color-tertiary));
+}
+
+.avatar-container::before {
+  position: absolute;
+  content: '';
+  border-radius: 9999px;
+  border: 1px dashed HSL(var(--color-text), 0.125);
+  background-color: inherit;
+  top: calc(var(--height) * -0.125 - 1px);
+  left: calc(var(--height) * -0.125 - 1px);
+  height: calc(100% * 1.25);
+  width: calc(100% * 1.25);
+}
+
+.avatar-container:focus::before,
+.avatar-container:hover::before {
+  width: calc(100% * 1.25);
+}
+
+.avatar-container amp-img {
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.avatar-container img {
+  object-fit: contain;
+}
+
+#navigation-container {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    --padding: 1rem;
+    --border-radius: 8px;
+    --border-width: 8px;
+
+    justify-content: space-around;
+  }
+
+  .header-container {
+    display: flex;
+  }
+
+  .header-container button {
+    margin-left: var(--container-space);
+  }
+
+  .navigation-launcher {
+    display: none;
+  }
+}
