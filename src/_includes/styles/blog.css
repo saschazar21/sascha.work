@@ -17,6 +17,10 @@
   max-width: 100%;
 }
 
+.blog-preview:first-child {
+  padding-top: unset;
+}
+
 .blog-preview h2 a {
   padding-bottom: calc(var(--space-sm) * 0.333);
 }

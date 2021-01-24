@@ -6,8 +6,13 @@ p:first-of-type {
 
 .tldr {
   display: block;
-  border-radius: var(--border-radius);
   margin: calc(var(--space-sm) * -1) calc(var(--space-sm) * -1) var(--space-md);
   padding: var(--space-sm);
   background-color: HSL(var(--color-secondary-offset), 0.5);
+}
+
+@media (min-width: 768px) {
+  .tldr {
+    border-radius: var(--border-radius);
+  }
 }
