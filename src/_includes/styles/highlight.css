@@ -49,6 +49,10 @@ pre[class*='language-'] {
   overflow: auto;
 }
 
+code[class*='language-'] {
+  font-size: 0.666em;
+}
+
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
   background: HSL(var(--hl-bg));

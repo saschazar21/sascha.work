@@ -145,11 +145,12 @@
   --special-width: 860px;
 
   --font-size: 18.9189px;
+  --line-height: 26px;
 
   font-family: var(--font-main), var(--font-system);
   font-size: var(--font-size);
   font-weight: 300;
-  line-height: 1.65;
+  line-height: var(--line-height);
 }
 
 ::selection {
@@ -210,7 +211,6 @@ blockquote::before {
 }
 
 p {
-  line-height: 26px;
   margin-bottom: var(--space-sm);
   padding: 0.05px 0;
   text-align: justify;
@@ -236,6 +236,7 @@ p::after {
     --margin: var(--space-xl);
 
     --font-size: 21.4286px;
+    --line-height: 27px;
   }
 
   main {
@@ -244,7 +245,6 @@ p::after {
 
   p {
     margin-bottom: var(--margin);
-    line-height: 27px;
     padding: 0.05px 0;
   }
 
@@ -361,22 +361,19 @@ abbr:hover {
 em {
   display: inline-block;
   position: relative;
-  padding: 0 4px;
+  padding: 0 6px 0 4px;
+  color: HSL(var(--color-bg));
 }
 
 em::before {
   content: '';
   position: absolute;
+  border-radius: var(--border-radius);
   width: 100%;
-  height: 0.5em;
-  bottom: 0;
+  height: 1.25em;
   left: 0;
-  background: linear-gradient(
-    to bottom,
-    HSL(var(--color-secondary), 0.25),
-    HSL(var(--color-secondary), 0.5)
-  );
-  transform: skew(-20deg);
+  background-color: HSL(var(--color-tertiary), 0.75);
+  transform: skew(-14deg);
   z-index: -1;
 }
 

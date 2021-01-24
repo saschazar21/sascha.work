@@ -18,3 +18,22 @@ layout: default.njk
 <span class="tldr"><abbr title="Too long, didn't read">TL/DR:</abbr>{{ tldr }}</span>
 {% endif %}
 {{ content | safe }}
+
+{% if related.length > 0 %}
+<style data-helmet="featured">{% include "styles/featured.css" %}</style>
+<aside>
+<h2>Related</h2>
+<div class="full-bleed featured">
+  <section class="featured-container">
+  {% for post in related %}
+    <article>
+      <strong>{{ post.author }}</strong>
+      <h3>
+        <a href="{{ post.url }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ post.title }}</a>
+      </h3>
+    </article>
+  {% endfor %}
+  </section>
+</div>
+</aside>
+{% endif %}
