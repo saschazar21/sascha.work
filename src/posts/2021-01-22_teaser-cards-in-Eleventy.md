@@ -70,7 +70,7 @@ The above piece of code does the following:
 
 ## Try it
 
-I created a small demo on [runkit](https://runkit.com/saschazar21/transform-svg-to-png), which explains the whole process step by step. While the runkit notebook seems to work with a lower Sharp version as well, I experienced issues in combination with Eleventy on my local machine. That's why I initially suggested to use Sharp v0.27.
+I created a small demo on [runkit](https://runkit.com/saschazar21/transform-svg-to-png), which explains the core process of the transformation step by step. While the runkit notebook seems to work with a lower Sharp version as well, I experienced issues in combination with Eleventy on my local machine. That's why I initially suggested to use Sharp v0.27.
 
 ## Conclusion
 
