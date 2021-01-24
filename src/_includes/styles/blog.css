@@ -17,8 +17,8 @@
   max-width: 100%;
 }
 
-.blog-preview:first-child {
-  padding-top: unset;
+.full-bleed:first-of-type > .blog-preview {
+  padding-top: var(--space-md);
 }
 
 .blog-preview h2 a {
