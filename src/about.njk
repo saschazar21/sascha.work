@@ -12,7 +12,7 @@ page:
       {% for item in list %}
         <li {% if loop.index0 > 2 %}hidden [hidden]="!{{ kind }}"{% endif %}>
           <section>
-            <span role="heading" aria-level="4">{{ item.start.year }}-{% if item.end %}{{ item.end.year}}{% else %}current{% endif %}</span>
+            <span>{{ item.start.year }}-{% if item.end %}{{ item.end.year}}{% else %}current{% endif %}</span>
             <h3>{{ item.position or item.programme }}{% if item.graduation %}, <span class="graduation">{{ item.graduation }}</span>{% endif %}</h3>
             <span><a href="{{ item.url }}" aria-label="Visit {{ item.institution }}'s website" title="{{ item.institution }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ item.institution }}</a> in {{ item.city }}</span>
           </section>

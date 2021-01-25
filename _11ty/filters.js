@@ -30,6 +30,7 @@ module.exports = {
     );
     return url.toString();
   },
+  hostname: (url) => new URL(url).hostname,
   padZero: (value, length = 2) => {
     const stringified = value.toString();
     const gap = length - stringified.length;

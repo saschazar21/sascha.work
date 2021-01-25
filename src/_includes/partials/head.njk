@@ -11,6 +11,8 @@
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="apple-touch-icon" href="/img/apple-touch-192.png">
   <link rel="alternate" type="application/atom+xml" title="{{ manifest.name }}" href="{{ '/feed.xml' | absoluteUrl }}" />
+  <link rel="webmention" href="https://webmention.io/{{ pkg.homepage | hostname }}/webmention" />
+  <link rel="pingback" href="https://webmention.io/{{ pkg.homepage | hostname }}/xmlrpc" />
   {% if tags or keywords %}
     <meta name="keywords" content="{{ tags or keywords | join(' ') }}" />
   {% endif %}
