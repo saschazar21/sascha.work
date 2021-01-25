@@ -8,7 +8,7 @@ eleventyExcludeFromCollections: true
   <subtitle>{{ feed.description }}</subtitle>
   <link href="{{ permalink | absoluteUrl }}" rel="self"/>
   <link href="{{ feed.home_page_url }}"/>
-  <updated>{{ collections.post | rssLastUpdatedDate }}</updated>
+  <updated>{{ collections.public | rssLastUpdatedDate }}</updated>
   <id>{{ feed.home_page_url }}</id>
   <icon>{{ feed.favicon }}</icon>
   <logo>{{ feed.icon }}</logo>
@@ -16,7 +16,7 @@ eleventyExcludeFromCollections: true
     <name>{{ feed.author.name }}</name>
     <uri>{{ feed.author.url }}</uri>
   </author>
-  {%- for post in collections.released %}
+  {%- for post in collections.public %}
   {% set absolutePostUrl %}{{ post.url | absoluteUrl }}{% endset %}
   <entry>
     {% if post.data.tldr %}
