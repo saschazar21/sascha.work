@@ -1850,10 +1850,10 @@ electron-to-chromium@^1.3.634:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.641.tgz#03f14efd70a7971eff2efc947b3c1d0f717c82b9"
   integrity sha512-b0DLhsHSHESC1I+Nx6n4w4Lr61chMd3m/av1rZQhS2IXTzaS5BMM5N+ldWdMIlni9CITMRM09m8He4+YV/92TA==
 
-eleventy-plugin-helmet@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/eleventy-plugin-helmet/-/eleventy-plugin-helmet-0.2.1.tgz#23d822f6310bf27e41443e15493b0729b1a6bd80"
-  integrity sha512-gPKAOWefDCmLqMbYNksBHb07X1xH18VMUpYMfONOIxIS2oh/O/yFMBvPzeuAYB2rq0yfTQcspRtB2BWTTmCsPQ==
+eleventy-plugin-helmet@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/eleventy-plugin-helmet/-/eleventy-plugin-helmet-0.2.2.tgz#52b26b76d90356758cfa90fd637e9d68bb55802f"
+  integrity sha512-gbRgv1cbj1nJGol/Clc+ZYNuTjusCz1iLyunBZfMMq01rrWpuh/H+72qj6tQT1xmy3woRQIKv9WXDlFyRNOHng==
   dependencies:
     posthtml "^0.13.1"
 
