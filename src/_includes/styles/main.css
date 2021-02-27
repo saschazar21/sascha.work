@@ -190,7 +190,7 @@ blockquote {
 
   position: relative;
   border-left: var(--border-width) solid HSL(var(--color-primary));
-  margin: var(--space-md) var(--space-sm);
+  margin: var(--space-lg) 0;
   padding: var(--space-sm);
   background-color: HSL(var(--color-primary-offset), 0.333);
 }
@@ -228,6 +228,11 @@ p::after {
   margin-bottom: -0.31em;
   display: block;
   height: 0;
+}
+
+blockquote > p:first-of-type {
+  margin: var(--space-sm) 0;
+  font-size: 1em;
 }
 
 @media screen and (min-width: 768px) {
@@ -372,7 +377,7 @@ em::before {
   width: 100%;
   height: 1.25em;
   left: 0;
-  background-color: HSL(var(--color-tertiary), 0.75);
+  background-color: HSL(var(--color-tertiary));
   transform: skew(-14deg);
   z-index: -1;
 }
