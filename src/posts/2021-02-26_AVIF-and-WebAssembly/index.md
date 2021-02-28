@@ -1,6 +1,6 @@
 ---
 page:
-  title: AVIF in WebAssembly
+  title: AVIF and WebAssembly
 public: false
 tags:
   - post
@@ -10,7 +10,7 @@ tags:
 tldr: Encoding AVIF images in WebAssembly is slow and error-prone. Out of aom & rav1e, aom seems to produce a faster and smaller outcome — mainly due to 4:2:0 subsampling.
 ---
 
-# AVIF in WebAssembly: a comparison of codecs
+# AVIF and WebAssembly: a comparison of codecs
 
 AVIF is a new image format that's gaining more and more support in web browsers lately. It's capable of compressing image files up to **half the size of a JPEG** and save roughly a fifth of the size of a WebP image — all by maintaining a similar image quality (see [Daniel Aleksandersen's article](https://www.ctrl.blog/entry/webp-avif-comparison.html) for a detailed comparison).
 
@@ -62,4 +62,4 @@ First of all, this is no "fair" comparison between aom and rav1e. It is mainly b
 
 ### Initial Situation
 
-The source file is a JPEG image with dimensions of 4096 \* 3072 pixels and 5.6 MB in size.
+The source file is a JPEG image with dimensions of 4096\*3072 pixels that's 5.5 MB in size. Straight out of the smartphone camera, it hasn't been optimized at all.
