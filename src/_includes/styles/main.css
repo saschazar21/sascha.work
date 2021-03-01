@@ -409,6 +409,31 @@ ul {
   padding-left: var(--space-sm);
 }
 
+table {
+  border-bottom: 0.5px solid HSL(var(--color-text), 0.333);
+  border-collapse: collapse;
+  margin-bottom: var(--space-md);
+  width: 100%;
+  font-size: 0.875em;
+}
+
+tr {
+  line-height: var(--space-md);
+}
+
+th,
+td {
+  padding: 0 0.75ch;
+}
+
+tbody > tr {
+  border-top: 0.5px solid HSL(var(--color-text), 0.333);
+}
+
+tbody > tr:nth-child(2n + 1) {
+  background-color: HSL(var(--color-bg-offset));
+}
+
 ul.horizontal {
   display: flex;
   list-style-type: none;
