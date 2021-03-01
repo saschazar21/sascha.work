@@ -1,7 +1,7 @@
 ---
 page:
   title: AVIF and WebAssembly
-public: false
+public: true
 related:
   - author: Daniel Aleksandersen
     title: Comparing AVIF vs WebP file sizes at the same DSSIM
@@ -27,7 +27,12 @@ As of February 2021, it's supported on the latest Chrome, Opera and Firefox brow
 
 Due to AVIF being designed as a royalty-free image format, multiple Open Source encoders and decoders have been developed as an enhancement to the [aom](https://aomedia.googlesource.com/aom/) reference codec. One of those is [rav1e](https://github.com/xiph/rav1e), an AV1 encoder written in Rust, claiming to be the "fastest and safest AV1 encoder".
 
-While _aom_ includes both a decoder and an encoder, _rav1e_ only does the latter. That's why I this article is concentrating solely on encoding, instead of a two-way conversion.
+While _aom_ includes both a decoder and an encoder, _rav1e_ only does the latter. That's why this article is concentrating solely on encoding, instead of a two-way conversion.
+
+In this article the following AVIF encoder implementations are used for comparison:
+
+- **aom**: part of [saschazar21/webassembly](https://github.com/saschazar21/webassembly/tree/master/packages/avif) on Github
+- **rav1e**: [saschazar21/wasm-rav1e](https://github.com/saschazar21/wasm-rav1e) on Github
 
 ## The WebAssembly part
 
