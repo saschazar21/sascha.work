@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.1.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.0",
     "@ampproject/eleventy-plugin-amp": "^0.5.5",
     "eleventy-plugin-helmet": "^0.2.2",
     "eleventy-plugin-json-feed": "^0.0.7",
