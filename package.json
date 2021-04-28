@@ -24,7 +24,7 @@
     "nunjucks": "^3.2.3",
     "rimraf": "^3.0.2",
     "stylelint": "^13.13.0",
-    "stylelint-config-recommended": "^4.0.0"
+    "stylelint-config-recommended": "^5.0.0"
   },
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.1.1",
