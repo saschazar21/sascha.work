@@ -35,7 +35,7 @@
     "eleventy-plugin-pwa": "^1.0.8",
     "eleventy-plugin-reading-time": "^0.0.1",
     "eleventy-plugin-svg-contents": "^0.7.0",
-    "dayjs": "^1.10.4",
+    "dayjs": "^1.10.6",
     "globby": "^11.0.3",
     "html-minifier-terser": "^5.1.1",
     "node-fetch": "^2.6.1",
