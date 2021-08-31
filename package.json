@@ -37,7 +37,7 @@
     "eleventy-plugin-svg-contents": "^0.7.0",
     "dayjs": "^1.10.6",
     "globby": "^11.0.3",
-    "html-minifier-terser": "^5.1.1",
+    "html-minifier-terser": "^6.0.0",
     "node-fetch": "^2.6.1",
     "sharp": "^0.28.3"
   },
