@@ -5,13 +5,13 @@
   {% for project in projects %}
   <article>
     <aside class="meta">
-      <small class="language">{{ project.language }}</small>
+      <small class="language" title="{{ project.name }} is mostly written in {{ project.language }}">{{ project.language }}</small>
       <a class="meta-link" href="{{ project.html_url }}" rel="noindex nofollow noopener noreferrer" target="_blank" title="View {{ project.name }} on Github">
-        Source Code
+        Source
       </a>
       {% if project.homepage %}
         <a class="meta-link" href="{{ project.homepage }}" rel="noindex nofollow noopener noreferrer" target="_blank" title="Open {{ project.name }}'s homepage">
-          Website
+          URL
         </a>
       {% endif %}
     </aside>

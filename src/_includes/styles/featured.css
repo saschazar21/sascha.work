@@ -13,7 +13,7 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-top: 4px solid HSL(var(--color-primary));
   margin: unset;
   padding: var(--padding);
@@ -38,6 +38,8 @@
   padding: calc(var(--space-sm) * 0.25) calc(var(--space-sm) * 0.5);
   background-color: HSL(var(--color-primary));
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .meta-link {
@@ -54,12 +56,13 @@
 }
 
 .meta {
+  --margin: calc(var(--padding) * -1);
   --gap: calc(var(--space-sm) * 0.25);
 
   display: flex;
-  position: absolute;
-  margin-right: var(--gap);
-  width: 100%;
+  margin: var(--margin);
+  margin-bottom: calc(var(--space-sm) * 0.5);
+  width: calc(100% + var(--padding) * 2);
   top: 0;
   left: 0;
   gap: var(--gap);
