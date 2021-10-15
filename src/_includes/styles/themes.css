@@ -18,7 +18,7 @@
 #theme-selector li {
   --height: 44px;
 
-  transition: box-shadow 200ms ease-out;
+  transition: box-shadow var(--reduced-motion, 200ms) ease-out;
   display: flex;
   position: relative;
   align-items: center;
@@ -29,7 +29,8 @@
 }
 
 #theme-selector li:last-child {
-  transition: color 200ms ease-out, background-color 200ms ease-out;
+  transition: color var(--reduced-motion, 200ms) ease-out,
+    background-color var(--reduced-motion, 200ms) ease-out;
   flex: 0 1 44px;
   padding: var(--button-padding);
   color: inherit;
@@ -49,7 +50,7 @@
 }
 
 .theme::after {
-  transition: transform 200ms ease-out;
+  transition: transform var(--reduced-motion, 200ms) ease-out;
   content: '';
   position: absolute;
   border: 18px solid transparent;

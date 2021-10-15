@@ -4,14 +4,21 @@
   <div class="featured-container">
   {% for project in projects %}
   <article>
-    <div>
+    <aside class="meta">
       <small class="language">{{ project.language }}</small>
+      <a class="meta-link" href="{{ project.html_url }}" rel="noindex nofollow noopener noreferrer" target="_blank" title="View {{ project.name }} on Github">
+        Source Code
+      </a>
+      {% if project.homepage %}
+        <a class="meta-link" href="{{ project.homepage }}" rel="noindex nofollow noopener noreferrer" target="_blank" title="Open {{ project.name }}'s homepage">
+          Website
+        </a>
+      {% endif %}
+    </aside>
+    <div>
       <h3>{{ project.name }}</h3>
       <span>{{ project.description }}</span>
     </div>
-    <a href="{{ project.html_url }}" rel="noindex nofollow noopener noreferrer" target="_blank" title="View {{ project.name }} on Github">
-      To the source code &rarr;
-    </a>
   </article>
   {% endfor %}
   </div>

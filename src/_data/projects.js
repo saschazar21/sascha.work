@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 
 const featured = [
+  'vorchdorf-dot-media/shorts',
   'vorchdorf-dot-media/weather',
   'vorchdorf-dot-media/image-compressor',
   'saschazar21/webassembly',

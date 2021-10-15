@@ -40,7 +40,8 @@
 }
 
 .blog-preview ul a {
-  transition: background-color 200ms ease-in, color 200ms ease-in;
+  transition: background-color var(--reduced-motion, 200ms) ease-in,
+    color var(--reduced-motion, 200ms) ease-in;
   display: inline-block;
   border-radius: var(--border-radius);
   padding: calc(var(--space-sm) * 0.25);

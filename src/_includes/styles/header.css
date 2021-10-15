@@ -63,7 +63,7 @@ header button + button {
   border: var(--border-width) solid var(--border-color);
   height: calc(var(--height) + var(--border-width) * 2);
   width: calc(var(--height) + var(--border-width) * 2);
-  transition: border-color 200ms ease-in;
+  transition: border-color var(--reduced-motion, 200ms) ease-in;
 }
 
 .avatar-container:focus,
