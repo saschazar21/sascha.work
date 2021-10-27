@@ -39,7 +39,7 @@
     "globby": "^11.0.3",
     "html-minifier-terser": "^6.0.2",
     "node-fetch": "^2.6.1",
-    "sharp": "^0.28.3"
+    "sharp": "^0.29.2"
   },
   "resolutions": {
     "sharp": "^0.27.0"
