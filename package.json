@@ -36,7 +36,7 @@
     "eleventy-plugin-pwa": "^1.0.8",
     "eleventy-plugin-reading-time": "^0.0.1",
     "eleventy-plugin-svg-contents": "^0.7.0",
-    "globby": "^11.0.3",
+    "globby": "^12.0.2",
     "html-minifier-terser": "^6.0.2",
     "node-fetch": "^2.6.1",
     "sharp": "^0.29.2"
