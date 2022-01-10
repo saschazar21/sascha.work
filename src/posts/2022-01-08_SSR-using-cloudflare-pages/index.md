@@ -1,7 +1,7 @@
 ---
 page:
   title: SSR using Cloudflare Pages
-public: false
+public: true
 related:
   - author: Nevi Shah et al.
     title: Cloudflare Pages Goes Full Stack
