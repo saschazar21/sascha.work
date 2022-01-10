@@ -1,6 +1,7 @@
 p:first-of-type {
+  --line-height: 1.4em;
+
   font-size: 1.25em;
-  line-height: 1.4em;
   text-align: left;
 }
 
