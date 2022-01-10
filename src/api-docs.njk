@@ -16,7 +16,7 @@ This website contains some full-featured JSON API v1-conform endpoints. Those co
 {% for endpoint in apidocs %}
   {% set handler = "tap:AMP.setState({ apistate : { " + endpoint.id + ": !" + endpoint.id + " } })" %}
   <section>
-    <h2><a href="{{ endpoint.url | absoluteUrl }}" target="_blank">{{ endpoint.url }}</a></h2>
+    <h2><a href="{{ endpoint.url | absoluteURL }}" target="_blank">{{ endpoint.url }}</a></h2>
     <p>
       {{ endpoint.description }}
     </p>

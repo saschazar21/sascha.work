@@ -11,7 +11,7 @@ layout: default.njk
 {% if cover %}
 <style data-helmet>{% include "styles/cover.css" %}</style>
 <figure class="full-bleed cover-container">
-<amp-img data-hero alt="{{ cover.alt }}" src="{{ cover.src | absoluteUrl }}" width="{{ cover.width }}" height="{{ cover.height }}" layout="responsive" />
+<amp-img data-hero alt="{{ cover.alt }}" src="{{ cover.src | absoluteURL }}" width="{{ cover.width }}" height="{{ cover.height }}" layout="responsive" />
 </figure>
 {% endif %}
 {% if tldr %}

@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: true
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ feed.title }}</title>
   <subtitle>{{ feed.description }}</subtitle>
-  <link href="{{ permalink | absoluteUrl }}" rel="self"/>
+  <link href="{{ permalink | absoluteURL }}" rel="self"/>
   <link href="{{ feed.home_page_url }}"/>
   <updated>{{ collections.public | rssLastUpdatedDate }}</updated>
   <id>{{ feed.home_page_url }}</id>
@@ -17,7 +17,7 @@ eleventyExcludeFromCollections: true
     <uri>{{ feed.author.url }}</uri>
   </author>
   {%- for post in collections.public %}
-  {% set absolutePostUrl %}{{ post.url | absoluteUrl }}{% endset %}
+  {% set absolutePostUrl %}{{ post.url | absoluteURL }}{% endset %}
   <entry>
     {% if post.data.tldr %}
       <summary>{{ post.data.tldr }}</summary>

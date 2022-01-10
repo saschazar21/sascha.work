@@ -10,12 +10,12 @@ const domain =
     : process.env.DEPLOY_PRIME_URL || pkg.homepage;
 
 module.exports = {
-  absoluteUrl: (path = '') => {
+  absoluteURL: (path = '') => {
     if (/^https?:\/\//i.test(path)) {
       return path;
     }
     const absolutePath = path && path.startsWith('/') ? path : `/${path}`;
-    return `${domain}${absolutePath}`;
+    return new URL(absolutePath, domain).toString();
   },
   format: (date, format) => day(date).format(format),
   gravatar: (email, size = 256) => {
