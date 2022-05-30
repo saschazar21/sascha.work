@@ -38,6 +38,19 @@ module.exports = [
   [
     pwaPlugin,
     {
+      cacheId: 'sascha-work',
+      runtimeCaching: [
+        {
+          handler: 'staleWhileRevalidate',
+          urlPattern:
+            /^.*\.(jpg|png|gif|webp|ico|svg|woff2|woff|eot|ttf|otf|ttc)$/,
+        },
+        {
+          handler: 'networkFirst',
+          urlPattern: /^.*\.(html|json)$/,
+        },
+      ],
+      skipWaiting: false,
       swDest: 'out/sw.js',
     },
   ],
