@@ -33,7 +33,7 @@
     "dayjs": "^1.10.7",
     "eleventy-plugin-helmet": "^0.2.2",
     "eleventy-plugin-json-feed": "^0.0.7",
-    "eleventy-plugin-pwa": "https://github.com/jmsalazardev/eleventy-plugin-pwa#master",
+    "eleventy-plugin-pwa": "jmsalazardev/eleventy-plugin-pwa",
     "eleventy-plugin-reading-time": "^0.0.1",
     "eleventy-plugin-svg-contents": "^0.7.0",
     "globby": "^11.0.3",

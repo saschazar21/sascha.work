@@ -1809,9 +1809,9 @@ eleventy-plugin-json-feed@^0.0.7:
     striptags "^3.1.1"
     url "^0.11.0"
 
-"eleventy-plugin-pwa@https://github.com/jmsalazardev/eleventy-plugin-pwa#master":
+eleventy-plugin-pwa@jmsalazardev/eleventy-plugin-pwa:
   version "2.0.0"
-  resolved "https://github.com/jmsalazardev/eleventy-plugin-pwa#75b03fe0ad110cdf971bb66204228289945bd1e4"
+  resolved "https://codeload.github.com/jmsalazardev/eleventy-plugin-pwa/tar.gz/75b03fe0ad110cdf971bb66204228289945bd1e4"
   dependencies:
     shimmer "^1.2.1"
     workbox-build "^4.3.0"
