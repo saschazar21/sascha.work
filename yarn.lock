@@ -40,12 +40,12 @@
     posthtml "^0.15.1"
     posthtml-urls "1.0.0"
 
-"@11ty/eleventy-plugin-syntaxhighlight@^3.1.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@11ty/eleventy-plugin-syntaxhighlight/-/eleventy-plugin-syntaxhighlight-3.2.2.tgz#c159401cf7eae6eebac1374d3b62948a1bb7242f"
-  integrity sha512-RVVNKD74+dn+3cUsZozvknRnlbGe05zlgIW22+uuhxkDYIi97xhclXLGpJqo4+IVyIpY+bSnPQ+I0wuE4GaztQ==
+"@11ty/eleventy-plugin-syntaxhighlight@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@11ty/eleventy-plugin-syntaxhighlight/-/eleventy-plugin-syntaxhighlight-4.1.0.tgz#742fb1910c5f04d76421c6c95c38804b54155fc1"
+  integrity sha512-bLpV8DKFZRgh0kToh8JPCjABfalL5ydyP6rxj/aUgrlR2v9TheLGRNqoKMhfgwUETOas2nMo/rd7sCE4kSvBNQ==
   dependencies:
-    linkedom "^0.13.0"
+    linkedom "^0.13.2"
     prismjs "^1.26.0"
 
 "@11ty/eleventy-utils@^1.0.1":
@@ -3211,7 +3211,7 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-linkedom@^0.13.0:
+linkedom@^0.13.2:
   version "0.13.7"
   resolved "https://registry.yarnpkg.com/linkedom/-/linkedom-0.13.7.tgz#5d5584e73415911ac387a2794acd61933699e477"
   integrity sha512-We9cyPHV/exsrC43KXtItjqSTxwrK9pLpOnG6TLzqXrmqwe/wqd3Gi6eAAU4YCqfTgy79R8g75hY2fS7723XUg==
