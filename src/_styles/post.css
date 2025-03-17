@@ -1,0 +1,18 @@
+code[class*='language-'],
+pre[class*='language-'] {
+  font-family: var(--font-family-code);
+}
+
+:where(h1 + p) {
+  font-size: var(--font-size-h4);
+}
+
+:where(main > aside) {
+  margin-top: var(--space-lg);
+}
+
+@media (min-width: 848px) {
+  :where(main > aside) {
+    margin-top: var(--space-xl);
+  }
+}

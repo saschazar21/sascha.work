@@ -1,0 +1,252 @@
+:root {
+  /* CSS HSL */
+  --black: hsla(220, 0%, 11%, 1);
+  --jet: hsla(257, 7%, 21%, 1);
+  --white-smoke: hsla(0, 0%, 93%, 1);
+  --baby-powder: hsla(60, 100%, 99%, 1);
+  --vermilion: hsla(1, 100%, 39%, 1);
+  --office-green: hsla(103, 73%, 29%, 1);
+  --lime-green: hsla(103, 73%, 56%, 1);
+
+  --color-bg: var(--baby-powder);
+  --color-bg-muted: var(--white-smoke);
+  --color-text: var(--black);
+  --color-text-muted: var(--jet);
+  --color-primary: var(--vermilion);
+  --color-secondary: var(--office-green);
+  --color-secondary-muted: var(--lime-green);
+
+  --color-link: var(--color-primary);
+
+  --border-radius: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --vermilion: hsla(1, 100%, 73%, 1);
+
+    --color-bg: var(--jet);
+    --color-bg-muted: var(--black);
+    --color-text: var(--baby-powder);
+    --color-text-muted: var(--white-smoke);
+    --color-primary: var(--vermilion);
+    --color-secondary: var(--lime-green);
+    --color-secondary-muted: var(--office-green);
+  }
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-text-muted);
+  border-radius: var(--border-radius, 0);
+  transition: background-color var(--duration-fast) var(--timing);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+:where(*) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-text-muted) transparent;
+  scrollbar-gutter: stable;
+}
+
+:where(svg, path) {
+  transition: fill var(--duration-fast) var(--timing);
+}
+
+:where(a, a:hover, a:visited) {
+  --bg-color: var(--color-bg-muted);
+
+  transition: text-decoration-thickness var(--duration-fast) var(--timing),
+    color var(--duration-fast) var(--timing);
+}
+
+:where(a):where(:hover, :focus) {
+  text-decoration-thickness: 0.175em;
+  z-index: 1;
+}
+
+:where(a, button, .button)::before {
+  --size: 0;
+
+  content: '';
+  display: block;
+  position: absolute;
+  border-radius: var(--border-radius, 0);
+  height: var(--size);
+  width: var(--size);
+  top: 0;
+  left: 0;
+  background-color: var(--bg-color);
+  transition: height var(--duration-fast) var(--timing),
+    width var(--duration-fast) var(--timing);
+  transform-origin: 0.5em 0.5em;
+  z-index: -1;
+}
+
+:where(a):hover::before,
+:where(a):focus::before {
+  --size: 100%;
+}
+
+:where(mark) {
+  --padding-x: var(--padding-container);
+
+  border-bottom: 0.25em solid var(--color-secondary-muted);
+  margin: 0 calc(var(--padding-container) * -1);
+}
+
+:where([data-breadcrumb] a) {
+  --color: var(--color-bg);
+
+  padding: var(--space-xxs) 2ch;
+  margin-left: -1ch;
+  background-color: var(--color-link);
+  color: var(--color);
+  text-decoration: none;
+  clip-path: polygon(
+    0 0,
+    1ch 50%,
+    0 100%,
+    calc(100% - 1ch) 100%,
+    100% 50%,
+    calc(100% - 1ch) 0
+  );
+  transition: background-color var(--duration-fast) var(--timing),
+    color var(--duration-fast) var(--timing);
+}
+
+:where([data-breadcrumb] [title='Home']) {
+  padding-left: 1ch;
+  margin-left: 0;
+  clip-path: polygon(
+    0 0,
+    0 100%,
+    calc(100% - 1ch) 100%,
+    100% 50%,
+    calc(100% - 1ch) 0
+  );
+}
+
+:where([data-breadcrumb] a):where(:hover, :focus) {
+  --bg-color: var(--color-link);
+  --color: var(--color-bg);
+}
+
+:where([data-card-element]:nth-child(2n + 1)) {
+  background-color: var(--color-bg-muted);
+}
+
+:where([data-card-element]:nth-child(2n + 1) a) {
+  --bg-color: var(--color-bg);
+}
+
+:where([data-icons] a) {
+  --color: var(--color-text-muted);
+}
+
+:where([data-icons] a):where(:hover, :focus) {
+  --color: var(--color-link);
+}
+
+:where([data-overlap]) {
+  position: relative;
+  border-bottom-left-radius: var(--border-radius, 0);
+  border-bottom-right-radius: var(--border-radius, 0);
+  padding: 0 var(--top-padding) var(--top-padding);
+  margin-top: calc(var(--top-padding) * -1);
+  background-color: var(--color-bg);
+}
+
+:where([data-overlap]) a {
+  --bg-color: var(--color-bg-muted);
+}
+
+:where([data-tag]) {
+  --bg-color: var(--color-link);
+  --color: var(--color-bg);
+
+  display: inline-flex;
+  border-radius: var(--border-radius, 0);
+  border: var(--border-width, 1px) solid var(--color-link);
+  padding: var(--space-xxs) var(--space-xs);
+  padding-left: calc(1ch + var(--space-xxs) * 2);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-bold);
+  font-variation-settings: 'wght' var(--font-weight-bold);
+  color: var(--color);
+  background-color: var(--bg-color);
+  text-decoration: none;
+}
+
+:where([data-tag])::after {
+  content: '#';
+  position: absolute;
+  margin-right: var(--space-xxs);
+  top: 50%;
+  left: var(--space-xxs);
+  transform: translateY(-50%);
+  font-size: var(--font-size-caption);
+}
+
+:where(.tldr) {
+  --border-width: 4px;
+
+  border-left: var(--border-width) solid var(--color-secondary);
+  margin: 0 calc(var(--padding-container) * -1);
+  padding: var(--padding-container);
+  padding-left: calc(var(--padding-container) - var(--border-width));
+  background-color: var(--color-bg-muted);
+}
+
+@media (pointer: fine) {
+  :where([data-breadcrumb] a) {
+    --color: var(--color-text);
+
+    background-color: var(--color-bg);
+  }
+
+  :where([data-breadcrumb] a):where(:hover, :focus) {
+    --color: var(--color-bg);
+  }
+
+  :where([data-tag]) {
+    --color: var(--color-text);
+
+    background-color: unset;
+  }
+
+  :where([data-tag]):where(:hover, :focus) {
+    --bg-color: var(--color-link);
+    --color: var(--color-bg);
+  }
+}
+
+@media (min-width: 640px) {
+  :where([data-tag]) {
+    font-weight: var(--font-weight-normal);
+    font-variation-settings: 'wght' var(--font-weight-normal);
+  }
+}
+
+@media (min-width: 848px) {
+  :where(mark) {
+    --padding-x: unset;
+
+    margin: 0;
+  }
+
+  :where(.tldr) {
+    --border-width: 8px;
+    --padding-container: var(--space-lg);
+  }
+}

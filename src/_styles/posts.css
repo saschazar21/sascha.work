@@ -1,0 +1,23 @@
+:where([data-info-container]) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin: var(--space-md) 0;
+  font-size: var(--font-size-h4);
+}
+
+:where([data-tags]) {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  :where([data-info-container]) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+}
