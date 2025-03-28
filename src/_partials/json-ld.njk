@@ -1,0 +1,115 @@
+{% set author %}
+{
+  "@type": "Person",
+  "name": "{{ pkg.author.name }}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ '/assets/img/avatar-256.jpg' | canonical(env.url) }}",
+    "height": 256,
+    "width": 256
+  },
+  "url": "{{ pkg.homepage }}",
+  "sameAs": [
+{% for account in social.data %}
+    "{{ account.profile }}"{% if not loop.last %},{% endif %}
+{% endfor %}
+  ],
+  "jobTitle": "{{ experience.data.work[0].position }}",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "{{ experience.data.work[0].institution }}",
+    "url": "{{ experience.data.work[0].url }}",
+    "location": "{{ experience.data.work[0].city }}"
+  },
+  "alumniOf": [
+{% for school in experience.data.education %}
+    {
+      "@type": "EducationalOrganization",
+      "name": "{{ school.institution }}",
+      "url": "{{ school.url }}",
+      "location": "{{ school.city }}"
+    }{% if not loop.last %},{% endif %}
+{% endfor %}
+  ]
+}
+{% endset %}
+
+{% set schema %}
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "{{ page.url | canonical(env.url) }}",
+  "name": "{{ pkg.author.name }}",
+  "author": {{ author | safe }},
+  "editor": {{ author | safe }},
+  "publisher": {{ author | safe }},
+  "description": "{{ tldr | default(pkg.description) }}",
+  "text": "{{ tldr | default(pkg.description) }}",
+  "datePublished": "{{ published | default(page.date) | date('YYYY-MM-DD') }}",
+  "dateModified": "{{ modified | default(now) | date('YYYY-MM-DD') }}",
+  "image": "{{ (page.url + 'img/card.png') | canonical(env.url) }}",
+  "inLanguage": "{{ lang | default('en') }}",
+  "potentialAction": {
+    "@type": "ReadAction",
+    "target": "{{ page.url | canonical(env.url) }}"
+  },
+{% if page.url != '/' %}
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "{{ pkg.author.name }}",
+    "url": "{{ pkg.homepage }}",
+    "publisher": "{{ pkg.author.name }}",
+    "author": "{{ pkg.author.name }}",
+    "description": "{{ pkg.description }}",
+    "inLanguage": "{{ lang | default('en') }}"
+  }
+{% else %}
+    "hasPart": [
+      {
+        "@type": "WebPage",
+        "name": "About",
+        "text": "Get to know more about {{ pkg.author.name }}.",
+        "url": "{{ '/about/' | canonical(env.url) }}",
+        "lastReviewed": "{{ now | date('YYYY-MM-DD') }}"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Blog",
+        "text": "Read the latest articles published by {{ pkg.author.name }}.",
+        "url": "{{ '/blog/' | canonical(env.url) }}",
+        "lastReviewed": "{{ now | date('YYYY-MM-DD') }}"
+      },
+      {
+        "@type": "WebPage",
+        "name": "API Docs",
+        "url": "{{ '/api-docs/' | canonical(env.url) }}",
+        "lastReviewed": "{{ now | date('YYYY-MM-DD') }}"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Legal Notice",
+        "url": "{{ '/legal/' | canonical(env.url) }}",
+        "lastReviewed": "{{ now | date('YYYY-MM-DD') }}"
+      },
+{% for post in collections.published | take(3) %}
+      {
+        "@type": "WebPage",
+        "name": "{{ post.data.page.title }}",
+        "url": "{{ post.url | canonical(env.url) }}",
+        "text": "{{ post.data.tldr }}",
+        "lastReviewed": "{{ now | date('YYYY-MM-DD') }}",
+        "relatedLink": "{{ '/blog/' | canonical(env.url) }}"
+      }{% if not loop.last %},{% endif %}
+  {% endfor %}
+    ]
+{% endif %}
+}
+{% endset %}
+
+{% json "schema" %}
+{{ schema | safe }}
+{% endjson %}
+
+<script type="application/ld+json" data-helmet="schema">
+  {% getBundle "json", "schema" %}
+</script>

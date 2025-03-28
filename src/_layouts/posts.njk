@@ -1,0 +1,41 @@
+---
+layout: default.njk
+---
+
+{% set title = title | default('Articles') %}
+
+{% set css %}{% include "src/_styles/posts.css" %}{% endset %}
+{% css "posts" %}{{ css | safe }}{% endcss %}
+
+<style data-helmet>
+  {% getBundle 'css', 'posts' %}
+</style>
+
+<h1>{{ title }}</h1>
+
+{% for entry in entries %}
+  <article class="h-entry" data-article-preview>
+    <h2 class="p-name">
+      <a href="{{ entry.url }}" class="u-url">{{ entry.data.page.title }}</a>
+    </h2>
+    <div data-info-container>
+      <time class="dt-published" datetime="{{ entry.date | date('YYYY-MM-DD') }}">{{ entry.date | date('DD MMM. YYYY') }}</time>
+      {% if entry.data.tags %}
+        <ul data-tags>
+          {% for tag in entry.data.tags | unique %}
+            {% if tag != 'post' %}
+              <li>
+                <a href="/tags/{{ tag | slugify }}" data-tag {% if tag == current %}aria-current="page"{% endif %}>{{ tag | slugify }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <p class="p-summary">{{ entry.data.tldr }}</p>
+    <a href="{{ entry.url }}" title="Read more about {{ entry.data.page.title }}" class="u-url">Read more</a>
+  </article>
+{% endfor %}
+
+{% set nav_title = title + " Pages" %}
+{% include "src/_partials/pagination.njk" %}

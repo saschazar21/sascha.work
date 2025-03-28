@@ -1,0 +1,45 @@
+---
+layout: default.njk
+---
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css" integrity="sha256-zzHVEO0xOoVm0I6bT9v5SgpRs1cYNyvEvHXW/1yCgqU=" crossorigin="anonymous" data-helmet="prism-theme"/>
+
+{% set css %}
+{% include "src/_styles/post.css" %}
+{% endset %}
+
+{% css "post" %}
+{{ css | safe }}
+{% endcss %}
+
+<style data-helmet>
+  {% getBundle 'css', 'post' %}
+</style>
+
+{% if not env.production or(env.production and not public) %}<meta name="robots" content="noindex nofollow" data-helmet="robots"/>{% endif %}
+
+{% if tldr %}
+  <p class="tldr">
+    <abbr title="Too long, didn't read">TL/DR:</abbr>
+    <span>{{ tldr }}</span>
+  </p>
+{% endif %}
+{{ content | safe }}
+
+{% if related.length > 0 %}
+  <aside>
+    <h2>Related</h2>
+    <div class="full-bleed featured">
+      <section class="featured-container">
+        {% for post in related %}
+          <article>
+            <strong>{{ post.author }}</strong>
+            <h3>
+              <a href="{{ post.url }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ post.title }}</a>
+            </h3>
+          </article>
+        {% endfor %}
+      </section>
+    </div>
+  </aside>
+{% endif %}

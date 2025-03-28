@@ -1,19 +1,9 @@
 {
   "data": [
     {
-      "provider": "twitter",
-      "username": "@saschazar",
-      "profile": "https://twitter.com/saschazar"
-    },
-    {
       "provider": "github",
       "username": "saschazar21",
       "profile": "https://github.com/saschazar21"
-    },
-    {
-      "provider": "bitbucket",
-      "username": "saschazar21",
-      "profile": "https://bitbucket.org/saschazar21"
     },
     {
       "provider": "codepen",
@@ -21,9 +11,9 @@
       "profile": "https://codepen.io/saschazar21"
     },
     {
-      "provider": "runkit",
-      "username": "saschazar21",
-      "profile": "https://runkit.com/saschazar21"
+      "provider": "mastodon",
+      "username": "@saschazar@mastodon.social",
+      "profile": "https://mastodon.social/@saschazar"
     },
     {
       "provider": "linkedin",

@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     code: `
 {
@@ -82,9 +82,9 @@ module.exports = [
 {
   "data": [
     {
-      "provider": "twitter",
-      "username": "@saschazar",
-      "profile": "https://twitter.com/saschazar"
+      "provider": "github",
+      "username": "saschazar21",
+      "profile": "https://github.com/saschazar21"
     }
   ]
 }`,

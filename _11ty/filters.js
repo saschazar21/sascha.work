@@ -1,63 +1,24 @@
-const { createHash } = require('crypto');
-const day = require('dayjs');
-const { URL } = require('url');
+import dayjs from 'dayjs';
 
-const pkg = require('../package.json');
-
-const domain =
-  process.env.CONTEXT === 'production'
-    ? process.env.URL
-    : process.env.DEPLOY_PRIME_URL || pkg.homepage;
-
-module.exports = {
-  absoluteURL: (path = '') => {
-    if (/^https?:\/\//i.test(path)) {
-      return path;
-    }
-    const absolutePath = path && path.startsWith('/') ? path : `/${path}`;
-    return new URL(absolutePath, domain).toString();
+export default {
+  canonical: (path, origin) => new URL(path, origin).href,
+  date: (value, options) => {
+    const dateObject = new Date(value);
+    return dayjs(dateObject).format(options);
   },
-  format: (date, format) => day(date).format(format),
-  gravatar: (email, size = 256) => {
-    if (!email || !email.length) {
-      throw new Error('No email given to calculate Gravatar hash!');
-    }
-
-    const hash = createHash('md5').update(email).digest('hex');
-    const url = new URL(
-      `/avatar/${hash}?s=${size}`,
-      'https://www.gravatar.com',
-    );
-    return url.toString();
-  },
-  hostname: (url) => new URL(url).hostname,
-  padZero: (value, length = 2) => {
-    const stringified = value.toString();
-    const gap = length - stringified.length;
-    if (gap < 0) {
-      return stringified;
-    }
-    return new Array(gap)
-      .fill(0)
-      .reduce((prev, curr) => `${curr}${prev}`, stringified);
-  },
-  rewrite: (path, slug) =>
-    slug || path.replace(/\d{4}-\d{2}-\d{2}_/, '').toLowerCase(),
-  svgline: (path) => {
-    const MAX_LENGTH = 17;
-    if (path.length <= MAX_LENGTH) {
-      return [path];
-    }
-    const segments = path.split(' ');
-    return segments.reduce((lines, current) => {
-      const [prev] = lines.slice(-1);
-      if (!prev) {
-        return [current];
-      }
-      if (prev.length + current.length + 1 > MAX_LENGTH) {
-        return [...lines, current];
-      }
-      return [...lines.slice(0, -1), `${prev} ${current}`];
-    }, []);
-  },
+  join: (values, separator) =>
+    values.filter((value) => !!value).join(separator),
+  padStart: (value, length) => String(value).padStart(length, '0'),
+  push: (array, ...items) => [...array, ...items],
+  split: (value, separator) =>
+    value
+      .split(separator)
+      .map((item) => item.trim())
+      .filter((item) => !!item),
+  stripdate: (path, slug) =>
+    slug ?? path.replace(/\d{4}-\d{2}-\d{2}_/, '').toLowerCase(),
+  tag: (articles, tag) =>
+    articles.filter((article) => article.data.tags.includes(tag)),
+  take: (array, count) => array.slice(0, count),
+  unique: (array) => [...new Set(array)],
 };

@@ -1,0 +1,32 @@
+{% set css %}{% include "src/_styles/header.css" %}{% endset %}
+
+{% css "header" %}
+{{ css | safe }}
+{% endcss %}
+
+<style data-helmet>
+  {% getBundle 'css', 'header' %}
+</style>
+
+{% set svg %}{% include "assets/favicon.svg" %}{% endset %}
+
+<header id="top">
+  <div class="container">
+    <a class="home" href="/?utm_content=header" rel="me" title="Homepage">
+      <div aria-hidden="true" role="presentation" data-avatar>{{ svg | safe }}</div>
+    </a>
+
+    {% set navigation = [["Home", "/"], ["About", "/about/"], ["Blog", "/blog/"], ["API Docs", "/api-docs/"]] %}
+    <div>
+      <nav>
+        <ul>
+          {% for item in navigation %}
+            <li data-order="{{ loop.index | string | padStart(2, '0') }}">
+              <a href="{{ item[1] }}?utm_content=header" {% if item[1] == page.url %}aria-current="page"{% endif %}>{{ item[0] }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

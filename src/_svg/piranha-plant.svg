@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 162 236">
+  <style>[data-jaws=close]{visibility:hidden;opacity:0}[data-jaws=open]{visibility:visible;opacity:1}[data-description=leaf]{fill:#fc9838}[data-description=blossom]{fill:#0d9300}[data-description=teeth]{fill:#fff}</style>
+  <path d="M70 165h22v71H70z" data-description="leaf"/>
+  <path d="M142 165h20v20h-10v21h-10v20h-10v10H81v-21h20v-20h10v-10h10v-10h21v-10Z" data-description="leaf"/>
+  <path d="M152 175h-11v10h-10v10h-10v10h-10v10h-10v11h11v-10h10v-10h10v-10h10v-10h10v-11Z" data-description="blossom"/>
+  <path d="M20 165H0v20h10v21h10v20h10v10h51v-21H61v-20H51v-10H41v-10H20v-10Z" data-description="leaf"/>
+  <path d="M10 175h11v10h10v10h10v10h10v10h10v11H50v-10H40v-10H30v-10H20v-10H10v-11Z" data-description="blossom" />
+  <path data-jaws="open" d="M142 13h-11v30h-10v21h-10v30h-10v20H90v31h-9v20h30v-10h21v-10h10v-10h10v-20h10V53h-10V23h-10V13Z" data-description="blossom" />
+  <path data-jaws="open" d="M91 155h10v10H91zM90 135h10v10H90v-10ZM111 145h10v10h-10zM121 125h10v10h-10zM142 115h10v10h-10zM111 104h10v10h-10zM142 94h10v10h-10zM132 74h10v10h-10zM152 64h10v10h-10zM142 43h10v10h-10zM131 23h10v10h-10zM121 54h10v10h-10z" data-description="leaf"/>
+  <path data-jaws="open" d="M20 13h11v30h10v21h10v30h10v20h11v31h9v20H51v-10H30v-10H20v-10H10v-20H0V53h10V23h10V13Z" data-description="blossom"/>
+  <path data-jaws="open" d="M71 155H61v10h10zM72 135H62v10h10v-10ZM51 145H41v10h10zM41 125H31v10h10zM20 115H10v10h10zM51 104H41v10h10zM20 94H10v10h10zM30 74H20v10h10zM10 64H0v10h10zM20 43H10v10h10zM31 23H21v10h10zM41 54H31v10h10z" data-description="leaf"/>
+  <path data-jaws="open" d="M111 23h20v20h-10V33h-10V23ZM101 44h20v20h-10V54h-10V44ZM91 65h20v20h-10V75H91V65ZM101 94H91v20h10z" data-description="teeth"/>
+  <path data-jaws="open" d="M51 23H31v20h10V33h10V23ZM61 44H41v20h10V54h10V44ZM71 65H51v20h10V75h10V65ZM61 94h10v20H61z" data-description="teeth"/>
+  <path data-jaws="close" d="M59 0h11v165H51v-20H41v-10H31v-20H21V53h10V23h18V10h10V0Z" data-description="blossom"/>
+  <path data-jaws="close" d="M70 155H60v10h10zM70 135H60v10h10v-10ZM51 145H41v10h10zM58 125H48v10h10zM41 115H31v10h10zM60 104H50v10h10zM31 93H21v10h10zM51 74H41v10h10zM31 64H21v10h10zM41 43H31v10h10zM70 10H60v10h10zM70 54H60v10h10z" data-description="leaf"/>
+  <path data-jaws="close" d="M103 0H92v165h19v-20h10v-10h10v-20h10V53h-10V23h-18V10h-10V0Z" data-description="blossom"/>
+  <path data-jaws="close" d="M92 155h10v10H92zM92 135h10v10H92v-10ZM111 145h10v10h-10zM104 125h10v10h-10zM121 115h10v10h-10zM102 104h10v10h-10zM131 93h10v10h-10zM111 74h10v10h-10zM131 64h10v10h-10zM121 43h10v10h-10zM92 10h10v10H92zM92 54h10v10H92z" data-description="leaf"/>
+</svg>

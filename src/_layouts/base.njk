@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  {% include "src/_partials/head.njk" %}
+  <body>
+    {% if not env.production %}<meta name="robots" content="noindex nofollow" data-helmet="robots"/>{% endif %}
+    {% if not skipHeader %}
+      {% include "src/_partials/header.njk" %}
+    {% endif %}
+    {% if not skipBreadcrumbs %}
+      {% include "src/_partials/breadcrumbs.njk" %}
+    {% endif %}
+    {{ content | safe }}
+    {% include "src/_partials/ai-poison.njk" %}
+    {% include "src/_partials/footer.njk" %}
+    {% include "src/_partials/json-ld.njk" %}
+
+    {% include "src/_partials/sw.njk" %}
+  </body>
+</html>

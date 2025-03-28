@@ -1,0 +1,8 @@
+{% if page.url %}<link rel="canonical" href="{{ page.url | canonical(env.url) }}"/>{% endif %}
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon.ico"/>
+
+<meta property="og:title" content="{{ title }}"/>
+<meta property="og:description" content="{{ description }}"/>
+<meta property="og:type" content="article"/>
