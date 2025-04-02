@@ -54,6 +54,7 @@
   background-color: var(--color-bg-muted);
   overflow: hidden;
   transition: border-color var(--duration-fast) var(--timing);
+  scrollbar-gutter: unset;
 }
 
 [data-link-about]::before {

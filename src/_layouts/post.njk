@@ -29,17 +29,15 @@ layout: default.njk
 {% if related.length > 0 %}
   <aside>
     <h2>Related</h2>
-    <div class="full-bleed featured">
-      <section class="featured-container">
-        {% for post in related %}
-          <article>
-            <strong>{{ post.author }}</strong>
-            <h3>
-              <a href="{{ post.url }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ post.title }}</a>
-            </h3>
-          </article>
-        {% endfor %}
-      </section>
-    </div>
+    <section data-related-articles>
+      {% for post in related %}
+        <article>
+          <h3>
+            <a href="{{ post.url }}" rel="noindex nofollow noopener noreferrer" target="_blank">{{ post.title }}</a>
+          </h3>
+          <strong>{{ post.author }}</strong>
+        </article>
+      {% endfor %}
+    </section>
   </aside>
 {% endif %}

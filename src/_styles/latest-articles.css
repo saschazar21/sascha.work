@@ -72,7 +72,6 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  scrollbar-gutter: unset;
 }
 
 :where([data-articles]) {

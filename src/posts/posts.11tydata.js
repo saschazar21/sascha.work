@@ -14,6 +14,6 @@ export default {
     },
   },
   layout: 'post.njk',
-  permalink: '/{{ page.fileSlug | stripdate }}/index.html',
+  permalink: '/posts/{{ page.fileSlug | stripdate }}/index.html',
   tags: ['post'],
 };

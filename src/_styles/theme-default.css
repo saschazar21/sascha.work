@@ -53,10 +53,13 @@
   background-color: transparent;
 }
 
+:where(root) {
+  scrollbar-gutter: stable;
+}
+
 :where(*) {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-text-muted) transparent;
-  scrollbar-gutter: stable;
+  scrollbar-color: var(--color-secondary) var(--color-bg-muted);
 }
 
 :where(svg, path) {
