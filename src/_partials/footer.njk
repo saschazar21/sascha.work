@@ -20,7 +20,10 @@
       <h2 data-sr-only>Copyright, Contact and Legal Notice</h2>
       <a href="{{ pkg.homepage }}?utm_content=footer" class="u-url" rel="me">{{ pkg.homepage }}</a>
       <p>
-        <strong>&copy; <span class="p-name">{{ pkg.author.name }}</span></strong>, 2018&ndash;{{ now | date('YYYY') }}
+        <strong>
+          &copy; 2018&ndash;{{ now | date('YYYY') }}
+          <span class="p-name">{{ pkg.author.name }}</span>
+        </strong>
         <ul>
           <li>
             <a id="pgp" href="" rel="pgpkey me" class="u-key" type="application/pgp-keys" download="{{ pkg.author.name | slugify }}.asc">Download my PGP key</a>{{ ' ' }}and send me secure e-mails.</li>
@@ -37,7 +40,7 @@
           {% for account in social.data %}
             <li>
               <a href="{{ account.profile }}" rel="me" target="_blank" title="{{ account.username }} on {{ account.provider }}">
-                <svg aria-hidden="true" role="img" height="44" weight="44">
+                <svg aria-hidden="true" role="img" height="44" width="44">
                   <use xlink:href="/assets/icons/social.sprite.svg#icon-{{ account.provider }}"></use>
                 </svg>
               </a>
@@ -56,7 +59,7 @@
             </a>
           </li>
           <li>
-            <a href="/feed.json" rel="alternate" type="application/json" title="JSON Feed">
+            <a href="/feed.json" rel="alternate" type="application/feed+json" title="JSON Feed">
               <svg aria-hidden="true" role="img" height="44" weight="44">
                 <use xlink:href="/assets/icons/icons.sprite.svg#icon-json-feed"></use>
               </svg>

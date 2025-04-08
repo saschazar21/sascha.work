@@ -125,8 +125,8 @@ pre {
 }
 
 :focus {
-  outline: 2px dotted var(--color-text);
-  outline-offset: 1px;
+  outline: var(--border-width-md) dotted var(--color-text);
+  outline-offset: var(--border-width-sm);
 }
 
 ::selection {
@@ -152,6 +152,16 @@ pre {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   padding: 0 var(--padding-container);
+}
+
+:is([data-hide-sm]) {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  :is([data-hide-sm]) {
+    display: initial;
+  }
 }
 
 /* 848px = 800px + 2 * 1.5rem */

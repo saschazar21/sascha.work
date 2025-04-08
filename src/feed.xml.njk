@@ -1,0 +1,45 @@
+---
+permalink: feed.xml
+---
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>{{ pkg.title }}</title>
+  <subtitle>{{ pkg.description }}</subtitle>
+  <link href="{{ page.url | canonical(env.url) }}" type="application/atom+xml" rel="self"/>
+  <link href="{{ '/' | canonical(env.url) }}" type="text/html" rel="alternate"/>
+  <id>{{ '/' | canonical(env.url) }}</id>
+  <updated>{{ now | date("YYYY-MM-DDTHH:mm:ss[Z]") }}</updated>
+  <author>
+    <name>{{ pkg.author.name }}</name>
+    <email>{{ pkg.author.email }}</email>
+  </author>
+  <rights>Copyright (c) 2018&#45;{{ now | date('YYYY') }}
+    {{ pkg.author.name }}</rights>
+  <generator uri="https://11ty.dev" version="{{ eleventy.version }}">{{ eleventy.generator }}</generator>
+  <icon>{{ '/assets/img/favicon-32.png' | canonical(env.url) }}</icon>
+  <logo>{{ '/assets/img/apple-touch-512.png' | canonical(env.url) }}</logo>
+  {% for post in collections.published | reverse %}
+    <entry>
+      <title type="text">{{ post.data.page.title }}</title>
+      <link href="{{ post.url | canonical(env.url) }}" rel="alternate"/>
+      {% for related in post.data.related %}
+        <link href="{{ related.url }}" rel="related"/>
+      {% endfor %}
+      <id>{{ post.url | canonical(env.url) }}</id>
+      <published>{{ post.date | date("YYYY-MM-DDTHH:mm:ss[Z]") }}</published>
+      <updated>{{ post.data.updated | default(post.date) | date("YYYY-MM-DDTHH:mm:ss[Z]") }}</updated>
+      {% if post.data.image %}
+        <image>{{ post.data.image | canonical(env.url) }}</image>
+      {% endif %}
+      {% for tag in post.data.tags | unique %}
+        <category term="{{ tag | slug }}"/>
+      {% endfor %}
+      <summary type="html">{{ post.data.tldr }}</summary>
+      <content type="html">{{ post.content }}</content>
+      <author>
+        <name>{{ pkg.author.name }}</name>
+        <email>{{ pkg.author.email }}</email>
+      </author>
+    </entry>
+  {% endfor %}
+</feed>

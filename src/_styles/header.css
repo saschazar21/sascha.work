@@ -37,6 +37,10 @@ header li::before {
   font-size: var(--font-size-caption);
 }
 
+:where(header collapsible-menu):is(:focus, :focus-within) {
+  outline: none;
+}
+
 .home {
   --color: var(--color-link);
   --size: 44px;

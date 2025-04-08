@@ -4,12 +4,50 @@ layout: default.njk
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css" integrity="sha256-zzHVEO0xOoVm0I6bT9v5SgpRs1cYNyvEvHXW/1yCgqU=" crossorigin="anonymous" data-helmet="prism-theme"/>
 
+{% set css %}{% include 'src/_styles/api-docs.css' %}{% endset %}
+
+{% css "api-docs" %}
+{{ css | safe }}
+{% endcss %}
+
+<style data-helmet="api-docs">
+  {% getBundle 'css', 'api-docs' %}
+</style>
+
 {% set experience %}
 {% include "src/_data/experience.json" %}
 {% endset %}
 
 {% set experience = experience | json %}
 {% set experience = experience | modify('data.education', experience.data.education[0]) | modify('data.work', experience.data.work[0]) | stringify %}
+
+{% set feed %}
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Sascha Zarhuber, Web Developer",
+  "description": "I am Sascha, a web developer from Austria. This website is about the web and stuff that I make.",
+  "home_page_url": "https://sascha.work/",
+  "feed_url": "https://sascha.work/feed.json",
+  "icon": "https://sascha.work/assets/img/apple-touch-512.png",
+  "favicon": "https://sascha.work/assets/img/apple-touch-192.png",
+  "authors": [
+    {
+      "name": "Sascha Zarhuber",
+      "url": "https://sascha.work/",
+      "avatar": "http://sascha.work/assets/img/apple-touch-512.png"
+    }
+  ],
+  "language": "en",
+  "items": [
+      {
+        "id": "http://sascha.work/posts/teaser-cards-in-eleventy/",
+        "title": "Teaser Cards in Eleventy",
+        "url": "http://sascha.work/posts/teaser-cards-in-eleventy/",
+        "date_published": "2021-01-22T00:00:00Z"
+      }
+  ]
+}
+{% endset %}
 
 {% set social %}
 {% include "src/_data/social.json" %}
@@ -18,7 +56,7 @@ layout: default.njk
 {% set social = social | json %}
 {% set social = social | modify('data', social.data[0]) | stringify %}
 
-{% set snippets = [experience, null, social] %}
+{% set snippets = [experience, feed, social] %}
 
 {% set segments %}
 [
@@ -27,27 +65,21 @@ layout: default.njk
     "description": "This endpoint contains all my educational- and work experience, including the university- and company name, position, and timeline. It is used to generate some contents of the <a href=\"/about/?utm_content=api-docs\">About</a> page.",
     "url": "/experience.json",
     "method": "GET",
-    "response": {
-      "status": 200
-    }
+    "contentType": "application/json"
   },
   {
     "name": "feed",
     "description": "This endpoint contains a <a href=\"https://www.jsonfeed.org/\" rel=\"noindex nofollow\" target=\"_blank\">JSON Feed 1.1</a>-conform feed of my latest articles.",
     "url": "/feed.json",
     "method": "GET",
-    "response": {
-      "status": 200
-    }
+    "contentType": "application/feed+json"
   },
   {
     "name": "social",
     "description": "This endpoint contains a JSON object with all my social media accounts, including the URL and user name. It is used to generate the Social Media section in the footer.",
     "url": "/social.json",
     "method": "GET",
-    "response": {
-      "status": 200
-    }
+    "contentType": "application/json"
   }
 ]
 {% endset %}
@@ -60,7 +92,7 @@ layout: default.njk
 </p>
 
 {% for segment in segments | json %}
-  <section>
+  <article data-api-doc>
     <h2>
       <a href="{{ segment.url }}" target="_blank">
         <code>{{ segment.url }}</code>
@@ -69,14 +101,38 @@ layout: default.njk
     <p>
       {{ segment.description | safe }}
     </p>
-    <h3>Method</h3>
-    <p>{{ segment.method }}</p>
-    <h3>Response</h3>
-    <p>Status: {{ segment.response.status }}</p>
-    {% if snippets[loop.index0] %}
-      {% highlight "json" %}
-      {{ snippets[loop.index0] | safe }}
-      {% endhighlight %}
-    {% endif %}
-  </section>
+    <expander-button text="Show sample response">
+      <div slot="contents" data-demo>
+        <div data-headers>
+          <section>
+            <h3>Method</h3>
+            <code>{{ segment.method }}</code>
+          </section>
+          <section data-hide-sm>
+            <h3>Path</h3>
+            <code>{{ segment.url }}</code>
+          </section>
+          <section>
+            <h3>Content-Type</h3>
+            <code>{{ segment.contentType }}</code>
+          </section>
+        </div>
+        {% if snippets[loop.index0] %}
+          {% highlight "json" %}
+          {{ snippets[loop.index0] | safe }}
+          {% endhighlight %}
+        {% endif %}
+      </div>
+    </expander-button>
+  </article>
 {% endfor %}
+
+{% set js %}{% include "src/_scripts/components/expander-button.ts" %}{% endset %}
+
+{% js "api-docs" %}
+{{ js | safe }}
+{% endjs %}
+
+<script>
+  {% getBundle 'js', 'api-docs' %}
+</script>

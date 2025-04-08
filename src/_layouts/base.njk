@@ -15,5 +15,17 @@
     {% include "src/_partials/json-ld.njk" %}
 
     {% include "src/_partials/sw.njk" %}
+
+    {% if not skipHeader %}
+      {% set js %}{% include "src/_scripts/components/collapsible-menu.ts" %}{% endset %}
+
+      {% js "menu" %}
+      {{ js | safe }}
+      {% endjs %}
+
+      <script>
+        {% getBundle 'js', 'menu' %}
+      </script>
+    {% endif %}
   </body>
 </html>

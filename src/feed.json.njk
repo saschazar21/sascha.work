@@ -1,0 +1,51 @@
+---
+permalink: feed.json
+---
+
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "{{ pkg.title }}",
+  "description": "{{ pkg.description }}",
+  "home_page_url": "{{ '/' | canonical(env.url) }}",
+  "feed_url": "{{ '/feed.json' | canonical(env.url) }}",
+  "icon": "{{ '/assets/img/apple-touch-512.png' | canonical(env.url) }}",
+  "favicon": "{{ '/assets/img/apple-touch-192.png' | canonical(env.url) }}",
+  "authors": [
+    {
+      "name": "{{ pkg.author.name }}",
+      "url": "{{ '/' | canonical(pkg.author.url) }}",
+      "avatar": "{{ '/assets/img/apple-touch-512.png' | canonical(env.url) }}"
+    }
+  ],
+  "language": "en",
+  "items": [
+    {% for post in collections.published | reverse %}
+      {
+        "id": "{{ post.url | canonical(env.url) }}",
+        "title": "{{ post.data.page.title }}",
+        "url": "{{ post.url | canonical(env.url) }}",
+        "date_published": "{{ post.date | date('YYYY-MM-DDTHH:mm:ss[Z]') }}",
+        {% if post.data.image %}
+          "image": "{{ post.data.image | canonical(env.url) }}",
+        {% endif %}
+        "authors": [
+          {
+            "name": "{{ pkg.author.name }}",
+            "url": "{{ '/' | canonical(pkg.author.url) }}",
+            "avatar": "{{ '/assets/img/apple-touch-512.png' | canonical(env.url) }}"
+          }
+        ],
+        {% if post.data.tags %}
+          "tags": [
+            {% for tag in post.data.tags | unique %}
+              "{{ tag | slugify }}"{% if not loop.last %},{% endif %}
+    {% endfor %}
+          ],
+        {% endif %}
+        "summary": "{{ post.data.tldr | striptags | safe }}",
+        "content_html": "{{ post.content | replace('"', '\\"') | replace("\n", "") | safe }}",
+        "content_text": "{{ post.content | striptags | replace("\n", " ") }}"
+      }{% if not loop.last %},{% endif %}
+{% endfor %}
+]
+}

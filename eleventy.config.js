@@ -44,12 +44,12 @@ export default async function (eleventyConfig) {
 export const config = {
   dir: {
     input: 'src',
-    includes: '_includes',
+    includes: '_partials',
     layouts: '_layouts',
     data: '_data',
     output: 'public',
   },
   htmlTemplateEngine: DEFAULT_TEMPLATE_ENGINE,
   markdownTemplateEngine: DEFAULT_TEMPLATE_ENGINE,
-  templateFormats: ['html', 'md'],
+  templateFormats: ['html', 'md', 'njk'],
 };

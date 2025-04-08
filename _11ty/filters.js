@@ -1,10 +1,15 @@
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc.js';
+import timezone from 'dayjs/plugin/timezone.js';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export default {
   canonical: (path, origin) => new URL(path, origin).href,
-  date: (value, options) => {
+  date: (value, format, tz = 'utc') => {
     const dateObject = new Date(value);
-    return dayjs(dateObject).format(options);
+    return dayjs(dateObject).tz(tz).format(format);
   },
   json: (value) => JSON.parse(value),
   join: (values, separator) =>
@@ -25,6 +30,8 @@ export default {
   },
   padStart: (value, length) => String(value).padStart(length, '0'),
   push: (array, ...items) => [...array, ...items],
+  replace: (text, search, replacement) =>
+    text.replace(new RegExp(search, 'g'), replacement),
   split: (value, separator) =>
     value
       .split(separator)
@@ -33,6 +40,7 @@ export default {
   stringify: (obj) => JSON.stringify(obj, null, 2),
   stripdate: (path, slug) =>
     slug ?? path.replace(/\d{4}-\d{2}-\d{2}_/, '').toLowerCase(),
+  striptags: (html) => html.replace(/(<([^>]+)>)/gi, ''),
   tag: (articles, tag) =>
     articles.filter((article) => article.data.tags.includes(tag)),
   take: (array, count) => array.slice(0, count),
