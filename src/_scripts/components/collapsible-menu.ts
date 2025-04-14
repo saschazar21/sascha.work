@@ -180,7 +180,7 @@ menuTemplate.innerHTML = /* html */ `
     }
   }
 </style>
-<div class="menuContainer" id="menu-container">
+<div class="menuContainer" id="menu-container" role="navigation">
   <slot name="menu"></slot>
   <slot name="footer"></slot>
 </div>
@@ -190,7 +190,7 @@ menuTemplate.innerHTML = /* html */ `
   <use xlink:href="/assets/icons/icons.sprite.svg#icon-menu" />
 </svg>
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" fill="none" width="26" height="26">
-  <use xlink:href="/assets/icons/icons.sprite.svg#icon-exit" />
+  <use xlink:href="/assets/icons/icons.sprite.svg#icon-close" />
 </svg>
 </div>
 </button>

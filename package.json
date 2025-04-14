@@ -27,6 +27,7 @@
     "dayjs": "^1.11.13",
     "eleventy-plugin-helmet": "^0.2.2",
     "esbuild": "^0.25.0",
-    "nunjucks": "^3.2.4"
+    "nunjucks": "^3.2.4",
+    "sharp": "^0.34.1"
   }
 }

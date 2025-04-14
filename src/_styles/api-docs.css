@@ -1,3 +1,10 @@
+:where([data-api-doc]) {
+  --padding-y: var(--space-lg);
+
+  padding-top: var(--padding-y);
+  padding-bottom: var(--padding-y);
+}
+
 :where([data-api-doc] [data-demo]) {
   --space: var(--space-md);
 

@@ -1,3 +1,5 @@
+import { join } from 'path';
+
 export default {
   eleventyComputed: {
     breadcrumbs(data) {
@@ -11,6 +13,9 @@ export default {
         return new Date(`${year}-${month}-${day}`);
       }
       return undefined;
+    },
+    image(data) {
+      return join(data.page.url, 'teaser-card.png');
     },
   },
   layout: 'post.njk',

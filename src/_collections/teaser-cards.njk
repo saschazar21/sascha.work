@@ -1,0 +1,11 @@
+---
+eleventyExcludeFromCollections: true
+pagination:
+  data: collections.published
+  size: 1
+  alias: post
+permalink: '{{ post.url }}teaser-card.svg'
+---
+
+{% set title = post.data.page.title %}
+{% include "src/_partials/teaser-card.njk" %}

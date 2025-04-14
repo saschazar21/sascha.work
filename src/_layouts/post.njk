@@ -28,8 +28,8 @@ layout: default.njk
 
 {% if related.length > 0 %}
   <aside>
-    <h2>Related</h2>
-    <section data-related-articles>
+    <h2>Related Articles</h2>
+    <div data-related-articles>
       {% for post in related %}
         <article>
           <h3>
@@ -38,6 +38,6 @@ layout: default.njk
           <strong>{{ post.author }}</strong>
         </article>
       {% endfor %}
-    </section>
+    </div>
   </aside>
 {% endif %}

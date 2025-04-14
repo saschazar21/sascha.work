@@ -1,5 +1,6 @@
 ---
 layout: default.njk
+priority: 1.0
 ---
 
 {% set style %}{% include "src/_styles/index.css" %}{% endset %}
@@ -17,6 +18,7 @@ layout: default.njk
 </style>
 
 <section class="h-card">
+<h1 data-sr-only>{{ pkg.title }}</h1>
 <div class="container hero">
 <picture>
   <source
@@ -43,7 +45,7 @@ layout: default.njk
   <img
     src="/assets/img/avatar-256.jpg"
     alt="Black-and-white portrait of {{ pkg.author.name }}. It shows a man smiling towards the camera. He has a beard, and short, slightly curly hair. The background is blurred garden shed covered in some greenery."
-    with="128"
+    width="128"
     height="128"
     loading="eager"
     class="u-photo"
@@ -51,10 +53,10 @@ layout: default.njk
 </picture>
 
 <article class="intro">
-  <h1>
+  <h2 data-intro-headline>
     It's about the <span class="special">web</span> and stuff that
     <span class="special">I&nbsp;make</span>.
-  </h1>
+  </h2>
 
   <strong class="super mute">
     Hi, I'm <span class="special" class="p-given-name">Sascha</span>.

@@ -1,8 +1,30 @@
-{% if page.url %}<link rel="canonical" href="{{ page.url | canonical(env.url) }}"/>{% endif %}
+{% set author = pkg.author.name %}
+{% set canonicalUrl = page.url | canonical(env.url) %}
+{% set description = description | default(tldr) | default(pkg.description) %}
+{% set image = image | default('/assets/img/teaser-card.png') | canonical(env.url) %}
+{% set title = title | default(page.title) %}
 
+{% if title %}
+  {% set title = title + " • " + pkg.title %}
+{% else %}
+  {% set title = pkg.title %}
+{% endif %}
+
+<title>{{ title }}</title>
+
+<link rel="canonical" href="{{ canonicalUrl }}"/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
 <link rel="icon" href="/assets/favicon.ico"/>
 
+<meta name="description" content="{{ description }}"/>
+<meta name="author" content="{{ author }}"/>
+
 <meta property="og:title" content="{{ title }}"/>
 <meta property="og:description" content="{{ description }}"/>
-<meta property="og:type" content="article"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="{{ canonicalUrl }}"/>
+<meta property="og:image" content="{{ image }}"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:site_name" content="{{ pkg.name }}"/>
+
+<meta name="twitter:card" content="summary_large_image"/>

@@ -41,6 +41,23 @@ export default {
   stripdate: (path, slug) =>
     slug ?? path.replace(/\d{4}-\d{2}-\d{2}_/, '').toLowerCase(),
   striptags: (html) => html.replace(/(<([^>]+)>)/gi, ''),
+  svgline: (path) => {
+    const MAX_LENGTH = 17;
+    if (path.length <= MAX_LENGTH) {
+      return [path];
+    }
+    const segments = path.split(' ');
+    return segments.reduce((lines, current) => {
+      const [prev] = lines.slice(-1);
+      if (!prev) {
+        return [current];
+      }
+      if (prev.length + current.length + 1 > MAX_LENGTH) {
+        return [...lines, current];
+      }
+      return [...lines.slice(0, -1), `${prev} ${current}`];
+    }, []);
+  },
   tag: (articles, tag) =>
     articles.filter((article) => article.data.tags.includes(tag)),
   take: (array, count) => array.slice(0, count),

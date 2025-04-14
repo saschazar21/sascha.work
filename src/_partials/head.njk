@@ -1,21 +1,14 @@
-{% set author = pkg.author.name %}
-{% set description = description | default(pkg.description) %}
-{% set title = title | default(pkg.title) %}
-
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta charset="utf-8" />
-  <title>{{ title }}</title>
-  <meta name="description" content="{{ pkg.description }}" />
-  <meta name="author" content="{{ author }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8"/>
 
   {% include "src/_partials/seo.njk" %}
 
-  <link rel="preload" href="/assets/fonts/Overpass-VariableFont_wght.ttf" as="font" />
-  <link rel="preload" href="/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf" as="font" />
-  <link rel="preload" href="/assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf" as="font" />
+  <link rel="preload" href="/assets/fonts/Overpass-VariableFont_wght.ttf" as="font"/>
+  <link rel="preload" href="/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf" as="font"/>
+  <link rel="preload" href="/assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf" as="font"/>
 
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/gardevoir@1.0.0/dist/index.min.css" as="style" crossorigin="anonymous" />
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/gardevoir@1.0.0/dist/index.min.css" as="style" crossorigin="anonymous"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gardevoir@1.0.0/dist/index.min.css" integrity="sha256-9mzMzJP0K1G9SG0FxrJkSV0soJMrALtxUXred+5tMLQ=" crossorigin="anonymous">
 
   {% set base %}{% include "src/_styles/base.css" %}{% endset %}

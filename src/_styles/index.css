@@ -1,5 +1,7 @@
-h1 {
+:is([data-intro-headline]) {
   margin-top: var(--space-md);
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-h1);
 }
 
 main {
