@@ -187,10 +187,10 @@ menuTemplate.innerHTML = /* html */ `
 <button type="button" aria-label="Toggle menu" aria-controls="menu-container" class="toggleButton">
 <div>
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" fill="none" width="26" height="26">
-  <use xlink:href="/assets/icons/icons.sprite.svg#icon-menu" />
+  <use href="/assets/icons/icons.sprite.svg#icon-menu" />
 </svg>
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" fill="none" width="26" height="26">
-  <use xlink:href="/assets/icons/icons.sprite.svg#icon-close" />
+  <use href="/assets/icons/icons.sprite.svg#icon-close" />
 </svg>
 </div>
 </button>

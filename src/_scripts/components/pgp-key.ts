@@ -164,26 +164,26 @@ pgpKeyTemplate.innerHTML = /* html */ `
     <button type="button" id="download" title="Download">
     <div>
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" aria-hidden="true" role="presentation">
-        <use xlink:href="/assets/icons/icons.sprite.svg#icon-download"></use>
+        <use href="/assets/icons/icons.sprite.svg#icon-download"></use>
       </svg>
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" aria-hidden="true" role="presentation">
-        <use xlink:href="/assets/icons/icons.sprite.svg#icon-check"></use>
+        <use href="/assets/icons/icons.sprite.svg#icon-check"></use>
       </svg>
     </div>
     </button>
     <button type="button" id="copy" title="Copy">
     <div>
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" aria-hidden="true" role="presentation">
-        <use xlink:href="/assets/icons/icons.sprite.svg#icon-copy"></use>
+        <use href="/assets/icons/icons.sprite.svg#icon-copy"></use>
       </svg>
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" aria-hidden="true" role="presentation">
-        <use xlink:href="/assets/icons/icons.sprite.svg#icon-check"></use>
+        <use href="/assets/icons/icons.sprite.svg#icon-check"></use>
       </svg>
     </div>
     </button>
     <button type="button" id="close" title="Close">
     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" aria-hidden="true" role="presentation">
-      <use xlink:href="/assets/icons/icons.sprite.svg#icon-close"></use>
+      <use href="/assets/icons/icons.sprite.svg#icon-close"></use>
     </svg></button>
   </div>
 </aside>

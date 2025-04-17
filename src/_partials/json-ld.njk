@@ -101,6 +101,26 @@
         "relatedLink": "{{ '/blog/' | canonical(env.url) }}"
       }{% if not loop.last %},{% endif %}
   {% endfor %}
+    ],
+    "mentions": [
+{% for project in projects %}
+      {
+        "@type": "WebPage",
+        "name": "{{ project.name }}",
+        {% if project.homepageUrl %}
+        "url": "{{ project.homepageUrl }}",
+        "relatedLink": "{{ project.url}}",
+        {% else %}
+        "url": "{{ project.url }}",
+        {% endif %}
+        "text": "{{ project.description }}",
+        {% if project.release %}
+        "datePublished": "{{ project.release.publishedAt | date('YYYY-MM-DD') }}",
+        {% endif %}
+        "dateModified": "{{ project.pushedAt | date('YYYY-MM-DD') }}",
+        "lastReviewed": "{{ now | date('YYYY-MM-DD') }}"
+      }{% if not loop.last %},{% endif %}
+  {% endfor %}
     ]
 {% endif %}
 }
