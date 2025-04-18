@@ -1,0 +1,42 @@
+[build]
+  publish = "public"
+  command = "npm run build"
+  # functions = "functions"
+
+[build.environment]
+  NODE_VERSION = "22.x"
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Vary = "Accept-Encoding"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Vary = "Accept-Encoding"
+    
+[[headers]]
+  for = "/feed.json"
+  [headers.values]
+    Content-Type = "application/feed+json"
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Vary = "Accept-Encoding"
+
+[[headers]]
+  for = "/feed.xml"
+  [headers.values]
+    Content-Type = "application/rss+xml"
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Vary = "Accept-Encoding"
+
+[[headers]]
+  for = "/*.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Content-Type = "application/json"
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Vary = "Accept-Encoding"

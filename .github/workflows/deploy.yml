@@ -1,0 +1,134 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+env:
+  ENABLE_DEMO: true
+
+jobs:
+  outputs:
+    name: 'Set outputs'
+    uses: ./.github/workflows/outputs.yml
+
+  # test:
+  #   name: 'Run unit tests'
+  #   uses: ./.github/workflows/test.yml
+
+  netlify:
+    name: 'Deploy to Netlify'
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    needs:
+      - outputs
+      # - test
+    outputs:
+      deploy_id: ${{ steps.deploy.outputs.deploy_id }}
+      deploy_url: ${{ steps.deploy.outputs.deploy_url }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Restore .cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache
+          key: ${{ runner.os }}-cache
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.tool-versions'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      # - name: Set up Go
+      #   uses: actions/setup-go@v5
+      #   with:
+      #     go-version-file: go.mod
+      #     check-latest: true
+      #     cache-dependency-path: |
+      #       go.sum
+
+      - name: Set deploy variables
+        id: var
+        run: |
+          deploy_message="${{ needs.outputs.outputs.short_sha }} – ${{ needs.outputs.outputs.message }}"
+
+          prod_flag="--prod"
+          context_flag="--context=production"
+          alias_flag=""
+
+          if ${{ github.event.pull_request.state == 'open' }}; then
+            prod_flag=""
+            context_flag="--context=deploy-preview"
+            alias_flag="--alias=${{ needs.outputs.outputs.short_sha }}"
+          fi
+
+          echo "deploy_message=$deploy_message" >> $GITHUB_OUTPUT
+          echo "prod_flag=$prod_flag" >> $GITHUB_OUTPUT
+          echo "context_flag=$context_flag" >> $GITHUB_OUTPUT
+          echo "alias_flag=$alias_flag" >> $GITHUB_OUTPUT
+
+      - name: Fetch environment variables
+        id: environment
+        run: |
+          context="production"
+
+          if ${{ github.event.pull_request.state == 'open' }}; then
+            context="deploy-preview"
+          fi
+
+          vapid_public_key=$(pnpm netlify env:get VAPID_PUBLIC_KEY --context=$context)
+
+          echo "vapid_public_key=$vapid_public_key" >> $GITHUB_OUTPUT
+
+      - name: Deploy to Netlify
+        id: deploy
+        env:
+          VAPID_PUBLIC_KEY: ${{ steps.environment.outputs.vapid_public_key }}
+        run: |
+          pnpm netlify deploy \
+            --build \
+            ${{ steps.var.outputs.prod_flag }} \
+            ${{ steps.var.outputs.context_flag }} \
+            ${{ steps.var.outputs.alias_flag }} \
+            --message="${{ steps.var.outputs.deploy_message }}" \
+            --telemetry-disable \
+            --json \
+            > netlify.json
+
+          echo "deploy_id=$(jq -r '.deploy_id' netlify.json)" >> $GITHUB_OUTPUT
+          echo "deploy_url=$(jq -r '.deploy_url' netlify.json)" >> $GITHUB_OUTPUT
+
+      - name: Save .cache
+        uses: actions/cache/save@v4
+        with:
+          path: .cache
+          key: ${{ runner.os }}-cache
+
+  comment:
+    name: 'Comment on PR'
+    needs:
+      - netlify
+    permissions:
+      pull-requests: write
+    uses: ./.github/workflows/comment.yml
+    with:
+      netlify_deploy_id: ${{ needs.netlify.outputs.deploy_id }}
+      netlify_deploy_url: ${{ needs.netlify.outputs.deploy_url }}
