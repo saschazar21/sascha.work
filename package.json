@@ -30,7 +30,7 @@
     "@11ty/eleventy-plugin-rss": "^1.1.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
     "@ampproject/eleventy-plugin-amp": "^0.5.7",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.11.13",
     "eleventy-plugin-helmet": "^0.2.2",
     "eleventy-plugin-json-feed": "^0.0.7",
     "eleventy-plugin-pwa": "jmsalazardev/eleventy-plugin-pwa",
