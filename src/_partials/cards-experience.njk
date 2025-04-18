@@ -1,0 +1,30 @@
+{% set cards = 100 / elements.length %}
+
+{% set css %}{% include "src/_styles/cards-experience.css" %}{% endset %}
+
+{% css "cards-experience" %}
+{{ css | safe }}
+{% endcss %}
+<link rel="stylesheet" href="{% getBundleFileUrl 'css', 'cards-experience' %}" data-helmet="cards-experience" />
+
+{% set type %}{% if name == 'Experience' %}p-experience{% elif name == 'Education' %}p-education{% endif %}{% endset %}
+
+<section data-{{ name | default('cards') | slugify }}>
+  <h2>{{ name }}</h2>
+  {{ intro | safe }}
+  <div data-cards-container style="--card-width: {{ cards }}%">
+{% for element in elements %}
+  <article class="h-event {{ type }}" data-{{ name | default('cards') | slugify }}-preview data-card-element>
+    <h3 class="p-name">{{ element.position or element.programme }}{% if element.graduation %}, <span class="special">{{ element.graduation }}</span>{% endif %}</h3>
+    <span data-duration>
+      <time class="dt-start" datetime="{{ element.start.year }}-{{ element.start.month | padStart(2) }}">{{ element.start.year }}</time> &ndash; 
+      {% if element.end %}<time class="dt-end" datetime="{{ element.end.year }}-{{ element.end.month | padStart(2) }}">{{ element.end.year }}</time>{% else %}<span>now</span>{% endif %}
+    </span>
+    <p class="h-card">
+      {% if element.position %}<span data-sr-only class="p-job-title">{{ element.position }}</span> <span data-sr-only>at</span> {% endif %}
+      <a href="{{ element.url }}" class="u-url" rel="noindex nofollow" target="_blank"><span class="p-name">{{ element.institution }}</span></a> in <span class="p-location">{{ element.city }}</span>
+    </p>
+  </article>
+{% endfor %}
+  </div>
+</section>

@@ -1,0 +1,22 @@
+:where(.breadcrumb) {
+  --margin: var(--space-md);
+  --bg-color: var(--color-bg-muted);
+
+  margin-bottom: var(--margin);
+  background-color: var(--bg-color);
+}
+
+:where([data-breadcrumb]) {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: var(--space-md) 0;
+}
+
+@media (min-width: 848px) {
+  :where(.breadcrumb) {
+    --margin: var(--space-xl);
+  }
+}

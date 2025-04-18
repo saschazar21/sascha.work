@@ -1,0 +1,38 @@
+{% set segments = breadcrumbs | default(page.url) | split('/') %}
+{% set breadcrumbs = [] %}
+
+{% if segments.length > 1 %}
+
+  {% set css %}
+  {% include "src/_styles/breadcrumbs.css" %}
+  {% endset %}
+
+  {% css "breadcrumb" %}
+  {{ css | safe }}
+  {% endcss %}
+
+  <style data-helmet>
+    {% getBundle 'css', 'breadcrumb' %}
+  </style>
+
+  <nav aria-labelledby="breadcrumb" class="breadcrumb">
+    <div class="container">
+      <h2 id="breadcrumb" data-sr-only>Breadcrumb</h2>
+      <ol data-breadcrumb>
+        <li>
+          <a href="/?utm_content=breadcrumb" title="Home" aria-label="Home">/</a>
+        </li>
+        {% for segment in segments %}
+          {% set breadcrumbs = breadcrumbs | push(segment) %}
+          <li>
+            {% if loop.last %}
+              <span aria-current="page">{{ title | default(segment) }}</span>
+            {% else %}
+              <a href="/{{ breadcrumbs | join('/') }}/?utm_content=breadcrumb">{{ segment }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </nav>
+{% endif %}

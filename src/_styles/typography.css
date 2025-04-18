@@ -1,0 +1,238 @@
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url(/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Overpass';
+  src: url(/assets/fonts/Overpass-VariableFont_wght.ttf) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url(/assets/fonts/Inconsolata-VariableFont_wdth\,wght.ttf)
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional;
+}
+
+:root {
+  --font-family-system-sans: -apple-system, BlinkMacSystemFont, avenir next,
+    avenir, segoe ui, helvetica neue, Cantarell, Ubuntu, roboto, noto, helvetica,
+    arial, sans-serif;
+  --font-family-system-mono: Menlo, Consolas, Monaco, Liberation Mono,
+    Lucida Console, monospace;
+  --font-family-system-serif: Iowan Old Style, Apple Garamond, Baskerville,
+    Times New Roman, Droid Serif, Times, Source Serif Pro, serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+
+  --font-family-heading: 'Space Grotesk', var(--font-family-system-sans);
+  --font-family-body: 'Overpass', var(--font-family-system-sans);
+  --font-family-code: 'Inconsolata', var(--font-family-system-mono);
+
+  --font-size-base: 1rem;
+
+  /* Mobile font sizes */
+  --font-size-h1: 2.25rem;
+  --font-size-h2: 1.75rem;
+  --font-size-h3: 1.375rem;
+  --font-size-h4: 1.125rem;
+  --font-size-body: 1rem;
+  --font-size-code: 0.875rem;
+  --font-size-caption: 0.75rem;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 600;
+
+  /* Line heights */
+  --line-height-headings: 1.2;
+  --line-height-body: 1.6;
+  --line-height-code: 1.5;
+  --line-height-caption: 1.4;
+
+  --letter-spacing-s: 0.05em;
+  --letter-spacing-m: 0.1em;
+  --letter-spacing-l: 0.2em;
+}
+
+@media (min-width: 768px) {
+  :root {
+    /* Desktop font sizes */
+    --font-size-h1: 3rem;
+    --font-size-h2: 2.25rem;
+    --font-size-h3: 1.75rem;
+    --font-size-h4: 1.375rem;
+    --font-size-body: 1.125rem;
+    --font-size-code: 1rem;
+    --font-size-caption: 0.875rem;
+  }
+}
+
+body {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+h1 {
+  margin: var(--space-lg) 0;
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-headings);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-headings);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-headings);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-headings);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-family-heading);
+}
+
+h1,
+h2,
+h3,
+h4,
+strong {
+  font-weight: var(--font-weight-bold);
+  font-variation-settings: 'wght' var(--font-weight-bold);
+}
+
+code {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-code);
+  font-family: var(--font-family-code);
+}
+
+code:not(pre code) {
+  background-color: var(--code-bg-color, var(--color-bg-muted));
+  padding: var(--space-xxs) var(--space-xs);
+  border-radius: 0.125em;
+  color: var(--code-color, var(--color-text-muted));
+}
+
+small,
+.small {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+}
+
+:where(a, a:hover, a:visited) {
+  display: inline-block;
+  position: relative;
+  fill: currentColor;
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-color: var(--color-link);
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: 0.125em;
+}
+
+:where(button, .button) {
+  --border-width: var(--border-width-sm);
+  --padding-x: var(--space-sm);
+  --padding-y: var(--space-xs);
+
+  position: relative;
+  padding: var(--space-xs) var(--space-sm);
+  border: var(--border-width) solid currentColor;
+  border-radius: var(--border-radius, 0);
+  background-color: transparent;
+  color: var(--color-link);
+  line-height: var(--line-height-body);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h4);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-m);
+  cursor: default;
+}
+
+em,
+i {
+  display: inline-block;
+  position: relative;
+  font-style: italic;
+  font-variation-settings: 'slnt' 10;
+}
+
+em {
+  text-decoration: underline;
+  text-decoration-color: var(--color-secondary);
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: calc(var(--space-xxs) * 0.75);
+}
+
+abbr {
+  text-decoration-style: dotted;
+  text-decoration-thickness: 0.125em;
+  font-weight: var(--font-weight-bold);
+  font-variation-settings: 'wght' var(--font-weight-bold);
+  cursor: help;
+}
+
+ul {
+  padding: var(--space-sm);
+}
+
+mark {
+  display: inline-block;
+  padding: var(--padding-y, var(--space-xxs)) var(--padding-x, var(--space-xs));
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+}
+
+table {
+  border-collapse: collapse;
+  margin: var(--space-sm) 0;
+  width: 100%;
+}
+
+table,
+tr {
+  border-bottom: var(--border-width, 1px) solid var(--color-text-muted);
+  background-color: var(--bg-color, transparent);
+}
+
+td,
+th {
+  padding: var(--space-xxs) var(--space-xs);
+}
+
+:where(tbody tr:nth-child(2n + 1)) {
+  --bg-color: var(--color-bg-muted);
+}
+
+.lead {
+  font-size: var(--font-size-h4);
+}
+
+.mute {
+  color: var(--color-text-muted);
+}
+
+.special {
+  color: var(--color-secondary);
+}

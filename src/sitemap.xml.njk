@@ -1,0 +1,35 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  {% for page in collections.all | reverse %}
+    {% set isDraft = false %}
+    {% if page.data.tags %}
+      {% set isDraft = 'post' in page.data.tags and not page.data.public %}
+    {% endif %}
+    {% if page.url != '/sitemap.xml' and not isDraft %}
+      <url>
+        <loc>{{ page.url | canonical(env.url) }}</loc>
+        <lastmod>{{ page.data.updated | default(page.date) | date('YYYY-MM-DD') }}</lastmod>
+        <changefreq>{{ page.data.changefreq | default('monthly') }}</changefreq>
+        <priority>{{ page.data.priority | default('0.5') }}</priority>
+        {% if page.cover or page.image %}
+          {% set image = page.cover | default(page.image) %}
+          <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+            <image:loc>{{ image | url(env.url) }}</image:loc>
+          </image:image>
+        {% endif %}
+      </url>
+    {% endif %}
+  {% endfor %}
+  <url>
+    <loc>{{ '/blog/' | canonical(env.url) }}</loc>
+    <lastmod>{{ now | date('YYYY-MM-DD') }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

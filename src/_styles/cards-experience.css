@@ -1,0 +1,42 @@
+:where([data-cards-container]) {
+  margin-top: var(--space-md);
+}
+
+:where([data-card-element]) {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius, 0);
+  margin: 0 calc(var(--padding-container) * -1);
+  padding-left: var(--padding-container);
+  padding-right: var(--padding-container);
+}
+
+:where([data-card-element] > h3) {
+  flex: 1;
+  margin-bottom: var(--space-md);
+}
+
+:where([data-card-element] > [data-duration]) {
+  font-family: var(--font-family-heading);
+  order: -1;
+}
+
+@media (min-width: 640px) {
+  :where([data-cards-container]) {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    margin-right: calc(50% - 50vw);
+    overflow-x: auto;
+  }
+
+  :where([data-card-element]) {
+    --padding-container: var(--standard-space, var(--space-md));
+
+    flex: 0 0 var(--card-width);
+    margin: 0;
+    width: var(--standard-width);
+    min-width: var(--standard-width);
+    max-width: var(--standard-width);
+  }
+}

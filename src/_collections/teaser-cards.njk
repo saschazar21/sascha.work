@@ -1,10 +1,11 @@
 ---
 eleventyExcludeFromCollections: true
 pagination:
-  data: collections.public
+  data: collections.published
   size: 1
   alias: post
-permalink: "{{ post.url }}teaser-card.svg"
+permalink: '{{ post.url }}teaser-card.svg'
 ---
 
-{% include "partials/teaser-card.njk" %}
+{% set title = post.data.page.title %}
+{% include "src/_partials/teaser-card.njk" %}

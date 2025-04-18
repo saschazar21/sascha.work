@@ -1,0 +1,33 @@
+{% set utm_content = utm_content | default('index') %}
+
+{% set css %}{% include "src/_styles/latest-articles.css" %}{% endset %}
+
+{% css "latest-articles" %}
+{{ css | safe }}
+{% endcss %}
+
+<link rel="stylesheet" href="{% getBundleFileUrl 'css', 'latest-articles' %}" data-helmet/>
+
+<div data-articles>
+  {% for post in collections.published | take(3) %}
+    <article class="h-entry" data-article-preview>
+      <h3 class="p-name">{{ post.data.page.title }}</h3>
+      <p class="p-summary">{{ post.data.tldr }}</p>
+      <a
+      href="{{ post.url }}?utm_content={{ utm_content }}"
+      title="Read all about {{ post.data.page.title }}"
+      class="u-url"
+      >Read the full article</a
+    >
+    </article>
+  {% endfor %}
+  <div data-link-blog data-article-preview>
+    <div data-pac-man-container aria-hidden="true" role="presentation">
+      {% include "src/_svg/pac-man.svg" %}
+    </div>
+    <small>Care for more?</small>
+    <a href="/blog/?utm_content={{ utm_content }}">
+      <span>Visit the blog archive</span>
+    </a>
+  </div>
+</div>

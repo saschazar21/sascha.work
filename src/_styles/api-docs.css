@@ -1,0 +1,77 @@
+:where([data-api-doc]) {
+  --padding-y: var(--space-lg);
+
+  padding-top: var(--padding-y);
+  padding-bottom: var(--padding-y);
+}
+
+:where([data-api-doc] [data-demo]) {
+  --space: var(--space-md);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+}
+
+:where([data-api-doc] [data-headers]) {
+  --padding: var(--space-sm);
+  --code-bg-color: var(--color-bg);
+  --gap: var(--space-sm);
+
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap);
+  padding: var(--padding);
+  background-color: var(--color-bg-muted);
+  border-radius: var(--border-radius);
+}
+
+:where([data-api-doc] [data-headers] section) {
+  flex: 1 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+}
+
+:where([data-api-doc] [data-headers] section):not(:first-child)::before {
+  content: '';
+  position: absolute;
+  margin: 0 calc(var(--gap) * -0.5 - var(--border-width-md) * 0.5);
+  top: 0;
+  right: calc(100% + var(--gap));
+  bottom: 0;
+  width: var(--border-width-md);
+  background-color: var(--color-bg);
+}
+
+:where([data-api-doc] [data-headers] section):first-child {
+  align-items: flex-start;
+}
+
+:where([data-api-doc] [data-headers] section):last-child {
+  align-items: flex-end;
+}
+
+:where([data-api-doc] [data-headers] section h3) {
+  margin: 0;
+}
+
+:where([data-api-doc] [data-headers] h3) {
+  margin-bottom: var(--padding);
+}
+
+:where([data-api-doc] expander-button) {
+  margin-top: var(--space-md);
+}
+
+:where([data-api-doc] expander-button):is(:focus, :focus-within) {
+  outline: none;
+}
+
+@media (min-width: 640px) {
+  :is([data-api-doc] [data-hide-sm]) {
+    display: flex;
+  }
+}

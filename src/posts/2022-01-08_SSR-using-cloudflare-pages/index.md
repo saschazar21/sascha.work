@@ -22,7 +22,7 @@ Yet, setting up the configuration for getting both services working in parallel 
 
 Until now.
 
-> **Disclaimer**: I am **NOT** affiliated with Cloudflare and/or other services mentioned in this blog post.
+<mark><strong>Disclaimer</strong>: I am <strong>NOT</strong> affiliated with Cloudflare and/or other services mentioned in this blog post.</mark>
 
 ## Enter Pages Full Stack
 
@@ -157,7 +157,7 @@ The next step is to make sure the `_worker.js` file is included in the output fo
 npx wrangler pages dev dist/
 ```
 
-> ⚠️ **Warning**: The `_worker.js` file needs to be bundled before being included in the output folder, otherwise the Wrangler preview will fail!
+<mark>⚠️ <strong>Warning</strong>: The <code>\_worker.js</code> file needs to be bundled before being included in the output folder, otherwise the Wrangler preview will fail!</mark>
 
 ## Summary
 

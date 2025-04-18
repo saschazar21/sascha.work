@@ -1,0 +1,18 @@
+---
+permalink: robots.txt
+eleventyExcludeFromCollections: true
+---
+User-agent: *
+{% if not env.production %}
+Disallow: /
+{% else %}
+Disallow: /assets/
+Disallow: /css/
+Disallow: /js/
+Disallow: /pgp/
+Allow: /assets/icons/
+Allow: /assets/img/
+Allow: /assets/favicon.*
+
+Sitemap: {{ '/sitemap.xml' | canonical(env.url) }}
+{% endif %}

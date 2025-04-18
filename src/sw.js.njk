@@ -1,0 +1,12 @@
+---
+permalink: sw.js
+eleventyExcludeFromCollections: true
+---
+{% set js %}{% include "src/_scripts/workbox.ts" %}{% endset %}
+
+{% js 'workbox' %}
+{{ js | safe }}
+{% endjs %}
+
+{% getBundle 'js',
+'workbox' %}

@@ -1,0 +1,107 @@
+---
+layout: default.njk
+priority: 1.0
+---
+
+{% set style %}{% include "src/_styles/index.css" %}{% endset %}
+{% css "index" %}
+{{ style | safe }}
+{% endcss %}
+<style data-helmet>{% getBundle 'css', 'index' %}
+</style>
+
+{% set style %}{% include "src/_styles/index_extra.css" %}{% endset %}
+{% css "index_extra" %}
+{{ style | safe }}
+{% endcss %}
+<style data-helmet>{% getBundle 'css', 'index_extra' %}
+</style>
+
+<section class="h-card">
+<h1 data-sr-only>{{ pkg.title }}</h1>
+<div class="container hero">
+<picture>
+  <source
+    type="image/avif"
+    srcset="
+      /assets/img/avatar-256.avif 256w,
+      /assets/img/avatar-512.avif 512w
+    "
+    sizes="(min-width: 848px) 256px, 128px"/>
+  <source
+    type="image/webp"
+    srcset="
+      /assets/img/avatar-256.webp 256w,
+      /assets/img/avatar-512.webp 512w
+    "
+    sizes="(min-width: 848px) 256px, 128px"/>
+  <source
+    type="image/jpeg"
+    srcset="
+      /assets/img/avatar-256.jpg 256w,
+      /assets/img/avatar-512.jpg 512w
+    "
+    sizes="(min-width: 848px) 256px, 128px"/>
+  <img
+    src="/assets/img/avatar-256.jpg"
+    alt="Black-and-white portrait of {{ pkg.author.name }}. It shows a man smiling towards the camera. He has a beard, and short, slightly curly hair. The background is blurred garden shed covered in some greenery."
+    width="128"
+    height="128"
+    loading="eager"
+    class="u-photo"
+/>
+</picture>
+
+<article class="intro">
+  <h2 data-intro-headline>
+    It's about the <span class="special">web</span> and stuff that
+    <span class="special">I&nbsp;make</span>.
+  </h2>
+
+  <strong class="super mute">
+    Hi, I'm <span class="special" class="p-given-name">Sascha</span>.
+  </strong>
+
+  <div class="lead p-note">
+    <p>
+      I am a
+      <span class="p-job-title"
+        >front-end <i>(occasional back-end)</i> developer</span
+      >
+      with <em>10+ years of experience</em>.
+    </p>
+    <p>
+      I focus on creating user-friendly experiences while keeping things
+      simple and efficient.
+    </p>
+  </div>
+  <a href="/about/?utm_content=pipe" class="button u-url" data-link-about>
+    <span>More about me</span>
+    <div aria-hidden="true" role="presentation" data-piranha-plant>
+      {% include "src/_svg/piranha-plant.svg" %}
+    </div>
+    <div aria-hidden="true" role="presentation" data-pipe>
+      {% include "src/_svg/pipe.svg" %}
+    </div>
+  </a>
+</article>
+</div>
+</section>
+
+<section>
+<div class="container">
+<small class="super mute">Interested?</small>
+
+<h2 aria-label="Projects">I've got some cool projects to show.</h2>
+
+{% include "src/_partials/featured-projects.njk" %}
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2 aria-label="Articles">Sometimes, I write articles too.</h2>
+
+{% include "src/_partials/latest-articles.njk" %}
+</div>
+</section>

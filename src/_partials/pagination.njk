@@ -1,0 +1,46 @@
+{% set css %}
+{% include "src/_styles/pagination.css" %}
+{% endset %}
+
+{% css "pagination" %}
+{{ css | safe }}
+{% endcss %}
+
+<link rel="stylesheet" href="{% getBundleFileUrl 'css', 'pagination' %}" data-helmet="pagination"/>
+
+{% if pagination and pagination.size > 1 and(pagination.href.previous or pagination.href.next) %}
+  <nav aria-labelledby="{{ nav_title | slugify }}">
+    <h2 data-sr-only>{{ nav_title }}</h2>
+    <ul data-pagination>
+      {% if pagination.previous %}
+        <li>
+          <a href="{{ pagination.href.previous }}" rel="prev">Previous page</a>
+        </li>
+      {% endif %}
+
+      {% for href in pagination.hrefs %}
+        {% set rel = '' %}
+        {% if loop.index == pagination.pageNumber %}
+          {% set rel = 'rel="prev"' %}
+        {% elseif loop.index0 == pagination.pageNumber + 1 %}
+          {% set rel = 'rel="next"' %}
+        {% endif %}
+
+        {% if loop.index0 == pagination.pageNumber %}
+          <li>
+            <span>{{ loop.index }}</span></li>
+        {% else %}
+          <li {% if rel == '' %}data-sr-only{% endif %}>
+            <a href="{{ href }}" {{ rel }}>{{ loop.index }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if pagination.href.next %}
+        <li>
+          <a href="{{ pagination.href.next }}" rel="next">Next page</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}
