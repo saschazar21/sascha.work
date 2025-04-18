@@ -38,7 +38,7 @@ menuTemplate.innerHTML = /* html */ `
   }
 
   ::slotted(nav) {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,7 +74,7 @@ menuTemplate.innerHTML = /* html */ `
 
   .menuContainer section {
     display: none;
-    margin-bottom: var(--space-md);
+    margin-bottom: 16.6667vh;
   }
 
   .menuContainer.open {
