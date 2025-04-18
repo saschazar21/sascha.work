@@ -88,6 +88,7 @@ jobs:
       - name: Deploy to Netlify
         id: deploy
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHORT_SHA: ${{ needs.outputs.outputs.short_sha }}
         run: |
           pnpm netlify deploy \

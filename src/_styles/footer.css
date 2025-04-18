@@ -106,7 +106,7 @@ ul:where([data-icons]) {
 
 :where([data-version] #release) {
   --code-bg-color: var(--color-link);
-  --code-color: var(--color-bg);
+  --code-color: var(--color-bg-muted);
 
   font-size: var(--font-size-caption);
   text-decoration: none;
