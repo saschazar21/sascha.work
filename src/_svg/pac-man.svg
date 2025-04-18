@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 195 195">
+  <style> [data-state="closed"], [data-state="half"], [data-state="open"] {
+    fill: var(--color, #FFEB3B);
+    } [data-state="closed"] {
+    visibility: visible;
+    } [data-state="half"], [data-state="open"] {
+    visibility: hidden;
+    }
+  </style>
+  <path data-state="closed"
+    d="M135 0H60v15H30v15H15v30H0v75h15v30h15v15h30v15h75v-15h30v-15h15v-30h15V60h-15V30h-15V15h-30V0Z" />
+  <path data-state="half"
+    d="M60 0h75v15h30v15h16v30h-31v15h-45v15H60v15h45v15h45v15h31v30h-16v15h-30v15H60v-15H30v-15H15v-30H0V60h15V30h15V15h30V0Z" />
+  <path data-state="open"
+    d="M60 15V0h76v30h-16v15h-15v15H90v15H75v15H60v14h15v16h15v15h15v15h15v15h16v30H60v-15H30v-15H15v-30H0V60h15V30h15V15h30Z" />
+</svg>

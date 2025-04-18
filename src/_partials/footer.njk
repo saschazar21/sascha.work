@@ -1,0 +1,94 @@
+{% set css %}
+{% include "src/_styles/footer.css" %}
+{% endset %}
+
+{% css "footer" %}
+{{ css | safe }}
+{% endcss %}
+
+<link rel="stylesheet" href="{% getBundleFileUrl 'css', 'footer' %}" data-helmet/>
+
+<footer>
+  <div class="container">
+    <div data-top-container>
+      <div data-overlap>
+        <a class="button" href="#top" title="Back to the top">
+          <span>Top</span></a>
+      </div>
+    </div>
+    <section class="h-card">
+      <h2 data-sr-only>Copyright, Contact and Legal Notice</h2>
+      <a href="{{ pkg.homepage }}?utm_content=footer" class="u-url" rel="me">{{ pkg.homepage }}</a>
+      <p>
+        <strong>
+          &copy; 2018&ndash;{{ now | date('YYYY') }}
+          <span class="p-name">{{ pkg.author.name }}</span>
+        </strong>
+        <ul>
+          <li>
+            <pgp-key fingerprint="{{ pgp.fingerprint }}">
+              <a id="pgp" href="/pgp/public.asc" rel="pgpkey me" class="u-key" type="application/pgp-keys" download="{{ pkg.author.name | slugify }}.asc" slot="anchor">Download my public PGP key</a>
+            </pgp-key>{{ ' ' }}and send me secure e-mails.</li>
+          <li>
+            <a href="/legal/?utm_content=footer" rel="privacy-policy">Legal Notice</a>
+          </li>
+        </ul>
+      </p>
+    </section>
+    <div>
+      <section>
+        <h2>Social Media</h2>
+        <ul data-icons>
+          {% for account in social.data %}
+            <li>
+              <a href="{{ account.profile }}" rel="me" target="_blank" title="{{ account.username }} on {{ account.provider }}">
+                <svg aria-hidden="true" role="img" height="44" width="44">
+                  <use href="/assets/icons/social.sprite.svg#icon-{{ account.provider }}"></use>
+                </svg>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+      <section>
+        <h2>Feeds</h2>
+        <ul data-icons>
+          <li>
+            <a href="/feed.xml" rel="alternate" type="application/rss+xml" title="RSS Feed">
+              <svg aria-hidden="true" role="img" height="44" width="44">
+                <use href="/assets/icons/icons.sprite.svg#icon-rss-feed"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="/feed.json" rel="alternate" type="application/feed+json" title="JSON Feed">
+              <svg aria-hidden="true" role="img" height="44" width="44">
+                <use href="/assets/icons/icons.sprite.svg#icon-json-feed"></use>
+              </svg>
+            </a>
+          </li>
+        </section>
+      </div>
+      <div data-bottom-container>
+        <p>Made with lots of ❤️ in Upper Austria.</p>
+        <p data-version>
+          {% if env.commit %}
+            <a id="release" href="{{ pkg.repository.url }}/commit/{{ env.commit }}" rel="noindex nofollow" target="_blank" aria-label="View commit {{ env.commit }} on GitHub." title="View commit on GitHub.">
+              <code>{{ env.commit }}</code>
+            </a>
+          {% endif %}
+          <a href="{{ pkg.repository.url }}/blob/main/{{ page.inputPath }}" rel="noindex nofollow" target="_blank">Edit this page on GitHub.</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  {% set js %}
+  {% include "src/_scripts/components/pgp-key.ts" %}
+  {% endset %}
+
+  {% js "pgp" %}
+  {{ js | safe }}
+  {% endjs %}
+
+  <script src="{% getBundleFileUrl 'js', 'pgp' %}" defer></script>
