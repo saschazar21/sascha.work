@@ -21,6 +21,28 @@ declare var __IS_PROD__: boolean;
 
 self.__WB_DISABLE_DEV_LOGS = __IS_PROD__;
 
+// self.addEventListener('install', (_event) => {
+//   self.skipWaiting();
+// });
+
+self.addEventListener('activate', (event) => {
+  (event as unknown as { waitUntil: (value: Promise<void>) => void }).waitUntil(
+    caches
+      .keys()
+      .then((cacheNames) =>
+        Promise.all(
+          cacheNames.map((cacheName) => {
+            if (!cacheName.endsWith(__VERSION__)) {
+              return caches.delete(cacheName);
+            }
+            return false;
+          }),
+        ),
+      )
+      .then(() => clientsClaim()),
+  );
+});
+
 setCacheNameDetails({
   prefix: __HOSTNAME__,
   suffix: __VERSION__,
@@ -124,28 +146,3 @@ registerRoute(
     ],
   }),
 );
-
-self.addEventListener('activate', (event) => {
-  (event as unknown as { waitUntil: (value: void) => void }).waitUntil(
-    clientsClaim(),
-  );
-
-  (
-    event as unknown as { waitUntil: (value: Promise<boolean[]>) => void }
-  ).waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (!cacheName.endsWith(__VERSION__)) {
-            return caches.delete(cacheName);
-          }
-          return false;
-        }),
-      );
-    }),
-  );
-});
-
-// self.addEventListener('install', (_event) => {
-//   self.skipWaiting();
-// });

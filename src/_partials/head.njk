@@ -8,8 +8,16 @@
   <link rel="preload" href="/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
   <link rel="preload" href="/assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
 
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/gardevoir@1.0.0/dist/index.min.css" as="style" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gardevoir@1.0.0/dist/index.min.css" integrity="sha256-9mzMzJP0K1G9SG0FxrJkSV0soJMrALtxUXred+5tMLQ=" crossorigin="anonymous">
+  {# Gardevoir v1.0.0: #}
+  {% set gardevoir %}{% include "src/_styles/gardevoir.css" %}{% endset %}
+
+  {% css "gardevoir" %}
+  {{ gardevoir | safe }}
+  {% endcss %}
+
+  <style>
+    {% getBundle 'css', 'gardevoir' %}
+  </style>
 
   {% set base %}{% include "src/_styles/base.css" %}{% endset %}
   {% css "base" %}

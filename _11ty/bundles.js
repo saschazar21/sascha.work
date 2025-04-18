@@ -10,11 +10,7 @@ const REPLACEMENTS = {
     ).hostname,
   ),
   __IS_PROD__: process.env.CONTEXT === 'production',
-  __VERSION__: JSON.stringify(
-    process.env.CONTEXT === 'production'
-      ? process.env.VERSION || process.env.SHORT_SHA
-      : 'dev',
-  ),
+  __VERSION__: JSON.stringify(process.env.SHORT_SHA | 'dev'),
 };
 
 export default {
