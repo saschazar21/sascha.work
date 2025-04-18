@@ -1,0 +1,28 @@
+{% set navigation %}
+<nav aria-labelledby="navigation-label" toolbar="(min-width: 768px)" toolbar-target="navigation-container">
+  <ul class="horizontal">
+    {% for route in routes.data.routes %}
+    {% set padLength = loop.length.toString().length + 1 %}
+      <li aria-label="{{ route.name }}" class="small-text" data-index="{{ loop.index | padZero(padLength) }}">
+        <a href="{{ route.path }}" {% if page.url.startsWith(route.path) %}aria-current="page"{% endif %}>{{ route.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endset %}
+
+<style data-helmet>{% include "styles/navigation.css" %}</style>
+<amp-sidebar id="sidebar" layout="nodisplay" side="right">
+  <button aria-label="Close Menu" on="tap:sidebar.close">{{ '/src/_includes/assets/icons/close.svg' | svgContents | safe }}</button>
+  <span id="navigation-label">Navigation</span>
+  {{ navigation | safe }}
+  {% if social.data %}
+  <span id="social-media-label">Social Media</span>
+  <ul class="horizontal social-accounts" aria-labelledby="social-media-label">
+  {% for account in social.data %}
+  {% set svgPath = "/src/_includes/assets/icons/" + account.provider + ".svg" %}
+    <li class="small-text"><a aria-label="{{ account.username }} on {{ account.provider }}" href="{{ account.profile }}" rel="me noindex nofollow noopener noreferrer" target="_blank">{{ svgPath | svgContents | safe }}</a></li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+</amp-sidebar>
