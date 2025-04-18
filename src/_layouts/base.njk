@@ -14,8 +14,6 @@
     {% include "src/_partials/footer.njk" %}
     {% include "src/_partials/json-ld.njk" %}
 
-    {% include "src/_partials/sw.njk" %}
-
     {% if not skipHeader %}
       {% set js %}{% include "src/_scripts/components/collapsible-menu.ts" %}{% endset %}
 
@@ -25,6 +23,18 @@
 
       <script>
         {% getBundle 'js', 'menu' %}
+      </script>
+    {% endif %}
+
+    {% if not skipServiceWorker %}
+      {% set js %}{% include "src/_scripts/sw.ts" %}{% endset %}
+
+      {% js "service-worker" %}
+      {{ js | safe }}
+      {% endjs %}
+
+      <script>
+        {% getBundle 'js', 'service-worker' %}
       </script>
     {% endif %}
   </body>

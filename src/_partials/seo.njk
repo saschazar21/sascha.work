@@ -13,11 +13,16 @@
 <title>{{ title }}</title>
 
 <link rel="canonical" href="{{ canonicalUrl }}"/>
+<link rel="icon" href="/assets/img/favicon-32.png" type="image/png"/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
-<link rel="icon" href="/assets/favicon.ico"/>
+<link rel="shortcut icon" href="/assets/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="192x192" href="/assets/img/apple-touch-192.png" type="image/png"/>
 
 <meta name="description" content="{{ description }}"/>
 <meta name="author" content="{{ author }}"/>
+
+<link rel="manifest" href="/manifest.webmanifest"/>
+<meta name="theme-color" content="{{ pkg.color }}"/>
 
 <meta property="og:title" content="{{ title }}"/>
 <meta property="og:description" content="{{ description }}"/>
