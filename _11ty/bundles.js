@@ -9,8 +9,8 @@ const REPLACEMENTS = {
         : process.env.DEPLOY_URL || 'http://localhost:8080',
     ).hostname,
   ),
-  __IS_PROD__: process.env.CONTEXT === 'production',
-  __VERSION__: JSON.stringify(process.env.SHORT_SHA | 'dev'),
+  __IS_PROD__: JSON.stringify(process.env.CONTEXT === 'production'),
+  __VERSION__: JSON.stringify(process.env.SHORT_SHA || 'dev'),
 };
 
 export default {
@@ -38,22 +38,19 @@ export default {
             loader: 'ts',
           },
           bundle: true,
+          define: REPLACEMENTS,
           format: 'esm',
           treeShaking: process.env.CONTEXT === 'production',
           write: false,
         });
 
         const concatenated = bundle.outputFiles.reduce((result, { text }) => {
-          let replaced = text;
-          for (const [key, value] of Object.entries(REPLACEMENTS)) {
-            replaced = replaced.replace(new RegExp(key, 'g'), value);
-          }
-
-          result += replaced;
+          result += text;
           return result;
         }, '');
 
         return transform(concatenated, {
+          define: REPLACEMENTS,
           loader: 'js',
           minify: process.env.CONTEXT === 'production',
           minifyWhitespace: process.env.CONTEXT === 'production',
