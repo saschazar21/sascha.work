@@ -85,23 +85,10 @@ jobs:
           echo "context_flag=$context_flag" >> $GITHUB_OUTPUT
           echo "alias_flag=$alias_flag" >> $GITHUB_OUTPUT
 
-      - name: Fetch environment variables
-        id: environment
-        run: |
-          context="production"
-
-          if ${{ github.event.pull_request.state == 'open' }}; then
-            context="deploy-preview"
-          fi
-
-          vapid_public_key=$(pnpm netlify env:get VAPID_PUBLIC_KEY --context=$context)
-
-          echo "vapid_public_key=$vapid_public_key" >> $GITHUB_OUTPUT
-
       - name: Deploy to Netlify
         id: deploy
         env:
-          VAPID_PUBLIC_KEY: ${{ steps.environment.outputs.vapid_public_key }}
+          SHORT_SHA: ${{ needs.outputs.outputs.short_sha }}
         run: |
           pnpm netlify deploy \
             --build \
