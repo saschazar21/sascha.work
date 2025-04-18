@@ -6,7 +6,7 @@ const REPLACEMENTS = {
     new URL(
       process.env.CONTEXT === 'production'
         ? process.env.URL
-        : 'http://localhost:8080',
+        : process.env.DEPLOY_URL || 'http://localhost:8080',
     ).hostname,
   ),
   __IS_PROD__: process.env.CONTEXT === 'production',
