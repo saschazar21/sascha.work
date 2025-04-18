@@ -1,0 +1,47 @@
+name: Changelog
+
+on:
+  workflow_call:
+    inputs:
+      args:
+        type: string
+
+    outputs:
+      content:
+        description: 'The content of the changelog'
+        value: ${{ jobs.changelog.outputs.content }}
+      version:
+        description: 'The next version bump'
+        value: ${{ jobs.changelog.outputs.version }}
+
+jobs:
+  changelog:
+    name: Generate changelog
+    runs-on: ubuntu-latest
+    outputs:
+      content: ${{ steps.changelog.outputs.content }}
+      version: ${{ steps.changelog.outputs.version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch default config
+        run: |
+          if [ ! -f ./cliff.toml ]; then
+            curl \
+              -fsSL \
+              "https://raw.githubusercontent.com/orhun/git-cliff/refs/heads/main/config/cliff.toml" \
+              -o ./cliff.toml
+          fi
+
+      - name: Changelog
+        id: changelog
+        env:
+          OUTPUT: CHANGELOG.md
+        uses: orhun/git-cliff-action@v4
+        with:
+          config: ./cliff.toml
+          args: ${{ inputs.args }}

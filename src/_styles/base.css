@@ -1,0 +1,180 @@
+:root {
+  --color-bg: white;
+  --color-bg-muted: white;
+  --color-text: black;
+  --color-text-muted: black;
+  --color-primary: black;
+  --color-secondary: black;
+  --color-secondary-muted: black;
+
+  --color-link: black;
+
+  --max-width: 800px;
+  --max-width-ultra: 1440px;
+
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  --duration-veryfast: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow: 0.6s;
+  --duration-ultraslow: 1s;
+  --duration-sloth: 5s;
+
+  --timing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  --border-width-sm: 1px;
+  --border-width-md: 2px;
+
+  --scroll-behavior: smooth;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: black;
+    --color-bg-muted: black;
+    --color-text: white;
+    --color-text-muted: white;
+    --color-primary: white;
+    --color-secondary: white;
+    --color-secondary-muted: white;
+
+    --color-link: white;
+  }
+}
+
+@media (monochrome), (color: 0), (prefers-contrast: more) {
+  :root {
+    --color-bg: white !important;
+    --color-bg-muted: white !important;
+    --color-text: black !important;
+    --color-text-muted: black !important;
+    --color-primary: black !important;
+    --color-secondary: black !important;
+    --color-secondary-muted: black !important;
+
+    --color-link: black !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-veryfast: 0;
+    --duration-fast: 0;
+    --duration-normal: 0;
+    --duration-slow: 0;
+    --duration-ultraslow: 0;
+    --duration-sloth: 0;
+
+    --scroll-behavior: auto;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: var(--scroll-behavior);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+}
+
+:where(main, .container) {
+  --padding-container: var(--space-md);
+
+  margin: 0 auto;
+  padding: 0 var(--padding-container);
+  width: 100%;
+  max-width: var(--max-width);
+}
+
+:where(aside, article, section) {
+  padding: var(--space, var(--space-sm)) 0;
+}
+
+:where(h2, h3, h4):not(:first-child) {
+  margin-top: var(--space-lg);
+}
+
+:is(h2, h3, h4, p) + :is(aside, article, section, p) {
+  margin-top: var(--space-sm);
+}
+
+pre {
+  overflow-x: auto;
+}
+
+:is(svg, svg path) {
+  fill: var(--color, currentColor);
+}
+
+:focus {
+  outline: var(--border-width-md) dotted var(--color-text);
+  outline-offset: var(--border-width-sm);
+}
+
+::selection {
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+}
+
+[data-sr-only],
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
+}
+
+[data-full-bleed],
+.full-bleed {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0 var(--padding-container);
+}
+
+:is([data-hide-sm]) {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  :is([data-hide-sm]) {
+    display: initial;
+  }
+}
+
+/* 848px = 800px + 2 * 1.5rem */
+@media (min-width: 848px) {
+  :where(main, .container) {
+    --padding-container: 0;
+  }
+
+  :where(article, section) {
+    --space: var(--space-lg);
+  }
+
+  :where(h2, h3, h4):not(:first-child) {
+    margin-top: var(--space-xl);
+  }
+}

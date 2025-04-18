@@ -1,0 +1,109 @@
+:where([data-projects]) {
+  --space: var(--space-sm);
+  --margin: var(--space-lg);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+  margin-top: var(--margin);
+  list-style: none;
+}
+
+:where([data-project]) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: var(--border-radius);
+  padding: var(--space);
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+:where([data-project] p) {
+  flex: 1 0 auto;
+}
+
+:where([data-project] [data-homepage-url]) {
+  --color: none;
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: var(--space-sm) 0;
+}
+
+:where([data-project])::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--space-xs);
+  width: 100%;
+  background: var(--gradient);
+}
+
+:is([data-project] [data-languages]) {
+  display: flex;
+  flex-wrap: wrap;
+  margin: var(--space-sm) 0 var(--space-md);
+  padding: 0;
+  list-style-type: none;
+}
+
+:where([data-project] li) {
+  position: relative;
+  margin: 0 var(--space-sm);
+}
+
+:where([data-project] li)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(var(--space-sm) * -1);
+  width: var(--space-xs);
+  height: var(--space-xs);
+  transform: translateY(-50%);
+  clip-path: circle(50%);
+  background-color: var(--color-language);
+}
+
+:where([data-project] [data-meta-container]) {
+  display: flex;
+  align-self: stretch;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space);
+}
+
+:where([data-project] [data-meta-container] small),
+:where([data-project] [data-meta-container] svg) {
+  --color: none;
+
+  color: var(--color-text-muted);
+}
+
+:where([data-stargazers]) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+  padding: var(--space);
+  margin: 0 calc(var(--space) * -1) calc(var(--space) * -1) 0;
+  color: var(--color-text);
+}
+
+@media (min-width: 848px) {
+  :where([data-projects]) {
+    --space: var(--space-md);
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  :where([data-project]) {
+    flex: 1 0 calc(50% - var(--space) * 0.5);
+  }
+}

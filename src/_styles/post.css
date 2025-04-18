@@ -1,0 +1,82 @@
+code[class*='language-'],
+pre[class*='language-'] {
+  font-family: var(--font-family-code);
+}
+
+:where(h1 + p) {
+  font-size: var(--font-size-h4);
+}
+
+:where(main > aside) {
+  margin-top: var(--space-lg);
+}
+
+:where([data-related-articles]) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  list-style: none;
+}
+
+:where([data-related-articles] > article) {
+  --bg-color: var(--color-bg-muted);
+  --aspect-ratio: 3 / 2;
+  --gap: var(--space-sm);
+
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: var(--gap);
+  padding: var(--space, var(--padding-container));
+  background-color: var(--bg-color, transparent);
+  aspect-ratio: var(--aspect-ratio);
+  transition: background-color var(--duration-fast) var(--timing),
+    color var(--duration-fast) var(--timing);
+}
+
+:where([data-related-articles] a) {
+  position: initial;
+}
+
+:where([data-related-articles] a)::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@media (pointer: fine) {
+  :where([data-related-articles] article):where(:hover, :focus-within) {
+    --bg-color: var(--color-primary);
+    --color-link: var(--color-bg);
+    --color-text: var(--color-bg);
+
+    color: var(--color-text);
+  }
+}
+
+@media (min-width: 640px) {
+  :where([data-related-articles]) {
+    flex-direction: row;
+    align-items: stretch;
+    margin-right: calc(50% - 50vw);
+    overflow-x: auto;
+  }
+
+  :where([data-related-articles] > article) {
+    --gap: var(--space-lg);
+
+    width: 320px;
+  }
+}
+
+@media (min-width: 848px) {
+  :where(main > aside) {
+    margin-top: var(--space-xl);
+  }
+}

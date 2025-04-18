@@ -1,0 +1,45 @@
+name: Outputs
+
+on:
+  workflow_call:
+    outputs:
+      message:
+        description: 'The git commit message'
+        value: ${{ jobs.outputs.outputs.MESSAGE }}
+      short_sha:
+        description: 'The SHORT_SHA value of the current git commit'
+        value: ${{ jobs.outputs.outputs.SHORT_SHA }}
+
+jobs:
+  outputs:
+    name: Outputs
+    runs-on: ubuntu-latest
+
+    outputs:
+      MESSAGE: ${{ steps.message.outputs.MESSAGE }}
+      SHORT_SHA: ${{ steps.short_sha.outputs.SHORT_SHA }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        if: ${{ github.event_name != 'pull_request' }}
+        with:
+          fetch-depth: 0
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set SHORT_SHA
+        id: short_sha
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_OUTPUT
+
+      - name: Set MESSAGE
+        id: message
+        run: |
+          MESSAGE=$(git log -1 --pretty=format:"%s")
+          echo "MESSAGE=$MESSAGE" >> $GITHUB_OUTPUT

@@ -1,0 +1,48 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8"/>
+
+  {% include "src/_partials/seo.njk" %}
+
+  <link rel="preload" href="/assets/fonts/Overpass-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
+  <link rel="preload" href="/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
+  <link rel="preload" href="/assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf" as="font" type="font/ttf" crossorigin="anonymous"/>
+
+  {# Gardevoir v1.0.0: #}
+  {% set gardevoir %}{% include "src/_styles/gardevoir.css" %}{% endset %}
+
+  {% css "gardevoir" %}
+  {{ gardevoir | safe }}
+  {% endcss %}
+
+  <style>
+    {% getBundle 'css', 'gardevoir' %}
+  </style>
+
+  {% set base %}{% include "src/_styles/base.css" %}{% endset %}
+  {% css "base" %}
+  {{ base | safe }}
+  {% endcss %}
+
+  <style>
+    {% getBundle 'css', 'base' %}
+  </style>
+
+  {% set typography %}{% include "src/_styles/typography.css" %}{% endset %}
+  {% css "typography" %}
+  {{ typography | safe }}
+  {% endcss %}
+
+  <style>
+    {% getBundle 'css', 'typography' %}
+  </style>
+
+  {% set themeDefault %}{% include "src/_styles/theme-default.css" %}{% endset %}
+  {% css "theme-default" %}
+  {{ themeDefault | safe }}
+  {% endcss %}
+
+  <style data-theme>
+    {% getBundle 'css', 'theme-default' %}
+  </style>
+</head>

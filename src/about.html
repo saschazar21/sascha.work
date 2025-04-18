@@ -1,0 +1,82 @@
+---
+layout: base.njk
+tldr: "Get to know more about me and my experience on this page."
+title: About me
+priority: 0.8
+---
+
+{% set css %}{% include "src/_styles/about.css" %}{% endset %}
+{% css "about" %}
+{{ css | safe }}
+{% endcss %}
+<style data-helmet>
+  {% getBundle 'css', 'about' %}
+</style>
+<main class="h-resume">
+  <div data-intro-container>
+    <div data-img-container>
+      <picture>
+        <source
+          srcset="/assets/img/profile_800.avif 800w, /assets/img/profile_1600.avif 1600w"
+          sizes="(min-width: 800px) 305px, 100vw"
+          type="image/avif"/>
+        <source
+          srcset="/assets/img/profile_800.webp 800w, /assets/img/profile_1600.webp 1600w"
+          sizes="(min-width: 800px) 305px, 100vw"
+          type="image/webp"/>
+        <source
+          srcset="/assets/img/profile_800.jpg 800w, /assets/img/profile_1600.jpg 1600w"
+          sizes="(min-width: 800px) 305px, 100vw"
+          type="image/jpeg"/>
+        <img
+          src="/assets/img/profile_800.jpg"
+          width="800"
+          height="533"
+          alt="Black-and-white portrait of Sascha Zarhuber. He is wearing a hoodie and is standing in front of a blurry garden shed
+            and smiling towards the camera."
+          class="u-photo"/>
+      </picture>
+    </div>
+    <section>
+      <h1>Hi, I'm
+        <span class="special p-name">Sascha<span data-sr-only>
+            Zarhuber</span>
+        </span>
+      </h1>
+      <p class="p-summary">
+        I am a front-end
+        <em>(occasional back-end)</em>
+        developer based in Upper Austria.
+      </p>
+      <p class="p-skill">
+        Over the past 10+ years, I have been gaining experience in various fields of web development. I have worked on projects
+        ranging from simple landing pages to complex e-commerce platforms, from in-house design systems to production server
+        maintenance.
+      </p>
+      <p>
+        Whenever I am away from the keyboard, I enjoy travelling, riding my vintage motorcycle and snapping pictures with any
+        camera I can get my hands on.
+        <i>(I do also develop analog film rolls from time to time.)</i>
+      </p>
+    </section>
+  </div>
+  {% set intro %}
+  <p class="p-affiliation h-card">I am currently working at
+    <a href="{{ experience.data.work[0].url }}" rel="noindex nofollow" target="_blank" class="u-url">
+      <span class="p-name">{{ experience.data.work[0].institution }}</span>
+    </a>
+    as a
+    <strong class="p-job-title">{{ experience.data.work[0].position }}</strong>.</p>
+  {% endset %}
+  {% set name = "Experience" %}
+  {% set elements = experience.data.work %}
+  {% include "src/_partials/cards-experience.njk" %}
+  {% set intro %}
+  <p>I am holding Bachelor's and Master's degrees from
+    <a href="{{ experience.data.education[0].url }}" rel="noindex nofollow" target="_blank">{{ experience.data.education[0].institution }}.
+    </p>
+    {% endset %}
+    {% set name = "Education" %}
+    {% set elements = experience.data.education %}
+    {% include "src/_partials/cards-experience.njk" %}
+  </main>

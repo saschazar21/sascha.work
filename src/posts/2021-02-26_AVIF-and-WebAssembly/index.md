@@ -49,7 +49,7 @@ One challenge remains though; aom is written in C/C++ and needs [emscripten](htt
 
 By looking at the table above, it's appearant, that there are some distinct differences between both codecs — neither do the `.wasm` binaries of 1.9 MB and 699 KB in size play in the same ballpark, nor do the supported environments of the generated glue codes.
 
-> ⚠️ Both environments produce a different outcome in terms of JavaScript glue code and therefore provide their own API. _emscripten_ produces a Promise-based, universal glue code for Node.js-, WebWorker- and browser-usage — _wasm-pack_ needs a specific `--target` flag at compile time, for producing a specified glue code that's tailor-made for the desired environment.
+<mark>⚠️ Both environments produce a different outcome in terms of JavaScript glue code and therefore provide their own API. <em>emscripten</em> produces a Promise-based, universal glue code for Node.js-, WebWorker- and browser-usage — <em>wasm-pack</em> needs a specific <code>--target</code> flag at compile time, for producing a specified glue code that's tailored towards the desired environment.
 
 The following snippet provides an example for instantiating a package using the emscripten API:
 

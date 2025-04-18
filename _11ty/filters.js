@@ -1,48 +1,46 @@
-const { createHash } = require('crypto');
-const day = require('dayjs');
-const { URL } = require('url');
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc.js';
+import timezone from 'dayjs/plugin/timezone.js';
 
-const pkg = require('../package.json');
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
-const domain =
-  process.env.CONTEXT === 'production'
-    ? process.env.URL
-    : process.env.DEPLOY_PRIME_URL || pkg.homepage;
-
-module.exports = {
-  absoluteURL: (path = '') => {
-    if (/^https?:\/\//i.test(path)) {
-      return path;
-    }
-    const absolutePath = path && path.startsWith('/') ? path : `/${path}`;
-    return new URL(absolutePath, domain).toString();
+export default {
+  canonical: (path, origin) => new URL(path, origin).href,
+  date: (value, format, tz = 'utc') => {
+    const dateObject = new Date(value);
+    return dayjs(dateObject).tz(tz).format(format);
   },
-  format: (date, format) => day(date).format(format),
-  gravatar: (email, size = 256) => {
-    if (!email || !email.length) {
-      throw new Error('No email given to calculate Gravatar hash!');
+  json: (value) => JSON.parse(value),
+  join: (values, separator) =>
+    values.filter((value) => !!value).join(separator),
+  modify: function modify(obj, key, value) {
+    const newObj = { ...obj };
+    const [level, ...rest] = key.split('.');
+    if (rest.length) {
+      newObj[level] = {
+        ...newObj[level],
+        ...modify(newObj[level], rest.join('.'), value),
+      };
+    } else {
+      newObj[level] =
+        Array.isArray(newObj[level]) && !Array.isArray(value) ? [value] : value;
     }
-
-    const hash = createHash('md5').update(email).digest('hex');
-    const url = new URL(
-      `/avatar/${hash}?s=${size}`,
-      'https://www.gravatar.com',
-    );
-    return url.toString();
+    return newObj;
   },
-  hostname: (url) => new URL(url).hostname,
-  padZero: (value, length = 2) => {
-    const stringified = value.toString();
-    const gap = length - stringified.length;
-    if (gap < 0) {
-      return stringified;
-    }
-    return new Array(gap)
-      .fill(0)
-      .reduce((prev, curr) => `${curr}${prev}`, stringified);
-  },
-  rewrite: (path, slug) =>
-    slug || path.replace(/\d{4}-\d{2}-\d{2}_/, '').toLowerCase(),
+  padStart: (value, length) => String(value).padStart(length, '0'),
+  push: (array, ...items) => [...array, ...items],
+  replace: (text, search, replacement) =>
+    text.replace(new RegExp(search, 'g'), replacement),
+  split: (value, separator) =>
+    value
+      .split(separator)
+      .map((item) => item.trim())
+      .filter((item) => !!item),
+  stringify: (obj) => JSON.stringify(obj, null, 2),
+  stripdate: (path, slug) =>
+    slug ?? path.replace(/\d{4}-\d{2}-\d{2}_/, '').toLowerCase(),
+  striptags: (html) => html.replace(/(<([^>]+)>)/gi, ''),
   svgline: (path) => {
     const MAX_LENGTH = 17;
     if (path.length <= MAX_LENGTH) {
@@ -60,4 +58,8 @@ module.exports = {
       return [...lines.slice(0, -1), `${prev} ${current}`];
     }, []);
   },
+  tag: (articles, tag) =>
+    articles.filter((article) => article.data.tags.includes(tag)),
+  take: (array, count) => array.slice(0, count),
+  unique: (array) => [...new Set(array)],
 };
