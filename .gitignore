@@ -1,3 +1,5 @@
+/.vscode
+/functions
 /public
 
 # Created by https://www.toptal.com/developers/gitignore/api/remix+netlify,go,node

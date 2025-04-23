@@ -1,0 +1,68 @@
+package utils
+
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"strconv"
+)
+
+type ResponseError struct {
+	Detail *string `json:"detail"`
+	Status string  `json:"status"`
+	Title  string  `json:"title"`
+}
+
+func (r ResponseError) Error() string {
+	if r.Detail != nil {
+		return fmt.Sprintf("Error %s, Title: %s, Detail: %s", r.Status, r.Title, *r.Detail)
+	}
+	return fmt.Sprintf("Error %s, Title: %s", r.Status, r.Title)
+}
+
+type JSONAPIResponse[T any] struct {
+	Data    T                `json:"data"`
+	Errors  *[]ResponseError `json:"errors"`
+	JsonApi struct {
+		Version string `json:"version"`
+	} `json:"jsonapi"`
+	Links struct {
+		Self    string `json:"self"`
+		Related string `json:"related"`
+	} `json:"links"`
+}
+
+func (r *JSONAPIResponse[T]) WriteResponse(w http.ResponseWriter) {
+	w.Header().Set("Content-Type", "application/vnd.api+json")
+	if r.Errors != nil && len(*r.Errors) > 0 {
+		statusCode, err := strconv.Atoi((*r.Errors)[0].Status)
+		if err != nil {
+			statusCode = http.StatusInternalServerError
+		}
+		w.WriteHeader(statusCode)
+	} else {
+		w.WriteHeader(http.StatusOK)
+	}
+	if err := json.NewEncoder(w).Encode(r); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func NewJSONAPIResponse[T any](r *http.Request, data T, errors *[]ResponseError) JSONAPIResponse[T] {
+	return JSONAPIResponse[T]{
+		Data:   data,
+		Errors: errors,
+		JsonApi: struct {
+			Version string `json:"version"`
+		}{
+			Version: "1.0",
+		},
+		Links: struct {
+			Self    string `json:"self"`
+			Related string `json:"related"`
+		}{
+			Self:    r.URL.String(),
+			Related: fmt.Sprintf("%s://%s/", r.URL.Scheme, r.URL.Host),
+		},
+	}
+}

@@ -32,22 +32,22 @@ jobs:
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           set +e
 
-      # - name: Set up Go
-      #   uses: actions/setup-go@v5
-      #   with:
-      #     go-version-file: go.mod
-      #     check-latest: true
-      #     cache-dependency-path: |
-      #       go.sum
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          check-latest: true
+          cache-dependency-path: |
+            go.sum
 
-      # - name: Tidy & Commit go.mod
-      #   run: |
-      #     go mod tidy
+      - name: Tidy & Commit go.mod
+        run: |
+          go mod tidy
 
-      #     sed -i 's|require github.com/${{ github.repository }} v[0-9.]*[-a-zA-Z0-9]*|require github.com/${{ github.repository }} ${{ needs.changelog.outputs.version }}|g' go.mod
-      #     git add go.mod go.sum
-      #     git commit -m "Update go.mod go.sum [skip ci]"
-      #     git push
+          sed -i 's|require github.com/${{ github.repository }} v[0-9.]*[-a-zA-Z0-9]*|require github.com/${{ github.repository }} ${{ needs.changelog.outputs.version }}|g' go.mod
+          git add go.mod go.sum
+          git commit -m "Update go.mod go.sum [skip ci]"
+          git push
 
       - name: Commit CHANGELOG.md
         run: |
