@@ -17,7 +17,7 @@ const (
 
 const REPOSITORY_QUERY = `
 query($owner: String!, $name: String!) {
-	GitHubRepository(owner: $owner, name: $name) {
+	repository(owner: $owner, name: $name) {
     url
     description
     homepageUrl
