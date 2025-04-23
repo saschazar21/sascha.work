@@ -6,6 +6,11 @@ GOOS=linux
 GOARCH=amd64
 GO111MODULE=on
 
+URL=$URL
+if [[ $CONTEXT != "production" ]]; then
+  URL=$DEPLOY_URL
+fi
+
 if [[ -d "$(pwd)/cmd" ]]; then
 
   GOBIN=$(PWD)/functions go get ./...
@@ -26,7 +31,7 @@ if [[ -d "$(pwd)/cmd" ]]; then
       n=${n##*/}
 
       # build binary
-      CGO_ENABLED=0 go build -o $(pwd)/functions/${v}_${n} $(pwd)/cmd/$v/$n;
+      CGO_ENABLED=0 go build -ldflags "-X github.com/saschazar21/sascha.work/api/${v}/utils.URL=$URL" -o $(pwd)/functions/${v}_${n} $(pwd)/cmd/$v/$n;
     done
   done
   

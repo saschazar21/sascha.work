@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -8,7 +9,6 @@ import (
 	"math"
 	"net/http"
 	"os"
-	"strings"
 )
 
 const (
@@ -82,6 +82,14 @@ type GitHubRepository struct {
 	Url             string         `json:"url"`
 }
 
+type GitHubRepositoryGraphQLQuery struct {
+	Query     string `json:"query"`
+	Variables struct {
+		Owner string `json:"owner"`
+		Name  string `json:"name"`
+	} `json:"variables"`
+}
+
 type ParsedGitHubLanguageEdge struct {
 	Color string `json:"color"`
 	Name  string `json:"name"`
@@ -109,8 +117,29 @@ func fetchRepositoryFromGitHubAPI(owner string, name string) (*GitHubRepository,
 	}
 
 	// Create a new HTTP request
-	body := strings.NewReader(fmt.Sprintf(`{"query": "%s", "variables": {"owner": "%s", "name": "%s"}}`, REPOSITORY_QUERY, owner, name))
-	req, err := http.NewRequest("POST", GITHUB_GRAPHQL_API, body)
+	payload := GitHubRepositoryGraphQLQuery{
+		Query: REPOSITORY_QUERY,
+		Variables: struct {
+			Owner string `json:"owner"`
+			Name  string `json:"name"`
+		}{
+			Owner: owner,
+			Name:  name,
+		},
+	}
+	// Convert the payload to JSON
+	body, err := json.Marshal(payload)
+	if err != nil {
+		detail := err.Error()
+		return nil, ResponseError{
+			Detail: &detail,
+			Status: "500",
+			Title:  "Internal Server Error",
+		}
+	}
+
+	// Create a new request with the JSON payload
+	req, err := http.NewRequest("POST", GITHUB_GRAPHQL_API, bytes.NewBuffer(body))
 
 	if err != nil {
 		detail := err.Error()

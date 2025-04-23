@@ -4,16 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"net/url"
-	"os"
 	"strconv"
-)
-
-const (
-	CONTEXT    = "CONTEXT"
-	DEPLOY_URL = "DEPLOY_URL"
-	PRODUCTION = "production"
-	URL        = "URL"
 )
 
 type ResponseError struct {
@@ -58,15 +49,6 @@ func (r *JSONAPIResponse[T]) WriteResponse(w http.ResponseWriter) {
 }
 
 func NewJSONAPIResponse[T any](r *http.Request, data T, errors *[]ResponseError) JSONAPIResponse[T] {
-	context := os.Getenv(CONTEXT)
-	origin := os.Getenv(DEPLOY_URL)
-
-	if context == PRODUCTION {
-		origin = os.Getenv(URL)
-	}
-
-	self, _ := url.Parse(origin + r.URL.Path)
-
 	return JSONAPIResponse[T]{
 		Data:   data,
 		Errors: errors,
@@ -79,8 +61,8 @@ func NewJSONAPIResponse[T any](r *http.Request, data T, errors *[]ResponseError)
 			Self    string `json:"self"`
 			Related string `json:"related"`
 		}{
-			Self:    self.String(),
-			Related: origin,
+			Self:    URL + r.URL.Path,
+			Related: URL,
 		},
 	}
 }
