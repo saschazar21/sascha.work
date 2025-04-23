@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"math"
 	"net/http"
 	"os"
@@ -15,9 +16,8 @@ const (
 	GITHUB_TOKEN       = "GITHUB_TOKEN"
 )
 
-const REPOSITORY_QUERY = `
-query($owner: String!, $name: String!) {
-	repository(owner: $owner, name: $name) {
+const REPOSITORY_QUERY = `query repository($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
     url
     description
     homepageUrl
@@ -152,6 +152,7 @@ func fetchRepositoryFromGitHubAPI(owner string, name string) (*GitHubRepository,
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
+		log.Printf("GitHub API Error Response:\n%s", string(respBody))
 		return nil, ResponseError{
 			Detail: nil,
 			Status: fmt.Sprintf("%d", resp.StatusCode),
