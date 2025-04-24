@@ -61,13 +61,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      # - name: Set up Go
-      #   uses: actions/setup-go@v5
-      #   with:
-      #     go-version-file: go.mod
-      #     check-latest: true
-      #     cache-dependency-path: |
-      #       go.sum
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          check-latest: true
+          cache-dependency-path: |
+            go.sum
 
       - name: Set deploy variables
         id: var

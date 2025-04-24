@@ -1,10 +1,20 @@
 [build]
   publish = "public"
-  command = "npm run build"
-  # functions = "functions"
+  command = "make"
+  functions = "functions"
 
 [build.environment]
+  GO_IMPORT_PATH = "github.com/saschazar21/sascha.work"
+  GO111MODULE = "on"
+  GOARCH = "amd64"
+  GOOS = "linux"
   NODE_VERSION = "22.x"
+
+[[redirects]]
+  from = "/api/v1/project/:owner/:repo"
+  to = "/.netlify/functions/v1_project"
+  status = 200
+  force = true
 
 [[headers]]
   for = "/manifest.webmanifest"
@@ -37,6 +47,6 @@
   for = "/*.json"
   [headers.values]
     Access-Control-Allow-Origin = "*"
-    Content-Type = "application/json"
+    Content-Type = "application/vnd.api+json"
     Cache-Control = "public, max-age=0, must-revalidate"
     Vary = "Accept-Encoding"
