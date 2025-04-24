@@ -58,7 +58,59 @@ title: API Docs
 {% set social = social | json %}
 {% set social = social | modify('data', social.data[0]) | stringify %}
 
-{% set snippets = [experience, feed, social] %}
+{% set project %}
+{
+  "data": {
+    "description": "The repository of my personal website",
+    "homepageUrl": "https://sascha.work",
+    "languages": [
+      {
+        "color": "#663399",
+        "name": "CSS",
+        "size": 33
+      },
+      {
+        "color": "#3d8137",
+        "name": "Nunjucks",
+        "size": 28
+      },
+      {
+        "color": "#3178c6",
+        "name": "TypeScript",
+        "size": 19
+      },
+      {
+        "color": "#f1e05a",
+        "name": "JavaScript",
+        "size": 10
+      },
+      {
+        "color": "#e34c26",
+        "name": "HTML",
+        "size": 8
+      }
+    ],
+    "name": "sascha.work",
+    "release": {
+      "name": "v3.0.0",
+      "publishedAt": "2025-04-18T12:00:58Z",
+      "tagName": "v3.0.0"
+    },
+    "stargazersCount": 0,
+    "url": "https://github.com/saschazar21/sascha.work"
+  },
+  "errors": null,
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "links": {
+    "self": "https://sascha.work/api/v1/project/saschazar21/sascha.work",
+    "related": "https://sascha.work"
+  }
+}
+{% endset %}
+
+{% set snippets = [experience, feed, social, project] %}
 
 {% set segments %}
 [
@@ -67,21 +119,28 @@ title: API Docs
     "description": "This endpoint contains all my educational- and work experience, including the university- and company name, position, and timeline. It is used to generate some contents of the <a href=\"/about/?utm_content=api-docs\">About</a> page.",
     "url": "/experience.json",
     "method": "GET",
-    "contentType": "application/json"
+    "contentType": "application/vnd.api+json"
   },
   {
     "name": "feed",
     "description": "This endpoint contains a <a href=\"https://www.jsonfeed.org/\" rel=\"noindex nofollow\" target=\"_blank\">JSON Feed 1.1</a>-conform feed of my latest articles.",
     "url": "/feed.json",
     "method": "GET",
-    "contentType": "application/feed+json"
+    "contentType": "application/vnd.api+json"
   },
   {
     "name": "social",
     "description": "This endpoint contains a JSON object with all my social media accounts, including the URL and user name. It is used to generate the Social Media section in the footer.",
     "url": "/social.json",
     "method": "GET",
-    "contentType": "application/json"
+    "contentType": "application/vnd.api+json"
+  },
+  {
+    "name": "project",
+    "description": "This endpoint contains a JSON object to retrieve data for a requested repository hosted on GitHub. It currently only supports selected owners related to me, such as <mark>saschazar21</mark> or <mark>vorchdorf-dot-media</mark>.",
+    "url": "/api/v1/project/:owner/:repo",
+    "method": "GET",
+    "contentType": "application/vnd.api+json"
   }
 ]
 {% endset %}
@@ -90,7 +149,12 @@ title: API Docs
 
 <p>
   This website contains some full-featured JSON API v1-conform endpoints.
-  Those contain mainly static information, but are recreated during every deployment for staying up to date.
+  These contain mainly static information, but are recreated during every deployment for staying up to date.
+</p>
+
+<p>
+  Additionally, there are a few dynamic endpoints available, which are used to fetch data from remote APIs, or generate real-time data to ensure accuracy.
+  All URL paths prefixed with <code>/api</code> are serverless functions written in Go and are deployed to AWS Lambda in the <mark>us-east-1</mark> (N. Virginia) region. This will change, as soon as Netlify supports a custom region in its free tier.
 </p>
 
 {% for segment in segments | json %}
