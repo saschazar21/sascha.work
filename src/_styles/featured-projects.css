@@ -16,6 +16,7 @@
   align-items: flex-start;
   border-radius: var(--border-radius);
   padding: var(--space);
+  height: 100%;
   background-color: var(--color-bg);
   overflow: hidden;
 }
@@ -103,7 +104,7 @@
     align-items: stretch;
   }
 
-  :where([data-project]) {
+  :where(project-entry) {
     flex: 1 0 calc(50% - var(--space) * 0.5);
   }
 }

@@ -1,5 +1,5 @@
 const PROJECT_API_ENDPOINT = '/api/v1/projects';
-const IS_REFETCHING = 'isRefetching';
+const IS_REFETCHING = 'is-refetching';
 
 let projectObserver: IntersectionObserver;
 
@@ -38,6 +38,10 @@ interface Project {
     publishedAt: string;
   };
   pushedAt: string;
+}
+
+interface ProjectResponse {
+  data: Project | null;
 }
 
 const projectTemplate = document.createElement('template');
@@ -127,14 +131,20 @@ class ProjectEntry extends HTMLElement {
       )}/${this.getAttribute('repo')}`,
     )
       .then((response) => response.json())
+      .then((data: ProjectResponse) => {
+        if (data.data) {
+          return data.data;
+        }
+        throw new Error('Response contained errors.');
+      })
       .then(this.updateProject.bind(this))
       .catch((error) => {
         console.error('Error fetching project data:', error);
-        projectObserver.unobserve(this.container);
+        projectObserver.unobserve(this);
         return null;
       })
       .finally(() => {
-        this.container.removeAttribute(IS_REFETCHING);
+        this.removeAttribute(IS_REFETCHING);
       });
   }
 
@@ -142,22 +152,23 @@ class ProjectEntry extends HTMLElement {
     const owner = this.getAttribute('owner');
     const repo = this.getAttribute('repo');
     if (owner && repo) {
-      projectObserver.observe(this.container);
+      projectObserver.observe(this);
     }
   }
 
   disconnectedCallback() {
-    projectObserver.unobserve(this.container);
+    projectObserver.unobserve(this);
   }
 
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+  attributeChangedCallback(name: string, _oldValue: string, newValue: string) {
+    console.log(name, newValue);
     if (name === IS_REFETCHING) {
       newValue === 'true' && this.refetch();
     } else if (name === 'owner' || name === 'repo') {
       const owner = this.getAttribute('owner');
       const repo = this.getAttribute('repo');
       if (owner && repo) {
-        projectObserver.observe(this.container);
+        projectObserver.observe(this);
       }
     }
   }
