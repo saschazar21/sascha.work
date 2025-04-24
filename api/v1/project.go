@@ -64,7 +64,9 @@ func HandleProject(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Add caching header for 24 hours
-	w.Header().Set("Cache-Control", "public, max-age=86400")
+	w.Header().Set("Cache-Control", "public, s-maxage=86400, max-age=86400")
+	w.Header().Set("CDN-Cache-Control", "public, s-maxage=86400, max-age=86400, stale-while-revalidate=172800")
+	w.Header().Set("Netlify-CDN-Cache-Control", "public, durable, s-maxage=86400, stale-while-revalidate=172800")
 
 	response := utils.NewJSONAPIResponse(r, data, nil)
 	response.WriteResponse(w)
