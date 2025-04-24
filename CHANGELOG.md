@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.1.0] - 2025-04-24
+
+### 🚀 Features
+
+- Added /api/v1/project endpoint (#375)
+- Extended cache headers, removed failing step in workflow (#376)
+
 ## [3.0.0] - 2025-04-18
 
 ### 🚀 Features
