@@ -31,6 +31,9 @@ const REPOSITORY_QUERY = `query repository($owner: String!, $name: String!) {
       }
     }
     name
+		owner {
+			login
+		}
     pushedAt
     releases(first: 1, orderBy: { field: CREATED_AT, direction: DESC }) {
       nodes {
