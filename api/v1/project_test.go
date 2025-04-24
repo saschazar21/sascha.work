@@ -110,6 +110,7 @@ func TestProject(t *testing.T) {
 			if !tt.wantErr {
 				assert.NotNil(t, response.Data, "Response data should not be nil")
 				assert.NotNil(t, response.Data.Release, "Release data should not be nil")
+				assert.NotEmpty(t, response.Data.PushedAt, "PushedAt should not be empty")
 				assert.Equal(t, "sascha.work", response.Data.Name, "Repository name should match")
 			}
 		})

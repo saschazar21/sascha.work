@@ -24,7 +24,7 @@ func TestRepository(t *testing.T) {
 			name:       "Valid Repository",
 			owner:      "saschazar21",
 			repository: "test-repo",
-			mock:       "{\"data\": {\"repository\": {\"description\": \"A test repository\", \"homepageUrl\": \"https://example.com\", \"languages\": {\"edges\": [{\"color\": \"#f00\", \"name\": \"Go\", \"size\": 100}]}, \"name\": \"test-repo\", \"releases\": {\"nodes\": [{\"name\": \"v1.0.0\", \"publishedAt\": \"2023-01-01T00:00:00Z\", \"tagName\": \"v1.0.0\"}]}, \"stargazersCount\": 10, \"url\": \"https://test.example.com\"}}}",
+			mock:       "{\"data\": {\"repository\": {\"description\": \"A test repository\", \"homepageUrl\": \"https://example.com\", \"languages\": {\"edges\": [{\"color\": \"#f00\", \"name\": \"Go\", \"size\": 100}]}, \"name\": \"test-repo\", \"owner\": { \"login\": \"saschazar21\" }, \"pushedAt\": \"1970-01-01T00:00:00.000Z\", \"releases\": {\"nodes\": [{\"name\": \"v1.0.0\", \"publishedAt\": \"2023-01-01T00:00:00Z\", \"tagName\": \"v1.0.0\"}]}, \"stargazersCount\": 10, \"url\": \"https://test.example.com\"}}}",
 			token:      "valid-token",
 			status:     "200",
 			wantErr:    false,
@@ -115,6 +115,8 @@ func TestRepository(t *testing.T) {
 				assert.Equal(t, "A test repository", repository.Description)
 				assert.Equal(t, "https://example.com", *repository.HomepageUrl)
 				assert.Equal(t, "test-repo", repository.Name)
+				assert.Equal(t, "saschazar21", repository.Owner)
+				assert.Equal(t, "1970-01-01T00:00:00.000Z", repository.PushedAt)
 				assert.Equal(t, "https://test.example.com", repository.Url)
 				assert.Equal(t, 10, repository.StargazersCount)
 			} else {
