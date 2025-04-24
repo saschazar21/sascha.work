@@ -161,7 +161,6 @@ class ProjectEntry extends HTMLElement {
   }
 
   attributeChangedCallback(name: string, _oldValue: string, newValue: string) {
-    console.log(name, newValue);
     if (name === IS_REFETCHING) {
       newValue === 'true' && this.refetch();
     } else if (name === 'owner' || name === 'repo') {
