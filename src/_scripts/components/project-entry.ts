@@ -1,4 +1,4 @@
-const PROJECT_API_ENDPOINT = '/api/v1/projects';
+const PROJECT_API_ENDPOINT = '/api/v1/project';
 const IS_REFETCHING = 'is-refetching';
 
 let projectObserver: IntersectionObserver;
