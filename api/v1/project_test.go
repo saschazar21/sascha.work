@@ -10,6 +10,7 @@ import (
 
 	"github.com/jarcoal/httpmock"
 	"github.com/saschazar21/sascha.work/api/v1/utils"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestProject(t *testing.T) {
@@ -28,7 +29,7 @@ func TestProject(t *testing.T) {
 			method:     "GET",
 			owner:      "saschazar21",
 			repository: "test-repo",
-			mock:       "{\"data\": {\"repository\": {\"description\": \"A test repository\", \"homepageUrl\": \"https://example.com\", \"languages\": {\"edges\": [{\"color\": \"#f00\", \"name\": \"Go\", \"size\": 100}]}, \"name\": \"test-repo\", \"releases\": {\"edges\": [{\"name\": \"v1.0.0\", \"publishedAt\": \"2023-01-01T00:00:00Z\", \"tagName\": \"v1.0.0\"}]}, \"stargazersCount\": 10, \"url\": \"https://test.example.com\"}}}",
+			mock:       `{"data":{"repository":{"url":"https://github.com/saschazar21/sascha.work","description":"The repository of my personal website","homepageUrl":"https://sascha.work","languages":{"edges":[{"node":{"name":"CSS","color":"#663399"},"size":40472},{"node":{"name":"Nunjucks","color":"#3d8137"},"size":34289},{"node":{"name":"TypeScript","color":"#3178c6"},"size":23304},{"node":{"name":"JavaScript","color":"#f1e05a"},"size":12630},{"node":{"name":"HTML","color":"#e34c26"},"size":10177}]},"name":"sascha.work","pushedAt":"2025-04-23T14:03:49Z","releases":{"nodes":[{"tagName":"v3.0.0","name":"v3.0.0","publishedAt":"2025-04-18T12:00:58Z"}]},"stargazerCount":1}}}`,
 			token:      "valid-token",
 			status:     "200",
 			wantErr:    false,
@@ -38,7 +39,7 @@ func TestProject(t *testing.T) {
 			method:     "GET",
 			owner:      "saschazar21",
 			repository: "test-repo",
-			mock:       "{\"data\": {\"repository\": {\"description\": \"A test repository\", \"homepageUrl\": \"https://example.com\", \"languages\": {\"edges\": [{\"color\": \"#f00\", \"name\": \"Go\", \"size\": 100}]}, \"name\": \"test-repo\", \"releases\": {\"edges\": [{\"name\": \"v1.0.0\", \"publishedAt\": \"2023-01-01T00:00:00Z\", \"tagName\": \"v1.0.0\"}]}, \"stargazersCount\": 10, \"url\": \"https://test.example.com\"}}}",
+			mock:       "{\"data\": {\"repository\": {\"description\": \"A test repository\", \"homepageUrl\": \"https://example.com\", \"languages\": {\"edges\": [{\"color\": \"#f00\", \"name\": \"Go\", \"size\": 100}]}, \"name\": \"test-repo\", \"releases\": {\"nodes\": [{\"name\": \"v1.0.0\", \"publishedAt\": \"2023-01-01T00:00:00Z\", \"tagName\": \"v1.0.0\"}]}, \"stargazersCount\": 10, \"url\": \"https://test.example.com\"}}}",
 			token:      "",
 			status:     "500",
 			wantErr:    true,
@@ -48,7 +49,7 @@ func TestProject(t *testing.T) {
 			method:     "POST",
 			owner:      "saschazar21",
 			repository: "test-repo",
-			mock:       "{\"data\": {\"repository\": {\"description\": \"A test repository\", \"homepageUrl\": \"https://example.com\", \"languages\": {\"edges\": [{\"color\": \"#f00\", \"name\": \"Go\", \"size\": 100}]}, \"name\": \"test-repo\", \"releases\": {\"edges\": [{\"name\": \"v1.0.0\", \"publishedAt\": \"2023-01-01T00:00:00Z\", \"tagName\": \"v1.0.0\"}]}, \"stargazersCount\": 10, \"url\": \"https://test.example.com\"}}}",
+			mock:       "{\"data\": {\"repository\": {\"description\": \"A test repository\", \"homepageUrl\": \"https://example.com\", \"languages\": {\"edges\": [{\"color\": \"#f00\", \"name\": \"Go\", \"size\": 100}]}, \"name\": \"test-repo\", \"releases\": {\"nodes\": [{\"name\": \"v1.0.0\", \"publishedAt\": \"2023-01-01T00:00:00Z\", \"tagName\": \"v1.0.0\"}]}, \"stargazersCount\": 10, \"url\": \"https://test.example.com\"}}}",
 			token:      "valid-token",
 			status:     "405",
 			wantErr:    true,
@@ -94,7 +95,7 @@ func TestProject(t *testing.T) {
 			}
 
 			// Check the response body
-			var response utils.JSONAPIResponse[any]
+			var response utils.JSONAPIResponse[*utils.Repository]
 			if err := json.NewDecoder(w.Body).Decode(&response); err != nil {
 				t.Errorf("Failed to decode response: %v", err)
 			}
@@ -104,6 +105,12 @@ func TestProject(t *testing.T) {
 				}
 			} else if response.Data == nil && !tt.wantErr {
 				t.Errorf("HandleRepo() = %v, want %v", response.Data, tt.status)
+			}
+
+			if !tt.wantErr {
+				assert.NotNil(t, response.Data, "Response data should not be nil")
+				assert.NotNil(t, response.Data.Release, "Release data should not be nil")
+				assert.Equal(t, "sascha.work", response.Data.Name, "Repository name should match")
 			}
 		})
 	}

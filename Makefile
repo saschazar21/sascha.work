@@ -12,12 +12,13 @@ build_website:
 
 test:
 	@echo "Running tests..."
-	go test -coverprofile=coverage.out ./...
-	# go tool cover -html=coverage.out -o coverage.html
+	mkdir -p coverage
+	go test -coverprofile=coverage/coverage.out ./...
+	go tool cover -html=coverage/coverage.out -o coverage/index.html
 	@echo "Test run complete!"
 
 clean:
 	@echo "Cleaning up..."
-	rm -rf public
+	rm -rf public coverage
 	for d in $(shell ls functions); do rm -rf functions/$$d; done
 	@echo "Cleaned up successfully!"

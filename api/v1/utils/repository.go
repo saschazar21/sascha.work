@@ -69,7 +69,7 @@ type GitHubReleaseNode struct {
 }
 
 type GitHubRelease struct {
-	Edges *[]GitHubReleaseNode `json:"edges"`
+	Nodes *[]GitHubReleaseNode `json:"nodes"`
 }
 
 type GitHubRepository struct {
@@ -232,10 +232,16 @@ func mapLanguages(languages *[]GitHubLanguageEdge) *[]ParsedGitHubLanguageEdge {
 
 	var parsedLanguages []ParsedGitHubLanguageEdge
 	for _, lang := range *languages {
+		size := int(math.Round((float64(lang.Size) / float64(totalSize)) * 100))
+
+		if size == 0 {
+			continue
+		}
+
 		parsedLanguages = append(parsedLanguages, ParsedGitHubLanguageEdge{
 			Color: lang.Node.Color,
 			Name:  lang.Node.Name,
-			Size:  int(math.Round((float64(lang.Size) / float64(totalSize)) * 100)),
+			Size:  size,
 		})
 	}
 	return &parsedLanguages
@@ -283,8 +289,8 @@ func GetRepository(owner string, name string) (*Repository, error) {
 	}
 
 	var release *GitHubReleaseNode
-	if repo.Releases.Edges != nil && len(*repo.Releases.Edges) > 0 {
-		release = &(*repo.Releases.Edges)[0]
+	if repo.Releases.Nodes != nil && len(*repo.Releases.Nodes) > 0 {
+		release = &(*repo.Releases.Nodes)[0]
 	}
 
 	repository := &Repository{
