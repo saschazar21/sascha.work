@@ -9,6 +9,9 @@ on:
       - opened
       - synchronize
 
+env:
+  ENABLE_DEMO: true
+
 jobs:
   outputs:
     name: 'Set outputs'
@@ -92,18 +95,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHORT_SHA: ${{ needs.outputs.outputs.short_sha }}
         run: |
-          set -e
           pnpm netlify deploy \
             --build \
             ${{ steps.var.outputs.prod_flag }} \
             ${{ steps.var.outputs.context_flag }} \
             ${{ steps.var.outputs.alias_flag }} \
             --message="${{ steps.var.outputs.deploy_message }}" \
-            --telemetry-disable
-            # --json \
-            # > netlify.json
-            
-          exit 1
+            --telemetry-disable \
+            --json \
+            > netlify.json
 
           echo "deploy_id=$(jq -r '.deploy_id' netlify.json)" >> $GITHUB_OUTPUT
           echo "deploy_url=$(jq -r '.deploy_url' netlify.json)" >> $GITHUB_OUTPUT
