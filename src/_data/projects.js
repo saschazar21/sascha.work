@@ -43,19 +43,13 @@ export default async () =>
   Promise.all(
     FEATURED_PROJECTS.map(async (project) => {
       const [owner, name] = project.split('/');
-      console.log('GitHub API request headers:', {
-        ...(process.env.GITHUB_TOKEN
-          ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
-          : {}),
-        'Content-Type': 'application/json',
-      });
       const data = await eleventyFetch('https://api.github.com/graphql', {
         duration: '1d',
         fetchOptions: {
           method: 'POST',
           headers: {
-            ...(process.env.GITHUB_TOKEN
-              ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+            ...(process.env.GH_TOKEN
+              ? { Authorization: `Bearer ${process.env.GH_TOKEN}` }
               : {}),
             'Content-Type': 'application/json',
           },

@@ -6,6 +6,7 @@ build: build_website
 
 build_website:
 	@echo "Building website..."
+	@echo "GITHUB_TOKEN=$$GITHUB_TOKEN"
 	mkdir -p public
 	npm run build
 	@echo "Website built successfully!"

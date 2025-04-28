@@ -69,12 +69,6 @@ jobs:
           cache-dependency-path: |
             go.sum
 
-      - name: Debug GITHUB_TOKEN
-        run: |
-          echo "Token: ${{ secrets.GITHUB_TOKEN }}"
-          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-              https://api.github.com/user
-
       - name: Set deploy variables
         id: var
         run: |
@@ -98,9 +92,10 @@ jobs:
       - name: Deploy to Netlify
         id: deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHORT_SHA: ${{ needs.outputs.outputs.short_sha }}
         run: |
+          set -e
           pnpm netlify deploy \
             --build \
             ${{ steps.var.outputs.prod_flag }} \
