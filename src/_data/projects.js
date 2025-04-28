@@ -42,6 +42,7 @@ const query = `query repository($owner: String!, $name: String!) {
 export default async () =>
   Promise.all(
     FEATURED_PROJECTS.map(async (project) => {
+      console.log('GITHUB_TOKEN', process.env.GITHUB_TOKEN);
       const [owner, name] = project.split('/');
       const data = await eleventyFetch('https://api.github.com/graphql', {
         duration: '1d',
