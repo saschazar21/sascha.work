@@ -63,6 +63,7 @@ export default async () =>
         console.error('Error fetching projects:', error);
         return [];
       });
+      console.log(data.data.repository);
       return data.data.repository;
     }),
   )
