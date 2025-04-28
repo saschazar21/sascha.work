@@ -124,7 +124,9 @@ class ProjectEntry extends HTMLElement {
       li.innerHTML = `${name.outerHTML}&nbsp;${size.outerHTML}`;
 
       stop += language.size;
-      gradient += `${stop}%${i < project.languages.length - 1 ? ',' : ''}`;
+      gradient += `${language.color} ${stop}%${
+        i < project.languages.length - 1 ? ',' : ''
+      }`;
 
       return prev + li.outerHTML;
     }, '' as string);
