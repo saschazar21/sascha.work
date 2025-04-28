@@ -119,7 +119,7 @@ class ProjectEntry extends HTMLElement {
       name.innerText = language.name;
 
       const size = document.createElement('small');
-      size.innerText = language.size.toString();
+      size.innerText = language.size.toString() + '%';
 
       li.innerHTML = `${name.outerHTML}&nbsp;${size.outerHTML}`;
 
