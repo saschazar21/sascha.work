@@ -1,3 +1,5 @@
+export GITHUB_TOKEN
+
 .PHONY: test clean
 
 build: build_website
