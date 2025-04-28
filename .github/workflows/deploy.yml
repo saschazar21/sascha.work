@@ -69,6 +69,12 @@ jobs:
           cache-dependency-path: |
             go.sum
 
+      - name: Debug GITHUB_TOKEN
+        run: |
+          echo "Token: ${{ secrets.GITHUB_TOKEN }}"
+          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              https://api.github.com/user
+
       - name: Set deploy variables
         id: var
         run: |
@@ -101,9 +107,11 @@ jobs:
             ${{ steps.var.outputs.context_flag }} \
             ${{ steps.var.outputs.alias_flag }} \
             --message="${{ steps.var.outputs.deploy_message }}" \
-            --telemetry-disable \
-            --json \
-            > netlify.json
+            --telemetry-disable
+            # --json \
+            # > netlify.json
+
+          exit 1
 
           echo "deploy_id=$(jq -r '.deploy_id' netlify.json)" >> $GITHUB_OUTPUT
           echo "deploy_url=$(jq -r '.deploy_url' netlify.json)" >> $GITHUB_OUTPUT
