@@ -59,9 +59,9 @@ export default async () =>
           }),
         },
         type: 'json',
-      }).catch((error) => {
-        console.error('Error fetching projects:', error);
-        return [];
+        // }).catch((error) => {
+        //   console.error('Error fetching projects:', error);
+        //   return [];
       });
       return data.data.repository;
     }),
