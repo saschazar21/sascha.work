@@ -17,9 +17,9 @@ jobs:
     name: 'Set outputs'
     uses: ./.github/workflows/outputs.yml
 
-  # test:
-  #   name: 'Run unit tests'
-  #   uses: ./.github/workflows/test.yml
+  test:
+    name: 'Run unit tests'
+    uses: ./.github/workflows/test.yml
 
   netlify:
     name: 'Deploy to Netlify'
@@ -30,7 +30,7 @@ jobs:
       NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
     needs:
       - outputs
-      # - test
+      - test
     outputs:
       deploy_id: ${{ steps.deploy.outputs.deploy_id }}
       deploy_url: ${{ steps.deploy.outputs.deploy_url }}
@@ -95,6 +95,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHORT_SHA: ${{ needs.outputs.outputs.short_sha }}
         run: |
+          set -e
           pnpm netlify deploy \
             --build \
             ${{ steps.var.outputs.prod_flag }} \
