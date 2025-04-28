@@ -59,36 +59,32 @@ export default async () =>
           }),
         },
         type: 'json',
-        // }).catch((error) => {
-        //   console.error('Error fetching projects:', error);
-        //   return [];
+      }).catch((error) => {
+        console.error('Error fetching projects:', error);
+        return [];
       });
       return data.data.repository;
     }),
-  )
-    .then((projects) => {
-      return projects
-        .map((project) => {
-          const { languages, ...rest } = project;
-          const total = languages.edges.reduce(
-            (acc, { size }) => acc + size,
-            0,
-          );
-          return {
-            ...rest,
-            languages: languages.edges
-              .map(({ node, size }) => ({
-                ...node,
-                size: Math.round((size / total) * 100),
-              }))
-              .filter((lang) => lang.size > 0),
-            owner: project.owner.login,
-            release: project.releases.nodes[0],
-          };
-        })
-        .sort((a, b) => new Date(b.pushedAt) - new Date(a.pushedAt));
-    })
-    .catch((error) => {
-      console.error('Error fetching projects:', error);
-      return [];
-    });
+  ).then((projects) => {
+    return projects
+      .map((project) => {
+        const { languages, ...rest } = project;
+        const total = languages.edges.reduce((acc, { size }) => acc + size, 0);
+        return {
+          ...rest,
+          languages: languages.edges
+            .map(({ node, size }) => ({
+              ...node,
+              size: Math.round((size / total) * 100),
+            }))
+            .filter((lang) => lang.size > 0),
+          owner: project.owner.login,
+          release: project.releases.nodes[0],
+        };
+      })
+      .sort((a, b) => new Date(b.pushedAt) - new Date(a.pushedAt));
+    // })
+    // .catch((error) => {
+    //   console.error('Error fetching projects:', error);
+    //   return [];
+  });
