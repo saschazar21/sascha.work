@@ -68,17 +68,33 @@ class ProjectEntry extends HTMLElement {
   }
 
   private updateProject(project: Project) {
-    const stargazers = this.container.querySelector(
-      'data-stargazers span',
+    let stargazers = this.container.querySelector(
+      '[data-stargazers] span',
     ) as HTMLSpanElement;
-    stargazers.innerText = project.stargazersCount.toString();
+    if (!stargazers && project.stargazersCount > 0) {
+      const span = document.createElement('span');
+      span.setAttribute('data-stargazers', '');
+      stargazers = document.createElement('span');
+      span.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" role="img" aria-label="Amount of stars on GitHub">
+  <use href="/assets/icons/icons.sprite.svg#icon-star"></use>
+</svg>`;
+      span.appendChild(stargazers);
+    }
+    if (project.stargazersCount > 0) {
+      stargazers.innerText = project.stargazersCount.toString();
+    }
 
     const update = this.container.querySelector(
-      'data-updated',
+      '[data-updated]',
     ) as HTMLSpanElement;
     const updatedAt = new Date(
       project.release?.publishedAt ?? project.pushedAt,
     );
+
+    const small = update.querySelector('small') as HTMLSpanElement;
+    small.innerText = project.release?.publishedAt
+      ? 'Last Released'
+      : 'Last Updated';
 
     const t = update.querySelector('time') as HTMLTimeElement;
     t.setAttribute('datetime', updatedAt.toISOString());
@@ -114,7 +130,7 @@ class ProjectEntry extends HTMLElement {
     }, '' as string);
 
     const languages = this.container.querySelector(
-      'data-languages',
+      '[data-languages]',
     ) as HTMLUListElement;
 
     languages.innerHTML = languagesHTML;
