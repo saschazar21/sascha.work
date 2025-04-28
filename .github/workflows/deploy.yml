@@ -102,11 +102,9 @@ jobs:
             ${{ steps.var.outputs.context_flag }} \
             ${{ steps.var.outputs.alias_flag }} \
             --message="${{ steps.var.outputs.deploy_message }}" \
-            --telemetry-disable
-            # --json \
-            # > netlify.json
-
-          exit 1
+            --telemetry-disable \
+            --json \
+            > netlify.json
 
           echo "deploy_id=$(jq -r '.deploy_id' netlify.json)" >> $GITHUB_OUTPUT
           echo "deploy_url=$(jq -r '.deploy_url' netlify.json)" >> $GITHUB_OUTPUT
