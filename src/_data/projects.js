@@ -24,6 +24,9 @@ const query = `query repository($owner: String!, $name: String!) {
       }
     }
     name
+    owner {
+      login
+    }
     pushedAt
     releases(first: 1, orderBy: { field: CREATED_AT, direction: DESC }) {
       nodes {
@@ -45,8 +48,8 @@ export default async () =>
         fetchOptions: {
           method: 'POST',
           headers: {
-            ...(process.env.GITHUB_TOKEN
-              ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+            ...(process.env.GH_TOKEN
+              ? { Authorization: `Bearer ${process.env.GH_TOKEN}` }
               : {}),
             'Content-Type': 'application/json',
           },
@@ -79,6 +82,7 @@ export default async () =>
                 size: Math.round((size / total) * 100),
               }))
               .filter((lang) => lang.size > 0),
+            owner: project.owner.login,
             release: project.releases.nodes[0],
           };
         })

@@ -27,53 +27,67 @@
       {% set languages = languages ~ ');' %}
     {% endif %}
 
-    <article class="h-entry" {% if languages.length %}style="{{ languages }}"{% endif %} data-project>
-      <h3 class="p-name">
-        <a href="{{ project.url }}" rel="index follow" target="_blank" class="u-url">{{ project.name }}</a>
-      </h3>
-      <p class="p-summary">
-        {{ project.description }}
-      </p>
-      {% if project.homepageUrl %}
-        <a href="{{ project.homepageUrl }}" rel="index follow" target="_blank" class="u-url" data-homepage-url>
-          <span>Visit "{{ project.name }}" on the web.</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true" role="presentation">
-            <use href="/assets/icons/icons.sprite.svg#icon-link"></use>
-          </svg>
-        </a>
-      {% endif %}
-      <ul data-languages>
-        {% for language in project.languages %}
-          <li style="--color-language: {{ language.color }};" data-size="{{ language.size }}">
-            <small class="p-category">{{ language.name }}</small>&nbsp;<small class="mute">{{ language.size }}%</small>
-          </li>
-        {% endfor %}
-      </ul>
-      <div data-meta-container>
-        <span>
-          {% if project.release %}
-            <small>Last Released</small><br/>
-            {% set publishedAt = project.release.publishedAt %}
-            <time datetime="{{ publishedAt | date('YYYY-MM-DD') }}" class="dt-published">
-              {{ publishedAt | date('DD MMM YYYY') }}
-            </time>
-          {% else %}
-            <small>Last Updated</small><br/>
-            {% set publishedAt = project.pushedAt %}
-            <time datetime="{{ project.pushedAt | date('YYYY-MM-DD') }}" class="dt-updated">
-              {{ project.pushedAt | date('DD MMM YYYY') }}
-            </time>
-          {% endif %}
-        </span>
-        {% if project.stargazerCount %}
-          <span data-stargazers>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" role="img" aria-label="Amount of stars on GitHub">
-              <use href="/assets/icons/icons.sprite.svg#icon-star"></use>
+    <project-entry owner="{{ project.owner }}" repo="{{ project.name }}">
+      <article class="h-entry" {% if languages.length %}style="{{ languages }}"{% endif %} slot="project" data-project>
+        <h3 class="p-name">
+          <a href="{{ project.url }}" rel="index follow" target="_blank" class="u-url">{{ project.name }}</a>
+        </h3>
+        <p class="p-summary">
+          {{ project.description }}
+        </p>
+        {% if project.homepageUrl %}
+          <a href="{{ project.homepageUrl }}" rel="index follow" target="_blank" class="u-url" data-homepage-url>
+            <span>Visit "{{ project.name }}" on the web.</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true" role="presentation">
+              <use href="/assets/icons/icons.sprite.svg#icon-link"></use>
             </svg>
-            <span>{{ project.stargazerCount }}</span>
-          </span>
+          </a>
         {% endif %}
-      </div>
-    </article>
+        <ul data-languages>
+          {% for language in project.languages %}
+            <li style="--color-language: {{ language.color }};" data-size="{{ language.size }}">
+              <small class="p-category">{{ language.name }}</small>&nbsp;<small class="mute">{{ language.size }}%</small>
+            </li>
+          {% endfor %}
+        </ul>
+        <div data-meta-container>
+          <span data-updated>
+            {% if project.release %}
+              <small>Last Released</small><br/>
+              {% set publishedAt = project.release.publishedAt %}
+              <time datetime="{{ publishedAt | date('YYYY-MM-DD') }}" class="dt-published">
+                {{ publishedAt | date('DD MMM YYYY') }}
+              </time>
+            {% else %}
+              <small>Last Updated</small><br/>
+              {% set publishedAt = project.pushedAt %}
+              <time datetime="{{ project.pushedAt | date('YYYY-MM-DD') }}" class="dt-updated">
+                {{ project.pushedAt | date('DD MMM YYYY') }}
+              </time>
+            {% endif %}
+          </span>
+          {% if project.stargazerCount %}
+            <span data-stargazers>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" role="img" aria-label="Amount of stars on GitHub">
+                <use href="/assets/icons/icons.sprite.svg#icon-star"></use>
+              </svg>
+              <span>{{ project.stargazerCount }}</span>
+            </span>
+          {% endif %}
+        </div>
+      </article>
+    </project-entry>
   {% endfor %}
 </div>
+
+{% set js %}
+{% include "src/_scripts/components/project-entry.ts" %}
+{% endset %}
+
+{% js "project-entry" %}
+{{ js | safe }}
+{% endjs %}
+
+<script>
+  {% getBundle 'js', 'project-entry' %}
+</script>

@@ -31,6 +31,9 @@ const REPOSITORY_QUERY = `query repository($owner: String!, $name: String!) {
       }
     }
     name
+		owner {
+			login
+		}
     pushedAt
     releases(first: 1, orderBy: { field: CREATED_AT, direction: DESC }) {
       nodes {
@@ -73,13 +76,17 @@ type GitHubRelease struct {
 }
 
 type GitHubRepository struct {
-	Description     string         `json:"description"`
-	HomepageUrl     *string        `json:"homepageUrl"`
-	Languages       GitHubLanguage `json:"languages"`
-	Name            string         `json:"name"`
-	Releases        GitHubRelease  `json:"releases"`
-	StargazersCount int            `json:"stargazersCount"`
-	Url             string         `json:"url"`
+	Description string         `json:"description"`
+	HomepageUrl *string        `json:"homepageUrl"`
+	Languages   GitHubLanguage `json:"languages"`
+	Name        string         `json:"name"`
+	Owner       struct {
+		Login string `json:"login"`
+	} `json:"owner"`
+	Releases        GitHubRelease `json:"releases"`
+	PushedAt        string        `json:"pushedAt"`
+	StargazersCount int           `json:"stargazersCount"`
+	Url             string        `json:"url"`
 }
 
 type GitHubRepositoryGraphQLQuery struct {
@@ -101,6 +108,8 @@ type Repository struct {
 	HomepageUrl     *string                     `json:"homepageUrl"`
 	Languages       *[]ParsedGitHubLanguageEdge `json:"languages"`
 	Name            string                      `json:"name"`
+	Owner           string                      `json:"owner"`
+	PushedAt        string                      `json:"pushedAt"`
 	Release         *GitHubReleaseNode          `json:"release"`
 	StargazersCount int                         `json:"stargazersCount"`
 	Url             string                      `json:"url"`
@@ -298,7 +307,9 @@ func GetRepository(owner string, name string) (*Repository, error) {
 		HomepageUrl:     repo.HomepageUrl,
 		Languages:       mapLanguages(repo.Languages.Edges),
 		Name:            repo.Name,
+		Owner:           repo.Owner.Login,
 		Release:         release,
+		PushedAt:        repo.PushedAt,
 		StargazersCount: repo.StargazersCount,
 		Url:             repo.Url,
 	}
