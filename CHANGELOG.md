@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.2.0] - 2025-04-28
+
+### 🚀 Features
+
+- Added ProjectEntry custom element (#377)
+
 ## [3.1.0] - 2025-04-24
 
 ### 🚀 Features
