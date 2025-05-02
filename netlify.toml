@@ -11,6 +11,12 @@
   NODE_VERSION = "22.x"
 
 [[redirects]]
+  from = "/api/v1/cv"
+  to = "/.netlify/functions/v1_cv"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/api/v1/project/:owner/:repo"
   to = "/.netlify/functions/v1_project"
   status = 200
