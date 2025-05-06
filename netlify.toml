@@ -11,7 +11,7 @@
   NODE_VERSION = "22.x"
 
 [[redirects]]
-  from = "/api/v1/cv"
+  from = "/about/cv.pdf"
   to = "/.netlify/functions/v1_cv"
   status = 200
   force = true

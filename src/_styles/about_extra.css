@@ -1,0 +1,260 @@
+@keyframes movinga {
+  4%,
+  10%,
+  14%,
+  20%,
+  24%,
+  30%,
+  34%,
+  40%,
+  44%,
+  50%,
+  54%,
+  60%,
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  5%,
+  9%,
+  15%,
+  19%,
+  25%,
+  29%,
+  35%,
+  39%,
+  45%,
+  49%,
+  55%,
+  59% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes movingb {
+  0%,
+  4.999%,
+  10%,
+  14.999%,
+  20%,
+  24.999%,
+  30%,
+  34.999%,
+  40%,
+  44.999%,
+  50%,
+  54.999%,
+  60%,
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+  5%,
+  9.999%,
+  15%,
+  19.999%,
+  25%,
+  29.999%,
+  35%,
+  39.999%,
+  45%,
+  49.999%,
+  55%,
+  59.999% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes turn {
+  0%,
+  9.999%,
+  20%,
+  29.999%,
+  40%,
+  49.999%,
+  60%,
+  100% {
+    transform: scaleX(-1);
+  }
+  10%,
+  19.999%,
+  30%,
+  39.999%,
+  50%,
+  59.999% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes barrela {
+  0%,
+  84.999%,
+  87.5%,
+  89.999%,
+  92.5%,
+  94.999%,
+  97.5%,
+  99.999% {
+    --fill: var(--color-link);
+  }
+  85%,
+  87.499%,
+  90%,
+  92.499%,
+  95%,
+  97.499%,
+  100% {
+    --fill: var(--color-text-muted);
+  }
+}
+
+@keyframes barrelb {
+  0%,
+  84.999%,
+  87.5%,
+  89.999%,
+  92.5%,
+  94.999%,
+  97.5%,
+  99.999% {
+    --fill: var(--color-text-muted);
+  }
+  85%,
+  87.499%,
+  90%,
+  92.499%,
+  95%,
+  97.499%,
+  100% {
+    --fill: var(--color-link);
+  }
+}
+
+@keyframes drop {
+  0%,
+  69.999% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  70%,
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+  85% {
+    transform: translateX(-50%) translateY(-25%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(100%);
+  }
+}
+
+:where([type='application/pdf']) {
+  --bg-color: var(--color-bg-muted);
+  --border-color: transparent;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-lg);
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+  overflow: hidden;
+  transition: border-color var(--duration-fast) var(--timing);
+}
+
+:where([data-donkey-kong]) {
+  --duration: 4s;
+
+  position: absolute;
+  top: 0;
+  right: var(--space-xs);
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1 / 1;
+}
+
+[data-donkey-kong] svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 50%;
+  animation: var(--animation, turn var(--duration) linear infinite);
+}
+
+[data-donkey-kong] svg:last-of-type {
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+  transform: translateX(-50%) translateY(-25%);
+  animation: var(--animation, drop var(--duration) linear infinite);
+}
+
+[data-donkey-kong] [data-movement='moving'] {
+  animation: var(--animation, movinga var(--duration) linear infinite);
+}
+
+[data-donkey-kong] [data-movement='standing'] {
+  animation: var(--animation, movingb var(--duration) linear infinite);
+}
+
+[data-donkey-kong] [data-description='body'] {
+  fill: var(--color-link);
+}
+
+[data-donkey-kong] [data-description='body-parts'] {
+  fill: var(--color-secondary-muted);
+}
+
+[data-donkey-kong] [data-description='face'] {
+  fill: var(--color-bg);
+}
+
+[data-donkey-kong] [data-background] {
+  fill: var(--fill, var(--color-link));
+  animation: var(--animation, barrela var(--duration) linear infinite);
+}
+
+[data-donkey-kong] [data-shade] {
+  fill: var(--fill, var(--color-text-muted));
+  animation: var(--animation, barrelb var(--duration) linear infinite);
+}
+
+[data-donkey-kong] [data-rims] {
+  fill: var(--color-bg);
+}
+
+@media (pointer: fine) {
+  :where([type='application/pdf']):where(:hover, :focus) {
+    --border-color: var(--color-link);
+  }
+
+  :where([type='application/pdf']):where(:hover, :focus) [data-donkey-kong] {
+    --animation: unset;
+
+    transform: unset;
+  }
+
+  :where([data-donkey-kong]) {
+    --animation: none;
+
+    transform: translateY(-100%);
+    transition: transform var(--duration-fast) var(--timing);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-donkey-kong] [data-description='body-parts'] {
+    fill: var(--color-text-muted);
+  }
+
+  [data-donkey-kong] [data-description='face'] {
+    fill: var(--color-text);
+  }
+}

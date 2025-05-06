@@ -12,6 +12,15 @@ priority: 0.8
 <style data-helmet>
   {% getBundle 'css', 'about' %}
 </style>
+
+{% set css %}{% include "src/_styles/about_extra.css" %}{% endset %}
+{% css "about_extra" %}
+{{ css | safe }}
+{% endcss %}
+<style data-helmet>
+  {% getBundle 'css', 'about_extra' %}
+</style>
+
 <main class="h-resume">
   <div data-intro-container>
     <div data-img-container>
@@ -58,6 +67,13 @@ priority: 0.8
         camera I can get my hands on.
         <i>(I do also develop analog film rolls from time to time.)</i>
       </p>
+      <a href="/about/cv.pdf" download="{{ pkg.author.name + ' CV' | slugify }}.pdf" type="application/pdf" class="button u-url" title="Download my CV">
+        <div aria-hidden="true" rel="img" data-donkey-kong>
+          {% include "src/_svg/donkey-kong.svg" %}
+          {% include "src/_svg/barrel.svg" %}
+        </div>
+        Download my CV
+      </a>
     </section>
   </div>
   {% set intro %}
