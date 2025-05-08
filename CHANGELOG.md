@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.3.0] - 2025-05-08
+
+### 🚀 Features
+
+- Added endpoint to generate CV PDF (#378)
+
 ## [3.2.0] - 2025-04-28
 
 ### 🚀 Features
