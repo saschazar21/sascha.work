@@ -156,9 +156,9 @@ small,
 
   position: relative;
   padding: var(--space-xs) var(--space-sm);
-  border: var(--border-width) solid currentColor;
+  border: var(--border-width) solid var(--border-color, currentColor);
   border-radius: var(--border-radius, 0);
-  background-color: transparent;
+  background-color: var(--bg-color, transparent);
   color: var(--color-link);
   line-height: var(--line-height-body);
   font-family: var(--font-family-heading);

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64">
+  <style>
+    [data-rims] {
+    fill: #000;
+    }
+    [data-background] {
+    fill: #C2352D;
+    }
+    [data-shade] {
+    fill: #FC9838;
+    }
+  </style>
+  <path data-background="" d="M51 15h4v4h9v27h-9v4h-4v4H13v-4H9v-4H0V19h9v-4h4v-4h38v4Z" />
+  <path data-shade=""
+    d="M55 46h-4v4H13v-4H9v-5h46v5ZM51 19h4v5H9v-5h4v-4h38v4ZM60 24h4v4h-4zM60 37h4v4h-4zM0 37h4v4H0zM0 24h4v4H0z" />
+  <path data-rims="" d="M55 15h5v35h-5zM4 15h5v35H4z" />
+</svg>

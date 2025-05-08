@@ -11,11 +11,6 @@ import (
 	"os"
 )
 
-const (
-	GITHUB_GRAPHQL_API = "https://api.github.com/graphql"
-	GITHUB_TOKEN       = "GITHUB_TOKEN"
-)
-
 const REPOSITORY_QUERY = `query repository($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
     url

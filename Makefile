@@ -1,3 +1,5 @@
+export GH_TOKEN ?= $$(GITHUB_TOKEN)
+
 .PHONY: test clean
 
 build: build_website
