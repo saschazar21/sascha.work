@@ -50,7 +50,7 @@
   position: relative;
   margin-top: var(--space-md);
   padding-right: var(--pipe-width);
-  border-color: var(--color-bg-muted);
+  border-color: var(--border-color, var(--color-bg-muted));
   background-color: var(--color-bg-muted);
   overflow: hidden;
   transition: border-color var(--duration-fast) var(--timing);

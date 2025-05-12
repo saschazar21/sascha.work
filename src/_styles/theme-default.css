@@ -1,40 +1,3 @@
-:root {
-  /* CSS HSL */
-  --black: hsla(220, 0%, 11%, 1);
-  --jet: hsla(257, 7%, 21%, 1);
-  --white-smoke: hsla(0, 0%, 93%, 1);
-  --baby-powder: hsla(60, 100%, 99%, 1);
-  --vermilion: hsla(1, 100%, 39%, 1);
-  --office-green: hsla(103, 73%, 29%, 1);
-  --lime-green: hsla(103, 73%, 56%, 1);
-
-  --color-bg: var(--baby-powder);
-  --color-bg-muted: var(--white-smoke);
-  --color-text: var(--black);
-  --color-text-muted: var(--jet);
-  --color-primary: var(--vermilion);
-  --color-secondary: var(--office-green);
-  --color-secondary-muted: var(--lime-green);
-
-  --color-link: var(--color-primary);
-
-  --border-radius: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --vermilion: hsla(1, 100%, 73%, 1);
-
-    --color-bg: var(--jet);
-    --color-bg-muted: var(--black);
-    --color-text: var(--baby-powder);
-    --color-text-muted: var(--white-smoke);
-    --color-primary: var(--vermilion);
-    --color-secondary: var(--lime-green);
-    --color-secondary-muted: var(--office-green);
-  }
-}
-
 ::-webkit-scrollbar-button {
   display: none;
 }
@@ -53,7 +16,7 @@
   background-color: transparent;
 }
 
-:where(root) {
+:where(:root) {
   scrollbar-gutter: stable;
 }
 

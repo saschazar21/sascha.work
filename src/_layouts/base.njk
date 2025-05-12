@@ -2,7 +2,7 @@
 <html lang="en">
   {% include "src/_partials/head.njk" %}
   <body>
-    {% if not env.production %}<meta name="robots" content="noindex nofollow" data-helmet="robots"/>{% endif %}
+    {% if not env.production %}<meta name="robots" content="noindex, nofollow" data-helmet="robots"/>{% endif %}
     {% if not skipHeader %}
       {% include "src/_partials/header.njk" %}
     {% endif %}
@@ -23,6 +23,26 @@
 
       <script>
         {% getBundle 'js', 'menu' %}
+      </script>
+
+      {% set js %}{% include "src/_scripts/components/theme-entry.ts" %}{% endset %}
+
+      {% js "theme-entry" %}
+      {{ js | safe }}
+      {% endjs %}
+
+      <script>
+        {% getBundle 'js', 'theme-entry' %}
+      </script>
+
+      {% set js %}{% include "src/_scripts/components/theme-selector.ts" %}{% endset %}
+
+      {% js "theme-selector" %}
+      {{ js | safe }}
+      {% endjs %}
+
+      <script>
+        {% getBundle 'js', 'theme-selector' %}
       </script>
     {% endif %}
 

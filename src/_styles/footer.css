@@ -149,6 +149,10 @@ ul:where([data-icons]) {
     gap: var(--space-lg);
   }
 
+  :where(footer section) {
+    flex: 1 1 50%;
+  }
+
   :where(footer [data-top-container]) {
     flex: 1 1 100%;
     align-self: flex-end;

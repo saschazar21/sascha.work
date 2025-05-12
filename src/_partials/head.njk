@@ -19,6 +19,15 @@
     {% getBundle 'css', 'gardevoir' %}
   </style>
 
+  {% set base %}{% include "src/_styles/colors.css" %}{% endset %}
+  {% css "colors" %}
+  {{ base | safe }}
+  {% endcss %}
+
+  <style>
+    {% getBundle 'css', 'colors' %}
+  </style>
+
   {% set base %}{% include "src/_styles/base.css" %}{% endset %}
   {% css "base" %}
   {{ base | safe }}

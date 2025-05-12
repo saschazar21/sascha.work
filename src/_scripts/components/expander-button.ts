@@ -26,6 +26,7 @@ expanderTemplate.innerHTML = /* html */ `
     padding: var(--padding-y) var(--padding-x);
     color: var(--color-link);
     text-transform: uppercase;
+    font-family: var(--font-family-body);
     font-size: var(--font-size-h4);
     letter-spacing: var(--letter-spacing-m);
     background-color: transparent;
