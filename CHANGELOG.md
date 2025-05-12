@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.4.0] - 2025-05-12
+
+### 🚀 Features
+
+- Added theme selector, fixed minor bugs (#379)
+
 ## [3.3.0] - 2025-05-08
 
 ### 🚀 Features
