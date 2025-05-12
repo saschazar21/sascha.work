@@ -1,0 +1,127 @@
+:where(:root),
+:where([data-theme='light']) {
+  /* CSS HSL */
+  --black: hsla(220, 0%, 11%, 1);
+  --jet: hsla(257, 7%, 21%, 1);
+  --white-smoke: hsla(0, 0%, 93%, 1);
+  --baby-powder: hsla(60, 100%, 99%, 1);
+  --vermilion: hsla(1, 100%, 39%, 1);
+  --office-green: hsla(103, 73%, 29%, 1);
+  --lime-green: hsla(103, 73%, 56%, 1);
+
+  --color-bg: var(--baby-powder);
+  --color-bg-muted: var(--white-smoke);
+  --color-text: var(--black);
+  --color-text-muted: var(--jet);
+  --color-primary: var(--vermilion);
+  --color-secondary: var(--office-green);
+  --color-secondary-muted: var(--lime-green);
+
+  --color-link: var(--color-primary);
+}
+
+:where([data-theme='C64']) {
+  /* CSS HSL */
+  --black: hsla(0, 0%, 0%, 1);
+  --dark-blue: hsla(240, 100%, 33%, 1);
+  --icterine: hsla(60, 78%, 70%, 1);
+  --field-drab: hsla(40, 100%, 20%, 1);
+  --persian-orange: hsla(22, 67%, 60%, 1);
+  --silver: hsla(0, 0%, 73%, 1);
+  --white: hsla(0, 0%, 100%, 1);
+
+  --color-bg: var(--dark-blue);
+  --color-bg-muted: var(--black);
+  --color-text: var(--white);
+  --color-text-muted: var(--silver);
+  --color-primary: var(--icterine);
+  --color-secondary: var(--persian-orange);
+  --color-secondary-muted: var(--field-drab);
+
+  --color-link: var(--color-primary);
+}
+
+:where([data-theme='dark']) {
+  --vermilion: hsla(1, 100%, 73%, 1);
+
+  --color-bg: var(--jet);
+  --color-bg-muted: var(--black);
+  --color-text: var(--baby-powder);
+  --color-text-muted: var(--white-smoke);
+  --color-primary: var(--vermilion);
+  --color-secondary: var(--lime-green);
+  --color-secondary-muted: var(--office-green);
+}
+
+:where([data-theme='mono-dark']) {
+  --color-bg: black;
+  --color-bg-muted: black;
+  --color-text: white;
+  --color-text-muted: white;
+  --color-primary: white;
+  --color-secondary: white;
+  --color-secondary-muted: white;
+
+  --color-link: white;
+}
+
+:where([data-theme='mono-light']) {
+  --color-bg: white;
+  --color-bg-muted: white;
+  --color-text: black;
+  --color-text-muted: black;
+  --color-primary: black;
+  --color-secondary: black;
+  --color-secondary-muted: black;
+
+  --color-link: black;
+}
+
+:where([data-theme='solarized']) {
+  /* CSS HSL */
+  --gunmetal: hsla(192, 100%, 11%, 1);
+  --midnight-green: hsla(192, 81%, 14%, 1);
+  --light-sky-blue: hsla(205, 69%, 73%, 1);
+  --imperial-red: hsla(1, 71%, 58%, 1);
+  --orange-crayola: hsla(18, 80%, 60%, 1);
+  --eggshell: hsla(46, 42%, 88%, 1);
+  --cosmic-latte: hsla(44, 87%, 94%, 1);
+
+  --color-bg: var(--midnight-green);
+  --color-bg-muted: var(--gunmetal);
+  --color-text: var(--cosmic-latte);
+  --color-text-muted: var(--eggshell);
+  --color-primary: var(--light-sky-blue);
+  --color-secondary: var(--imperial-red);
+  --color-secondary-muted: var(--orange-crayola);
+
+  --color-link: var(--color-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(:root) {
+    --vermilion: hsla(1, 100%, 73%, 1);
+
+    --color-bg: var(--jet);
+    --color-bg-muted: var(--black);
+    --color-text: var(--baby-powder);
+    --color-text-muted: var(--white-smoke);
+    --color-primary: var(--vermilion);
+    --color-secondary: var(--lime-green);
+    --color-secondary-muted: var(--office-green);
+  }
+}
+
+@media (monochrome), (color: 0), (prefers-contrast: more) {
+  :where(root) {
+    --color-bg: white !important;
+    --color-bg-muted: white !important;
+    --color-text: black !important;
+    --color-text-muted: black !important;
+    --color-primary: black !important;
+    --color-secondary: black !important;
+    --color-secondary-muted: black !important;
+
+    --color-link: black !important;
+  }
+}

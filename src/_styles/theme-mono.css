@@ -1,0 +1,16 @@
+:where([data-theme='mono-light'], [data-theme='mono-dark'])
+  :where(a.button, button) {
+  --border-color: var(--color-text);
+}
+
+:is([data-theme='mono-light'], [data-theme='mono-dark'])
+  [data-donkey-kong]
+  [data-description='face'] {
+  fill: var(--color-bg);
+}
+
+:is([data-theme='mono-light'], [data-theme='mono-dark'])
+  [data-donkey-kong]
+  [data-shade] {
+  --fill-override: var(--color-bg);
+}

@@ -10,38 +10,71 @@
 
 {% set svg %}{% include "assets/favicon.svg" %}{% endset %}
 
+{# Themes #}
+
+{% set css%}{% include "src/_styles/theme-mono.css" %}{% endset %}
+
+{% css "theme-mono" %}
+{{ css | safe }}
+{% endcss %}
+
+{% set mono %}{% getBundleFileUrl 'css', 'theme-mono' %}{% endset %}
+
+{% set css%}{% include "src/_styles/theme-c64.css" %}{% endset %}
+
+{% css "theme-c64" %}
+{{ css | safe }}
+{% endcss %}
+
+{% set c64 %}{% getBundleFileUrl 'css', 'theme-c64' %}{% endset %}
+
+{% set styles = {
+  'mono-dark': mono,
+  'mono-light': mono,
+  C64: c64
+} %}
+
+{# End Themes #}
+
 <header id="top">
   <div class="container">
     <a class="home" href="/?utm_content=header" rel="me" title="Homepage">
       <div aria-hidden="true" role="presentation" data-avatar>{{ svg | safe }}</div>
     </a>
 
-    <collapsible-menu>
-      {% set navigation = [["Home", "/"], ["About", "/about/"], ["Blog", "/blog/"], ["API Docs", "/api-docs/"]] %}
-      <nav id="nav" slot="menu">
-        <ul>
-          {% for item in navigation %}
-            <li data-order="{{ loop.index | string | padStart(2, '0') }}">
-              <a href="{{ item[1] }}?utm_content=header" {% if item[1] == page.url %}aria-current="page"{% endif %}>{{ item[0] }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </nav>
-      <template slot="footer">
-        <section aria-label="Copyright, Contact and Legal Notice">
-          <ul data-icons>
-            {% for account in social.data %}
-              <li>
-                <a href="{{ account.profile }}" rel="me" target="_blank" title="{{ account.username }} on {{ account.provider }}">
-                  <svg aria-hidden="true" role="img" height="44" width="44">
-                    <use href="/assets/icons/social.sprite.svg#icon-{{ account.provider }}"></use>
-                  </svg>
-                </a>
+    <div data-interaction>
+      <collapsible-menu>
+        {% set navigation = [["Home", "/"], ["About", "/about/"], ["Blog", "/blog/"], ["API Docs", "/api-docs/"]] %}
+        <nav id="nav" slot="menu">
+          <ul>
+            {% for item in navigation %}
+              <li data-order="{{ loop.index | string | padStart(2, '0') }}">
+                <a href="{{ item[1] }}?utm_content=header" {% if item[1] == page.url %}aria-current="page"{% endif %}>{{ item[0] }}</a>
               </li>
             {% endfor %}
           </ul>
-        </section>
-      </template>
-    </collapsible-menu>
+        </nav>
+        <template slot="footer">
+          <section aria-label="Social Media">
+            <ul data-icons>
+              {% for account in social.data %}
+                <li>
+                  <a href="{{ account.profile }}" rel="me" target="_blank" title="{{ account.username }} on {{ account.provider }}">
+                    <svg aria-hidden="true" role="img" height="44" width="44">
+                      <use href="/assets/icons/social.sprite.svg#icon-{{ account.provider }}"></use>
+                    </svg>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </section>
+        </template>
+      </collapsible-menu>
+      <theme-selector id="theme-selector" themes="{{ themes | join(',') }}">
+        {% for theme in themes %}
+          <theme-entry theme="{{ theme }}" css="{{ styles[theme] }}"></theme-entry>
+        {% endfor %}
+      </theme-selector>
+    </div>
   </div>
 </header>

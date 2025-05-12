@@ -123,6 +123,12 @@ menuTemplate.innerHTML = /* html */ `
       color var(--duration-slow) var(--timing);
   }
 
+  .toggleButton:is(:hover, :focus) {
+    --bg-color: var(--color-link);
+    --border-color: var(--color-bg);
+    --color: var(--color-bg);
+  }
+
   .toggleButton > div {
     position: relative;
     display: flex;
@@ -185,14 +191,14 @@ menuTemplate.innerHTML = /* html */ `
   <slot name="footer"></slot>
 </div>
 <button type="button" aria-label="Toggle menu" aria-controls="menu-container" class="toggleButton">
-<div>
-<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" fill="none" width="26" height="26">
-  <use href="/assets/icons/icons.sprite.svg#icon-menu" />
-</svg>
-<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" fill="none" width="26" height="26">
-  <use href="/assets/icons/icons.sprite.svg#icon-close" />
-</svg>
-</div>
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" fill="none" width="26" height="26">
+      <use href="/assets/icons/icons.sprite.svg#icon-menu" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" fill="none" width="26" height="26">
+      <use href="/assets/icons/icons.sprite.svg#icon-close" />
+    </svg>
+  </div>
 </button>
 `;
 
@@ -201,9 +207,18 @@ class CollapsibleMenu extends HTMLElement {
   private readonly menuContainer: HTMLDivElement;
   private readonly toggleButton: HTMLButtonElement;
 
+  private focusedIndex = -1;
+  private focusableElements: HTMLElement[] = [];
+
   public shadowRoot: ShadowRoot;
 
-  static readonly observedAttributes = ['open'];
+  static get MAX_WIDTH() {
+    return 640;
+  }
+
+  static get observedAttributes() {
+    return ['open'];
+  }
 
   constructor() {
     super();
@@ -223,6 +238,100 @@ class CollapsibleMenu extends HTMLElement {
     ) as HTMLDivElement;
   }
 
+  private handleAddKeydownHandler() {
+    if (!this.onkeydown) {
+      this.onkeydown = this.handleKeydown.bind(this);
+      this.focusedIndex = 0;
+    }
+  }
+
+  private handleRemoveKeydownHandler() {
+    if (this.onkeydown) {
+      this.onkeydown = null;
+      this.focusedIndex = -1;
+    }
+  }
+
+  private handleClick(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.handleToggle();
+  }
+
+  private handleKeydown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'ArrowUp':
+      case 'ArrowLeft':
+        event.preventDefault();
+        event.stopPropagation();
+        this.focusedIndex <= 0
+          ? this.setFocus(this.focusableElements.length - 1)
+          : this.setFocus(this.focusedIndex - 1);
+        break;
+      case 'ArrowDown':
+      case 'ArrowRight':
+        event.preventDefault();
+        event.stopPropagation();
+        this.setFocus((this.focusedIndex + 1) % this.focusableElements.length);
+        break;
+      case 'Home':
+      case 'PageUp':
+        event.preventDefault();
+        event.stopPropagation();
+        this.setFocus(0);
+        break;
+      case 'End':
+      case 'PageDown':
+        event.preventDefault();
+        event.stopPropagation();
+        this.setFocus(this.focusableElements.length - 1);
+        break;
+      case 'Escape':
+        event.preventDefault();
+        event.stopPropagation();
+        this.handleToggle(false);
+        this.focusedIndex === 0 && this.toggleButton.blur();
+        break;
+      case 'Tab':
+        event.preventDefault();
+        event.stopPropagation();
+        if (event.shiftKey) {
+          this.focusedIndex <= 0
+            ? this.setFocus(this.focusableElements.length - 1)
+            : this.setFocus(this.focusedIndex - 1);
+        } else {
+          this.setFocus(
+            (this.focusedIndex + 1) % this.focusableElements.length,
+          );
+        }
+        break;
+      case 'Enter':
+      case ' ':
+        if (
+          this.focusedIndex === 0 &&
+          this.menuContainer.classList.contains('open')
+        ) {
+          event.preventDefault();
+          event.stopPropagation();
+          this.handleToggle(false);
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  private handleResize(_event: Event) {
+    this.handleToggle(false);
+
+    if (window.innerWidth < CollapsibleMenu.MAX_WIDTH) {
+      this.handleAddKeydownHandler();
+    } else {
+      this.handleRemoveKeydownHandler();
+    }
+  }
+
   private handleToggle(value?: boolean) {
     if (typeof value !== 'undefined') {
       value
@@ -234,21 +343,70 @@ class CollapsibleMenu extends HTMLElement {
     if (this.menuContainer.classList.contains('open')) {
       document.body.style.overflowY = 'hidden';
       this.toggleButton.setAttribute('aria-expanded', 'true');
+
+      window.innerWidth < CollapsibleMenu.MAX_WIDTH &&
+        this.handleAddKeydownHandler();
     } else {
       document.body.style.removeProperty('overflow-y');
       this.toggleButton.setAttribute('aria-expanded', 'false');
+
+      window.innerWidth < CollapsibleMenu.MAX_WIDTH &&
+        this.handleRemoveKeydownHandler();
     }
   }
 
+  private setFocus(index: number) {
+    this.focusedIndex = index;
+    index >= 0 &&
+      this.focusableElements[index % this.focusableElements.length].focus();
+  }
+
   connectedCallback() {
-    this.toggleButton.addEventListener('click', () => this.handleToggle());
-    window.addEventListener('resize', () => this.handleToggle(false));
     this.menuContainer.appendChild(this.footerTemplate.content.cloneNode(true));
+
+    const menuSlot = this.menuContainer.querySelector(
+      'slot[name="menu"]',
+    ) as HTMLSlotElement;
+    const footerSlot = this.menuContainer.querySelector(
+      'slot[name="footer"]',
+    ) as HTMLSlotElement;
+
+    const navElements = menuSlot
+      .assignedElements()
+      .reduce((acc: Element[], element: Element) => {
+        const elements = element.querySelectorAll(
+          'a, button, [tabindex]:not([tabindex="-1"])',
+        );
+        return [...acc, ...elements] as HTMLElement[];
+      }, []);
+
+    const footerElements = footerSlot
+      .assignedElements()
+      .reduce((acc: Element[], element: Element) => {
+        const elements = element.querySelectorAll(
+          'a, button, [tabindex]:not([tabindex="-1"])',
+        );
+        return [...acc, ...elements] as HTMLElement[];
+      }, []);
+
+    const socialElements = [
+      ...this.menuContainer.querySelectorAll('a, button'),
+    ] as HTMLElement[];
+
+    this.focusableElements = [
+      this.toggleButton,
+      ...navElements,
+      ...footerElements,
+      ...socialElements,
+    ];
+
+    this.toggleButton.addEventListener('click', this.handleClick.bind(this));
+    window.addEventListener('resize', this.handleResize.bind(this));
   }
 
   disconnectedCallback() {
-    this.toggleButton.removeEventListener('click', () => this.handleToggle());
-    window.removeEventListener('resize', () => this.handleToggle(false));
+    this.toggleButton.removeEventListener('click', this.handleClick.bind(this));
+    window.removeEventListener('resize', this.handleResize.bind(this));
   }
 
   attributeChangedCallback(
