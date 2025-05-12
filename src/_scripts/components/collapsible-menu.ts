@@ -241,7 +241,7 @@ class CollapsibleMenu extends HTMLElement {
   private handleAddKeydownHandler() {
     if (!this.onkeydown) {
       this.onkeydown = this.handleKeydown.bind(this);
-      this.setFocus(0);
+      this.focusedIndex = 0;
     }
   }
 
