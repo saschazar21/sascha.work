@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.5.0] - 2025-05-16
+
+### 🚀 Features
+
+- Added Win95 & Nintendo theme (#380)
+
 ## [3.4.0] - 2025-05-12
 
 ### 🚀 Features
