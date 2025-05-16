@@ -81,17 +81,16 @@ class ThemeEntry extends HTMLElement {
     if (name === 'aria-current' && newValue === 'true') {
       const css = this.getAttribute('css');
       if (css) {
-        const theme = this.getAttribute('theme');
-        if (
-          theme &&
-          !document.head.querySelector(`link[data-theme-entry="${theme}"]`)
-        ) {
-          const link = document.createElement('link');
-          link.setAttribute('data-theme-entry', theme);
-          link.setAttribute('rel', 'stylesheet');
-          link.setAttribute('href', css);
-          document.head.appendChild(link);
+        let customStyleLink = document.head.querySelector(
+          'link[data-theme-custom',
+        );
+        if (!customStyleLink) {
+          customStyleLink = document.createElement('link');
+          customStyleLink.setAttribute('data-theme-custom', '');
+          customStyleLink.setAttribute('rel', 'stylesheet');
+          document.head.appendChild(customStyleLink);
         }
+        customStyleLink.setAttribute('href', css);
       }
     }
   }

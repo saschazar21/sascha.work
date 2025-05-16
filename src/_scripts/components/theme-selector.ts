@@ -48,7 +48,6 @@ themeSelectorTemplate.innerHTML = /* html */ `
     --color: var(--color-link);
     --space: var(--space-xs);
 
-
     position: relative;
     border-radius: 9999px;
     border: var(--border-width-sm) solid var(--border-color, currentColor);
@@ -130,7 +129,8 @@ themeSelectorTemplate.innerHTML = /* html */ `
   }
 
   #close {
-    align-self: flex-end;
+    flex: 0 0 var(--size, 44px);
+    align-self: flex-start;
   }
 
   #backdrop.visible {

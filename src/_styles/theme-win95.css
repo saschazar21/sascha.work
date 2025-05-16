@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'W95FA';
+  src: url(/assets/fonts/w95fa.woff2) format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+[data-theme='Win95'] {
+  --font-family-heading: 'W95FA', var(--font-family-system-mono);
+  --font-family-body: 'W95FA', var(--font-family-system-mono);
+  --font-family-code: 'W95FA', var(--font-family-system-mono);
+
+  --fill-override: var(--color-secondary);
+}
+
+:is([data-theme='Win95']) [data-donkey-kong] [data-description='body'] {
+  fill: var(--color-text);
+}
+
+:is([data-theme='Win95']) [data-donkey-kong] [data-description='body-parts'] {
+  fill: var(--color-secondary);
+}
+
+:is([data-theme='Win95']) [data-donkey-kong] [data-description='face'] {
+  fill: var(--color-bg);
+}

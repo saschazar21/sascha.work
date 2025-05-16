@@ -12,7 +12,7 @@
 
 {# Themes #}
 
-{% set css%}{% include "src/_styles/theme-mono.css" %}{% endset %}
+{% set css %}{% include "src/_styles/theme-mono.css" %}{% endset %}
 
 {% css "theme-mono" %}
 {{ css | safe }}
@@ -20,7 +20,7 @@
 
 {% set mono %}{% getBundleFileUrl 'css', 'theme-mono' %}{% endset %}
 
-{% set css%}{% include "src/_styles/theme-c64.css" %}{% endset %}
+{% set css %}{% include "src/_styles/theme-c64.css" %}{% endset %}
 
 {% css "theme-c64" %}
 {{ css | safe }}
@@ -28,10 +28,28 @@
 
 {% set c64 %}{% getBundleFileUrl 'css', 'theme-c64' %}{% endset %}
 
+{% set css %}{% include "src/_styles/theme-nintendo.css" %}{% endset %}
+
+{% css "theme-nintendo" %}
+{{ css | safe }}
+{% endcss %}
+
+{% set nintendo %}{% getBundleFileUrl 'css', 'theme-nintendo' %}{% endset %}
+
+{% set css %}{% include "src/_styles/theme-win95.css" %}{% endset %}
+
+{% css "theme-win95" %}
+{{ css | safe }}
+{% endcss %}
+
+{% set win95 %}{% getBundleFileUrl 'css', 'theme-win95' %}{% endset %}
+
 {% set styles = {
   'mono-dark': mono,
   'mono-light': mono,
-  C64: c64
+  Nintendo: nintendo,
+  C64: c64,
+  Win95: win95
 } %}
 
 {# End Themes #}

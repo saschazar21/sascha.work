@@ -37,7 +37,7 @@
   --font-family-body: 'Overpass', var(--font-family-system-sans);
   --font-family-code: 'Inconsolata', var(--font-family-system-mono);
 
-  --font-size-base: 1rem;
+  --font-size-base: 16px;
 
   /* Mobile font sizes */
   --font-size-h1: 2.25rem;
@@ -76,7 +76,12 @@
   }
 }
 
-body {
+:where(:root) {
+  font-size: var(--font-size-base);
+}
+
+body,
+:where([data-theme]) {
   font-family: var(--font-family-body);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);

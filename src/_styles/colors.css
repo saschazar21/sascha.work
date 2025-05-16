@@ -21,22 +21,19 @@
 }
 
 :where([data-theme='C64']) {
-  /* CSS HSL */
-  --black: hsla(0, 0%, 0%, 1);
-  --dark-blue: hsla(240, 100%, 33%, 1);
-  --icterine: hsla(60, 78%, 70%, 1);
-  --field-drab: hsla(40, 100%, 20%, 1);
-  --persian-orange: hsla(22, 67%, 60%, 1);
-  --silver: hsla(0, 0%, 73%, 1);
-  --white: hsla(0, 0%, 100%, 1);
+  --color-bg: hsl(0, 0%, 4%); /* C64 Black */
+  --color-bg-muted: hsl(
+    30,
+    40%,
+    12%
+  ); /* Dark Brown (darker muted background) */
 
-  --color-bg: var(--dark-blue);
-  --color-bg-muted: var(--black);
-  --color-text: var(--white);
-  --color-text-muted: var(--silver);
-  --color-primary: var(--icterine);
-  --color-secondary: var(--persian-orange);
-  --color-secondary-muted: var(--field-drab);
+  --color-text: hsl(0, 0%, 90%); /* Off White */
+  --color-text-muted: hsl(30, 20%, 70%); /* Muted Tan */
+
+  --color-primary: hsl(195, 65%, 45%); /* Adjusted Cyan for better contrast */
+  --color-secondary: hsl(30, 100%, 40%); /* Orange */
+  --color-secondary-muted: hsl(30, 100%, 80%); /* Pale Orange */
 
   --color-link: var(--color-primary);
 }
@@ -77,6 +74,18 @@
   --color-link: black;
 }
 
+:where([data-theme='Nintendo']) {
+  --color-bg: hsl(210, 20%, 15%);
+  --color-bg-muted: hsl(210, 15%, 10%);
+  --color-text: hsl(40, 20%, 85%);
+  --color-text-muted: hsl(40, 15%, 65%);
+  --color-primary: hsl(210, 100%, 55%);
+  --color-secondary: hsl(45, 90%, 60%);
+  --color-secondary-muted: hsl(45, 50%, 35%);
+
+  --color-link: var(--color-primary);
+}
+
 :where([data-theme='solarized']) {
   /* CSS HSL */
   --gunmetal: hsla(192, 100%, 11%, 1);
@@ -94,6 +103,18 @@
   --color-primary: var(--light-sky-blue);
   --color-secondary: var(--imperial-red);
   --color-secondary-muted: var(--orange-crayola);
+
+  --color-link: var(--color-primary);
+}
+
+:where([data-theme='Win95']) {
+  --color-bg: hsl(210, 10%, 85%);
+  --color-bg-muted: hsl(210, 10%, 80%);
+  --color-text: hsl(0, 0%, 0%);
+  --color-text-muted: hsl(0, 0%, 30%);
+  --color-primary: hsl(220, 100%, 40%);
+  --color-secondary: hsl(180, 99%, 26%);
+  --color-secondary-muted: hsl(180, 99%, 90%);
 
   --color-link: var(--color-primary);
 }
