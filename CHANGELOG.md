@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.5.1] - 2025-05-16
+
+### 🐛 Bug Fixes
+
+- Fixed glob patterns for ServiceWorker (#381)
+
 ## [3.5.0] - 2025-05-16
 
 ### 🚀 Features
