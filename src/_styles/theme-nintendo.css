@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Nintendo NES';
+  src: url(/assets/fonts/nintendo-nes-font.otf.woff2) format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:where(:root):has(body[data-theme='Nintendo']) {
+  --font-size-base: 0.875rem;
+}
+
+[data-theme='Nintendo'] {
+  --font-family-heading: 'Nintendo NES', var(--font-family-system-mono);
+  --font-family-body: 'Nintendo NES', var(--font-family-system-mono);
+  --font-family-code: 'Nintendo NES', var(--font-family-system-mono);
+
+  --font-size-base: 0.875rem;
+
+  /* Mobile font sizes */
+  --font-size-h1: 1.75rem;
+  --font-size-h2: 1.5625rem;
+  --font-size-h3: 1.375rem;
+  --font-size-h4: 1.25rem;
+  --font-size-h5: 1.175rem;
+  --font-size-body: 1rem;
+  --font-size-code: 0.875rem;
+  --font-size-caption: 0.75rem;
+
+  text-transform: uppercase;
+}
