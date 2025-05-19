@@ -7,9 +7,8 @@
 }
 
 [data-theme='Win95'] {
-  --font-family-heading: 'W95FA', var(--font-family-system-mono);
-  --font-family-body: 'W95FA', var(--font-family-system-mono);
-  --font-family-code: 'W95FA', var(--font-family-system-mono);
+  --font-family-heading: 'W95FA', var(--font-family-system-sans);
+  --font-family-body: 'W95FA', var(--font-family-system-sans);
 
   --fill-override: var(--color-secondary);
 }
