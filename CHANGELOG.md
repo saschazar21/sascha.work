@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.5.2] - 2025-05-19
+
+### 🐛 Bug Fixes
+
+- Fixed fallback fonts for Win95 theme (#382)
+
 ## [3.5.1] - 2025-05-16
 
 ### 🐛 Bug Fixes
